@@ -106,6 +106,23 @@ footer {
   border-top: 1px solid #00f7ff20;
   color: #7ee9ff;
 }
+/* Стили для сообщения */
+#idle-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease;
+  z-index: 9999;
+}
+#idle-message.visible {
+  opacity: 1;
+}
+
 @keyframes typewriter {
   from { width: 0; }
   to { width: 100%; }
@@ -135,11 +152,16 @@ footer {
 }
 
 @keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
 a {
   color: #00f7ff; /* Неоновый голубой */
   text-decoration: none;
@@ -152,4 +174,81 @@ a:hover {
 
 a:visited {
   color: #00f7ff; /* Чтобы фиолетовый не появлялся */
+}
+
+/* Skill Tree */
+.skill-tree {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.skill-node {
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid #0ff;
+  padding: 15px;
+  border-radius: 8px;
+  color: #0ff;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.skill-node:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #0ff;
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: auto;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background: #00f7ff;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+
+.timeline-item {
+  padding: 20px;
+  position: relative;
+  width: 50%;
+  left: 0;
+}
+
+.timeline-item:nth-child(even) {
+  left: 50%;
+}
+
+.timeline-item::after {
+  content: ' ';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: -10px;
+  background: #00f7ff;
+  border: 4px solid #fff;
+  top: 30px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.timeline-item:nth-child(even)::after {
+  left: -10px;
+}
+
+.timeline-item h3 {
+  margin-top: 0;
+  color: #9effff;
+}
+
+.timeline-item p {
+  color: #dff;
 }

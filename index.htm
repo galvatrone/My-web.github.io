@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Моё Sci-Fi Портфолио</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Моё Sci-Fi Портфолио</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" href="favicon.ico">
+      </head>
+      
 <body>
+
+    
+
   <canvas id="stars"></canvas>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="icon" href="images/favicon.png" type="image/png">
-    <!-- Для мобильных устройств -->
-    <link rel="apple-touch-icon" href="favicon.png">
-  </head>
   
   <header>
     <h1 class="typewriter">MIHAIL CHARILAOU</h1>
@@ -23,10 +21,18 @@
       <a href="#about">About me</a>
       <a href="#projects">Key Projects</a>
       <a href="#contact">contact</a>
+
+    <!-- sidebar.html -->
+
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+     <a href="#timeline">Timeline</a>
     </nav>
   </header>
 
+  
   <main class="container">
+    
     <section id="about" class="fade-in" style="animation-delay: 1s;">
       <h2>About me</h2>
       <p>
@@ -34,8 +40,37 @@
         I'm working on offline assistants, neural networks, and space concepts.
       </p>
     </section>
-
-    <section id="projects" class="fade-in" style="animation-delay: 2s;">
+    <!-- projects.html -->
+<section id="projects"class="fade-in" style="animation-delay: 2s;">
+    <h2>Projects</h2>
+    <div class="project-cards">
+      <div class="project-card">
+        <h3>Face Recognition AI</h3>
+        <p>Offline AI that identifies users using face and voice.</p>
+        <p><strong>Tech:</strong> Python, dlib, OpenCV</p>
+        <a href="https://github.com/galvatrone" target="_blank">GitHub</a>
+      </div>
+      <div class="project-card">
+        <h3>Drone Swarm</h3>
+        <p>Autonomous Arduino-based drone swarm.</p>
+        <p><strong>Tech:</strong> Arduino, C++, RF</p>
+        <a href="https://github.com/galvatrone" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </section>
+    <!-- skill-tree.html (вставляется в секцию "Skills") -->
+    <section id="skills" class="fade-in" style="animation-delay: 3s;">
+        <h2>Skill Tree</h2>
+        <div class="skill-graph">
+        <div class="skill-node core">JavaScript</div>
+        <div class="skill-node">React</div>
+        <div class="skill-node">Node.js</div>
+        <div class="skill-node">HTML</div>
+        <div class="skill-node">CSS</div>
+        <div class="skill-node">C++</div>
+        </div>
+    </section>
+    <section id="projects" class="fade-in" style="animation-delay: 4s;">
       <h2>Key Projects</h2>
       <p>
         - Face & Voice Recognition System<br>
@@ -45,14 +80,33 @@
       </p>
     </section>
 
-    <section id="contact" class="fade-in" style="animation-delay: 3s;">
-      <h2>contact</h2>
-      <p>
-        Email: michaelok929@gmail.com<br>
-        Telegram: @mne_leniiii<br>
-        GitHub: <a  href="https://github.com/galvatrone">https://github.com/galvatrone</a>
-      </p>
+    
+    <!-- timeline.html -->
+    <section id="timeline" class="fade-in" style="animation-delay: 5s;">
+        <h2>Experience Timeline</h2>
+        <div class="timeline">
+        <div class="event">
+            <div class="year">2023</div>
+            <div class="desc">Started studying at UNIC</div>
+        </div>
+        <div class="event">
+            <div class="year">2024</div>
+            <div class="desc">Launched Drone Swarm project</div>
+        </div>
+        <div class="event">
+            <div class="year">2025</div>
+            <div class="desc">Working on Hybrid Ion Drive and AI Assistant</div>
+        </div>
+        </div>
     </section>
+    <section id="contact" class="fade-in" style="animation-delay: 6s;">
+        <h2>contact</h2>
+        <p>
+          Email: michaelok929@gmail.com<br>
+          Telegram: @mne_leniiii<br>
+          GitHub: <a  href="https://github.com/galvatrone">https://github.com/galvatrone</a>
+        </p>
+      </section>
   </main>
 
   <footer>
@@ -61,4 +115,7 @@
 
   <script src="script.js"></script>
 </body>
+<!-- Добавь в HTML -->
+<div id="idle-message" class="fade-in-idle">Исследователь отключился...</div>
+
 </html>
