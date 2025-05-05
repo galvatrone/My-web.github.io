@@ -1,36 +1,56 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Sci-Fi Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Моё Sci-Fi Портфолио</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <canvas id="stars"></canvas>
-  <div class="intro">
-    <h1><span class="typing">Welcome to My Portfolio</span></h1>
-  </div>
-  <div class="content">
-    <section class="about">
-      <h2>About Me</h2>
-      <p>I am a sci-fi enthusiast and developer.</p>
+    
+  <header>
+    <h1 class="typewriter">MIHAIL CHARILAOU</h1>
+    <nav>
+      <a href="#about">About me</a>
+      <a href="#projects">Key Projects</a>
+      <a href="#contact">contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="about" class="fade-in" style="animation-delay: 1s;">
+      <h2>About me</h2>
+      <p>
+        I am a software engineer specializing in creating innovative AI systems, robotics, and interfaces. 
+        I'm working on offline assistants, neural networks, and space concepts.
+      </p>
     </section>
-    <section class="projects">
-      <h2>Projects</h2>
-      <ul>
-        <li><strong>Project Alpha:</strong> Galactic navigation system</li>
-        <li><strong>Project Beta:</strong> AI drone assistant</li>
-      </ul>
+
+    <section id="projects" class="fade-in" style="animation-delay: 2s;">
+      <h2>Key Projects</h2>
+      <p>
+        - Face & Voice Recognition System<br>
+        - Autonomous Drone Swarm "Bees"<br>
+        - SpaceJet Ion Drive Concept<br>
+        - Offline AI with Memory and Emotion
+      </p>
     </section>
-    <section class="contact">
-      <h2>Contact</h2>
-      <p>Reach me at future@space.net</p>
+
+    <section id="contact" class="fade-in" style="animation-delay: 3s;">
+      <h2>contact</h2>
+      <p>
+        Email: michaelok929@gmail.com<br>
+        Telegram: @mne_leniiii<br>
+        GitHub: <a  href="https://github.com/galvatrone">https://github.com/galvatrone</a>
+      </p>
     </section>
-  </div>
+  </main>
+
+  <footer>
+    © 2025 Mihail Charilaou. All rights reserved.
+  </footer>
+
   <script src="script.js"></script>
-
-
 </body>
 </html>
