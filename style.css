@@ -326,7 +326,7 @@ section#home h2 {
 
 .about-flex {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 3rem;
   padding: 0 5rem 4rem 5rem; /* общий отступ слева и справа */
   justify-content: space-between; /* равномерное распределение */
@@ -427,9 +427,9 @@ section#home h2 {
 .about-right {
   flex: 1 1 400px;
   max-width: 600px;
-  display: flex;
-  justify-content: flex-end; /* прижать фото к правому краю блока */
-  align-items: flex-start;
+  display: center;
+  justify-content: flex-start; /* прижать фото к правому краю блока */
+  align-items: flex-start; /* выравнивание по верхнему краю */
   padding-right: 1rem; /* отступ справа внутри блока с фото */
 }
 
@@ -440,6 +440,9 @@ section#home h2 {
   height: 560px;
   border-radius: 50%;
   overflow: visible;
+  top:50%;
+  left: 20%;
+  transform: translateY(-50%);
 }
 
 .photo-glow {
