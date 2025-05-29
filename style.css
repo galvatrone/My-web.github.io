@@ -295,14 +295,25 @@ section#home h2 {
 }
 
 .about-subtitle {
-  font-size: 6rem;               /* Сделал больше */
+  font-size: clamp(2rem, 5vw, 5rem);              /* Сделал больше */
   font-weight: 900;              /* Чуть жирнее */
   background: linear-gradient(90deg, #00fff7, #00d0ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   user-select: none;
-  margin: 10rem;
-  margin-bottom: 10rem; /* Отступ снизу */
+  text-align: center;
+  margin: clamp(2rem, 8vw, 10rem);
+  margin-bottom: clamp(2rem, 8vw, 8rem); /* Отступ снизу */
+  color: transparent; /* Убираем цвет текста, чтобы работал градиент */
+}
+/* Контейнер блока about */
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  padding: 5vh 5vw;
 }
 
 .gradient-text {
@@ -322,16 +333,24 @@ section#home h2 {
 }
 /* Левая часть — текст с отступом слева */
 .about-left {
-  flex: 1 1 600px;
+  flex: 1 1 300px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center; /* выравнивание по центру по вертикали */
   max-width: 600px; /* ограничиваем ширину блока с текстом */
   padding-left: 1rem; /* отступ слева внутри блока с текстом */
   text-align: left; /*выравнивание текста по левому краю */
   color: #eee;
 }
-
+/* Изображение в левой части */
+.about-image {
+  width: 100%; /* ширина изображения */
+  max-width: 300px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 0 15px var(--accent-color, #00f);
+  object-fit: cover;
+}
 
 /* Основной заголовок */
 .about-title {
@@ -345,8 +364,9 @@ section#home h2 {
 
 /* Описание — без отступов между строками, но с переносами <br> */
 .about-desc {
-  font-size: 1.1rem;
-  line-height: 1.55;
+  font-size: clamp(1.4rem, 5vw, 1.4rem);
+  line-height: 1.6;
+  text-align: justify; /* выравнивание по ширине */
   color: #eee;
   margin: 20; /* Убираем отступы сверху и снизу */
   white-space: pre-line; /* Поддержка ручных переносов строк при необходимости */
@@ -405,7 +425,8 @@ section#home h2 {
 
 /* Правая часть с фото */
 .about-right {
-  flex: 0 0 320px;
+  flex: 1 1 400px;
+  max-width: 600px;
   display: flex;
   justify-content: flex-end; /* прижать фото к правому краю блока */
   align-items: flex-start;
