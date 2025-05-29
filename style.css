@@ -13,11 +13,83 @@
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: var(--background-color);
+  position: relative;
+  background-color: #0a0a0a; /* тёмный фон */
+  min-height: 100vh;
   color: var(--text-color);
-  line-height: 1.5;
+  font-family: 'Segoe UI', sans-serif;
+  overflow-x: hidden;
 }
+
+:root {
+  --smoke-left-color1: rgba(0, 255, 247, 0.15);
+  --smoke-left-color2: rgba(0, 128, 128, 0.1);
+  --smoke-left-color3: rgba(0, 180, 200, 0.08);
+  --smoke-right-color1: rgba(0, 255, 200, 0.15);
+  --smoke-right-color2: rgba(0, 128, 180, 0.1);
+  --smoke-right-color3: rgba(0, 200, 230, 0.07);
+}
+
+body::before, body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  width: 50vw;
+  height: 150vh;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(80px); /* уменьшил размытие */
+  opacity: 0.5; /* повысил непрозрачность */
+  background-repeat: no-repeat;
+  background-size: cover;
+  will-change: transform;
+}
+
+body::before {
+  left: 0;
+  background-image:
+    radial-gradient(ellipse 250px 400px at 30% 40%, rgba(0, 255, 247, 0.4), transparent 70%),
+    radial-gradient(ellipse 350px 250px at 70% 65%, rgba(0, 180, 180, 0.35), transparent 80%),
+    radial-gradient(circle 300px at 50% 80%, rgba(0, 200, 230, 0.3), transparent 75%);
+  mix-blend-mode: screen;
+  transform: translateY(var(--smoke-move-left, 0));
+}
+
+body::after {
+  right: 0;
+  background-image:
+    radial-gradient(ellipse 300px 350px at 60% 30%, rgba(0, 255, 200, 0.4), transparent 70%),
+    radial-gradient(ellipse 320px 220px at 40% 75%, rgba(0, 150, 180, 0.35), transparent 80%),
+    radial-gradient(circle 250px at 55% 85%, rgba(0, 200, 230, 0.3), transparent 75%);
+  mix-blend-mode: screen;
+  transform: translateY(var(--smoke-move-right, 0));
+}
+/* ========== SMOKE========== */
+.smoke {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.1;
+  transition: transform 0.2s ease-out;
+}
+
+.smoke-left {
+  left: 0;
+  background-image: url('smoke-left.png'); /* твой туман */
+}
+
+.smoke-right {
+  right: 0;
+  background-image: url('smoke-right.png'); /* твой туман */
+}
+
+/* ========== HEADER ========== */
+
 
 header {
   background-color: #111;
@@ -79,11 +151,23 @@ section#home {
 }
 
 section#home h1 {
-  font-size: clamp(28px, 4vw, 36px);
+  font-size: 36px;
   text-align: left;
   color: var(--text-color);
-  margin-bottom: 0.3em;
+
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  animation: typing 1.2s steps(30, end) forwards;
+  border-right: none; /* убираем курсор */
 }
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+
 
 section#home h2 {
   font-size: clamp(18px, 3vw, 24px);
@@ -163,27 +247,98 @@ section#home h2 {
 
 /* ========== ABOUT SECTION ========== */
 section#about {
-  padding: 60px var(--page-padding);
+  padding: 80px var(--page-padding);
   background-color: #121212;
+  color: #eee;
+}
+
+section#about .about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+section#about .about-highlights {
+  margin-top: 20px;
+  padding-left: 0;
+  list-style: none;
+}
+
+section#about .about-highlights li {
+  margin-bottom: 10px;
+  padding-left: 1.2em;
+  position: relative;
+}
+
+section#about .about-highlights li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  color: #4CAF50;
+  font-weight: bold;
 }
 
 /* ========== PORTFOLIO ========== */
 section#portfolio {
-  padding: 60px var(--page-padding);
-  background-color: #222;
+  padding: 80px var(--page-padding);
+  background-color: #1a1a1a;
+  color: #f0f0f0;
 }
 
 section#portfolio .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  gap: 24px;
+  margin-top: 30px;
+}
+
+section#portfolio .card {
+  background-color: #2a2a2a;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+section#portfolio .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+
+section#portfolio .card h3 {
+  margin-bottom: 10px;
+  color: #4CAF50;
 }
 
 /* ========== CONTACT SECTION ========== */
 section#contact {
-  padding: 60px var(--page-padding);
-  background-color: #333;
+  padding: 80px var(--page-padding);
+  background-color: #222;
+  color: #fff;
+  text-align: center;
 }
+
+section#contact .contact-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  font-size: 1.1rem;
+}
+
+section#contact .contact-list li {
+  margin: 10px 0;
+}
+
+section#contact .contact-list a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+section#contact .contact-list a:hover {
+  text-decoration: underline;
+}
+
 
 /* ========== BUTTON ========== */
 .btn {
