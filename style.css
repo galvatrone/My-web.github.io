@@ -6,6 +6,7 @@
   --muted-color: #dddddd;
 }
 
+
 * {
   margin: 0;
   padding: 0;
@@ -29,7 +30,7 @@ body {
   --smoke-right-color2: rgba(0, 128, 180, 0.1);
   --smoke-right-color3: rgba(0, 200, 230, 0.07);
 }
-
+/* ========== SMOKE BACKGROUND ========== */
 body::before, body::after {
   content: '';
   position: fixed;
@@ -80,13 +81,44 @@ body::after {
 
 .smoke-left {
   left: 0;
-  background-image: url('smoke-left.png'); /* твой туман */
+  background-image: url('smoke-left.png'); /*  мой туман но у меня нету */
 }
 
 .smoke-right {
   right: 0;
-  background-image: url('smoke-right.png'); /* твой туман */
+  background-image: url('smoke-right.png'); /* мой туман но у меня нету */
 }
+/* ========== ANIMATION ========== */
+/* Общие стили для анимации */
+.reveal-left, .reveal-right {
+  opacity: 0;
+  transform: translateX(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: opacity, transform;
+}
+
+/* Сдвигаем влево (чтобы потом "приходить" из левого края) */
+.reveal-left {
+  transform: translateX(-50px);
+}
+
+/* Сдвигаем вправо (чтобы потом "приходить" из правого края) */
+.reveal-right {
+  transform: translateX(50px);
+}
+
+/* Класс, который добавляем при появлении элемента в зоне видимости */
+.reveal-left.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
 
 /* ========== HEADER ========== */
 
@@ -246,37 +278,161 @@ section#home h2 {
 }
 
 /* ========== ABOUT SECTION ========== */
-section#about {
-  padding: 80px var(--page-padding);
-  background-color: #121212;
+/* Верхний заголовок по центру */
+.about-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.about-subtitle {
+  font-size: 8rem;               /* Сделал больше */
+  font-weight: 900;              /* Чуть жирнее */
+  background: linear-gradient(90deg, #00fff7, #00d0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  user-select: none;
+  margin: 10rem;
+  margin-bottom: 15rem; /* Отступ снизу */
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #00fff7, #00d0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Основной flex контейнер */
+
+.about-flex {
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+  padding: 0 5rem 4rem 5rem; /* общий отступ слева и справа */
+  justify-content: space-between; /* равномерное распределение */
+}
+/* Левая часть — текст с отступом слева */
+.about-left {
+  flex: 1 1 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 600px;
+  padding-left: 1rem;
+  text-align: left;
   color: #eee;
 }
 
-section#about .about-content {
-  max-width: 800px;
-  margin: 0 auto;
+
+/* Основной заголовок */
+.about-title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  color: #fff;
+}
+
+/* Описание — без отступов между строками, но с переносами <br> */
+.about-desc {
   font-size: 1.1rem;
-  line-height: 1.6;
+  line-height: 1.55;
+  color: #eee;
+  margin: 20; /* Убираем отступы сверху и снизу */
+  white-space: pre-line; /* Поддержка ручных переносов строк при необходимости */
 }
 
-section#about .about-highlights {
-  margin-top: 20px;
-  padding-left: 0;
-  list-style: none;
+
+/* Кнопки */
+.about-buttons {
+  display: flex;
+  gap: 3rem;
 }
 
-section#about .about-highlights li {
-  margin-bottom: 10px;
-  padding-left: 1.2em;
+/* Кнопки стили — оставляем как есть */
+.btn {
+  padding: 1.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem; /* Отступ сверху для кнопок */
+}
+
+.btn-neon {
+  background-color: var(--accent-color);
+  color: #000;
+  box-shadow:
+    0 0 8px var(--accent-color),
+    0 0 20px var(--accent-color),
+    0 0 30px var(--accent-color);
+}
+
+.btn-neon:hover {
+  background-color: #00dddd;
+  box-shadow:
+    0 0 12px #00dddd,
+    0 0 25px #00dddd,
+    0 0 40px #00dddd;
+}
+
+.btn-outline {
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+  background-color: transparent;
+}
+
+.btn-outline:hover {
+  background-color: var(--accent-color);
+  color: #000;
+}
+
+/* Правая часть с фото */
+.about-right {
+  flex: 0 0 320px;
+  display: flex;
+  justify-content: flex-end; /* прижать фото к правому краю блока */
+  align-items: flex-start;
+  padding-right: 1rem; /* отступ справа внутри блока с фото */
+}
+
+/* Фото с подсветкой */
+.photo-wrapper {
   position: relative;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  overflow: visible;
 }
 
-section#about .about-highlights li::before {
-  content: '✔';
+.photo-glow {
   position: absolute;
-  left: 0;
-  color: #4CAF50;
-  font-weight: bold;
+  top: 50%;
+  left: 50%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(0,255,247,0.35) 40%, transparent 80%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(40px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.photo-wrapper img {
+  position: relative;
+  z-index: 2;
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
 }
 
 /* ========== PORTFOLIO ========== */
