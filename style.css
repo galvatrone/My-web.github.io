@@ -142,15 +142,25 @@ header {
   font-weight: bold;
   font-size: clamp(20px, 3vw, 28px);
   color: var(--accent-color);
+  padding-left: 5rem
+}
+
+.nav-right{
+    padding-right: 5rem;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+ 
 }
 
 .nav-right a {
-  margin-left: 24px;
+  margin-left:24px;
   color: var(--text-color);
   text-decoration: none;
   font-size: clamp(14px, 1.5vw, 16px);
   position: relative;
   transition: color 0.3s ease;
+  /* padding-right: 5rem; добавляем отступ справа для псевдоэлемента */
 }
 
 .nav-right a::after {
@@ -292,7 +302,7 @@ section#home h2 {
   -webkit-text-fill-color: transparent;
   user-select: none;
   margin: 10rem;
-  margin-bottom: 15rem; /* Отступ снизу */
+  margin-bottom: 10rem; /* Отступ снизу */
 }
 
 .gradient-text {
@@ -316,9 +326,9 @@ section#home h2 {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  max-width: 600px;
-  padding-left: 1rem;
-  text-align: left;
+  max-width: 600px; /* ограничиваем ширину блока с текстом */
+  padding-left: 1rem; /* отступ слева внутри блока с текстом */
+  text-align: left; /*выравнивание текста по левому краю */
   color: #eee;
 }
 
@@ -405,8 +415,8 @@ section#home h2 {
 /* Фото с подсветкой */
 .photo-wrapper {
   position: relative;
-  width: 280px;
-  height: 280px;
+  width: 560px;
+  height: 560px;
   border-radius: 50%;
   overflow: visible;
 }
@@ -436,6 +446,7 @@ section#home h2 {
 }
 
 /* ========== PORTFOLIO ========== */
+
 section#portfolio {
   padding: 80px var(--page-padding);
   background-color: #1a1a1a;
