@@ -832,33 +832,71 @@ section#contact .contact-list a:hover {
 .btn:hover {
   background-color: #00cccc;
 }
-
 /* ========== INTRO SCREEN ========== */
 .intro-screen {
   position: fixed;
   inset: 0;
-  background-color: var(--background-color);
-  color: var(--accent-color);
+  background-color: rgba(0, 0, 0, 0.95);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  animation: fadeOut 2s ease 3s forwards;
+  animation: fadeOut 1.5s ease 3.5s forwards;
 }
 
+/* Контейнер блока с текстом */
+.intro-box {
+  background-color: #111;
+  padding: 40px 60px;
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(0, 255, 204, 0.5);
+  max-width: 80vw;
+  text-align: center;
+  animation: boomIn 1s ease-out forwards;
+}
+
+/* Текст внутри блока */
 .intro-text {
-  font-size: 30px;
-  font-weight: bold;
+  display: inline-block;
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: #00ffcc;
+  text-transform: uppercase;
+  word-wrap: break-word;
   opacity: 0;
-  animation: fadeIn 1.5s ease forwards;
+  animation:
+    boomIn 1s ease-out forwards,
+    glow 1.5s ease-in-out infinite alternate;
 }
 
-@keyframes fadeIn {
-  to {
+/* Анимация появления блока */
+@keyframes boomIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
     opacity: 1;
   }
 }
 
+/* Анимация свечения */
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+  }
+  100% {
+    text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
+  }
+}
+
+/* Анимация исчезновения всей заставки */
 @keyframes fadeOut {
   to {
     opacity: 0;
