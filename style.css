@@ -295,7 +295,7 @@ section#home h2 {
 }
 
 .about-subtitle {
-  font-size: 8rem;               /* Сделал больше */
+  font-size: 6rem;               /* Сделал больше */
   font-weight: 900;              /* Чуть жирнее */
   background: linear-gradient(90deg, #00fff7, #00d0ff);
   -webkit-background-clip: text;
