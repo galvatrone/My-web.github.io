@@ -466,6 +466,130 @@ section#home h2 {
   display: block;
 }
 
+@media (max-width: 768px) {
+  .about-flex {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 2rem;
+    text-align: center;
+  }
+
+  .about-left, .about-right {
+    max-width: 100%;
+    padding: 0;
+    text-align: center;
+  }
+
+  .about-buttons {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .photo-wrapper {
+    width: 320px;
+    height: 320px;
+  }
+
+  .photo-wrapper img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .photo-glow {
+    width: 250px;
+    height: 250px;
+  }
+
+  .about-title {
+    font-size: 2.5rem;
+  }
+
+  .about-desc {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-subtitle {
+    font-size: 2rem;
+    margin: 2rem 1rem 4rem 1rem;
+  }
+
+  .btn {
+    padding: 1.2rem 1.4rem;
+    font-size: 0.9rem;
+  }
+
+  .photo-wrapper {
+    width: 260px;
+    height: 260px;
+  }
+
+  .photo-wrapper img {
+    width: 160px;
+    height: 160px;
+  }
+
+  .photo-glow {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 10px var(--accent-color), 0 0 30px var(--accent-color);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--accent-color), 0 0 50px var(--accent-color);
+  }
+}
+
+/* Применение анимаций */
+.about-subtitle,
+.about-title,
+.about-desc,
+.about-buttons,
+.about-image,
+.photo-wrapper {
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+}
+
+/* Задержки, чтобы сделать каскадное появление */
+.about-subtitle {
+  animation-delay: 0.1s;
+}
+.about-title {
+  animation-delay: 0.3s;
+}
+.about-desc {
+  animation-delay: 0.5s;
+}
+.about-buttons {
+  animation-delay: 0.7s;
+}
+.photo-wrapper {
+  animation-delay: 1s;
+}
+
+/* Пульсация свечения у фото */
+.photo-glow {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
 /* ========== PORTFOLIO ========== */
 
 section#portfolio {
