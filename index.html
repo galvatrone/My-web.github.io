@@ -1,122 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Моё Sci-Fi Портфолио</title>
-        <link rel="stylesheet" href="style.css" />
-        <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-        <link rel="apple-touch-icon" href="favicon.ico">
-      </head>
-      
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mihail Charilaou — Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 <body>
 
-    
+  <!-- Intro screen -->
+  <div class="intro-screen">
+    <h1 class="intro-text">Welcome to my portfolio website</h1>
+  </div>
 
-  <canvas id="stars"></canvas>
-  
+  <!-- Header & Navbar -->
   <header>
-    <h1 class="typewriter">MIHAIL CHARILAOU</h1>
-    <nav>
-      <a href="#about">About me</a>
-      <a href="#projects">Key Projects</a>
-      <a href="#contact">contact</a>
-
-    <!-- sidebar.html -->
-
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-     <a href="#timeline">Timeline</a>
-     <a href="code/">My code</a>
+    <nav class="navbar">
+      <div class="nav-left">
+        <span>Mihail Charilaou</span>
+      </div>
+      <div class="nav-right">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </div>
     </nav>
   </header>
 
-  
-  <main class="container">
-    
-    <section id="about" class="fade-in" style="animation-delay: 1s;">
-      <h2>About me</h2>
-      <p>
-        I am a software engineer specializing in creating innovative AI systems, robotics, and interfaces. 
-        I'm working on offline assistants, neural networks, and space concepts.
-      </p>
-    </section>
-    <!-- projects.html -->
-<section id="projects"class="fade-in" style="animation-delay: 2s;">
-    <h2>Projects</h2>
-    <div class="project-cards">
-      <div class="project-card">
-        <h3>Face Recognition AI</h3>
-        <p>Offline AI that identifies users using face and voice.</p>
-        <p><strong>Tech:</strong> Python, dlib, OpenCV</p>
-        <a href="https://github.com/galvatrone" target="_blank">GitHub</a>
-      </div>
-      <div class="project-card">
-        <h3>Drone Swarm</h3>
-        <p>Autonomous Arduino-based drone swarm.</p>
-        <p><strong>Tech:</strong> Arduino, C++, RF</p>
-        <a href="https://github.com/galvatrone" target="_blank">GitHub</a>
-      </div>
-    </div>
-  </section>
-    <!-- skill-tree.html (вставляется в секцию "Skills") -->
-    <section id="skills" class="fade-in" style="animation-delay: 3s;">
-        <h2>Skill Tree</h2>
-        <div class="skill-graph">
-        <div class="skill-node core">JavaScript</div>
-        <div class="skill-node">React</div>
-        <div class="skill-node">Node.js</div>
-        <div class="skill-node">HTML</div>
-        <div class="skill-node">CSS</div>
-        <div class="skill-node">C++</div>
+  <main>
+    <!-- Home Section -->
+    <section id="home" class="home-section">
+      <div class="overlay"></div>
+      <div class="home-content-row">
+        <div class="home-right">
+          <img src="https://avatars.githubusercontent.com/u/12345678?v=4" alt="Mihail Charilaou" class="profile-image">
         </div>
-    </section>
-    <section id="projects" class="fade-in" style="animation-delay: 4s;">
-      <h2>Key Projects</h2>
-      <p>
-        - Face & Voice Recognition System<br>
-        - Autonomous Drone Swarm "Bees"<br>
-        - SpaceJet Ion Drive Concept<br>
-        - Offline AI with Memory and Emotion
-      </p>
+        <div class="home-left">
+          <h1>Junior<span> Programmer</span></h1>
+          <h2>Computer Science && Algorithms && AI Science</h2>
+          <p>Привет! Я начинающий программист из Кипра, увлеченный разработкой ИИ и робототехникой. Мой опыт включает в себя создание автономных дронов, голосовых ассистентов и локальных систем распознавания лиц.</p>
+          <p>Engineer • Developer • Innovator</p>
+          <a href="#portfolio" class="btn">View Portfolio</a>
+        </div>
+      </div>
     </section>
 
-    
-    <!-- timeline.html -->
-    <section id="timeline" class="fade-in" style="animation-delay: 5s;">
-        <h2>Experience Timeline</h2>
-        <div class="timeline">
-        <div class="event">
-            <div class="year">2023</div>
-            <div class="desc">Started studying at UNIC</div>
-        </div>
-        <div class="event">
-            <div class="year">2024</div>
-            <div class="desc">Launched Drone Swarm project</div>
-        </div>
-        <div class="event">
-            <div class="year">2025</div>
-            <div class="desc">Working on Hybrid Ion Drive and AI Assistant</div>
-        </div>
-        </div>
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="overlay">
+        <h2>Обо мне</h2>
+        <p>Я инженер и студент Университета Никосии, специализируюсь на разработке ИИ, робототехнике и программировании. Активно работаю над проектами, включая автономные дроны, голосовых ассистентов и офлайн-архитектуру ИИ.</p>
+      </div>
     </section>
-    <section id="contact" class="fade-in" style="animation-delay: 6s;">
-        <h2>contact</h2>
-        <p>
-          Email: michaelok929@gmail.com<br>
-          Telegram: @mne_leniiii<br>
-          GitHub: <a  href="https://github.com/galvatrone">https://github.com/galvatrone</a>
-        </p>
-      </section>
+
+    <!-- Projects Section -->
+    <section id="portfolio" class="projects">
+      <div class="container">
+        <h2>Проекты</h2>
+        <div class="project-grid">
+          <div class="card">
+            <h3>Рой дронов</h3>
+            <p>Автономная система на базе Arduino для координации 50 дронов.</p>
+          </div>
+          <div class="card">
+            <h3>ИИ JARVIS</h3>
+            <p>Голосовой офлайн-ассистент с памятью и обучением.</p>
+          </div>
+          <div class="card">
+            <h3>Распознавание лиц</h3>
+            <p>Локальная система идентификации по лицу и голосу.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2>Контакты</h2>
+        <p>Email: <a href="mailto:m.charilaou@example.com">m.charilaou@example.com</a></p>
+        <p>Telegram: <a href="https://t.me/yourhandle">@yourhandle</a></p>
+      </div>
+    </section>
   </main>
 
+  <!-- Footer -->
   <footer>
-    © 2025 Mihail Charilaou. All rights reserved.
+    <div class="container">
+      <p>&copy; 2025 Mihail Charilaou. Все права защищены.</p>
+    </div>
   </footer>
 
-  <script src="script.js"></script>
 </body>
-<!-- Добавь в HTML -->
-<div id="idle-message" class="fade-in-idle">Исследователь отключился...</div>
-
 </html>
