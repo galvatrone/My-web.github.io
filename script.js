@@ -48,3 +48,20 @@ function reveal() {
 
 window.addEventListener('scroll', reveal);
 window.addEventListener('load', reveal);
+
+
+  // Получаем все кнопки и секции
+  const buttons = document.querySelectorAll('.portfolio-btn');
+  const sections = document.querySelectorAll('.portfolio-content');
+
+  buttons.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+      // Убираем .active у всех кнопок и секций
+      buttons.forEach(b => b.classList.remove('active'));
+      sections.forEach(s => s.classList.remove('active'));
+
+      // Добавляем .active только на нажатую кнопку и соответствующую секцию
+      btn.classList.add('active');
+      sections[index].classList.add('active');
+    });
+  });
