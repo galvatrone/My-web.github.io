@@ -595,7 +595,8 @@ section#home h2 {
 
 /* ========== PORTFOLIO ========== */
 .portfolio-section {
-  padding: 5rem 0;
+  padding: 8rem 0;
+ 
   color: white;
 }
 
@@ -612,31 +613,46 @@ section#home h2 {
 
 .portfolio-buttons {
   display: flex;
+  flex-direction: row; /* <-- Горизонтально */
   justify-content: center;
-  gap: 2rem;
-  margin-bottom: 3rem;
+  flex-wrap: wrap; /* Чтобы не вылезали за экран */
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .portfolio-btn {
-  background: rgba(255, 255, 255, 0.1);
+  flex: 1 1 250px; /* Подстраиваются, но не меньше 250px */
+  max-width: 300px;
+  height: 70px; /* Высота кнопки — вытянутый прямоугольник */
   border: none;
-  padding: 0.75rem 2rem;
-  border-radius: 8px;
-  font-size: 1.1rem;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 600;
   color: white;
-  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  transition: background 0.3s ease;
+  justify-content: center;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+  text-align: center;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.04);
 }
+
+.portfolio-btn i {
+  font-size: 1.5rem;
+}
+
 .portfolio-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 20px rgba(0, 255, 200, 0.25);
+  transform: translateY(-2px);
 }
-.portfolio-btn.active {
-  background: rgba(0, 255, 247, 0.2);
-}
+
 
 .portfolio-content {
   position: absolute; /* накладываем друг на друга */
@@ -658,12 +674,15 @@ section#home h2 {
 }
 
 .project-grid, .certificate-grid, .tech-grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* автоматическая адаптация */
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 2rem;
-  max-width: 1000px;
+  padding: 2rem 4rem;
+  max-width: none;
   margin: 0 auto;
+  
 }
 
 /* Увеличим карточки проектов */
@@ -671,7 +690,7 @@ section#home h2 {
   background: #111;
   border-radius: 12px;
   padding: 1rem;
-  width: 280px;
+  width: 100%;
   text-align: center;
   box-shadow: 0 0 10px #00d0ff33;
   transition: transform 0.3s ease;
@@ -712,7 +731,8 @@ section#home h2 {
   background: #111;
   padding: 1rem;
   border-radius: 8px;
-  width: 220px;
+  width: 100%;
+  height: 300px;
   text-align: center;
   box-shadow: 0 0 8px #00d0ff33;
   transition: transform 0.3s ease;
