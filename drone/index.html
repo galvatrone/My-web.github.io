@@ -3,101 +3,84 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>NeoSwarm — The future of autonomous flight.</title>
-<meta name="description" content="NeoSwarm — Next-generation drone intelligence. Autonomous drone swarms for delivery, agriculture, firefighting and logistics.">
+<title>Vector — The future of autonomous flight</title>
+<meta name="description" content="Vector — Next-generation drone intelligence. Futuristic drone swarms, precision autonomy and fleet orchestration.">
 <style>
   :root{
-    --bg:#061026;              /* dark navy */
-    --panel: rgba(8,16,30,0.6);
-    --muted: #9fb7c6;
-    --neon: #00d9ff;           /* neon cyan */
-    --neon-2:#40bfff;
+    --bg-900: #04120a;
+    --bg-800: #062215;
+    --muted: #9bd9b1;
+    --neon: #00ff88;
+    --neon-2: #00d977;
+    --panel: rgba(6,18,12,0.55);
     --glass: rgba(255,255,255,0.03);
-    --card:#06162a;
-    --maxw:1200px;
+    --card: rgba(4,20,12,0.6);
+    --accent-shadow: 0 12px 50px rgba(0,255,136,0.06);
     --radius:14px;
-    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    font-family: Inter, "Segoe UI", system-ui, -apple-system, Roboto, Arial;
     color-scheme: dark;
   }
   *{box-sizing:border-box}
   html,body{height:100%}
   body{
     margin:0;
-    background:linear-gradient(180deg,var(--bg) 0%, #041022 60%);
-    color: #e6fbff;
+    background: linear-gradient(180deg,var(--bg-900), var(--bg-800));
+    color: #e6fff0;
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
+    overflow-x:hidden;
     line-height:1.45;
-    overflow-x: hidden;
   }
-  .wrap{width:92%;max-width:var(--maxw);margin:0 auto;padding:18px 0}
-  header.top{
-    display:flex;align-items:center;justify-content:space-between;padding:12px 0;
-    gap:12px;
-  }
+
+  .wrap{width:92%;max-width:1200px;margin:0 auto;padding:20px 0}
+  header.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;position:relative;z-index:30}
   .brand{display:flex;gap:12px;align-items:center}
   .badge{
     width:64px;height:64px;border-radius:12px;display:grid;place-items:center;
-    background:linear-gradient(135deg,var(--neon-2),var(--neon));
-    box-shadow:0 10px 35px rgba(0,217,255,0.08), inset 0 -8px 24px rgba(255,255,255,0.06);
-    font-weight:800;color:#021226;font-size:18px;
+    background:linear-gradient(135deg,var(--neon),var(--neon-2));
+    box-shadow:0 10px 40px rgba(0,255,136,0.06), inset 0 -6px 18px rgba(255,255,255,0.04);
+    color:#04210e;font-weight:800;font-size:18px;
   }
   .brand h1{margin:0;font-size:18px;letter-spacing:0.6px}
   .brand p{margin:0;font-size:12px;color:var(--muted)}
   nav{display:flex;gap:12px;align-items:center}
   a.navlink{color:var(--muted);text-decoration:none;font-weight:600;font-size:14px;padding:8px 10px;border-radius:10px}
-  a.cta{background:linear-gradient(90deg,var(--neon),var(--neon-2));color:#021226;padding:10px 14px;border-radius:12px;font-weight:800;text-decoration:none;box-shadow:0 10px 30px rgba(0,217,255,0.12)}
+  a.cta{background:linear-gradient(90deg,var(--neon),var(--neon-2));color:#062215;padding:10px 14px;border-radius:12px;font-weight:800;text-decoration:none;box-shadow:var(--accent-shadow)}
 
-  /* HERO */
-  .hero{
-    display:grid;grid-template-columns:1fr 520px;gap:32px;align-items:center;padding:48px 0 24px;
-  }
+  .hero{display:grid;grid-template-columns:1fr 520px;gap:28px;align-items:center;padding:40px 0}
   @media (max-width:980px){ .hero{grid-template-columns:1fr} .hero-right{order:-1} }
 
-  .hero-left .kicker{display:inline-block;background:linear-gradient(90deg, rgba(0,217,255,0.06), rgba(64,191,255,0.04));color:var(--neon-2);padding:6px 10px;border-radius:999px;font-weight:700;font-size:13px}
-  .hero-left h2{font-size:40px;margin:12px 0 8px;color:var(--neon);line-height:1.02;text-shadow:0 6px 36px rgba(0,217,255,0.06)}
-  .hero-left p.lead{color:var(--muted);max-width:56ch;font-size:16px;margin:0 0 18px}
+  .kicker{display:inline-block;background:linear-gradient(90deg, rgba(0,255,136,0.06), rgba(0,217,119,0.04));color:var(--neon);padding:6px 12px;border-radius:999px;font-weight:700;font-size:13px}
+  h2.title{font-size:40px;margin:12px 0 6px;color:var(--neon);line-height:1.02;text-shadow:0 6px 40px rgba(0,255,136,0.04)}
+  p.lead{color:var(--muted);max-width:56ch;font-size:16px;margin:0 0 18px}
 
-  .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 
-  /* right showcase card */
-  .hero-right{
-    height:360px;position:relative;perspective:1200px;
-  }
-  .showcase{
-    height:100%;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    border:1px solid rgba(255,255,255,0.03);box-shadow:0 30px 60px rgba(2,8,20,0.6);overflow:hidden;padding:14px;
-    display:flex;align-items:center;justify-content:center;position:relative;
-  }
-  .showcase .glow{position:absolute;inset:0;background:radial-gradient(circle at 30% 20%, rgba(0,217,255,0.04), transparent 10%), radial-gradient(circle at 80% 70%, rgba(64,191,255,0.03), transparent 8%);pointer-events:none}
+  .hero-right{height:360px;position:relative;perspective:1200px}
+  .showcase{height:100%;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));border:1px solid rgba(255,255,255,0.02);box-shadow:0 30px 60px rgba(0,8,6,0.6);overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
+  .flow-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .showcase .frame{position:relative;z-index:12;display:grid;place-items:center;padding:12px}
 
-  /* logo swarm area */
-  .swarm-stage{width:420px;height:260px;display:grid;place-items:center;position:relative}
-  svg#swarm{width:420px;height:260px;overflow:visible}
-
-  /* features */
   .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:28px 0 48px}
   @media (max-width:980px){ .features{grid-template-columns:1fr} }
-  .feature{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));border-radius:12px;padding:18px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 12px 30px rgba(2,8,20,0.6);transition:transform .36s}
+  .feature{background:var(--card);border-radius:12px;padding:18px;border:1px solid rgba(255,255,255,0.02);box-shadow:0 12px 30px rgba(0,6,4,0.6);transition:transform .36s}
   .feature:hover{transform:translateY(-8px)}
   .feature h3{margin:6px 0 8px;color:var(--neon)}
   .feature p{margin:0;color:var(--muted)}
 
   .products{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:10px}
   @media (max-width:980px){ .products{grid-template-columns:1fr} }
-  .prod{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));border-radius:12px;padding:12px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 14px 40px rgba(0,12,22,0.6);display:flex;gap:12px;align-items:center}
-  .prod svg{width:56px;height:56px;flex:0 0 56px}
+  .prod{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02));border-radius:12px;padding:12px;border:1px solid rgba(255,255,255,0.02);box-shadow:0 14px 40px rgba(0,6,4,0.6);display:flex;gap:12px;align-items:center}
   .prod h4{margin:0;color:var(--neon)}
+  .prod p{margin:4px 0 0;color:var(--muted)}
 
-  /* metrics & pricing */
   .metrics{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-  .metric{background:var(--panel);padding:12px;border-radius:10px;min-width:160px;border:1px solid rgba(255,255,255,0.02);box-shadow:0 10px 30px rgba(2,8,20,0.6)}
+  .metric{background:var(--panel);padding:12px;border-radius:10px;min-width:160px;border:1px solid rgba(255,255,255,0.02);box-shadow:0 10px 30px rgba(0,6,4,0.6)}
   .metric strong{display:block;font-size:20px;color:var(--neon)}
 
   .pricing{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
-  .plan{flex:1;min-width:220px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);padding:16px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));box-shadow:0 12px 36px rgba(2,8,20,0.6)}
+  .plan{flex:1;min-width:220px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);padding:16px;background:linear-gradient(180deg, rgba(255,255,255,0.005), rgba(255,255,255,0.001));box-shadow:0 12px 36px rgba(0,6,4,0.6)}
 
-  /* contact */
   .contact{margin:48px 0;padding:24px;border-radius:12px;background:linear-gradient(180deg, rgba(0,0,0,0.06), rgba(255,255,255,0.01));display:grid;grid-template-columns:1fr 1fr;gap:18px;border:1px solid rgba(255,255,255,0.02)}
   @media (max-width:980px){ .contact{grid-template-columns:1fr} }
   label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
@@ -106,30 +89,34 @@
 
   footer{padding:28px 0 56px;color:var(--muted);font-size:13px;text-align:center}
 
-  /* small helpers */
   .small{font-size:13px;color:var(--muted)}
   .btn{padding:10px 14px;border-radius:10px;border:none;cursor:pointer}
-  .btn-ghost{background:transparent;color:var(--neon);border:1px solid rgba(0,217,255,0.08)}
-  .btn-neon{background:linear-gradient(90deg,var(--neon),var(--neon-2));color:#041226;font-weight:800;border-radius:12px;box-shadow:0 12px 40px rgba(0,217,255,0.12)}
+  .btn-ghost{background:transparent;color:var(--neon);border:1px solid rgba(0,255,136,0.06)}
+  .btn-neon{background:linear-gradient(90deg,var(--neon),var(--neon-2));color:#062215;font-weight:800;border-radius:12px;box-shadow:var(--accent-shadow)}
   .reveal{opacity:0;transform:translateY(10px);transition:all .6s ease-out}
   .reveal.visible{opacity:1;transform:none}
+  @media (max-width:680px){ .hero-left h2{font-size:28px} .hero-right{height:300px} .swarm-stage{width:320px;height:200px} }
 
-  /* responsive tweaks */
-  @media (max-width:680px){
-    .hero-left h2{font-size:28px}
-    .swarm-stage{width:320px;height:200px}
-    .hero-right{height:300px}
-  }
+  /* Drone-specific styles */
+  .drone-wrap{width:320px;height:220px;display:grid;place-items:center;position:relative}
+  .drone-card{width:280px;height:180px;border-radius:12px;background:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.12));display:grid;place-items:center;position:relative;box-shadow:0 18px 60px rgba(0,0,0,0.6)}
+  .drone-bob{animation:bob 4s ease-in-out infinite}
+  @keyframes bob{0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
+  .rotor{transform-origin:center center}
+  .rotor-spin{animation:spin 0.9s linear infinite}
+  @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+  .drone-light{filter:blur(6px);opacity:0.9}
+  .drone-glow{mix-blend-mode:screen;opacity:0.9}
+  .drone-shadow{position:absolute;bottom:8px;width:160px;height:24px;border-radius:999px;background:radial-gradient(closest-side, rgba(0,0,0,0.45), rgba(0,0,0,0.02));filter:blur(8px);left:50%;transform:translateX(-50%);z-index:2}
 </style>
 </head>
 <body>
   <div class="wrap">
     <header class="top" role="banner">
-        
-      <div class="brand" aria-hidden="false">
-        <div class="badge" id="brand-badge">NS</div>
+      <div class="brand">
+        <div class="badge" id="brand-badge">V</div>
         <div>
-          <h1>NeoSwarm</h1>
+          <h1>Vector</h1>
           <p class="small">The future of autonomous flight.</p>
         </div>
       </div>
@@ -147,12 +134,12 @@
       <section class="hero" role="region" aria-labelledby="hero-title">
         <div class="hero-left">
           <div class="kicker">Next-generation drone intelligence</div>
-          <h2 id="hero-title">Redefining the swarm.</h2>
-          <p class="lead">NeoSwarm builds intelligent drone swarms that operate autonomously at scale — for logistics, agriculture, emergency response and industrial automation. Local AI, fleet orchestration, and resilient autonomy.</p>
+          <h2 class="title" id="hero-title">Redefining the swarm.</h2>
+          <p class="lead">Vector engineers intelligent, resilient drone fleets — precise, secure and scalable. Local AI, fleet orchestration, and real-time mission control for logistics, agriculture and emergency response.</p>
 
           <div class="hero-actions">
-            <a class="cta" href="#contact">Request Pilot</a>
-            <button class="btn btn-ghost" id="download-logo-btn">Download report (Not Exist)</button>
+            <a class="cta" href="#contact">Request a Pilot</a>
+            <button class="btn btn-ghost" id="download-logo-btn">Download Logo (SVG)</button>
             <div style="display:grid;place-items:center;padding-left:8px"><span class="small">Launch: Cyprus • B2B</span></div>
           </div>
 
@@ -171,31 +158,85 @@
 
         <div class="hero-right">
           <div class="showcase">
-            <div class="glow" aria-hidden="true"></div>
-            <div class="swarm-stage" aria-hidden="false">
-              <!-- Swarm SVG -->
-              <svg id="swarm" viewBox="0 0 420 260" preserveAspectRatio="xMidYMid meet" aria-label="NeoSwarm logo animation">
-                <!-- path forming abstract N/spiral for guidance -->
-                <path id="pathN" d="M60 200 L150 60 L260 200" fill="none" stroke="transparent" stroke-width="2"/>
-                <!-- a few decorative spirals -->
-                <path id="spiral" d="M210 130 C220 90 260 70 290 80" fill="none" stroke="transparent"/>
-                <!-- particles group (created by JS) -->
-                <g id="particles"></g>
+            <canvas class="flow-canvas" id="flowCanvas" aria-hidden="true"></canvas>
 
-                <!-- optional soft drawn N line -->
-                <path d="M60 200 L150 60 L260 200" fill="none" stroke="url(#gNeon)" stroke-width="2" stroke-linecap="round" opacity="0.08" />
-                <defs>
-                  <linearGradient id="gNeon" x1="0" x2="1">
-                    <stop offset="0" stop-color="#00d9ff"/>
-                    <stop offset="1" stop-color="#40bfff"/>
-                  </linearGradient>
-                  <filter id="glowFilter" x="-50%" y="-50%" width="200%" height="200%">
-                    <feGaussianBlur stdDeviation="6" result="blur"/>
-                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                  </filter>
-                </defs>
-              </svg>
+            <div class="frame" aria-hidden="false">
+              <div class="drone-wrap">
+                <div class="drone-card drone-bob" id="droneCard" title="Animated Vector drone">
+                  <!-- Drone SVG -->
+                  <svg id="droneSVG" width="220" height="140" viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg" aria-label="Animated drone">
+                    <defs>
+                      <linearGradient id="ng" x1="0" x2="1"><stop offset="0" stop-color="#00ff88"/><stop offset="1" stop-color="#00d977"/></linearGradient>
+                      <filter id="blurGlow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                    </defs>
+
+                    <!-- shadow under drone (soft) -->
+                    <ellipse cx="110" cy="120" rx="40" ry="8" fill="rgba(0,0,0,0.45)" filter="url(#blurGlow)" opacity="0.35"/>
+
+                    <!-- body -->
+                    <g id="body" transform="translate(0,0)">
+                      <rect x="70" y="48" width="80" height="30" rx="8" fill="#021611" stroke="url(#ng)" stroke-width="1.6" />
+                      <rect x="86" y="56" width="48" height="18" rx="6" fill="url(#ng)" opacity="0.12" />
+                      <!-- cockpit/neon eye -->
+                      <ellipse cx="110" cy="66" rx="12" ry="6" fill="#bfffee" opacity="0.08"/>
+                      <circle cx="110" cy="64" r="3.2" fill="#00ff88" class="drone-glow"/>
+                    </g>
+
+                    <!-- arms -->
+                    <g id="arms" stroke="url(#ng)" stroke-width="3" stroke-linecap="round" opacity="0.95">
+                      <line x1="70" y1="62" x2="26" y2="28" />
+                      <line x1="150" y1="62" x2="194" y2="28" />
+                      <line x1="70" y1="62" x2="26" y2="96" />
+                      <line x1="150" y1="62" x2="194" y2="96" />
+                    </g>
+
+                    <!-- rotors -->
+                    <g id="rotors">
+                      <!-- top-left -->
+                      <g class="rotor rotor-tl" transform="translate(26,28)">
+                        <circle cx="0" cy="0" r="6" fill="rgba(0,0,0,0.35)"/>
+                        <g class="rotor-spin">
+                          <ellipse rx="20" ry="4" fill="rgba(0,255,136,0.08)"/>
+                        </g>
+                      </g>
+                      <!-- top-right -->
+                      <g class="rotor rotor-tr" transform="translate(194,28)">
+                        <circle cx="0" cy="0" r="6" fill="rgba(0,0,0,0.35)"/>
+                        <g class="rotor-spin">
+                          <ellipse rx="20" ry="4" fill="rgba(0,255,136,0.08)"/>
+                        </g>
+                      </g>
+                      <!-- bottom-left -->
+                      <g class="rotor rotor-bl" transform="translate(26,96)">
+                        <circle cx="0" cy="0" r="6" fill="rgba(0,0,0,0.35)"/>
+                        <g class="rotor-spin">
+                          <ellipse rx="20" ry="4" fill="rgba(0,255,136,0.08)"/>
+                        </g>
+                      </g>
+                      <!-- bottom-right -->
+                      <g class="rotor rotor-br" transform="translate(194,96)">
+                        <circle cx="0" cy="0" r="6" fill="rgba(0,0,0,0.35)"/>
+                        <g class="rotor-spin">
+                          <ellipse rx="20" ry="4" fill="rgba(0,255,136,0.08)"/>
+                        </g>
+                      </g>
+                    </g>
+
+                    <!-- lights under body (landing sensors) -->
+                    <g id="lights">
+                      <circle cx="92" cy="88" r="2.6" fill="#00ff88" opacity="0.95"/>
+                      <circle cx="128" cy="88" r="2.6" fill="#00ff88" opacity="0.95"/>
+                      <!-- downward glow -->
+                      <ellipse cx="92" cy="104" rx="12" ry="4" fill="rgba(0,255,136,0.06)" />
+                      <ellipse cx="128" cy="104" rx="12" ry="4" fill="rgba(0,255,136,0.06)" />
+                    </g>
+                  </svg>
+
+                  <div class="drone-shadow" aria-hidden="true"></div>
+                </div>
+              </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -204,48 +245,47 @@
       <section id="features" class="reveal" aria-labelledby="features-title">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
           <h3 id="features-title">Products & Capabilities</h3>
-          <div class="small">AI • Fleet Orchestration • On-edge Models</div>
+          <div class="small">AI • Fleet Orchestration • On-edge models</div>
         </div>
 
         <div class="features">
           <div class="feature">
             <h3>Delivery & Logistics</h3>
-            <p>Autonomous last-mile delivery with dynamic routing and guaranteed SLA.</p>
+            <p>Autonomous last-mile and inter-site logistics with SLA monitoring and adaptive routing.</p>
           </div>
 
           <div class="feature">
             <h3>Agriculture</h3>
-            <p>Multispectral scouting, targeted spraying and yield analytics for precision farming.</p>
+            <p>Multispectral scouting, precision spraying and yield optimization with local ML models.</p>
           </div>
 
           <div class="feature">
             <h3>Firefighting & Rescue</h3>
-            <p>Rapid aerial assessment, thermal detection and modular suppression support.</p>
+            <p>Rapid aerial assessment, thermal detection and coordinated suppression support.</p>
           </div>
         </div>
 
         <div class="products" aria-hidden="false" style="margin-top:24px">
           <div class="prod">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 7a2 2 0 012-2h4l2-3h4l2 3h4a2 2 0 012 2v7a2 2 0 01-2 2h-6v-4h-4v4H4a2 2 0 01-2-2V7z" fill="#00d9ff" opacity="0.12"/></svg>
-            <div><h4>NeoCourier</h4><p class="small">Lightweight last-mile drones</p></div>
+            <div style="width:56px;height:56px;border-radius:10px;background:linear-gradient(180deg,rgba(0,255,136,0.06),rgba(0,217,119,0.04));display:grid;place-items:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 7a2 2 0 012-2h4l2-3h4l2 3h4a2 2 0 012 2v7a2 2 0 01-2 2h-6v-4h-4v4H4a2 2 0 01-2-2V7z" fill="#00ff88" opacity="0.14"/></svg></div>
+            <div><h4>VectorCourier</h4><p class="small">Lightweight last-mile drones</p></div>
           </div>
 
           <div class="prod">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16v10H4z" fill="#40bfff" opacity="0.12"/></svg>
-            <div><h4>NeoAgro</h4><p class="small">Fleet for precision farming</p></div>
+            <div style="width:56px;height:56px;border-radius:10px;background:linear-gradient(180deg,rgba(0,255,136,0.06),rgba(0,217,119,0.04));display:grid;place-items:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16v10H4z" fill="#00d977" opacity="0.14"/></svg></div>
+            <div><h4>VectorAgro</h4><p class="small">Precision agriculture fleet</p></div>
           </div>
 
           <div class="prod">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h18M12 3v18" stroke="#00d9ff" stroke-width="2" stroke-linecap="round"/></svg>
-            <div><h4>NeoRescue</h4><p class="small">Emergency and firefighting swarm</p></div>
+            <div style="width:56px;height:56px;border-radius:10px;background:linear-gradient(180deg,rgba(0,255,136,0.06),rgba(0,217,119,0.04));display:grid;place-items:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h18M12 3v18" stroke="#00ff88" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div><h4>VectorRescue</h4><p class="small">Emergency & firefighting swarm</p></div>
           </div>
         </div>
 
-        <!-- pricing & offers -->
         <div style="display:flex;gap:12px;margin-top:20px;flex-wrap:wrap">
           <div class="plan">
             <strong>Pilot</strong><div class="small">€20k–€50k</div>
-            <p class="small">1–3 month integration, 1-3 drones, platform onboarding.</p>
+            <p class="small">1–3 month integration, 1–3 drones, platform onboarding.</p>
           </div>
           <div class="plan">
             <strong>Lease</strong><div class="small">€600–€3,000 / month</div>
@@ -265,7 +305,7 @@
           <div style="background:var(--panel);padding:12px;border-radius:10px"><strong>Agriculture</strong><p class="small">Yield optimisation, disease detection, targeted inputs.</p></div>
           <div style="background:var(--panel);padding:12px;border-radius:10px"><strong>Fire & Rescue</strong><p class="small">Thermal mapping, suppression assist, search and rescue.</p></div>
           <div style="background:var(--panel);padding:12px;border-radius:10px"><strong>Logistics</strong><p class="small">Warehouse automation, intra-site transports, rural delivery.</p></div>
-          <div style="background:var(--panel);padding:12px;border-radius:10px"><strong>Inspection</strong><p class="small">Infrastructure, powerlines, pipelines with automated reporting.</p></div>
+          <div style="background:var(--panel);padding:12px;border-radius:10px"><strong>Inspection</strong><p class="small">Infrastructure inspection with automated reporting.</p></div>
         </div>
       </section>
 
@@ -274,13 +314,13 @@
         <h3>Contact & Pilot Request</h3>
         <div class="contact" role="form">
           <div>
-            <h4>NeoSwarm — Pilot & Enterprise Sales</h4>
+            <h4>Vector — Pilot & Enterprise Sales</h4>
             <p class="small">Fill the form — our team will reach out within 24h to schedule a pilot.</p>
             <ul class="small" style="margin-top:12px">
-              <li><strong>Domain:</strong> <span class="small">neoswarm.com (reserve)</span></li>
+              <li><strong>Domain:</strong> <span class="small">vector.ai (reserve)</span></li>
               <li><strong>Location:</strong> Nicosia, Cyprus</li>
             </ul>
-            <div style="margin-top:12px" class="small">Email: <strong>pilot@neoswarm.com</strong></div>
+            <div style="margin-top:12px" class="small">Email: <strong>pilot@vector.ai</strong></div>
           </div>
 
           <form id="pilot-form" onsubmit="event.preventDefault(); sendForm();" style="display:grid;gap:10px">
@@ -311,7 +351,7 @@
             </div>
             <div style="display:flex;gap:12px;align-items:center">
               <button class="btn-neon" type="submit" id="send-btn">Request Pilot</button>
-              <div class="small">Or email: <strong>pilot@neoswarm.com</strong></div>
+              <div class="small">Or email: <strong>pilot@vector.ai</strong></div>
             </div>
             <div class="small">Backend endpoint: <span id="api-endpoint" class="small">/api/submit</span></div>
           </form>
@@ -319,13 +359,13 @@
       </section>
 
       <footer style="margin-top:28px" class="reveal">
-        <div class="small">© 2025 NeoSwarm • The future of autonomous flight.</div>
+        <div class="small">© 2025 Vector • The future of autonomous flight.</div>
       </footer>
     </main>
   </div>
 
 <script>
-/* ====== Reveal on scroll ====== */
+/* Reveal on scroll */
 (function(){
   const reveals = document.querySelectorAll('.reveal');
   function onScroll(){
@@ -340,132 +380,117 @@
   onScroll();
 })();
 
-/* ====== Swarm animation: particles form an "N" path ====== */
+/* Neon flow canvas background */
 (function(){
-  const svg = document.getElementById('swarm');
-  const path = document.getElementById('pathN');
-  const particlesGroup = document.getElementById('particles');
-  const PATH_SAMPLES = 80;      // how many anchor positions along the N
-  const PARTICLE_COUNT = 80;    // number of particles in swarm
-  const bbox = svg.viewBox.baseVal || {width:420, height:260};
-
-  // get points along the path
-  function samplePath(pathEl, samples){
-    const len = pathEl.getTotalLength();
-    const res = [];
-    for(let i=0;i<samples;i++){
-      const p = pathEl.getPointAtLength(len * i / (samples - 1));
-      res.push({x:p.x, y:p.y});
-    }
-    return res;
+  const canvas = document.getElementById('flowCanvas');
+  const ctx = canvas.getContext('2d');
+  function setup(){
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
   }
+  setup();
+  window.addEventListener('resize', setup);
 
-  const anchors = samplePath(path, PATH_SAMPLES);
-
-  // create particles
   const particles = [];
-  for(let i=0;i<PARTICLE_COUNT;i++){
-    const c = document.createElementNS('http://www.w3.org/2000/svg','circle');
-    c.setAttribute('r', 2 + (Math.random()*2)); // varied size
-    c.setAttribute('fill', i%7===0 ? 'white' : 'none'); // a few bright ones
-    c.setAttribute('stroke', 'none');
-    c.style.opacity = 0.95;
-    particlesGroup.appendChild(c);
-    // random start positions (around canvas)
-    const startX = Math.random()*420;
-    const startY = Math.random()*260;
+  const COUNT = 60;
+  for(let i=0;i<COUNT;i++){
     particles.push({
-      el: c,
-      x: startX,
-      y: startY,
-      tx: startX,
-      ty: startY,
-      speed: 0.02 + Math.random()*0.035,
-      wobble: Math.random()*0.6,
-      anchorIndex: i % anchors.length
+      x: Math.random()*canvas.width,
+      y: Math.random()*canvas.height,
+      vx: (Math.random()-0.3)*0.4,
+      vy: (Math.random()-0.5)*0.2,
+      size: Math.random()*2.2 + 0.5,
+      alpha: Math.random()*0.2 + 0.05,
+      life: Math.random()*200 + 60
     });
   }
 
-  // assign target anchors (initially random)
-  function assignTargets(){
-    for(let i=0;i<particles.length;i++){
-      const p = particles[i];
-      // spread targets with small offset to make "swarm" feel organic
-      const idx = (i + Math.floor(Math.random()*anchors.length)) % anchors.length;
-      const a = anchors[idx];
-      p.tx = a.x + (Math.random()*6 - 3);
-      p.ty = a.y + (Math.random()*6 - 3);
-      p.anchorIndex = idx;
+  function field(x,y,t){
+    const nx = x / canvas.width, ny = y / canvas.height;
+    const angle = Math.sin(nx*3 + t*0.0006)*Math.PI*0.5 + Math.cos(ny*4 - t*0.0004)*Math.PI*0.25;
+    return {ax: Math.cos(angle)*0.06, ay: Math.sin(angle)*0.06};
+  }
+
+  function draw(t){
+    if(!ctx) return;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.globalCompositeOperation = 'lighter';
+    for(let p of particles){
+      const f = field(p.x,p.y,t);
+      p.vx += f.ax * (0.4 + Math.sin(t*0.0005)*0.1);
+      p.vy += f.ay * (0.4 + Math.cos(t*0.0004)*0.1);
+      p.x += p.vx; p.y += p.vy;
+      p.life -= 0.3;
+      if(p.x < -20 || p.x > canvas.width+20 || p.y < -20 || p.y > canvas.height+20 || p.life < 0){
+        p.x = Math.random()*canvas.width;
+        p.y = canvas.height + Math.random()*40;
+        p.vx = (Math.random()-0.5)*0.6;
+        p.vy = -Math.random()*0.6;
+        p.life = Math.random()*200 + 60;
+      }
+      const grad = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,Math.max(6,p.size*6));
+      grad.addColorStop(0, `rgba(0,255,136,${p.alpha})`);
+      grad.addColorStop(0.6, `rgba(0,217,119,${p.alpha*0.6})`);
+      grad.addColorStop(1, `rgba(0,217,119,0)`);
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.size*6,0,Math.PI*2);
+      ctx.fill();
     }
+    ctx.globalCompositeOperation = 'source-over';
+    requestAnimationFrame(draw);
   }
-  assignTargets();
-
-  // gentle orbiting / pulsation effect
-  let t = 0;
-  function step(){
-    t += 0.016;
-    particles.forEach((p,i)=>{
-      // occasionally reassign some targets to simulate motion
-      if(Math.random() < 0.002) {
-        p.anchorIndex = (p.anchorIndex + Math.floor(Math.random()*5)) % anchors.length;
-        const a = anchors[p.anchorIndex];
-        p.tx = a.x + (Math.random()*8 - 4);
-        p.ty = a.y + (Math.random()*8 - 4);
-      }
-      // move towards target
-      const dx = p.tx - p.x;
-      const dy = p.ty - p.y;
-      p.x += dx * p.speed;
-      p.y += dy * p.speed;
-      // small wobble
-      p.x += Math.sin(t * (0.5 + p.wobble)) * 0.3;
-      p.y += Math.cos(t * (0.4 + p.wobble)) * 0.25;
-      p.el.setAttribute('cx', p.x);
-      p.el.setAttribute('cy', p.y);
-      // glow effect for a subset
-      if(i % 7 === 0){
-        p.el.setAttribute('fill', 'url(#particleGrad' + (i%3) + ')');
-        p.el.style.filter = 'blur(0.6px)';
-      } else {
-        p.el.setAttribute('fill', 'rgba(0,217,255,0.9)');
-        p.el.style.filter = 'blur(0.2px)';
-      }
-    });
-    requestAnimationFrame(step);
-  }
-
-  // optional gradients (created in SVG defs)
-  const defs = document.createElementNS('http://www.w3.org/2000/svg','defs');
-  const g1 = document.createElementNS('http://www.w3.org/2000/svg','radialGradient');
-  g1.setAttribute('id','particleGrad0');
-  const stop1 = document.createElementNS('http://www.w3.org/2000/svg','stop'); stop1.setAttribute('offset','0%'); stop1.setAttribute('stop-color','#bffeff');
-  const stop2 = document.createElementNS('http://www.w3.org/2000/svg','stop'); stop2.setAttribute('offset','100%'); stop2.setAttribute('stop-color','#00a7d6');
-  g1.appendChild(stop1); g1.appendChild(stop2);
-  defs.appendChild(g1);
-
-  const g2 = g1.cloneNode(true); g2.setAttribute('id','particleGrad1'); defs.appendChild(g2);
-  const g3 = g1.cloneNode(true); g3.setAttribute('id','particleGrad2'); defs.appendChild(g3);
-  svg.insertBefore(defs, svg.firstChild);
-
-  requestAnimationFrame(step);
-
-  // periodic reassign to keep swarm lively
-  setInterval(assignTargets, 2500);
+  requestAnimationFrame(draw);
 })();
 
-/* ======= Download logo (generate SVG) ======= */
+/* Drone rotor subtle control (speed variation) */
+(function(){
+  const rotors = document.querySelectorAll('.rotor-spin');
+  // slight random speed variance per rotor
+  rotors.forEach((r,i)=>{
+    const base = 0.9 + Math.random()*0.6;
+    r.style.animationDuration = `${base}s`;
+  });
+
+  // on hover, speed up rotors and lift drone a bit
+  const droneCard = document.getElementById('droneCard');
+  droneCard.addEventListener('mouseenter', ()=>{
+    rotors.forEach(r=> r.style.animationDuration = '0.45s');
+    droneCard.style.transform = 'translateY(-18px)';
+    droneCard.style.boxShadow = '0 30px 80px rgba(0,255,136,0.12)';
+  });
+  droneCard.addEventListener('mouseleave', ()=>{
+    rotors.forEach((r,i)=> r.style.animationDuration = `${0.9 + Math.random()*0.6}s`);
+    droneCard.style.transform = '';
+    droneCard.style.boxShadow = '';
+  });
+})();
+
+/* Download logo (simple generated SVG) */
 document.getElementById('download-logo-btn').addEventListener('click', ()=>{
-  const svgEl = document.getElementById('swarm').outerHTML;
-  const wrapper = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 420 260">${svgEl}</svg>`;
-  const blob = new Blob([wrapper], {type:'image/svg+xml'});
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 600 600">
+    <defs>
+      <linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#00ff88"/><stop offset="1" stop-color="#00d977"/></linearGradient>
+      <filter id="fg"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+    <rect width="100%" height="100%" fill="transparent"/>
+    <g transform="translate(60,60)">
+      <path d="M60 420 C160 120 360 120 460 420" fill="none" stroke="url(#g)" stroke-width="12" stroke-linecap="round" filter="url(#fg)"/>
+      <g fill="url(#g)" opacity="0.95">
+        <circle cx="84" cy="390" r="8"/><circle cx="140" cy="300" r="6"/><circle cx="200" cy="240" r="6"/><circle cx="270" cy="220" r="8"/><circle cx="340" cy="246" r="6"/><circle cx="400" cy="310" r="7"/><circle cx="440" cy="386" r="6"/>
+      </g>
+    </g>
+  </svg>`;
+  const blob = new Blob([svg], {type:'image/svg+xml'});
   const url = URL.createObjectURL(blob);
-  const a = document.createElement('a'); a.href = url; a.download = 'neoswarm_logo.svg'; document.body.appendChild(a); a.click();
-  setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); }, 600);
+  const a = document.createElement('a'); a.href = url; a.download = 'vector_logo.svg'; document.body.appendChild(a); a.click();
+  setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); }, 800);
 });
 
-/* ======= Form send ======= */
+/* Form send (keeps same behavior) */
 async function sendForm(){
   const btn = document.getElementById('send-btn');
+  if(!btn) return;
   btn.disabled = true; btn.textContent = 'Sending...';
   const payload = {
     company: document.getElementById('company').value.trim(),
@@ -491,29 +516,22 @@ async function sendForm(){
     }
   } catch(e){
     console.error(e);
-    alert('Network error. If running via GitHub Pages, deploy backend separately and update endpoint.');
+    alert('Network error. If hosting on GitHub Pages, deploy backend and update endpoint.');
   } finally {
     btn.disabled = false; btn.textContent = 'Request Pilot';
   }
 }
 
-/* ====== smooth anchors ====== */
+/* Smooth anchors & reveal trigger */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click', (e)=>{
+  a.addEventListener('click',(e)=>{
     const h = a.getAttribute('href');
-    if(h.length>1){
-      e.preventDefault();
-      document.querySelector(h).scrollIntoView({behavior:'smooth',block:'start'});
-    }
+    if(h.length>1){ e.preventDefault(); document.querySelector(h).scrollIntoView({behavior:'smooth',block:'start'}); }
   });
 });
+document.addEventListener('DOMContentLoaded', ()=> { setTimeout(()=> document.querySelectorAll('.reveal').forEach(el=> el.classList.add('visible')), 250); });
 
-/* ====== initial reveal trigger ====== */
-document.addEventListener('DOMContentLoaded', ()=> {
-  setTimeout(()=> document.querySelectorAll('.reveal').forEach(el=> el.classList.add('visible')), 250);
-});
-
-/* ====== set default endpoint display (change if needed) ====== */
+/* endpoint display default */
 document.getElementById('api-endpoint').textContent = '/api/submit';
 </script>
 </body>
