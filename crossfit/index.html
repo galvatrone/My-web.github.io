@@ -137,16 +137,41 @@
     <section id="screen-welcome" class="splash active">
       <div class="panel container">
         <div class="logo-wrap">
-          <img src="assets/splash.svg" alt="splash">
+          <!-- 🔥 Inline SVG logo -->
+          <svg width="120" height="120" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="180" height="180" rx="28" fill="#0B0B0D"/>
+            <g filter="url(#glowRed)">
+              <path d="M50 120L80 60H100L70 120H50Z" fill="#EF4444"/>
+            </g>
+            <g filter="url(#glowCyan)">
+              <path d="M110 60H130L100 120H80L110 60Z" fill="#22D3EE"/>
+            </g>
+            <text x="50%" y="150" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" font-weight="800" fill="white" letter-spacing="1.5">
+              CrossFit AI
+            </text>
+            <defs>
+              <filter id="glowRed" x="0" y="0" width="180" height="180" filterUnits="userSpaceOnUse">
+                <feGaussianBlur stdDeviation="8" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <filter id="glowCyan" x="0" y="0" width="180" height="180" filterUnits="userSpaceOnUse">
+                <feGaussianBlur stdDeviation="8" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+          </svg>
         </div>
+
         <h1>Personalized training · Reinvented</h1>
-        <p>AI‑powered coaching, analytics & plans for athletes and gyms.</p>
+        <p>AI-powered coaching, analytics & plans for athletes and gyms.</p>
+
         <div style="display:flex; gap:10px; margin-top:4px">
           <button class="btn primary" id="btn-get-started">Get started</button>
           <button class="btn ghost" id="btn-skip">Explore</button>
         </div>
       </div>
     </section>
+
 
     <!-- Auth -->
     <section id="screen-auth" class="auth">
