@@ -310,16 +310,47 @@
     <!-- Profile -->
     <section id="screen-profile" class="screen">
       <div class="container" style="padding:16px">
-        <div class="card" style="padding:16px; display:grid; gap:10px">
+        <div class="card" style="padding:16px; display:grid; gap:16px">
           <h3 style="margin:0">Profile</h3>
-          <div id="profile-email" class="muted">—</div>
-          <div style="display:flex; gap:10px; flex-wrap:wrap">
-            <button class="btn" id="btn-edit">Edit (mock)</button>
-            <button class="btn" id="btn-logout">Logout</button>
+
+          <!-- Фото -->
+          <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap">
+            <div class="avatar-wrap">
+              <img id="profile-photo" src="assets/avatar-default.png" alt="Profile photo" style="width:80px; height:80px; border-radius:50%; object-fit:cover; border:2px solid rgba(255,255,255,.1)">
+              <input id="photo-upload" type="file" accept="image/*" style="display:none">
+            </div>
+            <div>
+              <button class="btn" id="btn-change-photo">Change Photo</button>
+            </div>
+          </div>
+
+          <!-- Основные данные -->
+          <div style="display:grid; gap:10px">
+            <label>Weight (kg): <input type="number" id="profile-weight" min="30" max="250" step="0.1" style="width:100%; padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,.08); background:#0e0e12; color:var(--text)"></label>
+            <label>Height (cm): <input type="number" id="profile-height" min="100" max="250" step="0.1" style="width:100%; padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,.08); background:#0e0e12; color:var(--text)"></label>
+          </div>
+
+          <!-- Календарь доступности -->
+          <div>
+            <h4 style="margin:12px 0 6px">Training availability</h4>
+            <input type="date" id="calendar-date" style="width:100%; padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,.08); background:#0e0e12; color:var(--text)">
+            <textarea id="calendar-notes" placeholder="Notes for this day (e.g. gym session, rest, cardio)" style="width:100%; margin-top:8px; height:60px; padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,.08); background:#0e0e12; color:var(--text)"></textarea>
+            <button class="btn primary" id="save-calendar" style="margin-top:8px;">Save Day</button>
+            <ul id="calendar-list" style="margin:12px 0 0; padding:0; list-style:none; color:var(--muted); font-size:14px;"></ul>
+          </div>
+
+          <!-- Инфа аккаунта -->
+          <div style="border-top:1px solid rgba(255,255,255,.1); padding-top:10px">
+            <div id="profile-email" class="muted">—</div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px">
+              <button class="btn" id="btn-edit">Edit (mock)</button>
+              <button class="btn" id="btn-logout">Logout</button>
+            </div>
           </div>
         </div>
       </div>
     </section>
+
   </main>
 
   <!-- Bottom app bar -->
@@ -478,6 +509,76 @@
     });
 
     chatLoad();
+    // --- Profile extras ---
+const AVATAR_KEY = "cfai_avatar_v1";
+const BODY_KEY = "cfai_body_v1";
+const CALENDAR_KEY = "cfai_calendar_v1";
+
+const photo = document.getElementById("profile-photo");
+const upload = document.getElementById("photo-upload");
+const btnChangePhoto = document.getElementById("btn-change-photo");
+const weightInput = document.getElementById("profile-weight");
+const heightInput = document.getElementById("profile-height");
+const calDate = document.getElementById("calendar-date");
+const calNotes = document.getElementById("calendar-notes");
+const saveCal = document.getElementById("save-calendar");
+const listCal = document.getElementById("calendar-list");
+
+// загрузка из localStorage
+function loadProfileExtras() {
+  const a = localStorage.getItem(AVATAR_KEY);
+  if (a) photo.src = a;
+  const body = JSON.parse(localStorage.getItem(BODY_KEY) || "{}");
+  if (body.weight) weightInput.value = body.weight;
+  if (body.height) heightInput.value = body.height;
+
+  const cal = JSON.parse(localStorage.getItem(CALENDAR_KEY) || "[]");
+  listCal.innerHTML = "";
+  cal.forEach((d) => {
+    const li = document.createElement("li");
+    li.textContent = `${d.date}: ${d.note}`;
+    listCal.appendChild(li);
+  });
+}
+
+btnChangePhoto.addEventListener("click", () => upload.click());
+upload.addEventListener("change", (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    photo.src = ev.target.result;
+    localStorage.setItem(AVATAR_KEY, ev.target.result);
+  };
+  reader.readAsDataURL(file);
+});
+
+[weightInput, heightInput].forEach((input) =>
+  input.addEventListener("change", () => {
+    localStorage.setItem(
+      BODY_KEY,
+      JSON.stringify({ weight: weightInput.value, height: heightInput.value })
+    );
+  })
+);
+
+saveCal.addEventListener("click", () => {
+  const date = calDate.value;
+  const note = calNotes.value.trim();
+  if (!date || !note) {
+    alert("Select a date and add note");
+    return;
+  }
+  const cal = JSON.parse(localStorage.getItem(CALENDAR_KEY) || "[]");
+  cal.push({ date, note });
+  localStorage.setItem(CALENDAR_KEY, JSON.stringify(cal));
+  calDate.value = "";
+  calNotes.value = "";
+  loadProfileExtras();
+});
+
+loadProfileExtras();
+
   </script>
 </body>
 </html>
