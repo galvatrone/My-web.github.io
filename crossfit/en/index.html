@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ef4444" />
+  <title>Cross fit - platform</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/cross.css" />
+</head>
+<body class="modern-min">
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">Cross Fit Platform</h1>
+      <nav class="main-nav">
+        <a href="#services">Services</a>
+        <a href="#plans">Plans</a>
+        <a href="#chat" id="open-chat">Chat (AI)</a>
+        <span style="margin-left:12px">
+          <a href="./index.html" style="margin-left:.5rem; font-weight:700; color:var(--text); text-decoration:none; padding:.25rem .5rem; border-radius:6px">EN</a>
+          <a href="../ru/index.html" style="color:var(--muted-2); text-decoration:none; padding:.25rem .5rem; border-radius:6px">RU</a>
+        
+        </span>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h2>Personalized training powered by AI</h2>
+        <p>We use artificial intelligence to enhance and personalize workouts, recommend programs, analyze progress, and support coaches.</p>
+        <div class="hero-actions">
+          <button class="btn primary" id="subscribe-basic">Subscribe (Basic)</button>
+          <button class="btn outline" id="subscribe-pro">Pro — for gyms</button>
+        </div>
+
+        <!-- Inline chat will appear here when user clicks subscribe -->
+        <div class="chat-inline" id="chat-inline">
+          <div class="chat-panel">
+            <div class="chat-header">
+              <strong>AI Chat</strong>
+              <button id="chat-inline-close" class="btn small" style="float:right;">×</button>
+            </div>
+            <div id="chat-messages" class="chat-messages">
+              <div class="message bot">Hi! Ask me about workouts or plans.</div>
+            </div>
+            <form id="chat-form" class="chat-form">
+              <input id="chat-input" type="text" placeholder="e.g.: how can I improve pull-ups?" style="flex:1;" />
+              <button class="btn primary" type="submit">Send</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GPT-like composer fixed at bottom -->
+    <div class="gpt-composer" aria-hidden="false">
+      <form id="gpt-composer-form" class="gpt-composer-form" action="#" onsubmit="return false;">
+        <input id="gpt-composer-input" type="text" placeholder="Ask the AI about training, e.g. 'How to improve pull-ups?'" autocomplete="off" />
+        <button class="btn primary" type="submit">Send</button>
+      </form>
+    </div>
+
+    <section id="services" class="services container">
+      <h3>Our services</h3>
+      <div class="cards">
+        <div class="card">
+          <h4>Персональные планы</h4>
+          <p>Automatically tailored workout and nutrition plans based on goals and experience level.</p>
+          <button class="btn outline service-detail" data-title="Персональные планы" data-desc="Индивидуальные планы тренировок и питания, адаптация по прогрессу и нагрузке. Подходит для всех уровней.">
+            Learn more
+          </button>
+        </div>
+        <div class="card">
+          <h4>Analytics & progress</h4>
+          <p>Result tracking and recommendations to improve technique and load.</p>
+          <button class="btn outline service-detail" data-title="Analytics & progress" data-desc="Detailed workout analytics, progress charts and advice on recovery and load progression.">
+            Learn more
+          </button>
+        </div>
+        <div class="card">
+          <h4>Tools for coaches</h4>
+          <p>Client management, adaptive plans and gym integrations (Pro).</p>
+          <button class="btn outline service-detail" data-title="Tools for coaches" data-desc="Coach dashboard, group programs, client import, equipment and schedule integrations (Pro).">
+            Learn more
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="plans" class="plans container">
+      <h3>Plans</h3>
+      <div class="plan-list">
+        <div class="plan">
+          <h4>Basic</h4>
+          <p>Personal plans and AI chat — the essential package.</p>
+          <button class="btn primary" data-plan="basic">Choose</button>
+        </div>
+        <div class="plan highlight">
+          <h4>Pro for gyms</h4>
+          <p>Team access, coach tools and integrations.</p>
+          <button class="btn primary" data-plan="pro">Contact about Pro</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© Cross Fit Platform — AI for personalized training</p>
+    </div>
+  </footer>
+
+  <!-- Service detail modal -->
+  <div id="service-modal" class="modal" aria-hidden="true" style="display:none;">
+    <div class="modal-backdrop"></div>
+    <div class="modal-panel">
+      <button id="service-close" class="btn small">×</button>
+      <h3 id="service-title"></h3>
+      <p id="service-desc"></p>
+      <div style="margin-top:1rem;">
+        <button class="btn primary" id="modal-choose">Choose</button>
+        <button class="btn outline" id="modal-contact">Contact</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- (Old modal chat removed — inline chat is used instead) -->
+
+  <script>
+    // Open service detail card
+    document.querySelectorAll('.service-detail').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const title = btn.getAttribute('data-title');
+        const desc = btn.getAttribute('data-desc');
+        document.getElementById('service-title').textContent = title;
+        document.getElementById('service-desc').textContent = desc;
+        const modal = document.getElementById('service-modal');
+        modal.style.display = 'block';
+        modal.setAttribute('aria-hidden', 'false');
+      });
+    });
+    document.getElementById('service-close').addEventListener('click', () => {
+      const modal = document.getElementById('service-modal');
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+    });
+    // Кнопки модалки (простая имитация)
+    document.getElementById('modal-choose').addEventListener('click', () => alert('You have selected the service (mock).'));
+    document.getElementById('modal-contact').addEventListener('click', () => alert('We will contact you (mock).'));
+
+    // Inline chat: show under subscribe buttons (EN)
+    const chatInline = document.getElementById('chat-inline');
+    const chatCloseInline = document.getElementById('chat-inline-close');
+    const chatForm = document.getElementById('chat-form'), chatMessages = document.getElementById('chat-messages');
+
+    function openInlineChat() {
+      chatInline.style.display = 'block';
+      chatInline.setAttribute('aria-hidden', 'false');
+      const input = document.getElementById('chat-input');
+      input.focus();
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    function closeInlineChat() {
+      chatInline.style.display = 'none';
+      chatInline.setAttribute('aria-hidden', 'true');
+    }
+
+    document.getElementById('subscribe-basic').addEventListener('click', () => {
+      openInlineChat();
+      alert('Thanks! You selected the Basic plan. A confirmation will be sent by email (mock).');
+    });
+    document.getElementById('subscribe-pro').addEventListener('click', () => {
+      openInlineChat();
+      alert('Pro for gyms: we will contact you to set up integrations (mock).');
+    });
+
+    chatCloseInline.addEventListener('click', () => closeInlineChat());
+
+    // Mock chat submit (EN)
+    chatForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = document.getElementById('chat-input');
+      const text = input.value.trim();
+      if (!text) return;
+      const userMsg = document.createElement('div');
+      userMsg.className = 'message user';
+      userMsg.textContent = text;
+      chatMessages.appendChild(userMsg);
+      input.value = '';
+      const botMsg = document.createElement('div');
+      botMsg.className = 'message bot';
+      botMsg.textContent = 'Thinking... (mock reply): try adding interval training twice a week and tracking recovery.';
+      setTimeout(() => {
+        chatMessages.appendChild(botMsg);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }, 700);
+    });
+    document.querySelectorAll('[data-plan]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const plan = e.currentTarget.getAttribute('data-plan');
+        alert('You chose: ' + plan + ' (mock).');
+      });
+    });
+
+    // GPT-like composer handler: forward to inline chat
+    const gptForm = document.getElementById('gpt-composer-form');
+    const gptInput = document.getElementById('gpt-composer-input');
+    gptForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = gptInput.value.trim();
+      if (!text) return;
+      // ensure inline chat is open
+      openInlineChat();
+      // append to chat
+      const u = document.createElement('div'); u.className='message user'; u.textContent=text; chatMessages.appendChild(u);
+      gptInput.value = '';
+      // mock AI reply
+      const b = document.createElement('div'); b.className='message bot'; b.textContent='Thinking... (mock): here are some quick tips: mix pull/row variations and track recovery.';
+      setTimeout(()=>{ chatMessages.appendChild(b); chatMessages.scrollTop = chatMessages.scrollHeight; }, 900);
+    });
+
+    // Persistence: save/load chat history to localStorage
+    const STORAGE_KEY = 'crossfit_chat_en_v1';
+    function saveHistory(){
+      try{ const items = Array.from(chatMessages.querySelectorAll('.message')).map(n=>({cls:n.className, text:n.textContent})); localStorage.setItem(STORAGE_KEY, JSON.stringify(items)); }catch(e){console.warn(e)}
+    }
+    function loadHistory(){
+      try{ const raw = localStorage.getItem(STORAGE_KEY); if(!raw) return; const items = JSON.parse(raw); chatMessages.innerHTML = ''; items.forEach(it=>{ const d=document.createElement('div'); d.className=it.cls; d.textContent=it.text; chatMessages.appendChild(d); }); chatMessages.scrollTop = chatMessages.scrollHeight; }catch(e){console.warn(e)}
+    }
+    // Mock send to AI: returns a promise
+    function sendToAI(prompt){
+      return new Promise((resolve)=>{
+        setTimeout(()=>{
+          resolve('Mock AI reply for: "' + prompt.slice(0,120) + '"');
+        }, 900);
+      });
+    }
+
+    // Wrap submit to call sendToAI and persist
+    function handleUserMessage(text){
+      const u = document.createElement('div'); u.className='message user'; u.textContent=text; chatMessages.appendChild(u); chatMessages.scrollTop = chatMessages.scrollHeight; saveHistory();
+      // disable composer while waiting
+      gptInput.disabled = true; document.getElementById('gpt-composer-form').querySelector('button[type=submit]').disabled = true;
+      return sendToAI(text).then(reply => {
+        const b = document.createElement('div'); b.className='message bot'; b.textContent = reply; chatMessages.appendChild(b); chatMessages.scrollTop = chatMessages.scrollHeight; saveHistory();
+      }).finally(()=>{ gptInput.disabled = false; document.getElementById('gpt-composer-form').querySelector('button[type=submit]').disabled = false; });
+    }
+
+    // Override composer to use unified handler
+    gptForm.removeEventListener ? null : null;
+    gptForm.addEventListener('submit', (e)=>{
+      e.preventDefault(); const text = gptInput.value.trim(); if(!text) return; openInlineChat(); gptInput.value=''; handleUserMessage(text);
+    });
+    // load existing history on open
+    loadHistory();
+
+    // Floating composer: toggle when user scrolls near bottom
+    const composer = document.querySelector('.gpt-composer');
+    function checkComposerFloat(){
+      const scrolled = window.scrollY + window.innerHeight;
+      const docH = document.documentElement.scrollHeight;
+      // if near bottom (last 35% of page), float composer
+      if(scrolled > docH * 0.65) composer.classList.add('floating'); else composer.classList.remove('floating');
+    }
+    window.addEventListener('scroll', checkComposerFloat, {passive:true});
+    checkComposerFloat();
+
+    // Header chat button should open chat and float composer
+    const headerChatBtn = document.getElementById('open-chat');
+    if(headerChatBtn){ headerChatBtn.addEventListener('click', (e)=>{ e.preventDefault(); openInlineChat(); composer.classList.add('floating'); window.scrollTo({top: document.querySelector('.hero').offsetTop, behavior:'smooth'}); }); }
+  </script>
+</body>
+</html>

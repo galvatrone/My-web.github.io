@@ -1,0 +1,242 @@
+:root{
+  --red: #ef4444;
+  --dark-red: #f10c0c;
+  --muted: #64748b;
+  /* new theme colors */
+  --bg-dark-1: #353A40;
+  --bg-dark-2: #121416;
+  --btn-start: #FFA05C;
+  --btn-end: #F06500;
+  --card: rgba(255,255,255,0.03);
+  --card-contrast: rgba(255,255,255,0.02);
+  --accent: rgba(239,68,68,0.08);
+  --text: #E6EEF3;        /* светлый текст для тёмной темы */
+  --muted-2: #9aa1a6;
+  --radius:12px;
+  --gap:1rem;
+  --max-width:1100px;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, var(--bg-dark-1), var(--bg-dark-2));
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+  -webkit-font-feature-settings:"liga" on;
+}
+
+/* Spacing and container */
+.container{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:1.5rem;
+}
+
+/* Header — минималистично */
+.site-header{
+  background:transparent;
+  border-bottom:1px solid rgba(15,23,42,0.04);
+  backdrop-filter: blur(4px);
+}
+.site-header .container{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:.85rem 1.5rem;
+}
+.logo{font-size:1.125rem; font-weight:700; color:var(--text)}
+.main-nav a{
+  margin-left:1rem;
+  color:var(--muted-2);
+  text-decoration:none;
+  font-weight:600;
+  padding:.35rem .5rem;
+  border-radius:8px;
+}
+.main-nav a:hover{color:var(--dark-red); background:rgba(239,68,68,0.03)}
+
+/* Hero — воздушнее */
+.hero{
+  background:linear-gradient(180deg, rgba(239,68,68,0.03), transparent);
+  padding:3rem 0;
+  text-align:center;
+}
+.hero h2{color:var(--text); margin:0 0 .5rem; font-size:1.6rem; letter-spacing:-0.2px}
+.hero p{color:var(--muted-2); max-width:760px; margin:0 auto 1.25rem}
+
+/* Buttons — плоские, аккуратные */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  padding:.6rem .9rem;
+  border-radius:10px;
+  border:1px solid transparent;
+  cursor:pointer;
+  font-weight:600;
+  background:transparent;
+  color:var(--text);
+  transition:all .18s ease;
+}
+.btn.primary{
+  background: linear-gradient(90deg, var(--btn-start), var(--btn-end));
+  color:#fff;
+  border:none;
+  box-shadow:none;
+}
+.btn.primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 30px rgba(240,120,60,0.18);
+}
+.btn.outline{
+  background:transparent;
+  color:var(--dark-red);
+  border:1px solid rgba(239,68,68,0.12);
+}
+.btn.small{padding:.25rem .5rem; border-radius:8px; font-size:.95rem}
+
+/* Cards / services — лёгкие */
+.services .cards{display:flex; gap:var(--gap); flex-wrap:wrap; margin-top:1rem}
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.03));
+  border-radius:var(--radius);
+  padding:1.15rem;
+  flex:1 1 260px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.25);
+  border:1px solid rgba(255,255,255,0.03);
+  color:var(--text);
+}
+.card h4{margin:0 0 .45rem; color:var(--text); font-size:1.05rem}
+.card p{margin:0; color:var(--muted-2); font-size:.95rem}
+
+/* Plans — минимал */
+.plans .plan-list{display:flex; gap:var(--gap); flex-wrap:wrap; margin-top:1rem}
+.plan{
+  flex:1 1 260px;
+  background:linear-gradient(180deg,var(--card), var(--card-contrast));
+  padding:1rem;
+  border-radius:var(--radius);
+  border:1px solid rgba(15,23,42,0.03);
+}
+.plan.highlight{
+  border-color:rgba(239,68,68,0.12);
+  background:linear-gradient(180deg, rgba(239,68,68,0.03), var(--card));
+}
+
+/* Footer */
+.site-footer{padding:1.25rem 0; text-align:center; color:var(--muted-2); font-size:.95rem}
+
+/* Chat bubble и модал — минимал */
+.chat-bubble{
+  position:fixed;
+  right:1rem;
+  bottom:1rem;
+  z-index:1200;
+  background:var(--red);
+  color:#fff;
+  border:none;
+  border-radius:999px;
+  padding:.5rem .9rem;
+  box-shadow:0 8px 24px rgba(16,24,40,0.08);
+  cursor:pointer;
+  font-weight:700;
+  font-size:.95rem;
+}
+.chat-modal{position:fixed; right:1rem; bottom:4.4rem; z-index:1200; display:flex; align-items:flex-end}
+.chat-panel{
+  width:340px;
+  max-height:70vh;
+  background:var(--card);
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 12px 30px rgba(16,24,40,0.06);
+  border:1px solid rgba(15,23,42,0.04);
+}
+.chat-panel .chat-header{padding:.65rem .9rem; display:flex; justify-content:space-between; align-items:center}
+.chat-messages{max-height:300px; padding:.8rem; overflow:auto; background:var(--card-contrast)}
+.message{max-width:82%; margin-bottom:.6rem; padding:.6rem .8rem; border-radius:10px; font-size:.95rem}
+.message.bot{background:rgba(239,68,68,0.06); color:var(--text); align-self:flex-start}
+.message.user{background:rgba(15,23,42,0.04); color:var(--text); align-self:flex-end; margin-left:auto}
+.chat-form{padding:.6rem; display:flex; gap:.5rem}
+.chat-form input{
+  flex:1; padding:.55rem .8rem; border-radius:8px; border:1px solid rgba(15,23,42,0.06);
+  background:transparent; color:var(--text);
+}
+
+/* Inline chat styling — appears directly under subscribe buttons */
+.chat-inline {
+  display: none; /* toggled by JS */
+  margin-top: 1rem;
+  width: 100%;
+  max-width: 720px;
+}
+.chat-inline .chat-panel {
+  position: relative;
+  width: 100%;
+  border-radius: 10px;
+  background: var(--card);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.chat-inline .chat-header { padding: .75rem 1rem; border-bottom: 1px solid rgba(0,0,0,.06); }
+.chat-inline .chat-messages { overflow:auto; padding:1rem; max-height:35vh; }
+.chat-inline .chat-panel { max-height:50vh; }
+.chat-inline .chat-form { display:flex; gap:.5rem; padding: .75rem; border-top:1px solid rgba(0,0,0,.06); }
+@media (max-width:600px) {
+  .chat-inline { max-width: 100%; }
+  .chat-inline .chat-messages { max-height: 30vh; }
+}
+/* GPT-style bottom composer (fixed, centered) */
+.gpt-composer {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  bottom: 18px;
+  z-index: 1300;
+  width: calc(100% - 2rem);
+  max-width: 820px;
+  display: flex;
+  justify-content: center;
+  pointer-events: none; /* container shouldn't block clicks outside input */
+  transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .2s ease;
+}
+.gpt-composer .gpt-composer-form{
+  width:100%;
+  pointer-events: auto;
+  display:flex;
+  gap:.5rem;
+  background:var(--card);
+  border-radius:999px;
+  padding:.35rem .5rem;
+  box-shadow:0 10px 30px rgba(16,24,40,0.08);
+  border:1px solid rgba(15,23,42,0.04);
+  align-items:center;
+}
+.gpt-composer.floating{ transform: translateX(-50%) translateY(-60px); box-shadow:0 20px 40px rgba(16,24,40,0.14); }
+.gpt-composer input{
+  flex:1; padding:.6rem .9rem; border-radius:999px; border:none; outline:none; background:transparent; color:var(--text);
+}
+.gpt-composer button{ border-radius:999px; padding:.55rem .9rem; }
+@media (max-width:520px){
+  .gpt-composer{ bottom:12px; max-width:95%; }
+  .gpt-composer .gpt-composer-form{ padding:.35rem; }
+}
+
+/* Modal service — тоньше */
+.modal-panel{
+  padding:1rem;
+  border-radius:12px;
+  max-width:640px;
+}
+
+/* Responsive tweaks */
+@media (max-width:720px){
+  .services .cards, .plans .plan-list{flex-direction:column}
+  .chat-modal{right:.5rem; left:.5rem; width:auto; bottom:3.8rem}
+}
