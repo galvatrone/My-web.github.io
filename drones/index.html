@@ -237,6 +237,28 @@ body.dark .nav-links { background: #111a1b; box-shadow: -2px 0 20px rgba(0,255,1
   z-index: 2001;
 }
 
+/* ===== FIX: контекст контейнера ===== */
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Поднимаем хедер выше всех секций */
+header.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--bg);
+  z-index: 4000;
+  border-bottom: 1px solid var(--line);
+}
+body {
+  padding-top: 90px; /* чтобы контент не прятался под шапкой */
+}
+header.header {
+  backdrop-filter: blur(8px);
+}
 
 /* ===== FIX: SVG перекрывает меню на мобилках ===== */
 .nav-links.open {
