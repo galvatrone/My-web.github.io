@@ -255,6 +255,24 @@ body.dark .nav-links { background: #111a1b; box-shadow: -2px 0 20px rgba(0,255,1
 body.menu-open {
   overflow: hidden; /* чтобы не скроллилось под меню */
 }
+/* ===== FIX: бургер и меню поверх SVG ===== */
+.header {
+  position: relative;
+  z-index: 3000; /* всегда поверх контента */
+}
+
+.burger {
+  position: relative;
+  z-index: 3001; /* крестик поверх меню */
+}
+
+.nav-links {
+  z-index: 3000;
+}
+
+.menu-overlay {
+  z-index: 2999;
+}
 
 </style>
 </head>
