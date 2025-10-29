@@ -216,6 +216,27 @@ body.dark .cta:hover{box-shadow:0 6px 24px rgba(0,255,153,.35);transform:transla
   .nav-links.open { right: 0; }
 }
 body.dark .nav-links { background: #111a1b; box-shadow: -2px 0 20px rgba(0,255,153,.05); }
+/* ===== OVERLAY for mobile menu ===== */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1500;
+}
+.menu-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Меню поверх всего */
+.nav-links {
+  z-index: 2001;
+}
+
 
 /* ===== FIX: SVG перекрывает меню на мобилках ===== */
 .nav-links.open {
@@ -259,6 +280,8 @@ body.menu-open {
         <a class="link" href="#contact">Контакты</a>
         <a class="cta" href="#contact">Запросить пилот</a>
       </nav>
+      <div class="menu-overlay"></div>
+
     </header>
 
   <!-- Тоггл темы -->
@@ -585,14 +608,28 @@ async function sendForm(){
   });
 })();
 
-// burger menu toggle
+
 const burger = document.querySelector('.burger');
 const nav = document.querySelector('.nav-links');
-burger.addEventListener('click', () => {
-  nav.classList.toggle('open');
-  burger.textContent = nav.classList.contains('open') ? '✕' : '☰';
-});
+const overlay = document.querySelector('.menu-overlay');
 
+function toggleMenu(open) {
+  nav.classList.toggle('open', open);
+  overlay.classList.toggle('show', open);
+  burger.textContent = open ? '✕' : '☰';
+  document.body.classList.toggle('menu-open', open);
+}
+
+// Открытие/закрытие по кнопке
+burger.addEventListener('click', () => toggleMenu(!nav.classList.contains('open')));
+
+// Закрытие при клике на overlay
+overlay.addEventListener('click', () => toggleMenu(false));
+
+// Закрытие при клике на пункт меню
+document.querySelectorAll('.nav-links a').forEach(link =>
+  link.addEventListener('click', () => toggleMenu(false))
+);
 
 </script>
 </body>
