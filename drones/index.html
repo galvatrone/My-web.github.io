@@ -217,6 +217,24 @@ body.dark .cta:hover{box-shadow:0 6px 24px rgba(0,255,153,.35);transform:transla
 }
 body.dark .nav-links { background: #111a1b; box-shadow: -2px 0 20px rgba(0,255,153,.05); }
 
+/* ===== FIX: SVG перекрывает меню на мобилках ===== */
+.nav-links.open {
+  right: 0;
+  z-index: 2000; /* меню всегда поверх */
+}
+
+.hero,
+.stage,
+.art-wrap,
+#drone {
+  position: relative;
+  z-index: 1; /* ниже меню */
+}
+
+body.menu-open {
+  overflow: hidden; /* чтобы не скроллилось под меню */
+}
+
 </style>
 </head>
 <body>
@@ -574,6 +592,7 @@ burger.addEventListener('click', () => {
   nav.classList.toggle('open');
   burger.textContent = nav.classList.contains('open') ? '✕' : '☰';
 });
+
 
 </script>
 </body>
