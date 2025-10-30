@@ -244,6 +244,7 @@ body.dark .nav-links { background: #111a1b; box-shadow: -2px 0 20px rgba(0,255,1
 }
 
 /* Поднимаем хедер выше всех секций */
+/* закреплённый хедер — с боковыми отступами, чтобы не растягивался на широких экранах */
 header.header {
   position: fixed;
   top: 0;
@@ -252,7 +253,37 @@ header.header {
   background: var(--bg);
   z-index: 4000;
   border-bottom: 1px solid var(--line);
+
+  /* содержимое выравнивается через вложенный .container */
+  padding: 12px 0;
 }
+
+/* на очень больших экранах делаем симметричные отступы, равные центру контейнера */
+@media (min-width: calc(var(--maxw) + 40px)) {
+  header.header {
+    /* оставляем центрирование через .container (не обязательно), можно сохранить для тонкой настройки */
+  }
+}
+
+/* если вдруг внутри header будет свой .container — ограничим его ширину как у основного контейнера */
+header.header .container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0; /* отступы уже у самого header */
+
+  /* Раскладка: бренд слева, навигация справа — как у остальных секций */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+/* Надёжно подтолкнём навигацию вправо (на больших экранах) */
+header.header .nav-links{
+  margin-left: auto;
+}
+
 body {
   padding-top: 90px; /* чтобы контент не прятался под шапкой */
 }
@@ -299,8 +330,8 @@ body.menu-open {
 </style>
 </head>
 <body>
-  <div class="container">
-    <header class="header">
+  <header class="header">
+    <div class="container">
       <div class="brand">
         <div class="badge" aria-hidden="true">V</div>
         <div>
@@ -322,7 +353,8 @@ body.menu-open {
       </nav>
       <div class="menu-overlay"></div>
 
-    </header>
+    </div>
+  </header>
 
   <!-- Тоггл темы -->
   <button id="theme-toggle" aria-label="Переключить тему" class="theme-btn">🌙</button>
