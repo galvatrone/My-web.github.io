@@ -65,3 +65,120 @@ window.addEventListener('load', reveal);
       sections[index].classList.add('active');
     });
   });
+
+
+// ====== Project detail overlay & slideshow ======
+(function(){
+  const viewBtns = document.querySelectorAll('.view-project');
+  const detail = document.getElementById('project-detail');
+  if (!detail) return; // если нет overlay, ничего не делаем
+
+  const slidesContainer = detail.querySelector('.slides');
+  const titleEl = detail.querySelector('.detail-title');
+  const descEl = detail.querySelector('.detail-desc');
+  const demoLink = detail.querySelector('.detail-demo');
+  const closeBtn = detail.querySelector('#detail-close');
+  const prevBtn = detail.querySelector('.slide-prev');
+  const nextBtn = detail.querySelector('.slide-next');
+  const projectGrid = document.querySelector('.project-grid');
+
+  let slides = [];
+  let current = 0;
+
+  function isVideo(url){
+    return /\.(mp4|webm|ogg)$/i.test(url);
+  }
+
+  function renderSlide(index){
+    slidesContainer.innerHTML = '';
+    const src = slides[index];
+    if (!src) return;
+    if (isVideo(src)){
+      const v = document.createElement('video');
+      v.src = src;
+      v.controls = true;
+      v.autoplay = false;
+      v.className = 'detail-media';
+      slidesContainer.appendChild(v);
+    } else {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = titleEl.textContent || 'project image';
+      img.className = 'detail-media';
+      slidesContainer.appendChild(img);
+    }
+  }
+
+function openDetailFromCard(card){
+  const title = card.dataset.title || '';
+  const desc = card.dataset.desc || '';
+  const images = (card.dataset.images || '').split(',').map(s=>s.trim()).filter(Boolean);
+  const demo = card.dataset.demo || '#';
+
+  slides = images.length ? images : [card.querySelector('img')?.src].filter(Boolean);
+  current = 0;
+  titleEl.textContent = title;
+
+  // --- 💡 Добавлено условие для карточки Website Stack ---
+  if (title.toLowerCase().includes('website')) {
+    descEl.innerHTML = `
+      ${desc}<br><br>
+      🌐 <a href="https://www.oneix.ltd" target="_blank">oneix.ltd</a><br>
+      🚀 <a href="https://www.oneix.ltd/drones" target="_blank">Vector</a><br>
+      🧠 <a href="https://www.oneix.ltd/drone" target="_blank">NeoSwarm</a><br>
+      🤖 <a href="https://www.oneix.ltd/crossfit" target="_blank">Cross fit platform Club</a>
+    `;
+  } else {
+    descEl.textContent = desc;
+  }
+  // ------------------------------------------------------
+
+  demoLink.href = demo;
+  demoLink.textContent = demo === '#' ? 'Демо недоступно' : 'Открыть демо';
+
+  renderSlide(current);
+
+  detail.classList.add('active');
+  detail.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+  if (projectGrid) projectGrid.classList.add('dimmed');
+}
+
+
+  function closeDetail(){
+    detail.classList.remove('active');
+    detail.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+    if (projectGrid) projectGrid.classList.remove('dimmed');
+  }
+
+  viewBtns.forEach(btn => {
+    btn.addEventListener('click', (e)=>{
+      const card = e.currentTarget.closest('.project-card');
+      if (!card) return;
+      openDetailFromCard(card);
+    });
+  });
+
+  closeBtn.addEventListener('click', closeDetail);
+  prevBtn.addEventListener('click', ()=>{
+    if (slides.length===0) return;
+    current = (current - 1 + slides.length) % slides.length;
+    renderSlide(current);
+  });
+  nextBtn.addEventListener('click', ()=>{
+    if (slides.length===0) return;
+    current = (current + 1) % slides.length;
+    renderSlide(current);
+  });
+
+  // keyboard support
+  document.addEventListener('keydown', (e)=>{
+    if (detail.classList.contains('active')){
+      if (e.key === 'Escape') closeDetail();
+      if (e.key === 'ArrowLeft') prevBtn.click();
+      if (e.key === 'ArrowRight') nextBtn.click();
+    }
+  });
+
+})();
