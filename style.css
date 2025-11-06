@@ -1,120 +1,75 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
 
-* {
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  margin: 0;
-  background: radial-gradient(circle at center, #020202 0%, #000 100%);
+  background: radial-gradient(circle at center, #010101 0%, #000 100%);
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #00fff7;
   font-family: 'Orbitron', sans-serif;
-  color: #00fff7;
-  height: 400vh; /* чтобы был скролл */
-  overflow-x: hidden;
+  perspective: 1200px;
 }
 
-/* --- 3D Scene --- */
 .scene {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  perspective: 1800px;
-}
-
-.card3d {
-  width: 600px;
-  height: 350px;
   transform-style: preserve-3d;
+}
+
+#logo3d {
+  display: flex;
+  gap: 8px;
+  font-size: 5rem;
+  text-transform: uppercase;
+  color: #00fff7;
+  text-shadow: 0 0 12px #00fff7, 0 0 24px #00fff7;
+}
+
+#logo3d span {
+  display: inline-block;
+  transform-origin: center;
+}
+
+.subtitle {
+  margin-top: 30px;
+  font-size: 1.2rem;
+  opacity: 0.8;
+  text-shadow: 0 0 12px #00fff7;
+}
+
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+#logo3d span {
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+  will-change: transform;
+}
+#logo3d span {
   position: relative;
-}
-
-.card-face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  padding: 40px;
-  border-radius: 18px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  backface-visibility: hidden;
-  background: rgba(0, 255, 247, 0.05);
-  border: 1px solid rgba(0, 255, 247, 0.2);
-  box-shadow: 0 0 25px rgba(0, 255, 247, 0.2);
-  text-align: center;
-}
-
-/* --- Faces --- */
-.front { transform: rotateY(0deg); }
-.about { transform: rotateY(90deg); }
-.projects { transform: rotateY(180deg); }
-.contact { transform: rotateY(270deg); }
-
-/* --- Neon Text --- */
-.neon-text {
-  font-size: 2.4rem;
-  text-shadow:
-    0 0 8px #00fff7,
-    0 0 15px #00fff7,
-    0 0 30px #00d0ff,
-    0 0 60px #00d0ff;
-  animation: glow 3s ease-in-out infinite alternate;
-}
-
-@keyframes glow {
-  from { text-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7; }
-  to { text-shadow: 0 0 25px #00fff7, 0 0 50px #00d0ff; }
-}
-
-/* --- Scroll hint --- */
-.scroll-hint {
-  margin-top: 40px;
-  font-size: 0.9rem;
-  opacity: 0.7;
-  animation: blink 1.5s infinite alternate;
-}
-
-@keyframes blink {
-  0% { opacity: 0.3; transform: translateY(0); }
-  100% { opacity: 1; transform: translateY(5px); }
-}
-
-a {
+  display: inline-block;
+  font-size: 5rem;
   color: #00fff7;
-  text-decoration: none;
-  transition: 0.3s;
+  text-shadow: 0 0 15px #00fff7;
+  transform-style: preserve-3d;
 }
-a:hover {
-  color: #00d0ff;
-  text-shadow: 0 0 10px #00fff7;
-}
-.card-face {
+
+#logo3d span::before,
+#logo3d span::after {
+  content: attr(data-letter);
   position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 18px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  backface-visibility: hidden;
-  transition: opacity 0.6s ease, filter 0.6s ease;
-  color: #00fff7;
-  background: rgba(0, 255, 247, 0.04);
-  border: 1px solid rgba(0, 255, 247, 0.15);
-  box-shadow: 0 0 25px rgba(0, 255, 247, 0.15);
+  top: 0;
+  left: 0;
+  color: #0ff2;
 }
 
-.card-face h2, .card-face h1 {
-  margin-bottom: 12px;
-  text-shadow: 0 0 10px #00fff7, 0 0 20px #00d0ff;
-}
-
-.card-face p, .card-face li {
-  color: #cfffff;
-  max-width: 400px;
-  line-height: 1.5;
-}
+#logo3d span::before { transform: translateZ(-4px); }
+#logo3d span::after  { transform: translateZ(-2px); }

@@ -1,3 +1,7 @@
+
+<!-- A --- IGNORE ---
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,22 +9,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mihail Charilaou — Portfolio</title>
 
-    <!-- 🔍 SEO -->
+    <!-- 🔍 SEO --
   <meta name="description" content="Official portfolio of Mihail Charilaou — engineer, programmer, and AI researcher passionate about artificial intelligence, robotics, and autonomous systems.">
   <meta name="keywords" content="Mihail Charilaou, Михаил Харилау, engineer, programmer, AI researcher, portfolio, University of Nicosia, Cyprus, artificial intelligence, robotics">
   <meta name="author" content="Mihail Charilaou">
   <link rel="canonical" href="https://www.oneix.ltd/" />
 
-  <!-- 🎨 CSS & Favicon -->
+  <!-- 🎨 CSS & Favicon --
   <link rel="stylesheet" href="style.css">
 
-  <!-- Favicon setup -->
+  <!-- Favicon setup --
   <link rel="icon" href="https://www.oneix.ltd/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="https://www.oneix.ltd/image/favicon.png">
   <link rel="apple-touch-icon" href="https://www.oneix.ltd/image/favicon.png">
   <meta itemprop="image" content="https://www.oneix.ltd/image/favicon.png">
 
-    <!-- 📘 Структурированные данные (schema.org/Person) -->
+    <!-- 📘 Структурированные данные (schema.org/Person) --
   <meta name="author" content="Mihail Charilaou">
   <script type="application/ld+json">
   {
@@ -59,7 +63,7 @@
   }
   </script>
 
-  <!-- 🌐 Open Graph Meta -->
+  <!-- 🌐 Open Graph Meta --
   <meta property="og:type" content="profile">
   <meta property="og:title" content="Mihail Charilaou — Engineer, Programmer, AI Researcher">
   <meta property="og:description" content="Engineer, programmer, and AI enthusiast based in Cyprus. Passionate about artificial intelligence and robotics.">
@@ -67,14 +71,14 @@
   <meta property="og:url" content="https://www.oneix.ltd">
   <meta property="og:locale" content="en_US">
 
-  <!-- 🐦 Twitter Card (для X / Twitter) -->
+  <!-- 🐦 Twitter Card (для X / Twitter) --
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Mihail Charilaou — Engineer, Programmer, AI Researcher">
   <meta name="twitter:description" content="Engineer, programmer, and AI enthusiast based in Cyprus. Passionate about artificial intelligence and robotics.">
   <meta name="twitter:image" content="https://www.oneix.ltd/images/mihail_charilaou.jpg">
 </head>
 <body>
-  <!-- === 3D CARD SCENE === -->
+  <!-- === 3D CARD SCENE === --
   <div class="scene">
     <div class="card3d">
 
@@ -109,8 +113,152 @@
     </div>
   </div>
 
-  <!-- Scripts -->
+  <!-- Scripts --
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/dist/anime.min.js"></script>
   <script src="script.js"></script>
+</body>
+</html-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ONEIX — 3D Scroll Showcase</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 400vh; /* много пространства для скролла */
+      background: #595757; /* настоящий чёрный */
+      overflow-x: hidden;
+      font-family: "Poppins", sans-serif;
+      color: white;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .title {
+      position: fixed;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      color: #00fff7;
+      letter-spacing: 4px;
+      text-shadow: 0 0 15px #00fff7;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <div class="title">ONEIX 3D SHOWCASE</div>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+
+  <script>
+    // === СЦЕНА ===
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(70, innerWidth / innerHeight, 0.1, 100);
+    camera.position.z = 5;
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(innerWidth, innerHeight);
+    renderer.setPixelRatio(devicePixelRatio);
+    renderer.setClearColor(0x595757, 1);
+    document.body.appendChild(renderer.domElement);
+
+    // === СВЕТ ===
+    const ambient = new THREE.AmbientLight(0x404040, 0.8);
+    const point = new THREE.PointLight(0x00fff7, 1.4);
+    point.position.set(5, 5, 5);
+    scene.add(ambient, point);
+
+    // === КАРТОЧКИ ===
+    const textures = [
+      'https://picsum.photos/seed/a/512/256',
+      'https://picsum.photos/seed/b/512/256',
+      'https://picsum.photos/seed/c/512/256',
+      'https://picsum.photos/seed/d/512/256',
+      'https://picsum.photos/seed/e/512/256',
+      'https://picsum.photos/seed/f/512/256'
+    ];
+
+    const cards = [];
+    const loader = new THREE.TextureLoader();
+
+    for (let i = 0; i < textures.length; i++) {
+      const tex = loader.load(textures[i]);
+      const mat = new THREE.MeshStandardMaterial({
+        map: tex,
+        metalness: 0.5,
+        roughness: 0.3,
+        emissive: 0x00fff7,
+        emissiveIntensity: 0.05,
+        side: THREE.DoubleSide
+      });
+      const geo = new THREE.PlaneGeometry(3, 1.7, 8, 8);
+      const mesh = new THREE.Mesh(geo, mat);
+      mesh.position.z = -i * 1.2;
+      mesh.rotation.x = 0.05 * i;
+      mesh.rotation.y = 0.1 * i;
+      cards.push(mesh);
+      scene.add(mesh);
+    }
+
+    // === ПРОКРУТКА ===
+    let scrollY = 0;
+    window.addEventListener("scroll", () => {
+      scrollY = window.scrollY / window.innerHeight;
+    });
+
+    // === АНИМАЦИЯ ===
+    function animate() {
+      requestAnimationFrame(animate);
+
+      for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
+        const baseZ = -i * 2.0;
+        const offset = scrollY * 5 - i * 1.5;
+
+        // позиция
+        card.position.z = baseZ + offset * 1.2;
+        card.position.y = Math.sin(scrollY * 2 + i) * 0.5;
+
+        // вращение
+        card.rotation.y = offset * 0.6;
+        card.rotation.x = Math.cos(scrollY * 1.5 + i) * 0.3;
+
+        // “вылетание” первой карточки
+        if (card.position.z > 2) {
+          card.material.opacity = 1.5 - card.position.z * 0.5;
+          card.material.transparent = true;
+          card.position.y += (card.position.z - 2) * 2;
+        } else {
+          card.material.opacity = 1;
+        }
+      }
+
+      // камера плавно движется
+      camera.position.x = Math.sin(scrollY * 0.6) * 1.2;
+      camera.position.y = Math.cos(scrollY * 0.4) * 0.6;
+      camera.lookAt(0, 0, 0);
+
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // === Resize ===
+    window.addEventListener("resize", () => {
+      camera.aspect = innerWidth / innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(innerWidth, innerHeight);
+    });
+  </script>
 </body>
 </html>
