@@ -181,4 +181,7 @@ function openDetailFromCard(card){
     }
   });
 
+
+a
+
 })();
