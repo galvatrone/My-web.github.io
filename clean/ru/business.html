@@ -10,6 +10,7 @@
 <body>
 <header class="site-header">
     <div class="container header-inner">
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
         <a href="index.html" class="logo">Malia Clean Service</a>
         <nav class="main-nav">
             <a href="index.html">Главная</a>
@@ -48,8 +49,17 @@
             </div>
             <a href="blog.html">Блог</a>
             <a href="contact.html" class="btn btn-primary">Запросить расчет</a>
-            <a href="../en/business.html" class="lang-switch">EN</a>
+            
         </nav>
+        <div class="header-actions">
+            <a href="../en/business.html" class="lang-switch">EN</a>
+            <label for="nav-toggle" class="nav-toggle-btn" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </div>
+        <label for="nav-toggle" class="nav-overlay" aria-hidden="true"></label>
     </div>
 </header>
 
@@ -208,3 +218,5 @@
 </footer>
 </body>
 </html>
+
+
