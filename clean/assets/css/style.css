@@ -126,14 +126,17 @@ a:hover {
     background: #ffffff;
     cursor: pointer;
     padding: 0;
+    position: relative;
+    z-index: 80;
 }
 
 .nav-toggle-btn span {
     display: block;
     width: 20px;
     height: 3px;
-    background: var(--text);
+    background: var(--primary);
     border-radius: 999px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .header-actions {
@@ -622,6 +625,15 @@ textarea:focus {
         font-size: 2rem;
     }
 
+    .site-header {
+        z-index: 80;
+    }
+
+    .header-actions {
+        position: relative;
+        z-index: 90;
+    }
+
     .header-inner {
         align-items: center;
         flex-wrap: nowrap;
@@ -661,14 +673,26 @@ textarea:focus {
         z-index: 60;
     }
 
-    .nav-toggle:checked ~ .main-nav {
-        transform: translateX(0);
-    }
+.nav-toggle:checked ~ .main-nav {
+    transform: translateX(0);
+}
 
-    .nav-toggle:checked ~ .nav-overlay {
-        opacity: 1;
-        pointer-events: auto;
-    }
+.nav-toggle:checked ~ .nav-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.nav-toggle:checked ~ .header-actions .nav-toggle-btn span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle:checked ~ .header-actions .nav-toggle-btn span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle:checked ~ .header-actions .nav-toggle-btn span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
 
     .main-nav a,
     .main-nav .nav-item > a {
