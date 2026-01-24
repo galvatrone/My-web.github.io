@@ -55,6 +55,170 @@
 </head>
 <body>
   <div class="box">
+    <svg viewBox="0 0 900 360" width="100%" height="260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="House building animation">
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2ECC71"/>
+      <stop offset="1" stop-color="#00A3FF"/>
+    </linearGradient>
+
+    <linearGradient id="shine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="rgba(255,255,255,0)"/>
+      <stop offset="0.5" stop-color="rgba(255,255,255,0.35)"/>
+      <stop offset="1" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2.6" result="b"/>
+      <feColorMatrix in="b" type="matrix"
+        values="1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                0 0 0 .55 0" result="g"/>
+      <feMerge>
+        <feMergeNode in="g"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <style>
+      .stroke {
+        fill: none;
+        stroke: url(#grad);
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        filter: url(#softGlow);
+      }
+      .s2 { stroke-width: 2.5; }
+      .s3 { stroke-width: 3.5; }
+      .s5 { stroke-width: 5; }
+
+      /* Long draw animation: each element has its own path length */
+      .draw {
+        stroke-dasharray: var(--len);
+        stroke-dashoffset: var(--len);
+        animation: draw var(--dur) ease forwards;
+        animation-delay: var(--delay);
+      }
+      @keyframes draw { to { stroke-dashoffset: 0; } }
+
+      .fade {
+        opacity: 0;
+        animation: fadeIn .8s ease forwards;
+        animation-delay: var(--delay);
+      }
+      @keyframes fadeIn { to { opacity: 1; } }
+
+      .windowGlow {
+        opacity: 0;
+        animation: windowOn 4s ease-in-out infinite;
+        animation-delay: 46s;
+      }
+      @keyframes windowOn {
+        0%, 40% { opacity: 0.0; }
+        55% { opacity: 0.55; }
+        70% { opacity: 0.25; }
+        100% { opacity: 0.5; }
+      }
+
+      .roofShine {
+        opacity: 0;
+        animation: shineMove 8s linear infinite;
+        animation-delay: 52s;
+      }
+      @keyframes shineMove {
+        0%   { opacity: 0; transform: translateX(-260px); }
+        10%  { opacity: .35; }
+        50%  { opacity: .25; }
+        90%  { opacity: .35; }
+        100% { opacity: 0; transform: translateX(260px); }
+      }
+
+      .tiny {
+        font: 600 14px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial;
+        fill: rgba(255,255,255,.78);
+        letter-spacing: 2px;
+      }
+      .big {
+        font: 800 34px/1 system-ui, -apple-system, Segoe UI, Roboto, Arial;
+        fill: rgba(255,255,255,.92);
+        letter-spacing: .5px;
+      }
+    </style>
+  </defs>
+
+  <!-- Ground baseline -->
+  <path class="stroke s3 draw" style="--len:920; --dur:6s; --delay:0s"
+        d="M80 290 H820"/>
+
+  <!-- Foundation -->
+  <path class="stroke s5 draw" style="--len:820; --dur:7s; --delay:3s"
+        d="M210 274 H690"/>
+
+  <!-- Left wall -->
+  <path class="stroke s5 draw" style="--len:520; --dur:8s; --delay:9s"
+        d="M240 274 V160"/>
+
+  <!-- Right wall -->
+  <path class="stroke s5 draw" style="--len:520; --dur:8s; --delay:13s"
+        d="M660 274 V160"/>
+
+  <!-- Top wall (ceiling line) -->
+  <path class="stroke s5 draw" style="--len:520; --dur:6s; --delay:18s"
+        d="M240 160 H660"/>
+
+  <!-- Roof left slope -->
+  <path class="stroke s5 draw" style="--len:560; --dur:10s; --delay:22s"
+        d="M220 162 L450 60"/>
+
+  <!-- Roof right slope -->
+  <path class="stroke s5 draw" style="--len:560; --dur:10s; --delay:28s"
+        d="M450 60 L680 162"/>
+
+  <!-- Roof overhang -->
+  <path class="stroke s3 draw" style="--len:520; --dur:6s; --delay:34s"
+        d="M215 172 H685"/>
+
+  <!-- Chimney -->
+  <path class="stroke s3 draw" style="--len:420; --dur:7s; --delay:36s"
+        d="M560 86 V48 H600 V110"/>
+
+  <!-- Door frame -->
+  <path class="stroke s5 draw" style="--len:520; --dur:8s; --delay:38s"
+        d="M430 274 V195 H470 V274"/>
+
+  <!-- Door handle -->
+  <circle class="fade" style="--delay:45s" cx="462" cy="236" r="5" fill="url(#grad)"/>
+
+  <!-- Window left frame -->
+  <path class="stroke s3 draw" style="--len:520; --dur:7s; --delay:41s"
+        d="M290 212 H360 V170 H290 Z"/>
+
+  <!-- Window left cross -->
+  <path class="stroke s2 draw" style="--len:520; --dur:6s; --delay:44s"
+        d="M325 170 V212 M290 191 H360"/>
+
+  <!-- Window right frame -->
+  <path class="stroke s3 draw" style="--len:520; --dur:7s; --delay:43s"
+        d="M540 212 H610 V170 H540 Z"/>
+
+  <!-- Window right cross -->
+  <path class="stroke s2 draw" style="--len:520; --dur:6s; --delay:46s"
+        d="M575 170 V212 M540 191 H610"/>
+
+  <!-- Window glow fill (appears after build) -->
+  <rect x="292" y="172" width="66" height="38" class="windowGlow" fill="rgba(255,220,120,.35)"/>
+  <rect x="542" y="172" width="66" height="38" class="windowGlow" fill="rgba(255,220,120,.35)"/>
+
+  <!-- Roof shine sweep -->
+  <rect x="320" y="86" width="260" height="6" rx="3" fill="url(#shine)" class="roofShine"/>
+
+  <!-- Small "construction timeline" text that appears late -->
+  <text x="80" y="60" class="tiny fade" style="--delay:10s">BUILDING…</text>
+  <text x="80" y="95" class="big fade" style="--delay:48s">THANK YOU</text>
+  <text x="80" y="125" class="tiny fade" style="--delay:50s">WE RECEIVED YOUR REQUEST</text>
+</svg>
+
     <h1>Thank you! ✅</h1>
     <p>We received your contact details. We’ll get back to you soon.</p>
     <a href="index.html">Back to form</a>
