@@ -129,22 +129,292 @@
       from{opacity:0;transform:translateY(10px)}
       to{opacity:1;transform:none}
     }
-  </style>
-</head>
+
+    /* Desktop Gate Enhancements */
+/* =========================
+   LUX (BLACK / GOLD) THEME
+   ========================= */
+
+.desktopGate.luxe{
+  display:none; /* как и раньше — показывай через JS на ПК */
+  background: rgba(0,0,0,.62);
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.55),
+    0 0 0 1px rgba(212,175,55,.10) inset;
+  position: relative;
+  overflow: hidden;
+}
+
+.desktopGate.luxe::before{
+  content:"";
+  position:absolute;
+  inset:-120px;
+  background:
+    radial-gradient(600px 240px at 18% 22%, rgba(212,175,55,.16), transparent 60%),
+    radial-gradient(520px 220px at 80% 10%, rgba(212,175,55,.10), transparent 60%),
+    radial-gradient(520px 260px at 40% 90%, rgba(255,255,255,.06), transparent 70%);
+  filter: blur(2px);
+  pointer-events:none;
+}
+
+.luxeTop{
+  display:flex;
+  gap:10px;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.luxePill{
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 8px 10px;
+  border-radius: 999px;
+  color: rgba(255,255,255,.86);
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(212,175,55,.22);
+  box-shadow: 0 0 0 1px rgba(0,0,0,.5) inset;
+}
+.luxePill.subtle{
+  border-color: rgba(255,255,255,.14);
+  opacity:.9;
+}
+
+.luxeTitle{
+  margin: 0 0 8px;
+  font-size: 34px;
+  letter-spacing: .2px;
+  color: rgba(255,255,255,.92);
+}
+.luxeSub{
+  margin: 0 0 18px;
+  font-size: 14px;
+  line-height: 1.35;
+  color: rgba(255,255,255,.70);
+}
+
+.luxeDots::after{
+  content:"";
+  animation: luxeDots 1.6s infinite;
+}
+@keyframes luxeDots{
+  0%{content:""}
+  33%{content:"."}
+  66%{content:".."}
+  100%{content:"..."}
+}
+
+.gateRow.luxeRow{
+  gap: 22px;
+  position: relative;
+}
+
+.qrBox.luxeQR{
+  width: 260px;
+  height: auto;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(212,175,55,.18);
+  border-radius: 18px;
+  padding: 14px;
+  box-shadow:
+    0 18px 50px rgba(0,0,0,.45),
+    0 0 0 1px rgba(0,0,0,.55) inset;
+}
+
+.qrFrame{
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  padding: 10px;
+}
+
+.qrFrame img{
+  display:block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.qrShine{
+  position:absolute;
+  inset: -60px;
+  background: linear-gradient(110deg,
+    transparent 35%,
+    rgba(212,175,55,.22) 50%,
+    transparent 65%);
+  transform: translateX(-55%);
+  animation: qrShineMove 6.5s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes qrShineMove{
+  0%{ transform: translateX(-70%) rotate(0.001deg); opacity:0; }
+  10%{ opacity:.35; }
+  50%{ opacity:.25; }
+  90%{ opacity:.35; }
+  100%{ transform: translateX(75%) rotate(0.001deg); opacity:0; }
+}
+
+.qrHint{
+  margin-top: 10px;
+  font-size: 12px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.65);
+  text-align:center;
+}
+
+.hintBox.luxeInfo{
+  background: rgba(255,255,255,.035);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.35);
+  min-width: 280px;
+  flex: 1;
+  position: relative;
+}
+
+.luxeName{
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: .2px;
+  color: rgba(255,255,255,.92);
+  margin-bottom: 4px;
+}
+.luxeRole{
+  font-size: 13px;
+  color: rgba(255,255,255,.68);
+  margin-bottom: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.luxeList{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-bottom: 16px;
+}
+.luxeItem{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color: rgba(255,255,255,.72);
+  font-size: 14px;
+}
+.luxeItem .dot{
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(212,175,55,.95);
+  box-shadow: 0 0 18px rgba(212,175,55,.35);
+}
+
+.luxeBtn{
+  position: relative;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  text-decoration:none;
+  color: rgba(0,0,0,.92);
+  font-weight: 900;
+  letter-spacing: .2px;
+
+  background: linear-gradient(135deg, #d4af37, #f2dd8f);
+  border: 1px solid rgba(255,255,255,.22);
+  box-shadow:
+    0 16px 40px rgba(0,0,0,.35),
+    0 0 0 1px rgba(0,0,0,.35) inset;
+  overflow: hidden;
+  transition: transform .15s ease, opacity .15s ease;
+}
+.luxeBtn:hover{ transform: translateY(-1px); opacity: .98; }
+
+.luxeBtn .arrow{ font-size: 18px; }
+
+.luxeBtn .btnShine{
+  position:absolute;
+  inset:-80px;
+  background: linear-gradient(110deg,
+    transparent 40%,
+    rgba(255,255,255,.55) 50%,
+    transparent 60%);
+  transform: translateX(-70%);
+  animation: btnShineMove 4.8s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes btnShineMove{
+  0%{ transform: translateX(-75%); opacity:0; }
+  12%{ opacity:.55; }
+  55%{ opacity:.25; }
+  88%{ opacity:.55; }
+  100%{ transform: translateX(70%); opacity:0; }
+}
+
+.luxeSmall{
+  margin-top: 12px;
+  font-size: 12px;
+  color: rgba(255,255,255,.55);
+}
+    </style>
 
 <body>
 
 <!-- DESKTOP -->
-<section class="desktopGate" id="desktopGate">
-  <h1>Open on your phone 📱</h1>
-  <p class="subtitle">Scan the QR code to open the mobile contact card.</p>
-  <div class="gateRow">
-    <div class="qrBox">
-      <img src="oneix_mobile_qr.png" alt="QR">
+<section class="desktopGate luxe" id="desktopGate">
+  <div class="luxeTop">
+    <span class="luxePill">KW SEVEN • Real Estate</span>
+    <span class="luxePill subtle">Scan & connect</span>
+  </div>
+
+  <h1 class="luxeTitle">Open on your phone</h1>
+  <p class="luxeSub">
+    Scan the QR code to send your details.
+    <span class="luxeDots"></span>
+  </p>
+
+  <div class="gateRow luxeRow">
+    <!-- QR -->
+    <div class="qrBox luxeQR">
+      <div class="qrFrame">
+        <img src="oneix_mobile_qr.png" alt="QR code to open mobile card">
+        <div class="qrShine" aria-hidden="true"></div>
+      </div>
+      <div class="qrHint">Point your camera here</div>
     </div>
 
+    <!-- Info -->
+    <div class="hintBox luxeInfo">
+      <div class="luxeName">Andreas Andreou</div>
+      <div class="luxeRole">Buy • Sell • Investment • Cyprus</div>
+
+      <div class="luxeList">
+        <div class="luxeItem"><span class="dot"></span> Direct personal contact</div>
+        <div class="luxeItem"><span class="dot"></span> Fast response</div>
+        <div class="luxeItem"><span class="dot"></span> Serious buyers & sellers</div>
+      </div>
+
+      <a class="luxeBtn" href="https://www.oneix.ltd/mobile/" target="_blank" rel="noopener">
+        Open link on phone
+        <span class="arrow">→</span>
+        <span class="btnShine" aria-hidden="true"></span>
+      </a>
+
+      <div class="luxeSmall">
+        Tip: Save contact on the mobile page (vCard).
+      </div>
+    </div>
   </div>
 </section>
+
+
 
 
 <!-- andreasandreou1977@gmail.comMOBILE -->
@@ -319,11 +589,9 @@
     <button type="button" class="btn btnGhost" id="vcardBtn">Save contact</button>
   </div>
 
-  <div class="mini">
-    <span id="qrText">Show QR</span>
-    <a id="miniQRLink">QR</a>
-  </div>
-
+    <div class="mini">
+        <span id="miniQRLink">Show QR code 📱</span>
+        <span>Powered by ONEiX</span>
   <div id="mobileQRBox">
     <img src="oneix_mobile_qr.png" alt="QR">
   </div>
