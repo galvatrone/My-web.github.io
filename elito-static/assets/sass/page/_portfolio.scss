@@ -1,0 +1,375 @@
+/*====================================================
+7. wpo-protfolio-area
+======================================================*/
+
+.wpo-protfolio-area{
+    padding-bottom: 90px;
+    background: $bg-color2;
+}
+
+.wpo-protfolio-area-3{
+    padding-bottom: 70px;
+    background: $bg-color2;
+}
+
+.wpo-protfolio-text h2 {
+    font-size: 40px;
+    color: #fff;
+}
+
+.wpo-protfolio-text span {
+    font-size: 18px;
+    color: #fff;
+    display: block;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.wpo-protfolio-text a {
+    display: inline-block;
+    font-size: 18px;
+    color: #fff;
+    padding: 10px 50px;
+    background: rgba(255, 255, 255, .35);
+    position: relative;
+    border-radius: 40px;
+}
+
+.wpo-protfolio-text a:after{
+    position: absolute;
+    left: -5px;
+    bottom: -5px;
+    width: 105%;
+    height: 120%;
+    content: "";
+    border-radius: 40px;
+    border: 1px solid #fff;
+}
+
+.wpo-protfolio-text a:before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    opacity: 0;
+    z-index: 9;
+    content: '';
+    transition: all .3s;
+    border-radius: 40px;
+}
+
+.wpo-protfolio-text a:hover:before{
+    left: 0;
+    opacity: .3;
+}
+
+.wpo-protfolio-single,
+.wpo-blog-img {
+    position: relative;
+    margin-bottom: 1px;
+    overflow: hidden;
+}
+
+
+.wpo-protfolio-text {
+    padding: 40px;
+    position: absolute;
+    left: 0;
+    bottom:30px;
+}
+
+.wpo-protfolio-right {
+    margin-top: -200px;
+}
+
+.wpo-protfolio-area .section-title {
+    margin-bottom: 120px;
+}
+.wpo-protfolio-img{
+    img{
+        width: 100%;
+    }
+}
+@media(max-width: 767px) {
+    .wpo-protfolio-area .section-title {
+        margin-bottom: 40px;
+    }
+
+    .wpo-protfolio-right {
+        margin-top: 0;
+    }
+
+    .protfolio-btn {
+        text-align: center;
+        margin-top: 15px;
+    }
+}
+
+@media(max-width: 590px) {
+    .protfolio-btn a {
+        font-size: 20px;
+    }
+}
+
+.sortable-gallery{
+    overflow: hidden;
+}
+
+
+.gallery-filters {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.gallery-filters ul {
+    display: inline-block;
+    overflow: hidden;
+    list-style: none;
+    text-align: center;
+}
+
+.gallery-filters ul li {
+    display: inline-block;
+}
+
+.gallery-filters ul li a {
+    font-weight: 600;
+    color: $light;
+    display: block;
+    text-transform: capitalize;
+}
+
+.gallery-filters ul>li+li {
+    margin-left: 30px;
+}
+
+.gallery-filters ul li a.current {
+    color: $theme-primary-color;
+}
+
+@media(max-width: 500px) {
+    .gallery-filters ul>li+li {
+        margin-left: 10px;
+        margin-bottom: 5px;
+    }
+
+}
+
+
+.wpo-protfolio-area .wpo-protfolio-single {
+    margin-bottom: 30px;
+}
+
+
+.wpo-protfolio-area .wpo-protfolio-img{
+    position: relative;
+}
+
+.wpo-protfolio-area .wpo-protfolio-img:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: "";
+    background: rgba(0, 0, 0, .4);
+    width: 100%;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+}
+
+.wpo-protfolio-area .wpo-protfolio-single:hover .wpo-protfolio-img:before {
+    height: 100%;
+    opacity: 1;
+    visibility: visible;
+}
+
+.wpo-protfolio-area .wpo-protfolio-text {
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+    bottom: -200px;
+}
+
+.wpo-protfolio-area .wpo-protfolio-single:hover .wpo-protfolio-text {
+    opacity: 1;
+    visibility: visible;
+    bottom: 0;
+}
+
+
+
+.wpo-protfolio-area-3 .wpo-protfolio-text {
+    position: relative;
+    padding: 30px 0;
+    bottom: 0;
+}
+
+.wpo-protfolio-area-3 .wpo-protfolio-text h2{
+    color: #131058;
+    font-weight: 400;
+    margin-top: 0;
+}
+
+.wpo-protfolio-area-3 .wpo-protfolio-text span{
+    color: #666;
+}
+
+
+// portfolio-slide
+
+.protfolio-slide-area .wpo-protfolio-single {
+    position: relative;
+    margin-bottom: 30px;
+    overflow: hidden;
+    z-index: 9;
+}
+
+.protfolio-slide-area .wpo-protfolio-single:after{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0%;
+    height: 100%;
+    content: "";
+    background: rgba(8, 8, 78, .8);
+    transition: all .3s;
+    z-index: 9;
+}
+
+.protfolio-slide-area .wpo-protfolio-single:hover:after {
+    width: 100%;
+}
+
+.protfolio-slide-area .protfolio-btn{
+    text-align: center;
+    margin-top: 0;
+}
+
+.protfolio-slide-area .thumb-text{
+    position: absolute;
+    right: 10px;
+    top: -30%;
+    transition: all .6s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 999;
+}
+
+.protfolio-slide-area .thumb-text span {
+    font-size: 200px;
+    color: #fff;
+    font-weight: 700;
+    line-height: 190px;
+    font-family: 'Conv_Now-Bold';
+    z-index: 999;
+}
+
+.protfolio-slide-area .wpo-protfolio-text {
+    bottom: -50%;
+    transition: all .5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 999;
+}
+
+.protfolio-slide-area .wpo-protfolio-single:hover .wpo-protfolio-text{
+    bottom: 0;
+    opacity: 1;
+    visibility: visible;
+}
+
+.protfolio-slide-area .wpo-protfolio-single:hover .thumb-text {
+    top: 0;
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.gallery-active .owl-item.active {
+    position: relative;
+}
+
+.gallery-active .owl-nav button.owl-next {
+    left: 52%;
+    bottom: -70px;
+    transform: translateY(-50%);
+}
+
+.gallery-active .owl-nav button{
+    position: absolute;
+    left: 48%;
+    bottom: -70px;
+    transform: translateY(-50%);
+    height: 50px;
+    width: 50px;
+    line-height: 46px;
+    text-align: center;
+    background: transparent;
+    transition: all .3s;
+    box-shadow: 0px 16px 32px 0px rgba(184, 184, 184, 0.3);
+    background: transparent;
+
+    @media(max-width:1200px){
+        left: 43%;
+    }
+    @media(max-width:767px){
+        left: 35%;
+    }
+}
+
+.gallery-active .owl-nav button {
+    background: transparent;
+    border: 0;
+    color: #333;
+    text-decoration: none;
+    border-radius: 50%;
+}
+
+.gallery-active .owl-nav button:hover {
+    background: $theme-primary-color;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50%;
+}
+
+.protfolio-slide-area .owl-carousel .owl-item img {
+    height: 475px;
+    object-fit: cover;
+
+    @media(max-width:767px){
+        height: 375px;
+    }
+}
+
+
+.wpo-protfolio-area-3 {
+    .wpo-protfolio-text{
+        h2{
+            a{
+                color: $dark-gray;
+                padding: 0;
+                font-size: 40px;
+                background: none;
+                color: $white;
+
+                &::after,
+                &::before{
+                    display: none;
+                }
+
+                &:hover{
+                    color: $theme-primary-color;
+                }
+            }
+        }
+
+        span{
+            color: $light;
+        }
+    }
+}
+
+

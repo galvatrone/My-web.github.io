@@ -1,0 +1,149 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "flaticon";
+  src: url("./flaticon.ttf?84a5eeb889ab904f87c31ee6e8943da4") format("truetype"), url("./flaticon.woff?84a5eeb889ab904f87c31ee6e8943da4") format("woff"), url("./flaticon.woff2?84a5eeb889ab904f87c31ee6e8943da4") format("woff2"), url("./flaticon.eot?84a5eeb889ab904f87c31ee6e8943da4#iefix") format("embedded-opentype"), url("./flaticon.svg?84a5eeb889ab904f87c31ee6e8943da4#flaticon") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+  font-family: flaticon !important;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-verified:before {
+  content: "";
+}
+
+.flaticon-coding:before {
+  content: "";
+}
+
+.flaticon-app-development:before {
+  content: "";
+}
+
+.flaticon-smartphone:before {
+  content: "";
+}
+
+.flaticon-software-developer:before {
+  content: "";
+}
+
+.flaticon-vector:before {
+  content: "";
+}
+
+.flaticon-palette:before {
+  content: "";
+}
+
+.flaticon-add:before {
+  content: "";
+}
+
+.flaticon-social-media:before {
+  content: "";
+}
+
+.flaticon-promotion:before {
+  content: "";
+}
+
+.flaticon-email-marketing:before {
+  content: "";
+}
+
+.flaticon-self-growth:before {
+  content: "";
+}
+
+.flaticon-right-arrow:before {
+  content: "";
+}
+
+.flaticon-left-arrow:before {
+  content: "";
+}
+
+.flaticon-facebook:before {
+  content: "";
+}
+
+.flaticon-dribbble:before {
+  content: "";
+}
+
+.flaticon-twitter:before {
+  content: "";
+}
+
+.flaticon-linkedin:before {
+  content: "";
+}
+
+.flaticon-instagram:before {
+  content: "";
+}
+
+.flaticon-heart:before {
+  content: "";
+}
+
+.flaticon-telephone:before {
+  content: "";
+}
+
+.flaticon-phone-call:before {
+  content: "";
+}
+
+.flaticon-envelope:before {
+  content: "";
+}
+
+.flaticon-mail:before {
+  content: "";
+}
+
+.flaticon-location:before {
+  content: "";
+}
+
+.flaticon-quote:before {
+  content: "";
+}
+
+.flaticon-right-quote-sign:before {
+  content: "";
+}
+
+.flaticon-left-quote:before {
+  content: "";
+}
+
+.flaticon-right-quote:before {
+  content: "";
+}
+
+.flaticon-play:before {
+  content: "";
+}
+
+.flaticon-play-1:before {
+  content: "";
+}
+
+.flaticon-loupe:before {
+  content: "";
+}
+
+.flaticon-user:before {
+  content: "";
+}
+/*# sourceMappingURL=flaticon.css.map */
