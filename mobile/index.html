@@ -136,8 +136,11 @@
     <div class="langToggle">
       <button type="button" id="btnEN" class="active">EN</button>
       <button type="button" id="btnRU">RU</button>
+      <button type="button" id="btnGR">GR</button>
     </div>
   </div>
+
+  <div class="subtitle" style="margin-top:0" id="tagline">KW SEVEN</div>
 
   <h1 id="title">Welcome</h1>
   <p class="subtitle" id="subtitle">Leave your contact details.</p>
@@ -187,7 +190,8 @@
   /* LANG */
   const T={
     en:{title:"Welcome",subtitle:"Leave your contact details.",buy:"Buy",sell:"Sell"},
-    ru:{title:"Добро пожаловать",subtitle:"Оставьте ваши контакты.",buy:"Купить",sell:"Продать"}
+    ru:{title:"Добро пожаловать",subtitle:"Оставьте ваши контакты.",buy:"Купить",sell:"Продать"},
+    gr:{title:"Καλώς ήρθατε",subtitle:"Αφήστε τα στοιχεία επικοινωνίας σας.",buy:"Αγορά",sell:"Πώληση"}
   };
   function setLang(l){
     title.innerText=T[l].title;
@@ -196,9 +200,11 @@
     sell.innerText=T[l].sell;
     btnEN.classList.toggle("active",l==="en");
     btnRU.classList.toggle("active",l==="ru");
+    btnGR.classList.toggle("active",l==="gr");
   }
   btnEN.onclick=()=>setLang("en");
   btnRU.onclick=()=>setLang("ru");
+  btnGR.onclick=()=>setLang("gr");
 
   /* vCard */
   vcardBtn.onclick=()=>{
