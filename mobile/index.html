@@ -120,11 +120,11 @@
 
 <!-- MOBILE -->
 <form class="card" id="mobileCard"
-      action="https://formsubmit.co/michaelok929@gmail.com"
+      action="https://formsubmit.co/andreasandreou1977@gmail.com"
       method="POST">
 
   <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_next" value="thankyou.html">
+  <input type="hidden" name="_next" value="https://www.oneix.ltd/mobile/thankyou.html">
 
   <div class="topBar">
     <div class="brand">
@@ -152,7 +152,7 @@
   <label class="chip"><input type="checkbox" name="interest[]" value="Sell"> <span id="sell">Sell</span></label>
 
   <div class="actions">
-    <button class="btn btnPrimary" id="submitBtn">Submit</button>
+    <button type="submit" class="btn btnPrimary" id="submitBtn">Submit</button>
     <button type="button" class="btn btnGhost" id="vcardBtn">Save contact</button>
   </div>
 
@@ -200,9 +200,8 @@
   vcardBtn.onclick=()=>{
     const v=`BEGIN:VCARD
 VERSION:3.0
-FN:Oneix
-EMAIL:michaelok929@gmail.com
-URL:https://www.oneix.ltd
+FN:Andreas Andreas
+TEL:99424203
 END:VCARD`;
     const b=new Blob([v],{type:"text/vcard"});
     const a=document.createElement("a");
