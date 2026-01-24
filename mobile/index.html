@@ -130,7 +130,103 @@
 
   <div class="topBar">
     <div class="brand">
-      <img src="logo.png" onerror="this.style.display='none'">
+        
+      <<svg width="420" height="140" viewBox="0 0 420 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="KW SEVEN logo">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2ECC71"/>
+      <stop offset="1" stop-color="#00A3FF"/>
+    </linearGradient>
+
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feColorMatrix in="b" type="matrix"
+        values="1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                0 0 0 .65 0" result="g"/>
+      <feMerge>
+        <feMergeNode in="g"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <style>
+      :root { color-scheme: dark; }
+      .stroke { stroke: url(#g); }
+      .thin   { stroke-width: 3; }
+      .bold   { stroke-width: 5; }
+      .cap    { stroke-linecap: round; stroke-linejoin: round; }
+      .dash {
+        stroke-dasharray: 520;
+        stroke-dashoffset: 520;
+        animation: draw 1.25s ease-out forwards;
+      }
+      .pulse { animation: pulse 1.8s ease-in-out infinite; transform-origin: 92px 70px; }
+      .swap  { animation: swap 2.2s ease-in-out infinite; }
+      .float { animation: float 2.6s ease-in-out infinite; }
+      .fadeIn { opacity: 0; animation: fadeIn .7s .35s ease-out forwards; }
+
+      @keyframes draw { to { stroke-dashoffset: 0; } }
+      @keyframes pulse { 0%,100%{ transform: scale(1); opacity:.95 } 50%{ transform: scale(1.05); opacity:1 } }
+      @keyframes swap { 0%,100%{ transform: translateX(0) } 50%{ transform: translateX(4px) } }
+      @keyframes float { 0%,100%{ transform: translateY(0)} 50%{ transform: translateY(-3px)} }
+      @keyframes fadeIn { to { opacity: 1; } }
+
+      /* Text style */
+      .kw   { font: 800 46px/1 system-ui, -apple-system, Segoe UI, Roboto, Arial; letter-spacing: .5px; fill: #F2F5F7; }
+      .seven{ font: 700 22px/1.1 system-ui, -apple-system, Segoe UI, Roboto, Arial; letter-spacing: 6px; fill: rgba(242,245,247,.85); }
+      .tag  { font: 600 12px/1 system-ui, -apple-system, Segoe UI, Roboto, Arial; letter-spacing: 2px; fill: rgba(242,245,247,.65); }
+    </style>
+  </defs>
+
+  <!-- Icon -->
+  <g transform="translate(18,14)" filter="url(#glow)">
+    <!-- House outline (draw animation) -->
+    <path class="stroke bold cap dash"
+      fill="none"
+      d="M18 58 L58 26 L98 58 V108 H64 V82 H52 V108 H18 Z"/>
+
+    <!-- Door line -->
+    <path class="stroke thin cap dash"
+      fill="none"
+      d="M58 82 V108"/>
+
+    <!-- Buy arrow (down-right) -->
+    <g class="swap">
+      <path class="stroke thin cap fadeIn"
+        fill="none"
+        d="M110 46 H146 V82"/>
+      <path class="stroke thin cap fadeIn"
+        fill="none"
+        d="M146 82 L140 76 M146 82 L152 76"/>
+      <text x="112" y="40" class="tag fadeIn">BUY</text>
+    </g>
+
+    <!-- Sell arrow (up-right) -->
+    <g class="float">
+      <path class="stroke thin cap fadeIn"
+        fill="none"
+        d="M110 100 H146 V64"/>
+      <path class="stroke thin cap fadeIn"
+        fill="none"
+        d="M146 64 L140 70 M146 64 L152 70"/>
+      <text x="112" y="116" class="tag fadeIn">SELL</text>
+    </g>
+
+    <!-- Orb -->
+    <circle cx="92" cy="70" r="6" fill="url(#g)" class="pulse"/>
+  </g>
+
+  <!-- Wordmark -->
+  <g transform="translate(190,44)">
+    <text class="kw" x="0" y="0">KW</text>
+    <text class="seven" x="0" y="44">SEVEN</text>
+    <rect x="0" y="56" width="188" height="2" rx="1" fill="url(#g)" opacity=".85"/>
+    <text class="tag" x="0" y="78">BUY • SELL • INVEST</text>
+  </g>
+</svg>
+
       <strong id="brandName">Andreas Andreas</strong>
     </div>
     <div class="langToggle">
