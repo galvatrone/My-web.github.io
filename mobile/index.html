@@ -92,9 +92,15 @@
       color:var(--text);margin-bottom:12px
     }
 
-    .chips{display:flex;gap:3px;justify-content:center;flex-wrap:nowrap;margin-top:4px}
-    .chip{display:flex;align-items:center;gap:4px;font-size:10px;padding:3px 6px;border-radius:999px;background:var(--glass2);border:none;white-space:nowrap}
+    .chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+    .chip{
+      display:flex;align-items:center;gap:6px;
+      font-size:13px;padding:8px 12px;border-radius:999px;
+      background:var(--glass2);border:none;white-space:nowrap
+    }
     .chip span{white-space:nowrap}
+    .chips .chip{flex:0 0 calc(50% - 8px);justify-content:center}
+    .chips .chip:nth-child(3){flex:0 0 60%;justify-content:center}
     .chip input{margin:0}
     .actions{display:flex;gap:10px;margin-top:10px}
     .btn{
