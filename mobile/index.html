@@ -93,7 +93,8 @@
     }
 
     .chips{display:flex;gap:4px;justify-content:center;flex-wrap:nowrap;margin-top:4px}
-    .chip{display:flex;align-items:center;gap:6px;font-size:12px;padding:6px 10px;border-radius:999px;background:var(--glass2)}
+    .chip{display:flex;align-items:center;gap:6px;font-size:11px;padding:4px 8px;border-radius:999px;background:var(--glass2);border:none}
+    .chip input{margin:0}
     .actions{display:flex;gap:10px;margin-top:10px}
     .btn{
       flex:1;border:none;border-radius:14px;
@@ -133,7 +134,7 @@
 
 <!-- andreasandreou1977@gmail.comMOBILE -->
 <form class="card" id="mobileCard"
-      action="https://formsubmit.co/andreasandreou1977@gmail.com"
+      action="https://formsubmit.co/a.andreou@kwcyprus.com"
       method="POST">
 
   <input type="hidden" name="_captcha" value="false">
@@ -263,7 +264,7 @@
       <input name="first_name" id="first" placeholder="First name" required>
     </div>
     <div class="field">
-      <span class="icon">
+      <span class="icon">  <label class="chip"><input type="checkbox" name="interest[]" value="Buy And Sell"> <span id="buyAndSell">Buy And Sell</span></label>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="8" r="4"></circle>
           <path d="M4 20c2-4 14-4 16 0"></path>
@@ -295,10 +296,7 @@
   <div class="chips">
     <label class="chip"><input type="checkbox" name="interest[]" value="Buy"> <span id="buy">Buy</span></label>
     <label class="chip"><input type="checkbox" name="interest[]" value="Sell"> <span id="sell">Sell</span></label>
-<<<<<<< ours
-=======
     <label class="chip"><input type="checkbox" name="interest[]" value="Buy And Sell"> <span id="buyAndSell">Buy &amp; Sell</span></label>
->>>>>>> theirs
   </div>
 
   <div class="actions">
