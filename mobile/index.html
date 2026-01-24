@@ -60,10 +60,9 @@
       animation:pop .3s ease-out both;
     }
 
-    .topBar{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:12px}
-    .logoWrap{width:240px;max-width:100%;height:auto;display:flex;align-items:center;justify-content:center}
-    .logoWrap svg{width:100%;height:auto;display:block}
-    .brand{display:flex;gap:12px;align-items:center;justify-content:center}
+    .topBar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand img{width:40px;height:40px;border-radius:12px;object-fit:cover}
     .langToggle button{
       border:none;background:rgba(255,255,255,.08);
       color:var(--text);border-radius:999px;
@@ -130,7 +129,8 @@
   <input type="hidden" name="_next" value="https://www.oneix.ltd/mobile/thankyou.html">
 
   <div class="topBar">
-    <div class="logoWrap">
+    <div class="brand">
+        
       <svg width="420" height="140" viewBox="0 0 420 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="KW SEVEN logo">
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
@@ -226,8 +226,7 @@
     <text class="tag" x="0" y="78">BUY • SELL • INVEST</text>
   </g>
 </svg>
-    </div>
-    <div class="brand">
+
       <strong id="brandName">Andreas Andreas</strong>
     </div>
     <div class="langToggle">
@@ -237,7 +236,7 @@
     </div>
   </div>
 
-  <div class="subtitle" style="margin-top:0" id="tagline">KW SEVEN</div>
+ 
 
   <h1 id="title">Welcome</h1>
   <p class="subtitle" id="subtitle">Leave your contact details.</p>
