@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank you</title>
+  <style>
+    :root{
+      --glass: rgba(0,0,0,.55);
+      --muted: rgba(255,255,255,.7);
+      --accent: #2ecc71;
+    }
+    *{ box-sizing:border-box; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; }
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 18px;
+      color: #fff;
+      background:
+        radial-gradient(1200px 600px at 70% 0%, rgba(46,204,113,.14), transparent 60%),
+        linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.80)),
+        url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=70");
+      background-size: cover;
+      background-position: center;
+    }
+    .box{
+      width:min(520px, 95vw);
+      background: var(--glass);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 18px;
+      padding: 22px;
+      text-align:center;
+      backdrop-filter: blur(12px);
+      animation: pop .35s ease-out both;
+    }
+    h1{ margin: 6px 0 8px; font-size: 28px; }
+    p{ margin: 0 0 16px; color: var(--muted); line-height: 1.35; }
+    a{
+      display:inline-block;
+      background: var(--accent);
+      color:#061006;
+      font-weight: 800;
+      padding: 14px 16px;
+      border-radius: 14px;
+      text-decoration:none;
+    }
+    @keyframes pop{
+      from{ opacity:0; transform: translateY(10px) scale(.985); }
+      to{ opacity:1; transform: translateY(0) scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Спасибо! ✅</h1>
+    <p>Мы получили ваши контакты. Скоро с вами свяжемся.</p>
+    <a href="index.html">Вернуться назад</a>
+  </div>
+
+  <script>
+    // Если хочешь EN-версию — можно сделать переключение как в index,
+    // но сейчас оставил простую страницу.
+  </script>
+</body>
+</html>
