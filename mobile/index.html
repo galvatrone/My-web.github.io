@@ -1,542 +1,216 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Digital Card</title>
 
-  <!-- QR generator (no backend) -->
-  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
-
   <style>
     :root{
-      --bg: #0b0f14;
       --glass: rgba(0,0,0,.55);
       --glass2: rgba(255,255,255,.08);
       --text: rgba(255,255,255,.92);
       --muted: rgba(255,255,255,.65);
       --accent: #2ecc71;
-      --danger: #ff5c5c;
       --radius: 18px;
     }
-    *{ box-sizing:border-box; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; }
+    *{ box-sizing:border-box; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; }
     body{
       margin:0;
       min-height:100vh;
-      color: var(--text);
+      color:var(--text);
       background:
-        radial-gradient(1200px 600px at 70% 0%, rgba(46,204,113,.14), transparent 60%),
-        radial-gradient(900px 500px at 0% 70%, rgba(0,150,255,.12), transparent 60%),
-        linear-gradient(rgba(0,0,0,.60), rgba(0,0,0,.78)),
+        linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.8)),
         url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=70");
-      background-size: cover;
-      background-position: center;
+      background-size:cover;
+      background-position:center;
       display:flex;
       align-items:center;
       justify-content:center;
-      padding: 18px;
+      padding:18px;
     }
 
-    /* --- desktop gate --- */
+    /* DESKTOP GATE */
     .desktopGate{
-      width: min(640px, 96vw);
-      background: var(--glass);
-      backdrop-filter: blur(12px);
-      border-radius: var(--radius);
-      border: 1px solid rgba(255,255,255,.10);
-      padding: 26px;
       display:none;
-      animation: pop .35s ease-out both;
+      width:min(640px,96vw);
+      background:var(--glass);
+      backdrop-filter:blur(12px);
+      border-radius:var(--radius);
+      padding:24px;
+      border:1px solid rgba(255,255,255,.12);
+      animation:pop .3s ease-out both;
     }
-    .desktopGate h1{ margin:0 0 10px; font-size: 28px; }
-    .desktopGate p{ margin:0 0 18px; color: var(--muted); line-height: 1.35; }
-    .gateRow{
-      display:flex;
-      gap:18px;
-      align-items:center;
-      flex-wrap: wrap;
-    }
+    .gateRow{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
     .qrBox{
-      width: 220px;
-      height: 220px;
-      border-radius: 16px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow:hidden;
+      width:180px;height:180px;
+      background:#fff;border-radius:14px;
+      padding:10px;
     }
-    .hintBox{
-      flex: 1;
-      min-width: 260px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 16px;
-      padding: 16px;
-    }
-    .badge{
-      display:inline-block;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(46,204,113,.14);
-      border: 1px solid rgba(46,204,113,.30);
-      color: var(--text);
-      font-size: 12px;
-      margin-bottom: 10px;
-    }
+    .qrBox img{width:100%;height:100%;object-fit:contain}
 
-    /* --- mobile card --- */
+    /* CARD */
     .card{
-      width: 100%;
-      max-width: 440px;
-      background: var(--glass);
-      backdrop-filter: blur(12px);
-      border-radius: var(--radius);
-      border: 1px solid rgba(255,255,255,.10);
-      padding: 22px;
-      display:none;
-      animation: pop .35s ease-out both;
+      width:100%;max-width:440px;
+      background:var(--glass);
+      backdrop-filter:blur(12px);
+      border-radius:var(--radius);
+      padding:22px;
+      border:1px solid rgba(255,255,255,.12);
+      animation:pop .3s ease-out both;
     }
 
-    .topBar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      margin-bottom: 12px;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width: 0;
-    }
-    .brand img{
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      object-fit: cover;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.08);
-    }
-    .brandTitle{
-      display:flex;
-      flex-direction:column;
-      min-width:0;
-    }
-    .brandTitle strong{
-      font-size: 14px;
-      white-space: nowrap;
-      overflow:hidden;
-      text-overflow: ellipsis;
-    }
-    .brandTitle span{
-      font-size: 12px;
-      color: var(--muted);
-      white-space: nowrap;
-      overflow:hidden;
-      text-overflow: ellipsis;
-    }
-
-    .langToggle{
-      display:flex;
-      gap:8px;
-    }
+    .topBar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand img{width:40px;height:40px;border-radius:12px;object-fit:cover}
     .langToggle button{
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      border-radius: 999px;
-      padding: 8px 10px;
-      font-size: 12px;
-      cursor:pointer;
-      transition: transform .15s ease, opacity .15s ease;
+      border:none;background:rgba(255,255,255,.08);
+      color:var(--text);border-radius:999px;
+      padding:6px 10px;font-size:12px;cursor:pointer
     }
-    .langToggle button.active{
-      background: rgba(46,204,113,.16);
-      border-color: rgba(46,204,113,.35);
-    }
-    .langToggle button:hover{ transform: translateY(-1px); opacity: .95; }
+    .langToggle .active{background:rgba(46,204,113,.3)}
 
-    h1{
-      margin: 8px 0 6px;
-      font-size: 28px;
-      letter-spacing: .2px;
-    }
-    .subtitle{
-      margin: 0 0 14px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.35;
-    }
+    h1{margin:6px 0}
+    .subtitle{color:var(--muted);font-size:14px;margin-bottom:14px}
 
-    .row{ display:flex; gap: 12px; }
-    .field{
-      width: 100%;
-      margin-bottom: 12px;
-    }
-    label{
-      display:block;
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
+    .row{display:flex;gap:12px}
     input{
-      width: 100%;
-      background: var(--glass2);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 12px;
-      padding: 13px 14px;
-      color: var(--text);
-      font-size: 15px;
-      outline: none;
-      transition: border-color .15s ease, transform .12s ease;
-    }
-    input::placeholder{ color: rgba(255,255,255,.55); }
-    input:focus{
-      border-color: rgba(46,204,113,.42);
-      transform: translateY(-1px);
+      width:100%;padding:14px;
+      background:var(--glass2);
+      border:none;border-radius:12px;
+      color:var(--text);margin-bottom:12px
     }
 
-    .checkboxWrap{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      margin: 6px 0 14px;
-    }
-    .chip{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      padding: 10px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-      font-size: 14px;
-      cursor:pointer;
-      user-select:none;
-    }
-    .chip input{ width: 18px; height: 18px; margin:0; }
-
-    .actions{
-      display:flex;
-      gap:10px;
-      margin-top: 10px;
-      flex-wrap:wrap;
-    }
+    .chip{display:flex;align-items:center;gap:6px;font-size:14px}
+    .actions{display:flex;gap:10px;margin-top:10px}
     .btn{
-      flex: 1;
-      min-width: 150px;
-      border: none;
-      border-radius: 14px;
-      padding: 14px 14px;
-      font-size: 16px;
-      font-weight: 700;
-      cursor:pointer;
-      transition: transform .12s ease, opacity .12s ease;
+      flex:1;border:none;border-radius:14px;
+      padding:14px;font-size:16px;font-weight:700;
+      cursor:pointer
     }
-    .btn:active{ transform: scale(.98); }
-    .btnPrimary{ background: var(--accent); color:#081009; }
-    .btnGhost{
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      border: 1px solid rgba(255,255,255,.14);
-      font-weight: 600;
-    }
+    .btnPrimary{background:var(--accent);color:#061006}
+    .btnGhost{background:rgba(255,255,255,.08);color:var(--text)}
 
-    .mini{
-      margin-top: 12px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-    .mini a{
-      color: var(--text);
-      text-decoration: none;
-      border-bottom: 1px dashed rgba(255,255,255,.3);
-    }
+    .mini{margin-top:12px;display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+    .mini a{color:var(--text);cursor:pointer}
+
+    #mobileQRBox{display:none;text-align:center;margin-top:12px}
+    #mobileQRBox img{width:160px;background:#fff;padding:10px;border-radius:14px}
 
     @keyframes pop{
-      from{ opacity:0; transform: translateY(10px) scale(.985); }
-      to{ opacity:1; transform: translateY(0) scale(1); }
+      from{opacity:0;transform:translateY(10px)}
+      to{opacity:1;transform:none}
     }
   </style>
 </head>
 
 <body>
-  <!-- DESKTOP GATE -->
-  <section class="desktopGate" id="desktopGate">
-    <div class="badge" id="gateBadge">Mobile only</div>
-    <h1 id="gateTitle">Откройте с телефона 📱</h1>
-    <p id="gateText">Эта карточка сделана под мобильный экран. Отсканируйте QR-код камерой телефона, чтобы открыть форму и отправить контакты.</p>
 
-    <div class="gateRow">
-      <div class="qrBox">
-        <canvas id="desktopQR"></canvas>
-      </div>
-
-      <div class="hintBox">
-        <p style="margin:0 0 10px; color: var(--muted)" id="gateHint1">
-          Если QR не сканируется, откройте ссылку вручную на телефоне:
-        </p>
-        <p style="margin:0; word-break: break-all;">
-          <a id="gateLink" href="#" style="color: var(--text); text-decoration:none; border-bottom:1px dashed rgba(255,255,255,.3)"></a>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- MOBILE CARD -->
-  <form class="card" id="mobileCard"
-        action="https://formsubmit.co/michaelok929@gmail.com"
-        method="POST">
-
-    <!-- FormSubmit options -->
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_subject" value="New Lead from Digital Card">
-    <input type="hidden" name="_template" value="table">
-    <!-- Redirect after submit -->
-    <input type="hidden" name="_next" value="thankyou.html">
-
-    <div class="topBar">
-      <div class="brand">
-        <!-- LOGO: положи свой logo.png рядом с index.html -->
-        <img src="logo.png" alt="Logo" onerror="this.style.display='none'">
-        <div class="brandTitle">
-          <strong id="brandName">Your Brand</strong>
-          <span id="brandTagline">Digital contact card</span>
-        </div>
-      </div>
-
-      <div class="langToggle" aria-label="Language">
-        <button type="button" id="btnRU" class="active">RU</button>
-        <button type="button" id="btnEN">EN</button>
-      </div>
+<!-- DESKTOP -->
+<section class="desktopGate" id="desktopGate">
+  <h1>Open on your phone 📱</h1>
+  <p class="subtitle">Scan the QR code to open the mobile contact card.</p>
+  <div class="gateRow">
+    <div class="qrBox">
+      <img src="oneix_mobile_qr.png" alt="QR">
     </div>
 
-    <h1 id="title">Добро пожаловать</h1>
-    <p class="subtitle" id="subtitle">Оставьте контакты — и мы свяжемся с вами.</p>
+  </div>
+</section>
 
-    <div class="row">
-      <div class="field">
-        <label id="lblFirst">Имя *</label>
-        <input type="text" name="first_name" id="first_name" placeholder="Например, Георг" required>
-      </div>
+<!-- MOBILE -->
+<form class="card" id="mobileCard"
+      action="https://formsubmit.co/michaelok929@gmail.com"
+      method="POST">
 
-      <div class="field">
-        <label id="lblLast">Фамилия *</label>
-        <input type="text" name="last_name" id="last_name" placeholder="Например, Андреу" required>
-      </div>
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="thankyou.html">
+
+  <div class="topBar">
+    <div class="brand">
+      <img src="logo.png" onerror="this.style.display='none'">
+      <strong id="brandName">Oneix</strong>
     </div>
-
-    <div class="field">
-      <label id="lblEmail">Email *</label>
-      <input type="email" name="email" id="email" placeholder="example@mail.com" required>
+    <div class="langToggle">
+      <button type="button" id="btnEN" class="active">EN</button>
+      <button type="button" id="btnRU">RU</button>
     </div>
+  </div>
 
-    <div class="field">
-      <label id="lblPhone">Телефон</label>
-      <input type="tel" name="phone" id="phone" placeholder="Например, 99123456">
-    </div>
+  <h1 id="title">Welcome</h1>
+  <p class="subtitle" id="subtitle">Leave your contact details.</p>
 
-    <label id="lblInterest" style="margin-top:6px;">Интерес *</label>
-    <div class="checkboxWrap">
-      <label class="chip"><input type="checkbox" name="interest[]" value="Buy"> <span id="optBuy">Купить</span></label>
-      <label class="chip"><input type="checkbox" name="interest[]" value="Sell"> <span id="optSell">Продать</span></label>
-      <label class="chip"><input type="checkbox" name="interest[]" value="Buy & Sell"> <span id="optBoth">Купить & Продать</span></label>
-    </div>
+  <div class="row">
+    <input name="first_name" id="first" placeholder="First name" required>
+    <input name="last_name" id="last" placeholder="Last name" required>
+  </div>
 
-    <div class="actions">
-      <button class="btn btnPrimary" type="submit" id="btnSubmit">Отправить</button>
-      <button class="btn btnGhost" type="button" id="btnVcard">Сохранить контакт</button>
-    </div>
+  <input name="email" type="email" placeholder="Email" required>
+  <input name="phone" type="tel" placeholder="Phone">
 
-    <div class="mini">
-      <span id="miniLeft">Сканируйте QR, чтобы открыть на телефоне</span>
-      <a href="#" id="miniQRLink">QR</a>
-    </div>
-  </form>
+  <label class="chip"><input type="checkbox" name="interest[]" value="Buy"> <span id="buy">Buy</span></label>
+  <label class="chip"><input type="checkbox" name="interest[]" value="Sell"> <span id="sell">Sell</span></label>
 
-  <script>
-    // ====== CONTACT DATA for vCard (edit these) ======
-    const CONTACT = {
-      firstName: "Your",
-      lastName: "Name",
-      org: "Your Company",
-      title: "Your Title",
-      phone: "+35700000000",
-      email: "your@email.com",
-      website: "",   // e.g. https://example.com
-      note: "Saved from digital card"
-    };
+  <div class="actions">
+    <button class="btn btnPrimary" id="submitBtn">Submit</button>
+    <button type="button" class="btn btnGhost" id="vcardBtn">Save contact</button>
+  </div>
 
-    // ====== Device gate: show desktop vs mobile ======
-    const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
-    const desktopGate = document.getElementById("desktopGate");
-    const mobileCard  = document.getElementById("mobileCard");
+  <div class="mini">
+    <span id="qrText">Show QR</span>
+    <a id="miniQRLink">QR</a>
+  </div>
 
-    const pageUrl = window.location.href.split('#')[0];
+  <div id="mobileQRBox">
+    <img src="oneix_mobile_qr.png" alt="QR">
+  </div>
+</form>
 
-    function renderQR(canvasId, url){
-      const canvas = document.getElementById(canvasId);
-      if (!canvas) return;
-      QRCode.toCanvas(canvas, url, { width: 220, margin: 2 }, function (error) {
-        if (error) console.error(error);
-      });
-    }
+<script>
+  /* DEVICE */
+  const isDesktop = window.matchMedia("(pointer:fine)").matches && window.innerWidth > 900;
+  if(isDesktop){
+    document.getElementById("desktopGate").style.display="block";
+    document.getElementById("mobileCard").style.display="none";
+  }
 
-    if (isMobile) {
-      mobileCard.style.display = "block";
-    } else {
-      desktopGate.style.display = "block";
-      document.getElementById("gateLink").textContent = pageUrl;
-      document.getElementById("gateLink").href = pageUrl;
-      renderQR("desktopQR", pageUrl);
-    }
+  /* QR toggle */
+  document.getElementById("miniQRLink").onclick = ()=>{
+    const box=document.getElementById("mobileQRBox");
+    box.style.display = box.style.display==="none"?"block":"none";
+  };
 
-    // mini QR link (on mobile open a simple QR popup page)
-    document.getElementById("miniQRLink").addEventListener("click", (e) => {
-      e.preventDefault();
-      alert("Откройте эту страницу на ПК — там будет QR. Или просто поделитесь ссылкой: " + pageUrl);
-    });
+  /* LANG */
+  const T={
+    en:{title:"Welcome",subtitle:"Leave your contact details.",buy:"Buy",sell:"Sell"},
+    ru:{title:"Добро пожаловать",subtitle:"Оставьте ваши контакты.",buy:"Купить",sell:"Продать"}
+  };
+  function setLang(l){
+    title.innerText=T[l].title;
+    subtitle.innerText=T[l].subtitle;
+    buy.innerText=T[l].buy;
+    sell.innerText=T[l].sell;
+    btnEN.classList.toggle("active",l==="en");
+    btnRU.classList.toggle("active",l==="ru");
+  }
+  btnEN.onclick=()=>setLang("en");
+  btnRU.onclick=()=>setLang("ru");
 
-    // ====== RU/EN i18n ======
-    const STR = {
-      ru: {
-        brandName: "Your Brand",
-        brandTagline: "Цифровая визитка",
-        title: "Добро пожаловать",
-        subtitle: "Оставьте контакты — и мы свяжемся с вами.",
-        lblFirst: "Имя *",
-        lblLast: "Фамилия *",
-        lblEmail: "Email *",
-        lblPhone: "Телефон",
-        lblInterest: "Интерес *",
-        optBuy: "Купить",
-        optSell: "Продать",
-        optBoth: "Купить & Продать",
-        btnSubmit: "Отправить",
-        btnVcard: "Сохранить контакт",
-        phFirst: "Например, Георг",
-        phLast: "Например, Андреу",
-        phPhone: "Например, 99123456",
-        miniLeft: "Сканируйте QR, чтобы открыть на телефоне",
-        gateBadge: "Только для телефона",
-        gateTitle: "Откройте с телефона 📱",
-        gateText: "Эта карточка сделана под мобильный экран. Отсканируйте QR-код камерой телефона, чтобы открыть форму и отправить контакты.",
-        gateHint1: "Если QR не сканируется, откройте ссылку вручную на телефоне:"
-      },
-      en: {
-        brandName: "Your Brand",
-        brandTagline: "Digital contact card",
-        title: "Welcome",
-        subtitle: "Leave your details and we will contact you.",
-        lblFirst: "First name *",
-        lblLast: "Last name *",
-        lblEmail: "Email *",
-        lblPhone: "Phone",
-        lblInterest: "I am interested to *",
-        optBuy: "Buy",
-        optSell: "Sell",
-        optBoth: "Buy & Sell",
-        btnSubmit: "Submit",
-        btnVcard: "Save contact",
-        phFirst: "e.g., George",
-        phLast: "e.g., Antreou",
-        phPhone: "e.g., 99123456",
-        miniLeft: "Scan QR to open on mobile",
-        gateBadge: "Mobile only",
-        gateTitle: "Open on your phone 📱",
-        gateText: "This card is designed for mobile screens. Scan the QR code with your phone camera to open the form and send your details.",
-        gateHint1: "If QR doesn’t scan, open this link on your phone:"
-      }
-    };
+  /* vCard */
+  vcardBtn.onclick=()=>{
+    const v=`BEGIN:VCARD
+VERSION:3.0
+FN:Oneix
+EMAIL:michaelok929@gmail.com
+URL:https://www.oneix.ltd
+END:VCARD`;
+    const b=new Blob([v],{type:"text/vcard"});
+    const a=document.createElement("a");
+    a.href=URL.createObjectURL(b);
+    a.download="oneix.vcf";
+    a.click();
+  };
+</script>
 
-    const els = {
-      brandName: document.getElementById("brandName"),
-      brandTagline: document.getElementById("brandTagline"),
-      title: document.getElementById("title"),
-      subtitle: document.getElementById("subtitle"),
-      lblFirst: document.getElementById("lblFirst"),
-      lblLast: document.getElementById("lblLast"),
-      lblEmail: document.getElementById("lblEmail"),
-      lblPhone: document.getElementById("lblPhone"),
-      lblInterest: document.getElementById("lblInterest"),
-      optBuy: document.getElementById("optBuy"),
-      optSell: document.getElementById("optSell"),
-      optBoth: document.getElementById("optBoth"),
-      btnSubmit: document.getElementById("btnSubmit"),
-      btnVcard: document.getElementById("btnVcard"),
-      miniLeft: document.getElementById("miniLeft"),
-      gateBadge: document.getElementById("gateBadge"),
-      gateTitle: document.getElementById("gateTitle"),
-      gateText: document.getElementById("gateText"),
-      gateHint1: document.getElementById("gateHint1"),
-      first: document.getElementById("first_name"),
-      last: document.getElementById("last_name"),
-      phone: document.getElementById("phone"),
-    };
-
-    function setLang(lang){
-      localStorage.setItem("lang", lang);
-      document.getElementById("btnRU").classList.toggle("active", lang === "ru");
-      document.getElementById("btnEN").classList.toggle("active", lang === "en");
-
-      const t = STR[lang];
-
-      Object.keys(t).forEach(k => {
-        if (els[k]) els[k].textContent = t[k];
-      });
-
-      // placeholders
-      els.first.placeholder = t.phFirst;
-      els.last.placeholder  = t.phLast;
-      els.phone.placeholder = t.phPhone;
-    }
-
-    document.getElementById("btnRU").addEventListener("click", () => setLang("ru"));
-    document.getElementById("btnEN").addEventListener("click", () => setLang("en"));
-
-    setLang(localStorage.getItem("lang") || "ru");
-
-    // ====== vCard download (no backend) ======
-    function makeVCard(c){
-      // Basic vCard 3.0
-      const lines = [
-        "BEGIN:VCARD",
-        "VERSION:3.0",
-        `N:${c.lastName};${c.firstName};;;`,
-        `FN:${c.firstName} ${c.lastName}`,
-        c.org ? `ORG:${c.org}` : "",
-        c.title ? `TITLE:${c.title}` : "",
-        c.phone ? `TEL;TYPE=CELL:${c.phone}` : "",
-        c.email ? `EMAIL;TYPE=INTERNET:${c.email}` : "",
-        c.website ? `URL:${c.website}` : "",
-        c.note ? `NOTE:${c.note}` : "",
-        "END:VCARD"
-      ].filter(Boolean);
-
-      return lines.join("\n");
-    }
-
-    document.getElementById("btnVcard").addEventListener("click", () => {
-      const vcf = makeVCard(CONTACT);
-      const blob = new Blob([vcf], { type: "text/vcard;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
-
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `${CONTACT.firstName}_${CONTACT.lastName}.vcf`;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-
-      setTimeout(() => URL.revokeObjectURL(url), 1500);
-    });
-  </script>
 </body>
 </html>
