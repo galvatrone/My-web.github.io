@@ -81,7 +81,8 @@
       color:var(--text);margin-bottom:12px
     }
 
-    .chip{display:flex;align-items:center;gap:6px;font-size:14px}
+    .chips{display:flex;gap:10px;justify-content:center;margin-top:4px}
+    .chip{display:flex;align-items:center;gap:6px;font-size:14px;padding:8px 12px;border-radius:999px;background:var(--glass2)}
     .actions{display:flex;gap:10px;margin-top:10px}
     .btn{
       flex:1;border:none;border-radius:14px;
@@ -148,8 +149,10 @@
   <input name="email" type="email" placeholder="Email" required>
   <input name="phone" type="tel" placeholder="Phone">
 
-  <label class="chip"><input type="checkbox" name="interest[]" value="Buy"> <span id="buy">Buy</span></label>
-  <label class="chip"><input type="checkbox" name="interest[]" value="Sell"> <span id="sell">Sell</span></label>
+  <div class="chips">
+    <label class="chip"><input type="checkbox" name="interest[]" value="Buy"> <span id="buy">Buy</span></label>
+    <label class="chip"><input type="checkbox" name="interest[]" value="Sell"> <span id="sell">Sell</span></label>
+  </div>
 
   <div class="actions">
     <button type="submit" class="btn btnPrimary" id="submitBtn">Submit</button>
