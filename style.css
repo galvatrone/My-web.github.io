@@ -595,8 +595,8 @@ section#home h2 {
 
 /* ========== PORTFOLIO ========== */
 .portfolio-section {
-  padding: 8rem 0;
- 
+  /* уменьшил вертикальные отступы и добавил горизонтальный padding по странице */
+  padding: 4rem var(--page-padding);
   color: white;
 }
 
@@ -675,14 +675,22 @@ section#home h2 {
 
 .project-grid, .certificate-grid, .tech-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* автоматическая адаптация */
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  grid-template-columns: repeat(3, minmax(220px, 1fr)); /* гибкая сетка 3 столбца */
+  grid-auto-rows: auto;
+  justify-content: center;
   gap: 2rem;
-  padding: 2rem 4rem;
-  max-width: none;
+  /* Меньше внутренних отступов, чтобы занять больше ширины */
+  padding: 1rem 12px;
+  max-width: none; /* позволяем сетке растягиваться */
   margin: 0 auto;
-  
+}
+
+/* Меньше колонок на узких экранах */
+@media (max-width: 1024px) {
+  .project-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .project-grid { grid-template-columns: 1fr; }
 }
 
 /* Увеличим карточки проектов */
@@ -694,8 +702,11 @@ section#home h2 {
   text-align: center;
   box-shadow: 0 0 10px #00d0ff33;
   transition: transform 0.3s ease;
+  min-height: 420px; /* ← вот эта строка */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* чтобы кнопка "View Project" прижалась вниз */
 }
-
 .project-card:hover {
   transform: scale(1.05);
 }
@@ -703,9 +714,10 @@ section#home h2 {
 .project-card img {
   width: 100%;
   border-radius: 8px;
-  height: 180px;
+  height: 220px; /* было 180px — немного увеличили */
   object-fit: cover;
 }
+
 
 .project-card h3 {
   margin: 0.75rem 0 0.3rem;
@@ -719,51 +731,149 @@ section#home h2 {
   margin-bottom: 0.5rem;
 }
 
-.project-card a {
-  color: #00d0ff;
-  text-decoration: underline;
-  font-weight: 600;
+.project-card .view-project {
   display: inline-block;
+  margin-top: 8px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: rgba(0, 208, 255, 0.12);
+  color: var(--accent-color);
+  border: 1px solid rgba(0,208,255,0.15);
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.project-card .view-project:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,208,255,0.12);
+}
+
+/* Project detail overlay */
+.project-detail {
+  position: fixed;
+  inset: 0;
+  background: rgba(5,8,12,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 40px 20px;
+}
+.project-detail.active {
+  display: flex;
+  animation: fadeInUp 260ms ease-out;
+}
+.detail-inner {
+  width: 100%;
+  max-width: 1100px;
+  background: #070707;
+  border-radius: 12px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+.detail-close {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  background: transparent;
+  color: #fff;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 10;
+}
+.detail-left { padding: 18px; display:flex; align-items:center; justify-content:center; }
+.detail-right { padding: 28px; color: #eee; }
+.detail-title { margin: 0 0 10px; font-size: 1.6rem; color: var(--accent-color); }
+.detail-desc { color: #d7d7d7; line-height:1.5; }
+.detail-demo { margin-top: 18px; display: inline-block; }
+
+/* Slideshow */
+.slideshow { position: relative; width: 100%; height: 100%; display:flex; align-items:center; justify-content:center; }
+.slides { width: 100%; height: 100%; display:flex; align-items:center; justify-content:center; overflow: hidden; }
+.slides img, .slides video { width: 100%; height: auto; max-height: 70vh; object-fit: contain; border-radius: 6px; }
+
+.project-grid.dimmed { filter: blur(6px) saturate(0.6); opacity: 0.25; pointer-events: none; }
+.detail-media { display: block; max-width: 100%; }
+.slide-prev, .slide-next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: #fff; border: none; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; font-size: 26px; }
+.slide-prev { left: 10px; }
+.slide-next { right: 10px; }
+
+@media (max-width: 900px) {
+  .detail-inner { grid-template-columns: 1fr; }
+  .detail-right { order: 2; }
+  .detail-left { order: 1; }
 }
 
 /* Карточки сертификатов чуть меньше, но тоже крупные */
+
+
 .certificate-card {
   background: #111;
-  padding: 1rem;
-  border-radius: 8px;
-  width: 100%;
-  height: 300px;
+  border-radius: 14px;
+  box-shadow: 0 0 12px #00d0ff33;
+  overflow: hidden;
   text-align: center;
-  box-shadow: 0 0 8px #00d0ff33;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 420px; /* увеличенная высота */
+  cursor: pointer;
 }
 
 .certificate-card:hover {
   transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0, 255, 247, 0.25);
 }
 
 .certificate-card img {
   width: 100%;
-  border-radius: 8px;
-  height: 140px;
+  height: 85%; /* почти вся карточка — фото */
   object-fit: cover;
+  border-bottom: 2px solid rgba(0,255,247,0.15);
 }
 
+
 .certificate-card p {
-  color: white;
-  margin-top: 0.6rem;
+  height: 15%;
+  margin: 0;
+  padding: 8px 10px;
+  background: rgba(255,255,255,0.05);
+  color: #fff;
   font-weight: 600;
+  font-size: 1rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
+@media (max-width: 768px) {
+  .certificate-card {
+    height: 340px;
+  }
+  .certificate-card img {
+    height: 80%;
+  }
+}
+
+
 
 /* Tech Stack - адаптивный grid, карточки крупные иконки */
 .tech-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 2rem;
-  max-width: 700px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* автоадаптив */
+  gap: 1.5rem; /* уменьшил расстояние между карточками */
+  width: 100%;
+  max-width: 1100px; /* немного шире */
   margin: 0 auto;
+  padding: 1rem 1rem; /* уменьшил внутренние отступы */
   justify-items: center;
+  align-items: stretch;
 }
+
 
 .tech-card {
   background: #111;
@@ -806,34 +916,135 @@ section#home h2 {
   color: #888;
   margin-top: 0.15rem;
 }
+@media (max-width: 600px) {
+  .tech-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+  }
 
+  .tech-card {
+    min-height: 140px;
+    padding: 0.8rem;
+  }
 
+  .tech-card img {
+    width: 52px;
+    height: 52px;
+  }
+
+  .tech-card p {
+    font-size: 0.85rem;
+  }
+}
 /* ========== CONTACT SECTION ========== */
 section#contact {
-  padding: 80px var(--page-padding);
-  /* background-color: #222; */
-  color: #fff;
+  padding: 8rem var(--page-padding) 6rem; /* красивый отступ сверху и снизу */
+  background: none; /* убрали фон полностью */
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
-section#contact .contact-list {
-  list-style: none;
-  padding: 0;
-  margin-top: 20px;
-  font-size: 1.1rem;
+/* Заголовок — мягкое неоновое свечение */
+.contact-title {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 900;
+  background: linear-gradient(90deg, #00fff7, #00d0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow:
+    0 0 6px rgba(0,255,247,0.25),
+    0 0 20px rgba(0,255,247,0.15); /* лёгкое мягкое свечение */
+  margin-bottom: 3rem;
+  user-select: none;
 }
 
-section#contact .contact-list li {
-  margin: 10px 0;
+/* Сетка карточек */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  align-items: stretch;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-section#contact .contact-list a {
-  color: #4CAF50;
+/* Карточки */
+.contact-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(0,255,247,0.1);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  transition: all 0.3s ease;
+  color: white;
+  width: 100%;
+  max-width: 320px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 10px rgba(0,255,247,0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 25px rgba(0,255,247,0.2);
+  border-color: rgba(0,255,247,0.3);
+}
+
+/* Иконки */
+.contact-card i {
+  font-size: 2.4rem;
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(0,255,247,0.4);
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover i {
+  transform: scale(1.1);
+  text-shadow: 0 0 18px rgba(0,255,247,0.5);
+}
+
+/* Подписи и ссылки */
+.contact-card p {
+  font-size: 1rem;
+  color: #ccc;
+  margin-bottom: 0.5rem;
+}
+
+.contact-card a {
+  color: var(--accent-color);
+  font-weight: 600;
   text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
-section#contact .contact-list a:hover {
-  text-decoration: underline;
+.contact-card a:hover {
+  color: #00cccc;
+  text-shadow: 0 0 6px rgba(0,255,247,0.4);
+}
+
+/* Низ секции */
+.contact-footer {
+  margin-top: 4rem;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 600px) {
+  section#contact {
+    padding: 5rem 1rem;
+  }
+  .contact-card {
+    padding: 1.5rem 1rem;
+  }
+  .contact-card i {
+    font-size: 2rem;
+  }
 }
 
 
@@ -974,3 +1185,5 @@ footer {
     font-size: 42px;
   }
 }
+
+

@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vector — автономная доставка дронами на Кипре</title>
+<meta name="description" content="Vector — автономные VTOL-дроны для доставки: быстрее, дешевле, экологичнее. Пилотный проект на Кипре.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#f9fafb;              /* мягкий светлый фон */
+  --ink:#0b1721;             /* насыщенный графитовый текст */
+  --muted:#5a6977;
+  --card:#ffffff;
+  --line:#dbe2e8;
+  --green:#087f5b;           /* тёмно-изумрудный */
+  --lime:#00ff9d;            /* неоново-лаймовый акцент */
+  --lime-soft:#b3ffe0;
+  --radius:18px;
+  --shadow:0 8px 28px rgba(0,30,40,.08);
+  --glow:0 0 10px rgba(0,255,150,.35);
+  --maxw:1200px;
+}
+
+/* базовая */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.6 Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+}
+
+/* контейнер */
+.container{width:92%;max-width:var(--maxw);margin:0 auto}
+
+/* HEADER */
+.header{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:20px 0;border-bottom:1px solid var(--line);backdrop-filter:blur(4px);
+}
+.brand{display:flex;align-items:center;gap:12px}
+.badge{
+  width:52px;height:52px;display:grid;place-items:center;border-radius:14px;
+  background:radial-gradient(circle at 30% 30%, var(--lime-soft), var(--green) 80%);
+  color:#032f21;font-weight:800;font-size:22px;box-shadow:inset 0 0 20px rgba(255,255,255,.4), var(--glow);
+  transition:transform .25s ease;
+}
+.badge:hover{transform:rotate(10deg) scale(1.05)}
+.brand h1{margin:0;font-size:20px;font-weight:800;letter-spacing:.5px}
+.brand p{margin:0;color:var(--muted);font-size:13px}
+
+nav{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+a.link{
+  color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600;transition:all .25s ease
+}
+a.link:hover{color:var(--green);background:rgba(0,255,150,.1);box-shadow:inset 0 0 8px rgba(0,255,150,.1)}
+a.cta{
+  background:linear-gradient(90deg, var(--lime), #7affc7); color:#003d2a;
+  padding:10px 16px;border-radius:12px;font-weight:800;box-shadow:0 4px 20px rgba(0,255,150,.25);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+a.cta:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,255,150,.35)}
+
+/* HERO */
+.hero{
+  display:grid;grid-template-columns:1fr 520px;gap:40px;align-items:center;padding:40px 0 24px;
+}
+@media (max-width:980px){ .hero{grid-template-columns:1fr} .hero-art{order:-1} }
+
+.kicker{
+  display:inline-block;font-weight:700;font-size:13px;color:var(--green);
+  background:linear-gradient(90deg, rgba(0,255,153,.12), rgba(10,123,82,.08));
+  padding:6px 10px;border-radius:999px
+}
+.hero h2{
+  margin:.4rem 0 .2rem;font-size:44px;line-height:1.1;
+  background:linear-gradient(90deg, var(--green), var(--lime));
+  -webkit-background-clip:text;color:transparent;font-weight:800
+}
+.hero p.lead{color:var(--muted);font-size:1.1rem;max-width:60ch;margin:.6rem 0 1.4rem}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+
+/* HERO ART */
+.stage{
+  height:360px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,#fff,#f4f9f7);
+  box-shadow:var(--shadow);overflow:hidden;position:relative;transition:box-shadow .4s ease
+}
+.stage:hover{box-shadow:0 10px 45px rgba(0,255,153,.25)}
+.stage::before{
+  content:"";position:absolute;inset:0;background:radial-gradient(600px 200px at 30% 10%, rgba(0,255,153,.12), transparent 60%);
+  pointer-events:none
+}
+.art-wrap{display:grid;place-items:center;height:100%}
+
+/* SECTION */
+.section{padding:60px 0}
+.section h3{font-size:24px;font-weight:700;color:var(--ink);display:inline-block;position:relative;margin:0 0 12px}
+.section h3::after{
+  content:"";position:absolute;bottom:-6px;left:0;width:40%;height:3px;border-radius:2px;
+  background:linear-gradient(90deg, var(--lime), rgba(0,255,153,.2))
+}
+.h-badge{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;background:rgba(10,123,82,.08);color:#0b5f43;font-weight:700;font-size:12px}
+
+/* FEATURES */
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin-top:14px}
+.feature{
+  border:1px solid var(--line);border-radius:14px;background:var(--card);padding:18px;box-shadow:var(--shadow);transition:all .3s ease
+}
+.feature:hover{transform:translateY(-6px);border-color:var(--lime);box-shadow:0 8px 26px rgba(0,255,153,.18)}
+.feature h3{margin:.2rem 0;color:var(--green)}
+.feature p{margin:0;color:var(--muted)}
+
+/* SPLIT */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:980px){ .split{grid-template-columns:1fr} }
+.card{border:1px solid var(--line);border-radius:16px;padding:16px;background:var(--card);box-shadow:var(--shadow)}
+.list{margin:.4rem 0 0;padding-left:18px;color:var(--muted)}
+.list li{margin:.2rem 0}
+
+/* TABLE */
+.table{width:100%;border-collapse:collapse;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.table th,.table td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line)}
+.table thead th{background:linear-gradient(90deg,#f3fffa,#eafff3);color:var(--green);font-weight:700}
+.table tr:last-child td{border-bottom:none}
+.table tr.highlight td{background:linear-gradient(90deg, rgba(0,255,153,.12), rgba(10,123,82,.06))}
+
+/* FORM */
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:680px){ .form-row{grid-template-columns:1fr} }
+label{font-size:13px;color:var(--muted);display:block;margin-bottom:6px}
+input,textarea,select{
+  width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--ink);transition:.3s
+}
+textarea{min-height:120px;resize:vertical}
+input:focus,textarea:focus,select:focus{border-color:var(--lime);box-shadow:0 0 6px rgba(0,255,153,.3)}
+
+/* FAQ */
+.faq details{border:1px solid var(--line);border-radius:10px;padding:12px;background:#fff;box-shadow:var(--shadow);transition:all .25s ease}
+.faq details+details{margin-top:10px}
+.faq details[open]{border-color:var(--lime);box-shadow:0 8px 20px rgba(0,255,153,.12)}
+.faq summary{font-weight:700;color:var(--green);cursor:pointer}
+
+/* FOOTER */
+footer{
+  padding:40px 0;color:var(--muted);font-size:14px;text-align:center;border-top:1px solid var(--line);margin-top:40px;
+  background:linear-gradient(180deg, transparent, #f3fff9)
+}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(8px);transition:all .6s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* Тёмная тема */
+.theme-btn{
+  position:fixed;right:18px;bottom:18px;z-index:50;
+  background:var(--card);border:1px solid var(--line);border-radius:999px;padding:10px 12px;
+  font-size:18px;cursor:pointer;color:var(--muted);box-shadow:var(--shadow)
+}
+.theme-btn:hover{color:var(--green);transform:translateY(-1px)}
+
+body.dark{
+  --bg:#0b0f12; --ink:#f0f4f5; --muted:#a3b3b7; --card:#121a1c; --line:#1e2a2c;
+  --green:#00e18a; --lime:#33ffb8; --lime-soft:#004d3b;
+  background:var(--bg); color:var(--ink);
+}
+body.dark a.link:hover{background:rgba(0,255,180,.15)}
+body.dark .card{background:var(--card);box-shadow:0 4px 18px rgba(0,255,180,.05)}
+body.dark .table thead th{background:linear-gradient(90deg,#002f26,#004d3b);color:var(--lime)}
+body.dark footer{background:linear-gradient(180deg, transparent, #001d17);color:#7ecfa7}
+body.dark .theme-btn{color:var(--lime)}
+/* фиксы тёмной */
+body.dark .faq details{background:var(--card);border-color:var(--line);color:var(--ink)}
+body.dark .faq p{color:var(--muted)}
+body.dark input, body.dark textarea, body.dark select{background:var(--card);border-color:var(--line);color:var(--ink)}
+body.dark input::placeholder, body.dark textarea::placeholder{color:#7da99a}
+body.dark label{color:var(--muted)}
+body.dark .cta{background:linear-gradient(90deg,var(--lime),#44ffcc);color:#003321;box-shadow:0 4px 18px rgba(0,255,153,.25)}
+body.dark .cta:hover{box-shadow:0 6px 24px rgba(0,255,153,.35);transform:translateY(-2px)}
+
+/* ===== MOBILE HEADER ===== */
+.burger {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  transition: color .25s ease;
+}
+.burger:hover { color: var(--green); }
+
+@media (max-width: 780px) {
+  .burger { display: block; }
+  .nav-links {
+    position: fixed;
+    top: 0; right: -100%;
+    height: 100vh;
+    width: 70%;
+    max-width: 320px;
+    background: var(--card);
+    box-shadow: -2px 0 20px rgba(0,0,0,.15);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 80px 24px;
+    transition: right .3s ease;
+    z-index: 1000;
+  }
+  .nav-links a {
+    font-size: 18px;
+    padding: 10px 0;
+  }
+  .nav-links.open { right: 0; }
+}
+body.dark .nav-links { background: #111a1b; box-shadow: -2px 0 20px rgba(0,255,153,.05); }
+/* ===== OVERLAY for mobile menu ===== */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1500;
+}
+.menu-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Меню поверх всего */
+.nav-links {
+  z-index: 2001;
+}
+
+/* ===== FIX: контекст контейнера ===== */
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Поднимаем хедер выше всех секций */
+/* закреплённый хедер — с боковыми отступами, чтобы не растягивался на широких экранах */
+header.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--bg);
+  z-index: 4000;
+  border-bottom: 1px solid var(--line);
+
+  /* содержимое выравнивается через вложенный .container */
+  padding: 12px 0;
+}
+
+/* на очень больших экранах делаем симметричные отступы, равные центру контейнера */
+@media (min-width: calc(var(--maxw) + 40px)) {
+  header.header {
+    /* оставляем центрирование через .container (не обязательно), можно сохранить для тонкой настройки */
+  }
+}
+
+/* если вдруг внутри header будет свой .container — ограничим его ширину как у основного контейнера */
+header.header .container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0; /* отступы уже у самого header */
+
+  /* Раскладка: бренд слева, навигация справа — как у остальных секций */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+/* Надёжно подтолкнём навигацию вправо (на больших экранах) */
+header.header .nav-links{
+  margin-left: auto;
+}
+
+body {
+  padding-top: 90px; /* чтобы контент не прятался под шапкой */
+}
+header.header {
+  backdrop-filter: blur(8px);
+}
+
+/* ===== FIX: SVG перекрывает меню на мобилках ===== */
+.nav-links.open {
+  right: 0;
+  z-index: 2000; /* меню всегда поверх */
+}
+
+.hero,
+.stage,
+.art-wrap,
+#drone {
+  position: relative;
+  z-index: 1; /* ниже меню */
+}
+
+body.menu-open {
+  overflow: hidden; /* чтобы не скроллилось под меню */
+}
+/* ===== FIX: бургер и меню поверх SVG ===== */
+.header {
+  position: relative;
+  z-index: 3000; /* всегда поверх контента */
+}
+
+.burger {
+  position: relative;
+  z-index: 3001; /* крестик поверх меню */
+}
+
+.nav-links {
+  z-index: 3000;
+}
+
+.menu-overlay {
+  z-index: 2999;
+}
+.logo-anim {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: transparent; /* чистый фон */
+  box-shadow: 0 0 8px rgba(0,255,150,0.4);
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
+  filter: drop-shadow(0 0 6px rgba(0,255,150,0.4));
+}
+
+.logo-anim:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 18px rgba(0,255,150,0.6);
+  filter: drop-shadow(0 0 10px rgba(0,255,150,0.6));
+}
+
+
+
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="brand">
+        <svg class="logo-anim" width="52" height="52" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg" aria-label="Vector logo">
+          <defs>
+            <linearGradient id="gradV" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#00ff9d"/>
+              <stop offset="100%" stop-color="#087f5b"/>
+            </linearGradient>
+            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="2" result="blur"/>
+              <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+
+          <!-- контур буквы V -->
+          <path d="M10 10 L26 42 L42 10"
+                fill="none" stroke="url(#gradV)" stroke-width="4" stroke-linecap="round"
+                stroke-dasharray="80" stroke-dashoffset="80" filter="url(#glow)">
+            <animate attributeName="stroke-dashoffset" from="80" to="0" dur="1.4s" fill="freeze" />
+            <animate attributeName="stroke-width" values="4;3.6;4" dur="1.8s" repeatCount="indefinite"/>
+          </path>
+
+          <!-- эффект пульсации -->
+          <circle cx="26" cy="26" r="22" fill="none" stroke="#00ff9d" stroke-width="0.6" opacity="0.2">
+            <animate attributeName="r" values="22;25;22" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.2;0.05;0.2" dur="2s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+
+
+        <div>
+          <h1>Vector</h1>
+          <p>Autonomous VTOL delivery — Cyprus</p>
+        </div>
+      </div>
+
+      <!-- Кнопка бургер -->
+      <button class="burger" aria-label="Меню">☰</button>
+
+      <!-- Навигация -->
+      <nav class="nav-links">
+        <a class="link" href="#benefits">Выгоды</a>
+        <a class="link" href="#how">Как работает</a>
+        <a class="link" href="#pilot">Пилот</a>
+        <a class="link" href="#contact">Контакты</a>
+        <a class="cta" href="#contact">Запросить пилот</a>
+      </nav>
+      <div class="menu-overlay"></div>
+
+    </div>
+  </header>
+
+  <!-- Тоггл темы -->
+  <button id="theme-toggle" aria-label="Переключить тему" class="theme-btn">🌙</button>
+
+  <div class="container">
+    <!-- HEADER -->
+    <!-- <header class="header">
+      <div class="brand">
+        <div class="badge" aria-hidden="true">V</div>
+        <div>
+          <h1>Vector</h1>
+          <p>Autonomous VTOL delivery — Cyprus</p>
+        </div>
+      </div>
+      <nav>
+        <a class="link" href="#benefits">Выгоды</a>
+        <a class="link" href="#how">Как работает</a>
+        <a class="link" href="#pilot">Пилот</a>
+        <a class="link" href="#contact">Контакты</a>
+        <a class="cta" href="#contact">Запросить пилот</a>
+      </nav>
+    </header> -->
+
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <span class="kicker">Быстрее • Дешевле • Экологичнее</span>
+        <h2>Автономная доставка дронами для Кипра</h2>
+        <p class="lead">
+          100% электрические VTOL-дроны доставляют за 4–6 минут, работают 24/7 без курьеров и топлива.
+          Себестоимость — <strong>&lt; €1</strong> за заказ. Идеально для Foody и сетей ресторанов.
+        </p>
+        <div class="hero-actions">
+          <a class="cta" href="#contact">Начать пилот</a>
+          <a class="link" href="#pilot">План пилота</a>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <div class="stage">
+          <div class="art-wrap">
+            <!-- SVG: VTOL-дрон с анимацией роторов -->
+            <svg id="drone" viewBox="0 0 520 320" width="100%" role="img" aria-label="Анимированный VTOL-дрон">
+              <defs>
+                <linearGradient id="gBody" x1="0" x2="1">
+                  <stop offset="0" stop-color="#00ff99"/><stop offset="1" stop-color="#0a7b52"/>
+                </linearGradient>
+                <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="6" result="b"/>
+                  <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+
+              <!-- тень -->
+              <ellipse cx="260" cy="260" rx="120" ry="18" fill="rgba(0,0,0,.08)"></ellipse>
+
+              <!-- корпус -->
+              <g transform="translate(160,110)">
+                <rect x="0" y="30" width="200" height="44" rx="22" fill="url(#gBody)" filter="url(#soft)"></rect>
+                <rect x="70" y="10" width="60" height="30" rx="12" fill="#0a7b52" opacity=".9"></rect>
+                <circle cx="100" cy="52" r="8" fill="#fff"></circle>
+              </g>
+
+              <!-- крылья VTOL -->
+              <g fill="#0a7b52">
+                <rect x="100" y="140" width="90" height="10" rx="5" opacity=".9"></rect>
+                <rect x="330" y="140" width="90" height="10" rx="5" opacity=".9"></rect>
+              </g>
+
+              <!-- балка -->
+              <rect x="120" y="150" width="280" height="6" rx="3" fill="#dcefe7"></rect>
+
+              <!-- роторы -->
+              <g class="rotor" transform="translate(120,150)">
+                <circle r="10" fill="#0a7b52"></circle>
+                <ellipse class="blade" rx="28" ry="5" fill="#00ff99" opacity=".7"></ellipse>
+              </g>
+              <g class="rotor" transform="translate(400,150)">
+                <circle r="10" fill="#0a7b52"></circle>
+                <ellipse class="blade" rx="28" ry="5" fill="#00ff99" opacity=".7"></ellipse>
+              </g>
+              <g class="rotor" transform="translate(160,110)">
+                <circle r="9" fill="#0a7b52"></circle>
+                <ellipse class="blade" rx="24" ry="5" fill="#7affc7" opacity=".7"></ellipse>
+              </g>
+              <g class="rotor" transform="translate(360,110)">
+                <circle r="9" fill="#0a7b52"></circle>
+                <ellipse class="blade" rx="24" ry="5" fill="#7affc7" opacity=".7"></ellipse>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section id="benefits" class="section reveal">
+      <h3>Почему Vector <span class="h-badge">Cyprus</span></h3>
+      <div class="features">
+        <div class="feature">
+          <h3>2× быстрее</h3>
+          <p>Средняя доставка 4–6 минут при стабильной скорости и прямых маршрутах.</p>
+        </div>
+        <div class="feature">
+          <h3>&lt; €1 за заказ</h3>
+          <p>Электричество + предиктивное обслуживание + локальный AI — без топлива и курьеров.</p>
+        </div>
+        <div class="feature">
+          <h3>Экологично</h3>
+          <p>Нулевые выхлопы, низкий шум, ночной режим и полёты 24/7.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="section reveal">
+      <h3>Как это работает</h3>
+      <div class="split">
+        <div class="card">
+          <h4>Поток заказа</h4>
+          <ol class="list">
+            <li>Заказ поступает в Vector API (интеграция с Foody/партнёром).</li>
+            <li>Роутер назначает ближайший VTOL-дрон и строит безопасный маршрут.</li>
+            <li>Взлёт, полёт, посадка — подтверждение через QR/код.</li>
+            <li>Возврат на базу или следующий заказ.</li>
+          </ol>
+        </div>
+        <div class="card">
+          <h4>Техпараметры (пилот)</h4>
+          <ul class="list">
+            <li>Платформа: Pixhawk + ArduPilot</li>
+            <li>Полезная нагрузка: до 3 кг</li>
+            <li>Время: 25–30 мин</li>
+            <li>Высота: ≤ 50 м AGL (пилотная зона)</li>
+            <li>Безопасность: RTL, геозона, телеметрия</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PILOT PLAN -->
+    <section id="pilot" class="section reveal">
+      <h3>Пилот: 4 недели</h3>
+      <div class="split">
+        <div class="card">
+          <h4>План</h4>
+          <ul class="list">
+            <li><strong>Неделя 1:</strong> зона, разрешение, подготовка площадки</li>
+            <li><strong>Неделя 2:</strong> калибровка, тестовые миссии</li>
+            <li><strong>Неделя 3:</strong> демонстрация — 5–10 доставок</li>
+            <li><strong>Неделя 4:</strong> отчёт: скорость, себестоимость, SLA</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Цены (пример)</h4>
+          <table class="table" aria-label="Pricing">
+            <thead>
+              <tr><th>Тариф</th><th>Оплата</th><th>Описание</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Pilot</td><td>€20k–€50k</td><td>1–3 дрона, интеграция, обучение</td></tr>
+              <tr class="highlight"><td>Commercial</td><td>€1.5–€2.2 / заказ</td><td>Коммерческие зоны, SLA</td></tr>
+              <tr><td>Lease</td><td>€600–€3,000 / мес</td><td>Лизинг + обслуживание</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq reveal">
+      <h3>FAQ</h3>
+      <details>
+        <summary>Законно ли это?</summary>
+        <p>Да. Пилот проводится в категории Specific по EASA (EU 2019/947), в согласованной зоне, с VLOS и ограничением высоты. Подаём декларацию в DCA Cyprus.</p>
+      </details>
+      <details>
+        <summary>Что нужно от партнёра?</summary>
+        <p>Зона для теста, 5–10 пробных заказов, контакт для интеграции и обратной связи. Капекс с вашей стороны не обязателен на этапе пилота.</p>
+      </details>
+      <details>
+        <summary>А если связь пропадёт?</summary>
+        <p>Дроны оснащены RTL (возврат домой), геозонами и аварийными сценариями. Полёты проходят в безопасном коридоре и в пределах видимости.</p>
+      </details>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section reveal">
+      <h3>Связаться с Vector</h3>
+      <div class="split">
+        <div class="card">
+          <p><strong>Запросить пилотный проект</strong> или задать вопросы — заполните форму, и мы ответим в течение 24 часов.</p>
+          <p class="muted">Email: <strong>michaelok929@gmail.com</strong> • Тел.: <strong>+357 96 147475</strong></p>
+        </div>
+        <form class="card" id="form" onsubmit="event.preventDefault(); sendForm();">
+          <div class="form-row">
+            <div>
+              <label for="company">Компания</label>
+              <input id="company" required placeholder="Foody / Ресторан / Партнёр" />
+            </div>
+            <div>
+              <label for="name">Контакт</label>
+              <input id="name" required placeholder="Имя и фамилия" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label for="email">Email</label>
+              <input id="email" type="email" required placeholder="name@company.com" />
+            </div>
+            <div>
+              <label for="usecase">Сценарий</label>
+              <select id="usecase">
+                <option>Доставка еды</option>
+                <option>Склады / логистика</option>
+                <option>Агро</option>
+                <option>Другое</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="message">Коротко о задаче</label>
+            <textarea id="message" placeholder="Район, объёмы, тайминг пилота"></textarea>
+          </div>
+          <div style="display:flex;gap:12px;align-items:center;justify-content:space-between;margin-top:8px">
+            <button class="cta" id="send-btn" type="submit">Отправить</button>
+            <small id="endpoint" style="color:var(--muted)">POST → <code>/api/submit</code></small>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      © Vector • Autonomous VTOL Delivery • 2025
+    </footer>
+  </div>
+
+<script>
+/* Reveal on scroll */
+(function(){
+  const els = document.querySelectorAll('.reveal');
+  const onScroll = () => {
+    const h = innerHeight;
+    els.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < h - 60) el.classList.add('visible');
+    });
+  };
+  addEventListener('scroll', onScroll, {passive:true});
+  addEventListener('resize', onScroll);
+  onScroll();
+})();
+
+/* Smooth anchors */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const id = a.getAttribute('href');
+    if (id.length>1){
+      e.preventDefault();
+      document.querySelector(id).scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  });
+});
+
+/* Drone rotor animation */
+(function(){
+  const blades = document.querySelectorAll('#drone .blade');
+  let angle = 0;
+  function tick(){
+    angle += 18; // скорость вращения
+    blades.forEach((b,i)=> b.setAttribute('transform', `rotate(${angle + i*20})`));
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+
+/* Fake form sender — поменяй endpoint при наличии backend */
+async function sendForm(){
+  const btn = document.getElementById('send-btn');
+  btn.disabled = true; btn.textContent = 'Отправка...';
+  const payload = {
+    company: document.getElementById('company').value.trim(),
+    name: document.getElementById('name').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    usecase: document.getElementById('usecase').value,
+    message: document.getElementById('message').value.trim(),
+    ts: new Date().toISOString()
+  };
+  const endpoint = document.getElementById('endpoint').textContent.match(/POST → (.+)$/)?.[1] || '/api/submit';
+
+  try{
+    const res = await fetch(endpoint, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(payload)
+    });
+    if(res.ok){
+      alert('Спасибо! Мы свяжемся в течение 24 часов.');
+      document.getElementById('form').reset();
+    } else {
+      alert('Сервер не отвечает. Обнови endpoint или разверни backend.');
+    }
+  }catch(e){
+    console.error(e);
+    alert('Сеть недоступна. Для GitHub Pages укажи внешний endpoint.');
+  }finally{
+    btn.disabled = false; btn.textContent = 'Отправить';
+  }
+}
+
+/* Theme toggle */
+(function(){
+  const btn = document.getElementById('theme-toggle');
+  const stored = localStorage.getItem('theme');
+  if (stored === 'dark') document.body.classList.add('dark');
+  const updateIcon = () => btn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+  updateIcon();
+  btn.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    const mode = document.body.classList.contains('dark') ? 'dark' : 'light';
+    localStorage.setItem('theme', mode);
+    updateIcon();
+  });
+})();
+
+
+const burger = document.querySelector('.burger');
+const nav = document.querySelector('.nav-links');
+const overlay = document.querySelector('.menu-overlay');
+
+function toggleMenu(open) {
+  nav.classList.toggle('open', open);
+  overlay.classList.toggle('show', open);
+  burger.textContent = open ? '✕' : '☰';
+  document.body.classList.toggle('menu-open', open);
+}
+
+// Открытие/закрытие по кнопке
+burger.addEventListener('click', () => toggleMenu(!nav.classList.contains('open')));
+
+// Закрытие при клике на overlay
+overlay.addEventListener('click', () => toggleMenu(false));
+
+// Закрытие при клике на пункт меню
+document.querySelectorAll('.nav-links a').forEach(link =>
+  link.addEventListener('click', () => toggleMenu(false))
+);
+/* Градиент за мышкой на фоне */
+(function() {
+  // Создаём div для градиента
+  const grad = document.createElement('div');
+  grad.style.position = 'fixed';
+  grad.style.pointerEvents = 'none';
+  grad.style.inset = '0';
+  grad.style.zIndex = '0';
+  grad.style.transition = 'opacity .4s';
+  grad.style.opacity = '0.7';
+  grad.style.background = 'radial-gradient(circle at 50% 50%, #00ff9d 0%, #087f5b 60%, transparent 90%)';
+  document.body.appendChild(grad);
+
+  function move(e) {
+    const x = e.clientX / window.innerWidth * 100;
+    const y = e.clientY / window.innerHeight * 100;
+    grad.style.background = `radial-gradient(circle at ${x}% ${y}%, #00ff9d 0%, #087f5b 60%, transparent 90%)`;
+  }
+  window.addEventListener('mousemove', move);
+
+  // Поддержка тёмной темы
+  function updateForTheme() {
+    if (document.body.classList.contains('dark')) {
+      grad.style.background = 'radial-gradient(circle at 50% 50%, #33ffb8 0%, #00e18a 60%, transparent 90%)';
+      grad.style.opacity = '0.22';
+    } else {
+      grad.style.background = 'radial-gradient(circle at 50% 50%, #00ff9d 0%, #087f5b 60%, transparent 90%)';
+      grad.style.opacity = '0.7';
+    }
+  }
+  window.addEventListener('mousemove', move);
+  const observer = new MutationObserver(updateForTheme);
+  observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+  updateForTheme();
+})();
+</script>
+</body>
+</html>
