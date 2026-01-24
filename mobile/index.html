@@ -92,15 +92,23 @@
       color:var(--text);margin-bottom:12px
     }
 
-    .chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+    .chips{
+      display:grid;
+      grid-template-columns: repeat(2, max-content);
+      justify-content:center;
+      gap:8px;
+      margin-top:6px
+    }
     .chip{
       display:flex;align-items:center;gap:6px;
       font-size:13px;padding:8px 12px;border-radius:999px;
       background:var(--glass2);border:none;white-space:nowrap
     }
     .chip span{white-space:nowrap}
-    .chips .chip{flex:0 0 calc(50% - 8px);justify-content:center}
-    .chips .chip:nth-child(3){flex:0 0 60%;justify-content:center}
+    .chips .chip:nth-child(3){
+      grid-column:1 / span 2;
+      justify-self:center
+    }
     .chip input{margin:0}
     .actions{display:flex;gap:10px;margin-top:10px}
     .btn{
