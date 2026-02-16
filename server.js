@@ -70,6 +70,9 @@ app.get("/log", async (req, res) => {
 
   console.log(JSON.stringify(logEntry));
   appendLog(logEntry);
+    console.log(
+    `[${time}] IP=${ip} XFWD=${xfwd} LOCAL=${localIp} UA=${ua}${geoStr}`
+  );
 
   res.status(204).end();
 });
@@ -141,8 +144,7 @@ app.post("/stats", (req, res) => {
   }
 
   const stats = computeStats(entries);
-  const last = entries.slice(-100).reverse(); // ← ЭТА СТРОКА ОБЯЗАТЕЛЬНО НУЖНА
-  
+  const last = entries.slice(-100).reverse(); // последние 100 записей
 
   const html = `
 <!DOCTYPE html>
@@ -154,57 +156,61 @@ app.post("/stats", (req, res) => {
     body { font-family: sans-serif; padding: 16px; background: #111; color: #eee; }
     h1, h2 { margin-bottom: 8px; }
     table { border-collapse: collapse; margin-bottom: 16px; }
-    th, td { border: 1px solid #555; padding: 4px 8px; }
+    th, td { border: 1px solid #555; padding: 4px 8px; font-size: 12px; }
   </style>
 </head>
 <body>
   <h1>Статистика</h1>
   <p>Всего заходов: ${stats.total}</p>
 
-  <h2>По IP</h2>
-<table>
-  <tr>
-    <th>Время</th>
-    <th>IP</th>
-    <th>LOCAL</th>
-    <th>Страна</th>
-    <th>Город</th>
-    <th>UA</th>
-    <th>Хитов</th>
-  </tr>
-   ${last
-    .map(
-      (e) => `<tr>
-        <td>${e.time}</td>
-        <td>${e.ip}</td>
-        <td>${e.localIp || ""}</td>
-        <td>${e.geo?.country || ""}</td>
-        <td>${e.geo?.city || ""}</td>
-        <td>${e.ua}</td>
-        td>${count}</td>
-      </tr>`
-    )
-    .join("")}
-</table>
+  <h2>По IP (агрегировано)</h2>
+  <table>
+    <tr><th>IP</th><th>Хитов</th></tr>
+    ${Object.entries(stats.byIp)
+      .map(([ip, count]) => `<tr><td>${ip}</td><td>${count}</td></tr>`)
+      .join("")}
+  </table>
 
-  <h2>По странам</h2>
+  <h2>По странам (агрегировано)</h2>
   <table>
     <tr><th>Страна</th><th>Хитов</th></tr>
     ${Object.entries(stats.byCountry)
       .map(([country, count]) => `<tr><td>${country}</td><td>${count}</td></tr>`)
       .join("")}
   </table>
+
+  <h2>Последние заходы</h2>
+  <table>
+    <tr>
+      <th>Время</th>
+      <th>IP</th>
+      <th>LOCAL</th>
+      <th>Страна</th>
+      <th>Город</th>
+      <th>UA</th>
+    </tr>
+    ${last
+      .map(
+        (e) => `<tr>
+          <td>${e.time}</td>
+          <td>${e.ip}</td>
+          <td>${e.localIp || ""}</td>
+          <td>${e.geo?.country || ""}</td>
+          <td>${e.geo?.city || ""}</td>
+          <td>${e.ua}</td>
+        </tr>`
+      )
+      .join("")}
+  </table>
 </body>
 </html>
 `;
-
-
-
 
   res.setHeader("Content-Type", "text/html; charset=utf-8");
   res.send(html);
 });
 
 app.listen(port, () => {
-  console.log(`IP logger listening on port ${port}`);
+console.log(`IP logger listening on port ${port}`);
 });
+
