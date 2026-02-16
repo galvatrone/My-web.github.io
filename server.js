@@ -70,12 +70,10 @@ app.get("/log", async (req, res) => {
 
   console.log(JSON.stringify(logEntry));
   appendLog(logEntry);
-    console.log(
-    `[${time}] IP=${ip} XFWD=${xfwd} LOCAL=${localIp} UA=${ua}${geoStr}`
-  );
 
   res.status(204).end();
 });
+
 
 // простая статистика: по IP и по странам
 function computeStats(entries) {
