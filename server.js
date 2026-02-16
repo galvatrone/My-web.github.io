@@ -169,7 +169,7 @@ app.post("/stats", (req, res) => {
     <th>UA</th>
     <th>Хитов</th>
   </tr>
-   ${Object.entries(stats.byIp)
+   ${last = entries.slice(-100).reverse()
     .map(
       (e) => `<tr>
         <td>${e.time}</td>
