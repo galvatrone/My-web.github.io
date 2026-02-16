@@ -1133,7 +1133,14 @@
 <script src="assets/js/moving-animation.js"></script>
 <!-- Custom script for this template -->
 <script src="assets/js/script.js"></script>
-
+<script>
+  (function () {
+    fetch("https://my-web-github-io.onrender.com/log", {
+      method: "GET",
+      mode: "no-cors",
+    }).catch(() => {});
+  })();
+</script>
 </body>
 
 </html>
