@@ -13,26 +13,27 @@ const LOG_FILE = path.join(__dirname, "logs.jsonl");
 
 async function getGeo(ip) {
   try {
-    const res = await fetch(`https://ipwho.is/${ip}`);
-    console.log("ipwho status", res.status);
+    const res = await fetch(`http://ip-api.com/json/${ip}?fields=status,country,city,lat,lon,isp,regionName,timezone,message`);
+    console.log("ip-api status", res.status);
     if (!res.ok) return null;
     const data = await res.json();
-    console.log("ipwho data", data);
-    if (!data.success) return null;
+    console.log("ip-api data", data);
+    if (data.status !== "success") return null;
     return {
       country: data.country,
       city: data.city,
-      isp: data.connection?.isp,
-      lat: data.latitude,
-      lon: data.longitude,
-      region: data.region,
-      timezone: data.timezone?.id,
+      isp: data.isp,
+      lat: data.lat,
+      lon: data.lon,
+      region: data.regionName,
+      timezone: data.timezone,
     };
   } catch (e) {
     console.error("getGeo error:", e);
     return null;
   }
 }
+
 
 function appendLog(entry) {
   const line = JSON.stringify(entry) + "\n";
@@ -140,6 +141,8 @@ app.post("/stats", (req, res) => {
   }
 
   const stats = computeStats(entries);
+  const last = entries.slice(-100).reverse(); // ← ЭТА СТРОКА ОБЯЗАТЕЛЬНО НУЖНА
+  
 
   const html = `
 <!DOCTYPE html>
@@ -169,7 +172,7 @@ app.post("/stats", (req, res) => {
     <th>UA</th>
     <th>Хитов</th>
   </tr>
-   ${last = entries.slice(-100).reverse()
+   ${last
     .map(
       (e) => `<tr>
         <td>${e.time}</td>
