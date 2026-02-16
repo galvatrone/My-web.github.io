@@ -14,8 +14,10 @@ const LOG_FILE = path.join(__dirname, "logs.jsonl");
 async function getGeo(ip) {
   try {
     const res = await fetch(`https://ipwho.is/${ip}`);
+    console.log("ipwho status", res.status);
     if (!res.ok) return null;
     const data = await res.json();
+    console.log("ipwho data", data);
     if (!data.success) return null;
     return {
       country: data.country,
@@ -26,7 +28,8 @@ async function getGeo(ip) {
       region: data.region,
       timezone: data.timezone?.id,
     };
-  } catch {
+  } catch (e) {
+    console.error("getGeo error:", e);
     return null;
   }
 }
@@ -86,10 +89,39 @@ function computeStats(entries) {
   return { byIp, byCountry, total: entries.length };
 }
 
+app.use(express.urlencoded({ extended: false }));
+
 app.get("/stats", (req, res) => {
-  const key = req.query.key;
-  if (key !== STATS_KEY) {
-    return res.status(401).send("Unauthorized");
+  // форма ввода пароля
+  const html = `
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Stats Login</title>
+  <style>
+    body { font-family: sans-serif; padding: 16px; background: #111; color: #eee; }
+    input { padding: 6px 10px; margin-right: 8px; }
+    button { padding: 6px 12px; }
+  </style>
+</head>
+<body>
+  <h1>Вход в статистику</h1>
+  <form method="POST" action="/stats">
+    <input type="password" name="password" placeholder="Пароль" />
+    <button type="submit">Войти</button>
+  </form>
+</body>
+</html>
+`;
+  res.setHeader("Content-Type", "text/html; charset=utf-8");
+  res.send(html);
+});
+
+app.post("/stats", (req, res) => {
+  const pass = req.body.password;
+  if (pass !== STATS_KEY) {
+    return res.status(401).send("Неверный пароль");
   }
 
   let entries = [];
@@ -99,11 +131,7 @@ app.get("/stats", (req, res) => {
       entries = lines
         .filter((l) => l.trim().length > 0)
         .map((l) => {
-          try {
-            return JSON.parse(l);
-          } catch {
-            return null;
-          }
+          try { return JSON.parse(l); } catch { return null; }
         })
         .filter(Boolean);
     }
@@ -113,7 +141,6 @@ app.get("/stats", (req, res) => {
 
   const stats = computeStats(entries);
 
-  // простой HTML
   const html = `
 <!DOCTYPE html>
 <html lang="ru">
@@ -135,10 +162,7 @@ app.get("/stats", (req, res) => {
   <table>
     <tr><th>IP</th><th>Хитов</th></tr>
     ${Object.entries(stats.byIp)
-      .map(
-        ([ip, count]) =>
-          `<tr><td>${ip}</td><td>${count}</td></tr>`
-      )
+      .map(([ip, count]) => `<tr><td>${ip}</td><td>${count}</td></tr>`)
       .join("")}
   </table>
 
@@ -146,15 +170,15 @@ app.get("/stats", (req, res) => {
   <table>
     <tr><th>Страна</th><th>Хитов</th></tr>
     ${Object.entries(stats.byCountry)
-      .map(
-        ([country, count]) =>
-          `<tr><td>${country}</td><td>${count}</td></tr>`
-      )
+      .map(([country, count]) => `<tr><td>${country}</td><td>${count}</td></tr>`)
       .join("")}
   </table>
 </body>
 </html>
 `;
+
+
+
 
   res.setHeader("Content-Type", "text/html; charset=utf-8");
   res.send(html);
