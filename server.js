@@ -31,10 +31,11 @@ app.get("/log", async (req, res) => {
   const geoStr = geo
     ? ` GEO=${geo.country}/${geo.city} ISP=${geo.isp}`
     : "";
-  const localIp = req.query.local_ip;
-    console.log(`[${time}] IP=${ip} XFWD=${xfwd} LOCAL=${localIp} UA=${ua}`);
+
+  const localIp = req.query.local_ip || "";
+
   console.log(
-    `[${time}] IP=${ip} XFWD=${xfwd} UA=${ua}${geoStr}`
+    `[${time}] IP=${ip} XFWD=${xfwd} LOCAL=${localIp} UA=${ua}${geoStr}`
   );
 
   res.status(204).end();
@@ -43,4 +44,3 @@ app.get("/log", async (req, res) => {
 app.listen(port, () => {
   console.log(`IP logger listening on port ${port}`);
 });
-
