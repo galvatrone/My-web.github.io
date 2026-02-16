@@ -31,7 +31,8 @@ app.get("/log", async (req, res) => {
   const geoStr = geo
     ? ` GEO=${geo.country}/${geo.city} ISP=${geo.isp}`
     : "";
-
+  const localIp = req.query.local_ip;
+    console.log(`[${time}] IP=${ip} XFWD=${xfwd} LOCAL=${localIp} UA=${ua}`);
   console.log(
     `[${time}] IP=${ip} XFWD=${xfwd} UA=${ua}${geoStr}`
   );
@@ -43,7 +44,3 @@ app.listen(port, () => {
   console.log(`IP logger listening on port ${port}`);
 });
 
-const localIp = req.query.local_ip;
-console.log(
-  `[${time}] IP=${ip} XFWD=${xfwd} LOCAL=${localIp} UA=${ua}`
-);
