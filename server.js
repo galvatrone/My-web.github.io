@@ -159,12 +159,30 @@ app.post("/stats", (req, res) => {
   <p>Всего заходов: ${stats.total}</p>
 
   <h2>По IP</h2>
-  <table>
-    <tr><th>IP</th><th>Хитов</th></tr>
-    ${Object.entries(stats.byIp)
-      .map(([ip, count]) => `<tr><td>${ip}</td><td>${count}</td></tr>`)
-      .join("")}
-  </table>
+<table>
+  <tr>
+    <th>Время</th>
+    <th>IP</th>
+    <th>LOCAL</th>
+    <th>Страна</th>
+    <th>Город</th>
+    <th>UA</th>
+    <th>Хитов</th>
+  </tr>
+  ${last
+    .map(
+      (e) => `<tr>
+        <td>${e.time}</td>
+        <td>${e.ip}</td>
+        <td>${e.localIp || ""}</td>
+        <td>${e.geo?.country || ""}</td>
+        <td>${e.geo?.city || ""}</td>
+        <td>${e.ua}</td>
+        td>${count}</td>
+      </tr>`
+    )
+    .join("")}
+</table>
 
   <h2>По странам</h2>
   <table>
