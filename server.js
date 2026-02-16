@@ -10,7 +10,7 @@ app.get("/log", (req, res) => {
   const ua = req.headers["user-agent"];
   const time = new Date().toISOString();
 
-  console.log([${time}] IP=${ip} UA=${ua});
+  console.log(`[${time}] IP=${ip} UA=${ua}`);
   res.status(204).end();
 });
 
