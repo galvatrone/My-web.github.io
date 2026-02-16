@@ -1,8 +1,3 @@
-import express from "express";
-
-const app = express();
-const port = process.env.PORT || 3000;
-
 async function getGeo(ip) {
   try {
     const res = await fetch(`https://ipwho.is/${ip}`);
@@ -13,6 +8,8 @@ async function getGeo(ip) {
       country: data.country,
       city: data.city,
       isp: data.connection?.isp,
+      lat: data.latitude,
+      lon: data.longitude,
     };
   } catch {
     return null;
@@ -29,7 +26,7 @@ app.get("/log", async (req, res) => {
 
   const geo = await getGeo(ip);
   const geoStr = geo
-    ? ` GEO=${geo.country}/${geo.city} ISP=${geo.isp}`
+    ? ` GEO=${geo.country}/${geo.city} ISP=${geo.isp} COORD=${geo.lat},${geo.lon}`
     : "";
 
   const localIp = req.query.local_ip || "";
@@ -39,8 +36,4 @@ app.get("/log", async (req, res) => {
   );
 
   res.status(204).end();
-});
-
-app.listen(port, () => {
-  console.log(`IP logger listening on port ${port}`);
 });
