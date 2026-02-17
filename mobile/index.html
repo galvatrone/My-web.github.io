@@ -27,7 +27,7 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:18px;
+      padding:0;
     }
 
     /* DESKTOP GATE */
@@ -51,12 +51,14 @@
 
     /* CARD */
     .card{
-      width:100%;max-width:440px;
+      width:100vw;
+      max-width:none;
+      min-height:100vh;
       background:var(--glass);
-      backdrop-filter:blur(12px);
-      border-radius:var(--radius);
+      backdrop-filter:blur(6px);
+      border-radius:0;
       padding:22px;
-      border:1px solid rgba(255,255,255,.12);
+      border:none;
       animation:pop .3s ease-out both;
     }
 
@@ -124,6 +126,124 @@
 
     #mobileQRBox{display:none;text-align:center;margin-top:12px}
     #mobileQRBox img{width:160px;background:#fff;padding:10px;border-radius:14px}
+
+    .intro{
+      margin-bottom:18px;
+      text-align:left;
+    }
+    .introLogo{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:nowrap;
+      gap:12px;
+      margin:-22px -22px 14px;
+      padding:14px 16px 12px;
+      position:relative;
+      overflow:hidden;
+      background:
+        linear-gradient(165deg, rgba(255,255,255,.14), rgba(255,255,255,.03)),
+        rgba(0,0,0,.28);
+      border-bottom:1px solid rgba(255,255,255,.18);
+      box-shadow: 0 14px 34px rgba(0,0,0,.26);
+      backdrop-filter: blur(5px);
+    }
+    .introLogo::before{
+      content:"";
+      position:absolute;
+      inset:-80px -40px auto;
+      height:160px;
+      background:
+        radial-gradient(220px 120px at 15% 35%, rgba(46,204,113,.22), transparent 65%),
+        radial-gradient(280px 140px at 85% 0%, rgba(0,163,255,.22), transparent 68%);
+      pointer-events:none;
+    }
+    .introLogo > *{
+      position:relative;
+      z-index:1;
+    }
+    .introLogo .logoWrap{
+      width:auto;
+    }
+    .introLogo .logoWrap svg{
+      width:min(190px,52vw);
+    }
+    .introLogo .brand{
+      justify-content:flex-end;
+      font-size:18px;
+      text-align:right;
+      white-space:nowrap;
+    }
+    .introPhotoWrap{
+      margin-top:-22px;
+      margin-left:-22px;
+      margin-right:-22px;
+      overflow:hidden;
+      position:relative;
+    }
+    .introPhoto{
+      width:100%;
+      height:auto;
+      max-height:none;
+      object-fit:contain;
+      display:block;
+      border-radius:0;
+      border:none;
+      clip-path: inset(0 0 180px 0);
+      margin-bottom:-180px;
+      transform:translateY(0);
+      will-change:transform;
+    }
+    .trustBadges{
+      position:absolute;
+      right:12px;
+      bottom:18px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      z-index:2;
+    }
+    .trustBadge{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      padding:7px 10px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.2px;
+      color:rgba(255,255,255,.96);
+      background:rgba(0,0,0,.44);
+      border:1px solid rgba(255,255,255,.28);
+      backdrop-filter: blur(4px);
+    }
+    .trustBadge svg{
+      width:13px;
+      height:13px;
+      flex:0 0 13px;
+    }
+    .introDivider{
+      height:1px;
+      margin:12px 0;
+      background:rgba(255,255,255,.2);
+    }
+    .introTextBox{
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.16);
+      border-radius:12px;
+      padding:12px;
+    }
+    .introText{
+      margin:0;
+      font-size:14px;
+      line-height:1.5;
+      color:var(--text);
+    }
+    .formShell{
+      max-width:440px;
+      margin:260px auto 0;
+      width:100%;
+    }
 
     @keyframes pop{
       from{opacity:0;transform:translateY(10px)}
@@ -425,6 +545,36 @@
   <input type="hidden" name="_captcha" value="false">
   <input type="hidden" name="_next" value="https://www.oneix.ltd/mobile/thankyou.html">
 
+  <div class="intro">
+    <div class="introPhotoWrap">
+      <img class="introPhoto" src="Andreas.jpg" alt="Andreas">
+      <div class="trustBadges" aria-label="Trust badges">
+        <div class="trustBadge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"></path>
+            <path d="M8.5 12.5l2.2 2.2 4.8-4.8"></path>
+          </svg>
+          <span>Verified Agent</span>
+        </div>
+        <div class="trustBadge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 12h5l2 2 3-3 2 2h4"></path>
+            <path d="M7 8h10"></path>
+            <path d="M7 16h10"></path>
+          </svg>
+          <span>Negotiation Expert</span>
+        </div>
+      </div>
+    </div>
+    <div class="introDivider"></div>
+    <div class="introTextBox">
+      <p class="introText">
+        My name is Andreas, and I am a member of the Keller Williams network, a global organization with a strong presence worldwide and more than 250,000 real estate agents globally. I am a real estate professional, fully dedicated to finding solutions and helping my clients achieve the best possible experience when buying or selling their property. Through continuous market trend analysis and a high success rate in negotiations, I am here to help you maximize your goals in the real estate sector. Contact me today for an initial consultation
+      </p>
+    </div>
+  </div>
+
+  <div class="formShell">
   <div class="topBar">
     <div class="logoWrap">
       <svg width="420" height="140" viewBox="0 0 420 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="KW SEVEN logo">
@@ -462,12 +612,27 @@
       .swap  { animation: swap 2.2s ease-in-out infinite; }
       .float { animation: float 2.6s ease-in-out infinite; }
       .fadeIn { opacity: 0; animation: fadeIn .7s .35s ease-out forwards; }
+      .arrowLine{
+        stroke-dasharray: 10 8;
+        stroke-width: 4.2;
+        animation: arrowDash 1.15s linear infinite, arrowGlow 1.8s ease-in-out infinite;
+      }
+      .arrowHead{
+        stroke-width: 4.2;
+        animation: arrowGlow 1.8s ease-in-out infinite;
+      }
+      .buyFx{ transform-origin: 128px 56px; animation: buyFxMotion 2.2s ease-in-out infinite; }
+      .sellFx{ transform-origin: 128px 90px; animation: sellFxMotion 2.6s ease-in-out infinite; }
 
       @keyframes draw { to { stroke-dashoffset: 0; } }
       @keyframes pulse { 0%,100%{ transform: scale(1); opacity:.95 } 50%{ transform: scale(1.05); opacity:1 } }
       @keyframes swap { 0%,100%{ transform: translateX(0) } 50%{ transform: translateX(4px) } }
       @keyframes float { 0%,100%{ transform: translateY(0)} 50%{ transform: translateY(-3px)} }
       @keyframes fadeIn { to { opacity: 1; } }
+      @keyframes arrowDash { to { stroke-dashoffset: -36; } }
+      @keyframes arrowGlow { 0%,100%{ opacity:.78 } 50%{ opacity:1 } }
+      @keyframes buyFxMotion { 0%,100%{ transform: translateX(0) scale(1) } 50%{ transform: translateX(4px) scale(1.045) } }
+      @keyframes sellFxMotion { 0%,100%{ transform: translateY(0) scale(1) } 50%{ transform: translateY(-3px) scale(1.045) } }
 
       /* Text style */
       .kw   { font: 800 46px/1 system-ui, -apple-system, Segoe UI, Roboto, Arial; letter-spacing: .5px; fill: #F2F5F7; }
@@ -489,25 +654,23 @@
       d="M58 82 V108"/>
 
     <!-- Buy arrow (down-right) -->
-    <g class="swap">
-      <path class="stroke thin cap fadeIn"
+    <g class="buyFx">
+      <path class="stroke thin cap fadeIn arrowLine"
         fill="none"
-        d="M110 46 H146 V82"/>
-      <path class="stroke thin cap fadeIn"
+        d="M104 24 H154 V66"/>
+      <path class="stroke thin cap fadeIn arrowHead"
         fill="none"
-        d="M146 82 L140 76 M146 82 L152 76"/>
-      <text x="112" y="40" class="tag fadeIn">BUY</text>
+        d="M154 66 L147 59 M154 66 L161 59"/>
     </g>
 
     <!-- Sell arrow (up-right) -->
-    <g class="float">
-      <path class="stroke thin cap fadeIn"
+    <g class="sellFx">
+      <path class="stroke thin cap fadeIn arrowLine"
         fill="none"
-        d="M110 100 H146 V64"/>
-      <path class="stroke thin cap fadeIn"
+        d="M104 126 H154 V80"/>
+      <path class="stroke thin cap fadeIn arrowHead"
         fill="none"
-        d="M146 64 L140 70 M146 64 L152 70"/>
-      <text x="112" y="116" class="tag fadeIn">SELL</text>
+        d="M154 80 L147 87 M154 80 L161 87"/>
     </g>
 
     <!-- Orb -->
@@ -515,22 +678,22 @@
   </g>
 
   <!-- Wordmark -->
-  <g transform="translate(190,44)">
+  <g transform="translate(190,63)">
     <text class="kw" x="0" y="0">KW</text>
     <text class="seven" x="0" y="44">SEVEN</text>
     <rect x="0" y="56" width="188" height="2" rx="1" fill="url(#g)" opacity=".85"/>
-    <text class="tag" x="0" y="78">BUY • SELL • INVEST</text>
   </g>
 </svg>
     </div>
     <div class="brand">
       <strong id="brandName">Andreas Andreou</strong>
     </div>
-    <div class="langToggle">
-      <button type="button" id="btnEN" class="active">EN</button>
-      <button type="button" id="btnRU">RU</button>
-      <button type="button" id="btnGR">GR</button>
-    </div>
+  </div>
+
+  <div class="langToggle">
+    <button type="button" id="btnEN" class="active">EN</button>
+    <button type="button" id="btnRU">RU</button>
+    <button type="button" id="btnGR">GR</button>
   </div>
 
  
@@ -595,6 +758,8 @@
   <div id="mobileQRBox">
     <img src="oneix_mobile_qr.png" alt="QR">
   </div>
+    </div>
+  </div>
 </form>
 
 <script>
@@ -603,6 +768,37 @@
   if(isDesktop){
     document.getElementById("desktopGate").style.display="block";
     document.getElementById("mobileCard").style.display="none";
+  }
+
+  /* Move and shrink SVG logo above the photo */
+  const mobileCard = document.getElementById("mobileCard");
+  const introBlock = mobileCard?.querySelector(".intro");
+  const topBar = mobileCard?.querySelector(".topBar");
+  const logoWrap = mobileCard?.querySelector(".topBar .logoWrap");
+  const brandBlock = mobileCard?.querySelector(".topBar .brand");
+  if (mobileCard && introBlock && logoWrap) {
+    const introLogo = document.createElement("div");
+    introLogo.className = "introLogo";
+    introLogo.appendChild(logoWrap);
+    if (brandBlock) introLogo.appendChild(brandBlock);
+    mobileCard.insertBefore(introLogo, introBlock);
+    if (topBar) topBar.style.display = "none";
+  }
+
+  /* Gentle photo parallax on mobile */
+  const introPhoto = document.querySelector(".introPhoto");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (introPhoto && !isDesktop && !reduceMotion) {
+    let rafId = null;
+    const updateParallax = () => {
+      const offset = Math.min(window.scrollY * 0.08, 18);
+      introPhoto.style.transform = `translateY(${offset}px)`;
+      rafId = null;
+    };
+    window.addEventListener("scroll", () => {
+      if (rafId === null) rafId = requestAnimationFrame(updateParallax);
+    }, { passive: true });
+    updateParallax();
   }
 
   /* QR toggle */
