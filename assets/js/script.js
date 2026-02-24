@@ -493,7 +493,7 @@
             dots: false,
             arrows: true,
             navText: ['<i class="fi ti-arrow-left"></i>', '<i class="fi ti-arrow-right"></i>'],
-            nav: false,
+            nav: true,
             responsive: {
                 0: {
                     items: 1,

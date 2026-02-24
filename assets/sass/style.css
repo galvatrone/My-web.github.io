@@ -5057,12 +5057,12 @@ img {
 }
 .wpo-project-area .wpo-project-wrap,
 .wpo-project-area-s2 .wpo-project-wrap {
-  padding-bottom: 90px;
+  padding-bottom: 190px;
 }
 @media (max-width: 767px) {
   .wpo-project-area .wpo-project-wrap,
 .wpo-project-area-s2 .wpo-project-wrap {
-    padding-bottom: 60px;
+    padding-bottom: 100px;
   }
 }
 .wpo-project-area .wpo-project-wrap .wpo-project-item .wpo-project-text,
@@ -5114,14 +5114,14 @@ img {
 .wpo-project-area .wpo-project-wrap .owl-nav button.owl-next,
 .wpo-project-area-s2 .wpo-project-wrap .owl-nav button.owl-next {
   left: 51%;
-  bottom: -40px;
+  bottom: -130px;
   transform: translateY(-50%);
 }
 .wpo-project-area .wpo-project-wrap .owl-nav button,
 .wpo-project-area-s2 .wpo-project-wrap .owl-nav button {
   position: absolute;
   left: 46%;
-  bottom: -40px;
+  bottom: -130px;
   transform: translateY(-50%);
   height: 50px;
   width: 50px;
@@ -5134,6 +5134,13 @@ img {
   color: #05c3bc;
   text-decoration: none;
   border-radius: 50%;
+  z-index: 20;
+  pointer-events: auto;
+}
+.wpo-project-area .wpo-project-wrap .owl-nav,
+.wpo-project-area-s2 .wpo-project-wrap .owl-nav {
+  position: relative;
+  z-index: 20;
 }
 .wpo-project-area .wpo-project-wrap .owl-nav button:hover,
 .wpo-project-area-s2 .wpo-project-wrap .owl-nav button:hover {
