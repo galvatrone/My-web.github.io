@@ -6,6 +6,7 @@ import { fileURLToPath } from "url";
 const app = express();
 const port = process.env.PORT || 3000;
 const STATS_KEY = process.env.STATS_KEY || "mysecret"; // задай в Render
+const CONTACT_TO = process.env.CONTACT_TO || "michaelok929@gmail.com";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -92,6 +93,109 @@ function computeStats(entries) {
 }
 
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+async function sendContactEmail(payload) {
+  let nodemailer;
+  try {
+    ({ default: nodemailer } = await import("nodemailer"));
+  } catch (error) {
+    const err = new Error("Email transport is not installed.");
+    err.statusCode = 503;
+    throw err;
+  }
+
+  const host = process.env.SMTP_HOST;
+  const port = Number(process.env.SMTP_PORT || 587);
+  const secure = String(process.env.SMTP_SECURE || "false").toLowerCase() === "true";
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASS;
+  const from = process.env.CONTACT_FROM || user;
+
+  if (!host || !user || !pass || !from) {
+    const err = new Error("SMTP is not configured.");
+    err.statusCode = 503;
+    throw err;
+  }
+
+  const transporter = nodemailer.createTransport({
+    host,
+    port,
+    secure,
+    auth: {
+      user,
+      pass,
+    },
+  });
+
+  const text = [
+    `Name: ${payload.name}`,
+    `Email: ${payload.email}`,
+    `Address: ${payload.address || "Not provided"}`,
+    `Service: ${payload.service || "Not selected"}`,
+    "",
+    "Message:",
+    payload.message,
+  ].join("\n");
+
+  const html = `
+    <h2>New contact form submission</h2>
+    <p><strong>Name:</strong> ${escapeHtml(payload.name)}</p>
+    <p><strong>Email:</strong> ${escapeHtml(payload.email)}</p>
+    <p><strong>Address:</strong> ${escapeHtml(payload.address || "Not provided")}</p>
+    <p><strong>Service:</strong> ${escapeHtml(payload.service || "Not selected")}</p>
+    <p><strong>Message:</strong></p>
+    <p>${escapeHtml(payload.message).replaceAll("\n", "<br>")}</p>
+  `;
+
+  await transporter.sendMail({
+    from,
+    to: CONTACT_TO,
+    replyTo: payload.email,
+    subject: `Website inquiry from ${payload.name}`,
+    text,
+    html,
+  });
+}
+
+app.post("/api/contact", async (req, res) => {
+  const name = String(req.body?.name || "").trim();
+  const email = String(req.body?.email || "").trim();
+  const address = String(req.body?.address || "").trim();
+  const service = String(req.body?.service || "").trim();
+  const message = String(req.body?.message || "").trim();
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!name || !email || !message || !emailPattern.test(email)) {
+    return res.status(400).json({
+      ok: false,
+      message: "Please provide a valid name, email, and message.",
+    });
+  }
+
+  try {
+    await sendContactEmail({ name, email, address, service, message });
+    return res.json({
+      ok: true,
+      message: "Message sent successfully.",
+    });
+  } catch (error) {
+    console.error("contact send error:", error);
+    return res.status(error.statusCode || 500).json({
+      ok: false,
+      message: "Unable to send message right now. Please try again later.",
+    });
+  }
+});
 
 app.get("/stats", (req, res) => {
   // форма ввода пароля
@@ -211,4 +315,3 @@ app.post("/stats", (req, res) => {
 app.listen(port, () => {
 console.log(`IP logger listening on port ${port}`);
 });
-

@@ -29,6 +29,12 @@
     <link href="assets/css/odometer-theme-default.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="assets/sass/style.css" rel="stylesheet">
+    <style>
+        #header.wpo-header-style-1 .wpo-site-header {
+            position: relative;
+            background: #131313;
+        }
+    </style>
     
 </head>
 
@@ -50,7 +56,7 @@
 </div>
         <!-- end preloader -->
         <!-- Start header -->
-        <header id="header" class="wpo-header-style-2">
+        <header id="header" class="wpo-header-style-1">
     <div class="wpo-site-header">
         <nav class="navigation navbar navbar-expand-lg navbar-light">
             <div class="container">
@@ -68,64 +74,29 @@
                     <div class="col-lg-2 col-md-6 col-6">
                         <div class="navbar-header">
                             <a class="navbar-brand site-logo" href="index.html"><img
-                                    src="assets/images/logo.png" alt="">Mihail Charilaou</a>
+                                    src="assets/images/logo.png" alt="">Mike</a>
                         </div>
                     </div>
                     <div class="col-lg-8 col-md-1 col-1">
                         <div id="navbar" class="collapse navbar-collapse navigation-holder">
                             <button class="menu-close"><i class="ti-close"></i></button>
                             <ul class="nav navbar-nav mb-2 mb-lg-0">
-                                <li class="menu-item-has-children">
-                                    <a href="#">Home</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="index.html">Main Home</a></li>
-                                        <li><a href="index-2.html">Home Style 2</a></li>
-                                        <li><a href="index-3.html">Home Style 3</a></li>
-                                    </ul>
+                                <li>
+                                    <a href="#">Home</a>    
                                 </li>
                                 <li>
                                     <a href="about.html">About</a>
                                 </li>
-                                <li class="menu-item-has-children">
+                                <li >
                                     <a href="#">Service</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="service.html">Service</a></li>
-                                        <li><a href="service-single.html">Service Single</a></li>
-                                    </ul>
+                                   
                                 </li>
-                                <li class="menu-item-has-children">
+                                <li >
                                     <a href="#">Portfolio</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="portfolio-grid.html">Portfolio Grid</a></li>
-                                        <li><a href="portfolio-masonary.html">Portfolio Masonary</a></li>
-                                        <li><a href="portfolio.html">Portfolio Slide</a></li>
-                                        <li><a href="portfolio-single.html">Portfolio Single</a></li>
-                                    </ul>
+                                    
                                 </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Blog</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog.html">Blog right sidebar</a></li>
-                                        <li><a href="blog-left-sidebar.html">Blog left sidebar</a></li>
-                                        <li><a href="blog-fullwidth.html">Blog fullwidth</a></li>
-                                        <li class="menu-item-has-children">
-                                            <a href="#">Blog details</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="blog-single.html">Blog details right
-                                                        sidebar</a>
-                                                </li>
-                                                <li><a href="blog-single-left-sidebar.html">Blog details
-                                                        left
-                                                        sidebar</a></li>
-                                                <li><a href="blog-single-fullwidth.html">Blog details
-                                                        fullwidth</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="contact.html">Contact</a>
-                                </li>
+                                
+                               
                             </ul>
 
                         </div><!-- end of nav-collapse -->
@@ -134,8 +105,8 @@
                         <div class="header-right">
                             <div class="header-btn">
                                 <a class="theme-btn" download="Mihail Charilaou CV" href="../path/Michail Charilaou.pdf"
-                                    title="ImageName">
-                                    <img class="hide-img" alt="ImageName" src="../image/mihail_charilaou.jpg">
+                                    title="Mihail Charilaou CV">
+                                    <img class="hide-img" alt="ImageName" src="assets/images/cv.jpg">
                                     Resume
                                 </a>
                             </div>
@@ -147,26 +118,6 @@
     </div>
 </header>
         <!-- end of header -->
-        <!-- start wpo-page-title -->
-        
-        
-<section class="wpo-page-title">
-    <div class="container">
-        <div class="row">
-            <div class="col col-xs-12">
-                <div class="wpo-breadcumb-wrap">
-                    <h2>Contact</h2>
-                    <ol class="wpo-breadcumb-wrap">
-                        <li><a href="index.html"><i class="icon-36"></i> Home</a></li>
-                        <li>Contact</li>
-                    </ol>
-                </div>
-            </div>
-        </div> <!-- end row -->
-    </div> <!-- end container -->
-</section>
-
-        <!-- end page-title -->
         <!-- start wpo-contact-pg-section -->
         <section class="wpo-contact-pg-section section-padding">
             <div class="container">
@@ -223,12 +174,12 @@
                                 content of a page when looking.</p>
                         </div>
                         <div class="wpo-contact-form-area">
-                            <form method="post" class="contact-validation-active" id="contact-form-main">
+                            <form method="post" id="contact-mailto-form" novalidate>
                                 <div>
-                                    <input type="text" class="form-control" name="name" id="name" placeholder="Your Name*">
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="Your Name*" required>
                                 </div>
                                 <div>
-                                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email*">
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email*" required>
                                 </div>
                                 <div>
                                     <input type="text" class="form-control" name="adress" id="adress" placeholder="Adress">
@@ -245,7 +196,7 @@
                                     </select>
                                 </div>
                                 <div class="fullwidth">
-                                    <textarea class="form-control" name="note"  id="note" placeholder="Message..."></textarea>
+                                    <textarea class="form-control" name="note"  id="note" placeholder="Message..." required></textarea>
                                 </div>
                                 <div class="submit-area">
                                     <button type="submit" class="theme-btn-s2">Get in Touch</button>
@@ -254,8 +205,8 @@
                                     </div>
                                 </div>
                                 <div class="clearfix error-handling-messages">
-                                    <div id="success">Thank you</div>
-                                    <div id="error"> Error occurred while sending email. Please try again later. </div>
+                                    <div id="success" style="display: none;">Your message has been sent.</div>
+                                    <div id="error" style="display: none;">Please fill in your name, email, and message before sending.</div>
                                 </div>
                             </form>
                         </div>
@@ -283,7 +234,7 @@
         <section class="wpo-contact-map-section">
             <h2 class="hidden">Contact map</h2>
             <div class="wpo-contact-map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.9147703055!2d-74.11976314309273!3d40.69740344223377!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sbd!4v1547528325671" allowfullscreen></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1641233.940497121!2d32.25666559911999!3d35.126412781001955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14de1767dbe2b32f%3A0x43c4fce8b13c5c9e!2sCyprus!5e0!3m2!1sen!2sus!4v1772323200000" allowfullscreen></iframe>
             </div>
         </section>
         <!-- end wpo-contact-map -->
@@ -314,7 +265,8 @@
         <!-- partners-area-end -->
 
         <!-- start wpo-site-footer -->
-        <footer class="wpo-site-footer-s2">
+        <footer class="wpo-site-footer">
+
     <div class="upper-footer">
         <div class="container">
             <div class="row">
@@ -324,7 +276,8 @@
                             <a class="site-logo" href="index.html"><img src="assets/images/logo.png"
                                     alt="">Mihail Charilaou</a>
                         </div>
-                        <p>Engineer, programmer, and AI enthusiast based in Cyprus. Focused on artificial intelligence, robotics, and autonomous systems.</p>
+                        <p>Engineer, programmer, and AI enthusiast based in Cyprus. Focused on artificial
+                            intelligence, robotics, and autonomous systems.</p>
                         <div class="social-icons">
                             <ul>
                                 <li><a href="https://www.linkedin.com/in/mihail-charilaou-b39586351" target="_blank" rel="noopener"><i class="ti-linkedin"></i></a></li>
@@ -352,7 +305,7 @@
                 <div class="col col-lg-3 col-md-6 col-12">
                     <div class="widget link-widget service-link-widget">
                         <div class="widget-title">
-                            <h3>All Services</h3>
+                            <h3>Tech Stack</h3>
                         </div>
                         <ul>
                             <li><a href="#">Python</a></li>
@@ -371,27 +324,16 @@
                         <p><a href="mailto:michaelok929@gmail.com">michaelok929@gmail.com</a></p>
                         <p><a href="https://t.me/mne_lenii" target="_blank" rel="noopener">@mihail_charilaou</a></p>
                     </div>
-                        <p>Must explain to you how all this mistaken idea pleasure born and give you a complete
-                            account.</p>
-                        <form>
-                            <div class="input-1">
-                                <input type="email" class="form-control" placeholder="Email Address *" required>
-                            </div>
-                            <div class="submit clearfix">
-                                <button type="submit"><i class="ti-email"></i></button>
-                            </div>
-                        </form>
-                    </div>
                 </div>
             </div>
         </div> <!-- end container -->
         <div class="shadow-shape">
             <svg width="1319" height="1567" viewBox="0 0 1319 1567" fill="none">
-                <g filter="url(#filter0_f_39_3832)">
+                <g filter="url(#filter0_f_39_3833)">
                     <circle cx="803" cy="803" r="303" fill="#59C378" fill-opacity="0.5" />
                 </g>
                 <defs>
-                    <filter id="filter0_f_39_3832" x="0" y="0" width="1606" height="1606"
+                    <filter id="filter0_f_39_3833" x="0" y="0" width="1606" height="1606"
                         filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
                         <feFlood flood-opacity="0" result="BackgroundImageFix" />
                         <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
@@ -426,6 +368,90 @@
 <script src="assets/js/moving-animation.js"></script>
 <!-- Custom script for this template -->
 <script src="assets/js/script.js"></script>
+<script>
+    (function () {
+        var form = document.getElementById("contact-mailto-form");
+        if (!form) {
+            return;
+        }
+
+        var successBox = document.getElementById("success");
+        var errorBox = document.getElementById("error");
+        var loader = document.getElementById("loader");
+
+        function setMessage(target, text) {
+            if (target) {
+                target.textContent = text;
+                target.style.display = "block";
+            }
+        }
+
+        function hideMessage(target) {
+            if (target) {
+                target.style.display = "none";
+            }
+        }
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            var name = (form.querySelector("#name").value || "").trim();
+            var email = (form.querySelector("#email").value || "").trim();
+            var address = (form.querySelector("#adress").value || "").trim();
+            var serviceField = form.querySelector("select[name='service']");
+            var service = serviceField ? serviceField.value : "";
+            var note = (form.querySelector("#note").value || "").trim();
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            hideMessage(successBox);
+            hideMessage(errorBox);
+
+            if (!name || !email || !note || !emailPattern.test(email)) {
+                setMessage(errorBox, "Please fill in a valid name, email, and message before sending.");
+                return;
+            }
+
+            if (loader) {
+                loader.style.display = "inline-block";
+            }
+            fetch("/api/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    address: address,
+                    service: service,
+                    message: note
+                })
+            })
+                .then(function (response) {
+                    return response.json().catch(function () {
+                        return { ok: false, message: "Unexpected server response." };
+                    });
+                })
+                .then(function (data) {
+                    if (!data.ok) {
+                        setMessage(errorBox, data.message || "Unable to send message right now. Please try again later.");
+                        return;
+                    }
+
+                    form.reset();
+                    setMessage(successBox, data.message || "Your message has been sent.");
+                })
+                .catch(function () {
+                    setMessage(errorBox, "Unable to send message right now. Please try again later.");
+                })
+                .finally(function () {
+                    if (loader) {
+                        loader.style.display = "none";
+                    }
+                });
+        });
+    })();
+</script>
 
 </body>
 
