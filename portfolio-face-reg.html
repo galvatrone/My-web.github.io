@@ -509,6 +509,7 @@
 <script>
     (function () {
         var form = document.getElementById("project-contact-form");
+        var contactApiUrl = "https://my-web-github-io.onrender.com/api/contact";
         if (!form) {
             return;
         }
@@ -551,7 +552,7 @@
                 loader.style.display = "inline-block";
             }
 
-            fetch("/api/contact", {
+            fetch(contactApiUrl, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -565,8 +566,24 @@
                 })
             })
                 .then(function (response) {
-                    return response.json().catch(function () {
-                        return { ok: false, message: "Unexpected server response." };
+                    return response.text().then(function (text) {
+                        var data;
+
+                        try {
+                            data = text ? JSON.parse(text) : {};
+                        } catch (error) {
+                            data = {
+                                ok: false,
+                                message: response.ok ? "Unexpected server response." : "The contact service returned an invalid response."
+                            };
+                        }
+
+                        if (!response.ok && !data.message) {
+                            data.ok = false;
+                            data.message = "Unable to send message right now. Please try again later.";
+                        }
+
+                        return data;
                     });
                 })
                 .then(function (data) {

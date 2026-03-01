@@ -7,6 +7,14 @@ const app = express();
 const port = process.env.PORT || 3000;
 const STATS_KEY = process.env.STATS_KEY || "mysecret"; // задай в Render
 const CONTACT_TO = process.env.CONTACT_TO || "michaelok929@gmail.com";
+const ALLOWED_ORIGINS = new Set([
+  "https://www.oneix.ltd",
+  "https://oneix.ltd",
+  "http://localhost:3000",
+  "http://127.0.0.1:3000",
+  "http://localhost:5500",
+  "http://127.0.0.1:5500",
+]);
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -94,6 +102,24 @@ function computeStats(entries) {
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+
+  if (origin && ALLOWED_ORIGINS.has(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+    res.setHeader("Vary", "Origin");
+  }
+
+  res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  if (req.method === "OPTIONS") {
+    return res.status(204).end();
+  }
+
+  next();
+});
 
 function escapeHtml(value) {
   return String(value ?? "")
