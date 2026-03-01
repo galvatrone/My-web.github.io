@@ -1,6 +1,6 @@
 body {
     /* Background image in folder */
- background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../image/404/okak.jpg') no-repeat center center fixed;
+ background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../assets/images/404/okak.jpg') no-repeat center center fixed;
   background-size: cover;
   color: #00ffff;
   font-family: 'Arial Black', Arial, sans-serif;
