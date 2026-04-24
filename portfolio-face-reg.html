@@ -162,27 +162,28 @@
                                         <div class="wpo-project-single-title">
                                             <h3>Face Recognition</h3>
                                         </div>
-                                        <p>A Python application for real-time face recognition from a webcam.
-                                            The system uses OpenCV for video capture, drawing bounding boxes, and
-                                            rendering the interface, while the <code>face_recognition</code> library
-                                            powered by dlib handles face detection and computes
+                                        <p>A Python application for real-time face recognition from a webcam, with
+                                            multiple runtime modes for different performance and camera-angle
+                                            scenarios. The system uses OpenCV for video capture, on-screen rendering,
+                                            and image preprocessing, while the <code>face_recognition</code> library
+                                            powered by dlib performs face detection and computes
                                             <code>face encodings</code>.</p>
                                         <p>The project is designed for autonomous operation: new faces automatically
-                                            receive a UUID, are saved as <code>Unknown</code>, get their first photo,
-                                            and store an initial embedding. The system keeps a global event history,
-                                            separate logs for each person, and can accumulate new encodings over time
-                                            to improve recognition stability.</p>
+                                            receive a UUID, are saved as <code>Unknown</code>, get an initial photo,
+                                            and store their first embedding. Over time, the system can append
+                                            additional encodings for the same person to improve recognition stability
+                                            across angle changes, partial misses, and noisy frames.</p>
                                     </div>
                                     <div class="col-lg-5">
                                         <div class="wpo-project-single-content-des-right">
                                             <ul>
                                                 <li>Category :<span>Computer Vision / Python</span></li>
-                                                <li>Stack :<span>Python, OpenCV, face_recognition, dlib, pickle</span></li>
-                                                <li>Mode :<span>Offline / Real-time Webcam</span></li>
-                                                <li>Data Store :<span><code>known_faces.pkl</code> + <code>faces/&lt;user_id&gt;/</code></span></li>
-                                                <li>Identity Model :<span>UUID + Auto-learning Encodings</span></li>
+                                                <li>Stack :<span>Python, OpenCV, face_recognition, dlib, pickle, multiprocessing</span></li>
+                                                <li>Modes :<span>Offline / Real-time Webcam / Batch Photo Import</span></li>
+                                                <li>Data Store :<span><code>known_faces.pkl</code> + <code>faces/&lt;user_id&gt;/</code> + logs/</span></li>
+                                                <li>Identity Model :<span>UUID + auto-growing encodings</span></li>
                                                 <li>Controls :<span>q / w / d</span></li>
-                                                <li>Status :<span>Portfolio Concept / Implementation Ready</span></li>
+                                                <li>Status :<span>Working Prototype / Implementation Ready</span></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -198,21 +199,22 @@
                                         <div class="wpo-project-single-title">
                                             <h3>Core Features</h3>
                                         </div>
-                                        <p>The system is designed as a single file with clear functions, making the
-                                            code easy to move, run, and extend without a complex project structure.</p>
+                                        <p>The project has grown from a base recognizer into a small set of practical
+                                            runtime modes, each focused on a different operating condition while
+                                            keeping the same identity model and storage layout.</p>
                                         <ul>
-                                            <li>Frame capture from the webcam and on-screen rendering via OpenCV.</li>
-                                            <li>Face detection and encoding comparison through <code>face_recognition</code>.</li>
-                                            <li>Automatic creation of a new ID and saving the first face as <code>main.jpg</code>.</li>
-                                            <li>Attempting to restore the same ID by position when the encoding temporarily fails.</li>
-                                            <li>Updating a profile with new encodings when the face matches but the angle is new.</li>
+                                            <li>Base real-time mode for webcam capture, rendering, and identity tracking.</li>
+                                            <li>A multiprocessing variant moves heavy face detection into a separate process to reduce UI lag.</li>
+                                            <li>A ceiling-angle variant is tuned for tilted or top-down cameras with stronger preprocessing.</li>
+                                            <li>Folder-based photo import can build or extend the known face database offline.</li>
+                                            <li>Identity can recover by position during short embedding dropouts, then grow with new encodings.</li>
                                         </ul>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="wpo-project-single-item-quote">
-                                            <p>"The goal of the project is not just to recognize a face in a frame,
-                                                but to maintain a stable identity for the same person across frames,
-                                                even when the model receives noisy or incomplete embeddings."</p>
+                                            <p>"The goal is not only to recognize a face in a frame, but to preserve
+                                                the same identity across noisy frames, missed embeddings, and changing
+                                                camera angles."</p>
                                             <span>Design Note - <span>Identity Persistence</span></span>
                                         </div>
                                     </div>
@@ -222,15 +224,13 @@
                                 <div class="wpo-project-single-title">
                                     <h3>Architecture</h3>
                                 </div>
-                                <p>The known face database is stored in <code>known_faces.pkl</code>: for each UUID,
-                                    it keeps the name, a list of encodings, the first and last seen timestamps, and
-                                    service metadata used for matching. On each frame, the system gets face
-                                    coordinates, computes a face encoding, compares it with existing profiles, and
-                                    selects the best match by distance. If no direct match is found, a proximity check
-                                    against the most recently seen position is used to restore the previous ID during
-                                    short recognition failures. Visibility time is calculated as the interval between
-                                    the first detection of a face in the current presence session and the last frame
-                                    where that face is still visible.</p>
+                                <p><code>known_faces.pkl</code> stores person names and their face encodings. Photos
+                                    are stored in <code>faces/&lt;user_id&gt;/</code>, global events are written to
+                                    <code>log.txt</code>, and each person also has a dedicated log file. Matching is
+                                    driven by face encodings first, with temporary spatial tracks and recent position
+                                    used in process memory to recover identity when embeddings briefly fail. Visibility
+                                    time is calculated at runtime for the current presence session, from the first
+                                    frame where a person appears until that person leaves the visible zone.</p>
                             </div>
                             <div class="wpo-project-single-gallery">
                                 <div class="row mt-4">
@@ -253,11 +253,12 @@
                                             <h3>Implementation Flow</h3>
                                         </div>
                                         <ul>
-                                            <li>Load the <code>known_faces.pkl</code> database at application startup.</li>
-                                            <li>Read frames, detect faces, and compute coordinates and encodings.</li>
-                                            <li>Match a face by embedding first, then by spatial proximity.</li>
-                                            <li>Update the presence timer and render the name with elapsed time on screen.</li>
-                                            <li>Use <code>w</code> to rename an ID and <code>d</code> to delete the record and artifacts.</li>
+                                            <li>Load <code>known_faces.pkl</code> and prepare runtime tracks for the current session.</li>
+                                            <li>Run webcam, low-load, or ceiling-angle mode depending on the scenario.</li>
+                                            <li>Detect faces, compute encodings, and compare them with stored profiles.</li>
+                                            <li>Recover identity by recent position when an otherwise known face is briefly missed.</li>
+                                            <li>Update the visibility timer in memory and render the name with elapsed time on screen.</li>
+                                            <li>Use <code>w</code> to rename an ID and <code>d</code> to delete the record, photos, and logs.</li>
                                         </ul>
                                     </div>
                                     <div class="col-lg-6 list-widget-s">
@@ -265,10 +266,10 @@
                                             <h3>What Is Stored</h3>
                                         </div>
                                         <ul>
-                                            <li><code>known_faces.pkl</code> stores the list of people and their encodings.</li>
+                                            <li><code>known_faces.pkl</code> stores person names and their encoding lists.</li>
                                             <li><code>faces/&lt;user_id&gt;/main.jpg</code> stores the main profile photo.</li>
-                                            <li>Additional face snapshots can be saved inside each user folder.</li>
-                                            <li>A global log records all events, while a separate log is kept for each UUID.</li>
+                                            <li>Additional face snapshots can be kept inside each user folder.</li>
+                                            <li><code>log.txt</code> stores global events, with a dedicated log for each UUID.</li>
                                             <li>Deleting an ID removes the database entry, photos, and related logs.</li>
                                         </ul>
                                     </div>

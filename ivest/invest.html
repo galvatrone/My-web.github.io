@@ -1,238 +1,122 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Vector — Investor Interest</title>
-  <meta name="description" content="Investor interest page (pre-incorporation). Request the deck or join the waitlist." />
+  <title>Vector Autonomous Systems | Reserve Interest</title>
+  <meta
+    name="description"
+    content="Legacy reserve page for Vector Autonomous Systems. Use this page for direct investor contact or go back to the main offering page."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+  />
   <link rel="stylesheet" href="./assets/ivest.css" />
 </head>
-<body class="page-invest">
-  <header class="site-header compact">
-    <div class="wrap nav-row">
-      <a class="brand" href="./index.html">
-        <span class="brand-text">Vector Technologies <span class="brand-sub">(working name)</span></span>
+<body class="reserve-page">
+  <a class="skip-link" href="#main-content">Перейти к содержанию</a>
+
+  <header class="site-header subpage-header">
+    <div class="subpage-shell subpage-header__inner">
+      <a class="brand" href="./index.html" aria-label="Вернуться на главную страницу Vector Autonomous Systems">
+        <span class="brand__mark">V</span>
+        <span class="brand__text">
+          <strong>Vector Autonomous Systems</strong>
+          <span>Reserve / Legacy page</span>
+        </span>
       </a>
-      <div class="nav-cta">
-        <a class="btn ghost" href="./index.html">← Back</a>
-        <a class="btn primary" href="#waitlist">Join waitlist</a>
-      </div>
+      <a class="button button--primary" href="./index.html#reserve-form">К основной форме</a>
     </div>
   </header>
 
-  <main class="wrap">
-    <section class="invest-hero reveal">
-      <div>
-        <div class="status-pill"><span class="status-dot"></span> Pre-incorporation • Investor interest only</div>
-        <h1>Investor interest</h1>
+  <main id="main-content" class="subpage-shell">
+    <div class="reserve-page__layout">
+      <section class="card-page reserve-page__hero reveal" aria-labelledby="legacy-reserve-title">
+        <p class="section-label">LEGACY RESERVE PAGE</p>
+        <h1 id="legacy-reserve-title">Резерв интереса к будущему раунду Vector Autonomous Systems</h1>
         <p>
-          We’re exploring interest from early supporters ahead of incorporation.
-          This page is for <strong>introductions and requests</strong> — not for accepting funds.
+          Основной investor-grade offering page теперь находится на главной странице сайта, а эта страница оставлена как прямой
+          fallback для резервирования интереса. FormSubmit flow сохранён без изменений.
         </p>
-      </div>
-      <div class="hero-card">
-        <h3>What you’ll receive</h3>
-        <ul>
-          <li>One-pager / deck overview</li>
-          <li>Roadmap detail and milestones</li>
-          <li>Pilot scope and timeline</li>
+        <ul class="mini-list">
+          <li>Получение one-pager / deck</li>
+          <li>Апдейты по pilot programs и certification milestones</li>
+          <li>Ранний доступ к будущим offering materials</li>
         </ul>
-        <div class="hint">We respond manually. Expect a short follow-up within a few days.</div>
-      </div>
-    </section>
+      </section>
 
-    <section class="deck-highlights reveal delay-1">
-      <div class="section-head">
-        <h2>Pitch deck highlights</h2>
-        <p>Vector Technologies — Urban VTOL Aerial Logistics Platform (Horizon Europe + U-space pilot aligned).</p>
-      </div>
-      <div class="stack-grid">
-        <div class="stack-card">
-          <div class="chip">Problem</div>
-          <h3>Urban logistics bottleneck</h3>
-          <p>Traffic congestion, rising last‑mile costs, and no room to scale roads.</p>
-        </div>
-        <div class="stack-card">
-          <div class="chip">Solution</div>
-          <h3>VTOL delivery platform</h3>
-          <p>Autonomous VTOL drones, winch-based delivery, battery swap, and fleet coordination.</p>
-        </div>
-        <div class="stack-card">
-          <div class="chip">Technology</div>
-          <h3>U-space native stack</h3>
-          <p>Onboard AI, Remote ID, geo-awareness, and integration with U-space providers.</p>
-        </div>
-        <div class="stack-card">
-          <div class="chip">Economics</div>
-          <h3>Unit economics</h3>
-          <p>50–60 deliveries/day, €1.1–1.6 cost per delivery, €3–5 revenue per delivery.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="deck-highlights reveal delay-1">
-      <div class="stack-grid">
-        <div class="stack-card">
-          <div class="chip">Business model</div>
-          <h3>Drone‑as‑a‑Service</h3>
-          <p>Vector owns and operates the fleet; partners pay per delivery or per zone.</p>
-        </div>
-        <div class="stack-card">
-          <div class="chip">Go‑to‑market</div>
-          <h3>Phased rollout</h3>
-          <p>Horizon-funded pilots → Commercial rollout in Cyprus → EU expansion.</p>
-        </div>
-        <div class="stack-card">
-          <div class="chip">Market</div>
-          <h3>Cyprus → Europe</h3>
-          <p>Compact pilot geography now, multi‑city VTOL networks over 10 years.</p>
-        </div>
-        <div class="stack-card">
-          <div class="chip">Regulation</div>
-          <h3>Compliance-first</h3>
-          <p>EASA Specific/Certified track, SORA, Remote ID, and geo-fencing.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="funding-callout reveal delay-2">
-      <div>
-        <h2>Funding ask</h2>
-        <p>Horizon Europe + U-space pilots aligned.</p>
-      </div>
-      <div class="funding-grid">
-        <div class="metric-card">
-          <div class="label">Phase 1</div>
-          <div class="value">€300k–400k</div>
-        </div>
-        <div class="metric-card">
-          <div class="label">Phase 2</div>
-          <div class="value">€700k–1M</div>
-        </div>
-        <div class="metric-card">
-          <div class="label">Use of funds</div>
-          <div class="value">Prototypes • U‑space • Pilots</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="article reveal delay-1">
-      <div class="section-head">
-        <h2>About the deck</h2>
-        <p>Vector Technologies — Urban VTOL Aerial Logistics Platform (Horizon Europe + U-space pilot aligned).</p>
-      </div>
-      <div class="prose">
-        <p>
-          The deck outlines the problem in urban logistics, the timing advantage created by U-space regulation,
-          and our compliance-first approach to building an aerial logistics layer for cities. We keep sensitive
-          implementation details private while sharing the strategic direction, market scope, and rollout plan.
+      <aside class="detail-card reveal">
+        <p class="section-label">QUICK LINKS</p>
+        <h2>Что дальше</h2>
+        <p class="sticky-card__copy">
+          Для полного storytelling, рынка, safety case и traction вернитесь на основную offering-page.
         </p>
-        <p>
-          If you are an investor, partner, or public-sector stakeholder interested in early-stage collaboration,
-          please request access below.
-        </p>
-      </div>
-    </section>
+        <a class="button button--primary button--full" href="./index.html">Открыть offering page</a>
+      </aside>
+    </div>
 
-    <section class="article reveal delay-1">
-      <div class="section-head">
-        <h2>Funding ask</h2>
-        <p>Horizon Europe + U-space pilots aligned.</p>
-      </div>
-      <div class="prose">
-        <p>
-          Phase 1: €300k–400k to support VTOL prototypes, regulatory groundwork, and pilot readiness.
-          Phase 2: €700k–1M to expand pilot operations and accelerate early deployment.
-        </p>
-      </div>
-    </section>
-
-    <section class="invest-layout">
-      <div class="card" id="deck">
-        <h2>Request investor deck</h2>
-        <p>
-          If you want a one-pager / deck, submit your details and we’ll follow up.
-          Add a short note with what you’re most interested in (logistics, policy, partnerships).
-        </p>
-        <div class="notice">
-          This form uses FormSubmit to send submissions directly to <span class="mono">michaelok929@gmail.com</span>.
-          After sending, the visitor returns to the main page.
-        </div>
+    <section class="section reveal" aria-labelledby="reserve-form-title">
+      <div class="section-heading">
+        <p class="section-label">RESERVE FORM</p>
+        <h2 id="reserve-form-title">Оставьте заявку напрямую</h2>
       </div>
 
-      <div class="card" id="waitlist">
-        <h2>Join investor waitlist</h2>
-
-        <form id="interestForm" action="https://formsubmit.co/michaelok929@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="Investor interest — Vector Technologies" />
+      <div class="reserve-form-card">
+        <form class="reserve-form" action="https://formsubmit.co/michaelok929@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Reserve interest — Vector Autonomous Systems" />
           <input type="hidden" name="_next" value="https://www.oneix.ltd/ivest/" />
           <input type="hidden" name="_captcha" value="false" />
-          <div class="form">
-            <div>
-              <label for="name">Name</label>
-              <input id="name" name="name" autocomplete="name" required placeholder="Your name" />
-            </div>
 
-            <div>
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" autocomplete="email" required placeholder="name@email.com" title="Please enter a valid email address" />
-            </div>
-
-            <div>
-              <label for="country">Country</label>
-              <input id="country" name="country" required placeholder="Cyprus / EU / UK / ..." />
-            </div>
-
-            <div>
-              <label for="type">Investor type</label>
-              <select id="type" name="type" required>
-                <option value="" selected disabled>Choose…</option>
-                <option>Angel</option>
-                <option>VC / Fund</option>
-                <option>Friend & family</option>
-                <option>Strategic / Corporate</option>
-                <option>Other</option>
-              </select>
-            </div>
-
-            <div class="span2">
-              <label for="ticket">Typical ticket size</label>
-              <select id="ticket" name="ticket" required>
-                <option value="" selected disabled>Choose…</option>
-                <option>€1k–€5k</option>
-                <option>€5k–€25k</option>
-                <option>€25k–€100k</option>
-                <option>€100k–€250k</option>
-                <option>€250k+</option>
-              </select>
-            </div>
-
-            <div class="span2">
-              <label for="msg">Message (optional)</label>
-              <textarea id="msg" name="msg" placeholder="What should we send you? Any intro, questions, or focus area."></textarea>
-            </div>
-
-            <div class="span2 form-actions">
-              <button class="btn primary" type="submit">Submit interest</button>
-            </div>
+          <label>
+            <span>Имя</span>
+            <input name="name" autocomplete="name" required placeholder="Ваше имя" />
+          </label>
+          <label>
+            <span>Email</span>
+            <input name="email" type="email" autocomplete="email" required placeholder="name@email.com" />
+          </label>
+          <label>
+            <span>Страна</span>
+            <input name="country" required placeholder="Cyprus / EU / UK / ..." />
+          </label>
+          <label>
+            <span>Тип инвестора</span>
+            <select name="type" required>
+              <option value="" selected disabled>Выберите...</option>
+              <option>Angel</option>
+              <option>VC / Fund</option>
+              <option>Strategic / Corporate</option>
+              <option>Family Office</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <label class="reserve-form__wide">
+            <span>Обычный ticket size</span>
+            <select name="ticket" required>
+              <option value="" selected disabled>Выберите...</option>
+              <option>€1k–€5k</option>
+              <option>€5k–€25k</option>
+              <option>€25k–€100k</option>
+              <option>€100k–€250k</option>
+              <option>€250k+</option>
+            </select>
+          </label>
+          <label class="reserve-form__wide">
+            <span>Комментарий</span>
+            <textarea name="msg" rows="5" placeholder="Deck, pilots, certification, partnership fit..."></textarea>
+          </label>
+          <div class="reserve-form__wide reserve-form__actions">
+            <button class="button button--primary" type="submit">Зарезервировать</button>
           </div>
         </form>
-
-        <div class="notice">
-          <strong>Legal notice:</strong> This website does not constitute an offer to sell or a solicitation of an offer to buy securities.
-          The project is at a pre-incorporation stage. Any investment opportunity, if offered, will be made only through appropriate
-          legal and regulatory channels.
-        </div>
-
-        <div class="privacy-note">
-          Privacy: <a href="./privacy.html">read policy</a>
-        </div>
+        <p class="legal-fine-print">
+          This page is for indications of interest only. No money or other consideration is being solicited or accepted.
+        </p>
       </div>
     </section>
-
-    <footer class="site-footer compact">
-      Vector Technologies (working name) • Investor interest only • No funds accepted via this site.
-    </footer>
   </main>
 </body>
 </html>
