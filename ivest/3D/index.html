@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vector — Autonomous Drone Delivery</title>
+<link rel="stylesheet" href="./assets/styles.css">
+</head>
+<body>
+
+<!-- Loading Screen -->
+<div id="loader">
+  <div class="loader-logo">Vector</div>
+  <div class="loader-bar-wrap"><div class="loader-bar" id="loader-bar"></div></div>
+  <div class="loader-pct" id="loader-pct">0%</div>
+</div>
+
+<!-- Custom Cursor -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- Scan line effect -->
+<div class="scan-line"></div>
+
+<!-- HUD Labels -->
+<div class="hud-label" id="hud-tl">SYS: NOMINAL<br>ALT: AUTO<br>MODE: DELIVERY</div>
+<div class="hud-label" id="hud-tr">VEC-OS v2.6<br>DRONES: ACTIVE<br>NET: ONLINE</div>
+
+<!-- Procedural City Background -->
+<div id="city-bg"></div>
+<div id="city-bg-status">
+  <span id="city-bg-dot"></span>
+  <span id="city-bg-label">Rendering sunny city backdrop...</span>
+</div>
+
+<!-- 3D Canvas -->
+<div id="canvas-container">
+  <canvas id="three-canvas"></canvas>
+</div>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-logo">VEC<span>TOR</span></div>
+  <ul class="nav-links">
+    <li><a href="#delivery">Delivery</a></li>
+    <li><a href="#tech">Technology</a></li>
+    <li><a href="#invest">Invest</a></li>
+  </ul>
+  <a href="#invest" class="nav-cta">Reserve Now</a>
+</nav>
+
+<!-- Scroll Progress -->
+<div id="scroll-progress">
+  <div class="progress-dot active" data-index="0"></div>
+  <div class="progress-dot" data-index="1"></div>
+  <div class="progress-dot" data-index="2"></div>
+  <div class="progress-dot" data-index="3"></div>
+</div>
+
+<!-- HERO SECTION -->
+<section class="section" id="hero">
+  <div class="hero-tag">Cyprus · 2026 · Autonomous Logistics</div>
+  <h1 class="hero-title glitch" data-text="Delivery,">
+    Delivery,<br><em>Reinvented.</em>
+  </h1>
+  <p class="hero-sub">
+    Vector deploys VTOL drones that bypass traffic, delivering food, medicine &amp; essentials across Cyprus in under 15 minutes.
+  </p>
+  <div class="hero-actions">
+    <a href="#delivery" class="btn-primary">Explore the Fleet</a>
+    <a href="#invest" class="btn-ghost">Invest</a>
+  </div>
+  <div class="scroll-hint">Scroll to explore</div>
+</section>
+
+<!-- STATS BAR -->
+<div class="section" id="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num">&lt;15<span class="stat-unit">min</span></div>
+    <div class="stat-label">Average Delivery</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">40</div>
+    <div class="stat-label">VTOL Drones · Phase 1</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">15km</div>
+    <div class="stat-label">Max Radius</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">10kg</div>
+    <div class="stat-label">Payload Capacity</div>
+  </div>
+</div>
+
+<!-- SCROLL STORY -->
+<div id="scroll-story" class="section">
+  <div class="sticky-wrapper">
+    <!-- Panel 0: Intro -->
+    <div class="story-panel active" id="panel-0">
+      <div class="panel-content">
+        <div class="panel-tag">01 / Architecture</div>
+        <h2 class="panel-title">VTOL<br>Platform</h2>
+        <p class="panel-text">Vertical take-off and landing. No runways. No roads. Pure air logistics engineered for Cyprus urban density and Mediterranean climate.</p>
+        <ul class="spec-list">
+          <li>Vertical takeoff on multi-rotor array</li>
+          <li>Transition to horizontal cruise mode</li>
+          <li>Precision GPS + LiDAR landing</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Panel 1: Internals -->
+    <div class="story-panel" id="panel-1">
+      <div class="panel-content">
+        <div class="panel-tag">02 / Powertrain</div>
+        <h2 class="panel-title">Hybrid<br>Engine</h2>
+        <p class="panel-text">Battery-electric core with hydrogen fuel cell upgrade path. 2–3× greater range than battery-only systems with 3–5 min refuel cycles.</p>
+        <ul class="spec-list">
+          <li>Cruise speed 80–120 km/h</li>
+          <li>Operating altitude up to 4000m</li>
+          <li>IP54 weather resistance</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Panel 2: Autonomy -->
+    <div class="story-panel" id="panel-2">
+      <div class="panel-content">
+        <div class="panel-tag">03 / Intelligence</div>
+        <h2 class="panel-title">Fully<br>Autonomous</h2>
+        <p class="panel-text">AI-powered route optimization, real-time obstacle avoidance, and EASA-compliant airspace management. Zero manual pilot needed.</p>
+        <ul class="spec-list">
+          <li>Multi-sensor fusion navigation</li>
+          <li>Live weather and airspace monitoring</li>
+          <li>95%+ mission success rate</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Panel 3: Network -->
+    <div class="story-panel" id="panel-3">
+      <div class="panel-content">
+        <div class="panel-tag">04 / Network</div>
+        <h2 class="panel-title">Hub<br>Network</h2>
+        <p class="panel-text">8 automated VTOL stations in Phase 1, integrated with Foody and Wolt. Expanding to 40+ hubs across all major Cyprus cities by 2028.</p>
+        <ul class="spec-list">
+          <li>Automated loading windows</li>
+          <li>Charging + swap systems</li>
+          <li>Real-time fleet management</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DELIVERY FLOW -->
+<section class="section" id="delivery">
+  <div class="delivery-inner">
+    <div class="section-tag">Last-Mile Reinvented</div>
+    <h2 class="section-title">From Order to<br><em>Arrival</em></h2>
+
+    <div class="route-viz">
+      <div class="route-point">
+        <div class="point-label">Point A</div>
+        <div class="point-name">Restaurant</div>
+        <div class="point-sub">Pickup location</div>
+      </div>
+      <div class="route-line">
+        <div class="route-track">
+          <div class="route-drone-icon">◆</div>
+        </div>
+        <div class="route-time">⟨ 15 min avg ⟩</div>
+      </div>
+      <div class="route-point">
+        <div class="point-label">Point B</div>
+        <div class="point-name">Your Door</div>
+        <div class="point-sub">Precision landing</div>
+      </div>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-icon">📱</div>
+        <div class="step-title">Order Placed</div>
+        <div class="step-text">Customer orders via Foody, Wolt or Vector app. AI dispatches nearest available drone instantly.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-icon">⚡</div>
+        <div class="step-title">Auto-Loading</div>
+        <div class="step-text">Automated hub window loads cargo. Staff involvement minimal. Drone departs in under 90 seconds.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-icon">🛸</div>
+        <div class="step-title">Autonomous Flight</div>
+        <div class="step-text">VTOL drone navigates optimal air route, avoiding obstacles and restricted zones in real-time.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">04</div>
+        <div class="step-icon">📦</div>
+        <div class="step-title">Precision Drop</div>
+        <div class="step-text">GPS + LiDAR guided landing at designated delivery point. Secure cargo release and mission complete.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH SPECS -->
+<section class="section" id="tech">
+  <div class="tech-inner">
+    <div class="section-tag">Engineering</div>
+    <h2 class="section-title">Technical<br><em>Specs</em></h2>
+    <div class="tech-grid">
+      <div>
+        <ul class="specs-table">
+          <li class="spec-row">
+            <span class="spec-key">Payload</span>
+            <span class="spec-val highlight">Up to 10 kg</span>
+          </li>
+          <li class="spec-row">
+            <span class="spec-key">Delivery Radius</span>
+            <span class="spec-val">5 – 15 km</span>
+          </li>
+          <li class="spec-row">
+            <span class="spec-key">Cruise Speed</span>
+            <span class="spec-val">80 – 120 km/h</span>
+          </li>
+          <li class="spec-row">
+            <span class="spec-key">Avg. Delivery Time</span>
+            <span class="spec-val highlight">&lt; 15 min</span>
+          </li>
+          <li class="spec-row">
+            <span class="spec-key">Mission Success</span>
+            <span class="spec-val highlight">95%+</span>
+          </li>
+          <li class="spec-row">
+            <span class="spec-key">Operating Altitude</span>
+            <span class="spec-val">up to 4000 m</span>
+          </li>
+          <li class="spec-row">
+            <span class="spec-key">Weather Rating</span>
+            <span class="spec-val">IP54</span>
+          </li>
+          <li class="spec-row">
+            <span class="spec-key">Fleet Phase 1</span>
+            <span class="spec-val">40 VTOL + 8 Hubs</span>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <div class="roadmap-label">Expansion Roadmap</div>
+        <div class="phase-list">
+          <div class="phase-item">
+            <div class="phase-year">2026</div>
+            <div class="phase-info">
+              <h4>Phase 1 — Nicosia Pilot</h4>
+              <p>40 VTOLs, 8 stations, 175k deliveries/yr. EASA/SORA certification.</p>
+            </div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-year">2027</div>
+            <div class="phase-info">
+              <h4>Phase 2 — Limassol + Larnaca</h4>
+              <p>120 VTOLs, 25 stations, 700k deliveries/yr. Break-even Q4.</p>
+            </div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-year">2028</div>
+            <div class="phase-info">
+              <h4>Phase 3 — All Cyprus</h4>
+              <p>160–180 VTOLs, 40+ stations. €4M+ revenue. EBITDA 22–28%.</p>
+            </div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-year">2029</div>
+            <div class="phase-info">
+              <h4>Phase 4 — EU Expansion</h4>
+              <p>Greece, Israel, Southern Italy. License / JV / Franchise model.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVEST -->
+<section class="section" id="invest">
+  <div class="invest-inner">
+    <div>
+      <div class="section-tag">Investment Round</div>
+      <h2 class="section-title invest-title">Back the<br><em>Future</em></h2>
+      <p class="invest-copy">
+        Vector is raising €1.0–1.7M Seed for 15–20% equity. Capital deployed in tranches tied to pilot milestones. Target ROI 4–10× at successful scaling (3–5 years).
+      </p>
+      <div class="invest-metrics">
+        <div>
+          <div class="metric-value metric-value--accent">4–10×</div>
+          <div class="metric-label">Target ROI</div>
+        </div>
+        <div>
+          <div class="metric-value">Y2</div>
+          <div class="metric-label">Break-even</div>
+        </div>
+        <div>
+          <div class="metric-value">15–20%</div>
+          <div class="metric-label">Equity Offered</div>
+        </div>
+      </div>
+      <a href="mailto:invest@vector-autonomous.com" class="btn-primary">Reserve Your Spot</a>
+    </div>
+    <div class="invest-tiers">
+      <div class="tier-card">
+        <div>
+          <div class="tier-name">Pre-Seed</div>
+          <div class="tier-amount">€20k – 50k</div>
+        </div>
+        <div class="tier-badge">Convertible/SAFE</div>
+      </div>
+      <div class="tier-card featured">
+        <div>
+          <div class="tier-name">Seed Tranche 1</div>
+          <div class="tier-amount">€250,000</div>
+        </div>
+        <div class="tier-badge">Prototype Ready</div>
+      </div>
+      <div class="tier-card">
+        <div>
+          <div class="tier-name">Seed Tranche 2</div>
+          <div class="tier-amount">€450,000</div>
+        </div>
+        <div class="tier-badge">City Pilot 15–20 VTOL</div>
+      </div>
+      <div class="tier-card">
+        <div>
+          <div class="tier-name">Seed Tranche 3</div>
+          <div class="tier-amount">€600k – 1M</div>
+        </div>
+        <div class="tier-badge">Full Pilot 40+ VTOL</div>
+      </div>
+      <div class="invest-note">
+        No money is being solicited at this stage. Reservation only. Formal offering materials will be provided when the round opens.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">VECTOR</div>
+  <div class="footer-copy">© 2026 Vector Autonomous Systems · Cyprus · All rights reserved</div>
+</footer>
+
+<!-- THREE.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<!-- Anime.js (для разборки дрона по скроллу) -->
+<script src="https://cdn.jsdelivr.net/npm/animejs@4.0.0/lib/anime.min.js"></script>
+
+<script src="./assets/app.js"></script>
+</body>
+</html>

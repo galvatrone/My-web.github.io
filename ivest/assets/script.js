@@ -1,5 +1,6 @@
 (function () {
   const content = window.VectorContent || {};
+  const ui = content.ui || {};
 
   const $ = (selector) => document.querySelector(selector);
   const $$ = (selector) => Array.from(document.querySelectorAll(selector));
@@ -64,7 +65,7 @@
   const quoteRoot = $("#pitch-quote");
   if (quoteRoot && content.pitchQuote) {
     quoteRoot.innerHTML = `
-      <p class="quote-card__eyebrow">QUOTE / PRESS</p>
+      <p class="quote-card__eyebrow">${escapeHtml(ui.quoteEyebrow || "Quote / Press")}</p>
       <blockquote>${escapeHtml(content.pitchQuote.quote)}</blockquote>
       <p class="quote-card__source">${escapeHtml(content.pitchQuote.source)}</p>
     `;
@@ -158,7 +159,7 @@
   const commentRoot = $("#featured-comment");
   if (commentRoot && content.featuredComment) {
     commentRoot.innerHTML = `
-      <p class="comment-card__label">FEATURED COMMENT</p>
+      <p class="comment-card__label">${escapeHtml(ui.featuredCommentLabel || "Featured Comment")}</p>
       <blockquote>${escapeHtml(content.featuredComment.quote)}</blockquote>
       <p class="comment-card__source">${escapeHtml(content.featuredComment.source)}</p>
     `;
@@ -291,8 +292,9 @@
 
   const modal = $("[data-video-modal]");
   const modalFrame = $("[data-video-frame]");
-  const placeholderMarkup =
-    '<p class="video-modal__empty">Добавьте URL видео в `assets/content.js` для активации modal player.</p>';
+  const placeholderMarkup = `<p class="video-modal__empty">${escapeHtml(
+    ui.videoPlaceholder || "Add a video URL in the content file to activate the modal player."
+  )}</p>`;
 
   const openVideo = () => {
     if (!modal || !modalFrame) return;
@@ -302,7 +304,7 @@
       modalFrame.innerHTML = `
         <iframe
           src="${escapeHtml(content.videoUrl)}"
-          title="Vector overview video"
+          title="${escapeHtml(ui.videoTitle || "Vector overview video")}"
           loading="lazy"
           allow="autoplay; encrypted-media; picture-in-picture"
           allowfullscreen

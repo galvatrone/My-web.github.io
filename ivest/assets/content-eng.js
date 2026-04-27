@@ -1,4 +1,10 @@
 window.VectorContent = {
+  ui: {
+    quoteEyebrow: "Quote / Press",
+    featuredCommentLabel: "Featured Comment",
+    videoTitle: "Vector overview video",
+    videoPlaceholder: "Add a video URL in `assets/content-eng.js` to activate the modal player."
+  },
   heroLead:
     "Vector Autonomous Systems is building a new generation of autonomous VTOL drones for last-mile, regional, and mission-critical delivery. The flagship H2 HYBRID combines a hydrogen fuel cell and a battery to deliver 500–1000 km range, fast refueling, and low-emission operations without compromising reliability.",
   videoUrl: "",

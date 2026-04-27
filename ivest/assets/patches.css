@@ -1,52 +1,40 @@
 /* ============================================================
-   Vector Autonomous — patches.css
+   Vector Autonomous Systems
+   Overrides loaded after ivest.css.
 
-   Базовое: переустраиваем глобальную сетку — из-за StartEngine-стиля main зажат в 800px,
-   а 360px sidebar заканчивается на первом экране. Результат: 14 000 пикселей
-   пустого пространства справа. Фикс: sidebar висит только на hero,
-   дальше контент растягивается на всю 1200px.
+   Sections:
+   1. Page layout
+   2. Header and language switch
+   3. Content cards and typography
+   4. Media replacements and icons
+   5. Roadmap table
+   6. Responsive layout
    ============================================================ */
 
-/* ---------- 0. GLOBAL LAYOUT: hero двухколоночный с Reserve-карточкой,
-   все остальные секции — на всю ширину 1200px --------------- */
-
-/* .offering-shell оставляем grid, но sidebar будет виден только на экране hero.
-   main вылезает за границы своей колонки после hero за счёт отрицательного margin-right
-   на всех секциях main кроме hero. */
+/* 1. Page layout */
 .offering-shell {
   grid-template-columns: minmax(0, 1fr) 360px !important;
   column-gap: 32px;
   align-items: start;
 }
-.offering-main { min-width: 0; }
 
-/* Все секции внутри main, КРОМЕ hero, расширяем на полную ширину
-   (пробиваемся в правую колонку sidebar через margin-right) */
-.offering-main > section:not(.hero) {
-  margin-right: -392px; /* = 360 sidebar + 32 gap */
+.offering-main {
+  min-width: 0;
 }
 
-/* Sticky sidebar показываем только на высоте hero — остальное время его нет.
-   Достигаем это ограничением высоты + sticky-card отключаем sticky, станет обычным. */
+.offering-main > section:not(.hero) {
+  margin-right: -392px;
+}
+
 .offering-sidebar {
   position: relative;
   align-self: start;
 }
+
 .sticky-card {
-  position: static !important; /* не следует за скроллом — остаётся в верхнем правом углу hero */
+  position: static !important;
 }
 
-/* На мобильном/tablet sidebar прячем, shell становится одной колонкой */
-@media (max-width: 1180px) {
-  .offering-shell {
-    grid-template-columns: minmax(0, 1fr) !important;
-    column-gap: 0 !important;
-  }
-  .offering-main > section:not(.hero) { margin-right: 0; }
-  .offering-sidebar { display: none !important; }
-}
-
-/* Внутренние 2-колоночные layout-классы — теперь у них вся 1200px доступна */
 .pitch-layout,
 .solution-layout,
 .spec-layout,
@@ -56,7 +44,6 @@
   grid-template-columns: minmax(0, 1fr) minmax(320px, 420px) !important;
 }
 
-/* Новый класс .section-lead — подзаголовочный абзац под h2 секции */
 .section-heading .section-lead {
   margin-top: 12px;
   color: var(--color-text-soft);
@@ -65,133 +52,134 @@
   max-width: 760px;
 }
 
-/* Roadmap-бейджи на заголовках comparison-table — делаем визуальные маркеры 1/2 */
-.comparison-table thead th:nth-child(2),
-.comparison-table thead th:nth-child(3) {
-  position: relative;
-  padding-top: 36px;
-}
-.comparison-table thead th:nth-child(2)::before {
-  content: "STEP 1";
-  position: absolute; top: 8px; left: 16px;
-  font-size: 11px; font-weight: 800; letter-spacing: 0.1em;
-  color: var(--color-muted);
-  padding: 2px 8px;
-  background: rgba(11,31,58,0.06);
-  border-radius: 999px;
-}
-.comparison-table thead th:nth-child(3)::before {
-  content: "STEP 2 · GOAL";
-  position: absolute; top: 8px; left: 16px;
-  font-size: 11px; font-weight: 800; letter-spacing: 0.1em;
-  color: #fff;
-  padding: 2px 10px;
-  background: var(--color-accent);
-  border-radius: 999px;
-}
-/* убираем двоение — скрываем старое название "Этап 1 — Аккумуляторный" никак не нужно,
-   там уже есть всё в thead — только усилим контраст highlight-колонки */
-.comparison-table__highlight {
-  background: rgba(30,138,232,0.08) !important;
-}
-.comparison-table thead .comparison-table__highlight {
-  color: var(--color-accent) !important;
-  background: rgba(30,138,232,0.12) !important;
+html {
+  scroll-padding-top: calc(var(--header-height) + var(--tab-height) + 12px);
 }
 
-/* ============================================================
-   VECTOR AUTONOMOUS — старые патчи
-   Подключите ПОСЛЕ ivest.css:
-     <link rel="stylesheet" href="./assets/ivest.css" />
-     <link rel="stylesheet" href="./assets/patches.css" />
-   Каждый блок решает один из багов, пронумерованных в design review.
-
-/* ---------- 1. HERO: три pillar-карточки наезжают на media ----------
-   Причина: hero__pillars лежат в .hero__copy, а правая колонка
-   растягивается за счёт align-items: stretch. На узких десктопах
-   pillars вылезают в ряд с hero__media и частично накрываются.
-   Фикс: pillars выносятся в полную ширину под hero grid.
------------------------------------------------------------------*/
-.hero { align-items: start; }
-.hero__copy { display: flex; flex-direction: column; min-width: 0; }
-.hero__copy .hero__actions { margin-top: auto; } /* CTA прижат к низу колонки */
-
-/* Pillars укладываем вертикально в узкой левой колонке —
-   иначе кириллица ломается в 3-х колонках по ~120px каждая */
-.hero__pillars { grid-template-columns: 1fr !important; gap: 12px; }
-.pillar-card { word-break: normal; hyphens: manual; overflow-wrap: break-word; padding: 14px 16px; }
-.pillar-card h2 { font-size: 17px; margin-bottom: 4px; }
-.pillar-card p  { font-size: 13px; line-height: 1.4; }
-
-/* Замена фона hero media на реальный рендер дрона */
-.hero__media-card {
-  background-image:
-    linear-gradient(180deg, rgba(11,31,58,0.05) 0%, rgba(11,31,58,0.55) 100%),
-    url('./img/hero-drone.jpg');
-  background-size: cover;
-  background-position: center;
-  min-height: 520px;
-}
-.hero__media-card .hero__media-backdrop { opacity: 0; }
-.hero__media-card .hero__media-grid     { opacity: 0.18; mix-blend-mode: screen; }
-.hero__media-overlay {
-  background: linear-gradient(180deg, transparent 40%, rgba(8,22,42,0.85) 100%);
-}
-
-
-/* ---------- 2. SITE HEADER: уберём дубль оранжевого CTA ----------
-   В хедере CTA-кнопка визуально конкурирует со sticky-сайдбаром.
-   Оставляем в хедере только nav + логотип, CTA живёт в сайдбаре
-   и в mobile-cta. На мобильном CTA в хедере был скрыт и раньше.
-------------------------------------------------------------------*/
-.site-header__cta { display: none !important; }
-
-
-/* ---------- 3. STICKY HEADER + TAB-BAR: двойной overlay ----------
-   Высота header (84) + tab-bar (66) = 150 px. На мобильном это
-   отъедает 30% экрана и заголовки секций уезжают под панели.
-   Фикс: на мобильном tab-bar перестаёт быть sticky, становится
-   обычным горизонтальным скролл-меню внутри потока. На десктопе
-   добавляем scroll-padding-top для якорей.
------------------------------------------------------------------*/
-html { scroll-padding-top: calc(var(--header-height) + var(--tab-height) + 12px); }
-
-@media (max-width: 900px) {
-  .tab-bar { position: static; }
-  html { scroll-padding-top: calc(var(--header-height) + 12px); }
-}
-
-/* Если хотите вообще убрать tab-bar на мобилке — раскомментируйте: */
-/* @media (max-width: 640px) { .tab-bar { display: none; } } */
-
-/* ---------- ПРАВКА ДВОЙНОЙ ШАПКИ ----------
-   Изначально StartEngine-шаблон давал 3 бара сверху:
-   оранжевый announcement + site-header + tab-bar.
-   announcement и tab-bar — плейсхолдеры StartEngine, на сайте
-   нет разделов Награды/Обсуждение/FAQ — прячем их на desktop тоже. */
 .announcement,
 .announcement-bar,
-[class*="announcement"] {
-  display: none !important;
-}
+[class*="announcement"],
 .tab-bar {
   display: none !important;
 }
 
+/* 2. Header actions and language switch */
+.site-header__cta {
+  display: none !important;
+}
 
-/* ---------- 4. PITCH PANELS: текст обрезался по правому краю ----
-   Причина: фиксированный padding 24 + крупный font 28 + длинные
-   русские слова. Добавляем перенос и гибкие размеры.
------------------------------------------------------------------*/
-.pitch-panel { padding: 20px; min-height: 180px; word-break: normal; hyphens: auto; overflow-wrap: anywhere; }
-.pitch-panel strong { font-size: clamp(20px, 2.2vw, 26px); line-height: 1.1; }
-.pitch-panel span   { font-size: 13px; }
+.header-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
 
+.view-3d-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  min-height: 38px;
+  padding: 0 12px;
+  border: 1px solid rgba(30, 138, 232, 0.22);
+  border-radius: 999px;
+  background: rgba(30, 138, 232, 0.08);
+  color: var(--color-accent);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
 
-/* ---------- 5. MARKET TAM CARDS: заглушка "$XX B TAM" маскируется ----
-   Пока нет реальных цифр — делаем надпись приглушённой, без оранжевого,
-   чтобы не выглядело как баг и не перетягивала внимание.
------------------------------------------------------------------*/
+.view-3d-link:hover,
+.view-3d-link:focus-visible {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.language-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  flex-shrink: 0;
+}
+
+.language-switch a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  min-height: 30px;
+  padding: 0 9px;
+  border-radius: 999px;
+  color: var(--color-muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.language-switch a[aria-current="page"] {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+/* 3. Content cards and typography */
+.hero {
+  align-items: start;
+}
+
+.hero__copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.hero__copy .hero__actions {
+  margin-top: auto;
+}
+
+.hero__pillars {
+  grid-template-columns: 1fr !important;
+  gap: 12px;
+}
+
+.pillar-card {
+  padding: 14px 16px;
+  word-break: normal;
+  hyphens: manual;
+  overflow-wrap: break-word;
+}
+
+.pillar-card h2 {
+  margin-bottom: 4px;
+  font-size: 17px;
+}
+
+.pillar-card p {
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.pitch-panel {
+  min-height: 180px;
+  padding: 20px;
+  word-break: normal;
+  hyphens: auto;
+  overflow-wrap: anywhere;
+}
+
+.pitch-panel strong {
+  font-size: clamp(20px, 2.2vw, 26px);
+  line-height: 1.1;
+}
+
+.pitch-panel span {
+  font-size: 13px;
+}
+
 .segment-card__bottom strong {
   color: var(--color-muted) !important;
   font-size: 15px !important;
@@ -200,130 +188,173 @@ html { scroll-padding-top: calc(var(--header-height) + var(--tab-height) + 12px)
   text-transform: uppercase;
 }
 
-
-/* ---------- 6. REASON CARDS: слишком низкий контраст ----------
-   Усиливаем бордер и тень, чтобы карточки читались на off-white.
------------------------------------------------------------------*/
 .reason-card {
   padding: 22px 24px;
   border: 1px solid var(--color-line-strong);
-  box-shadow: 0 2px 6px rgba(11,31,58,0.05);
+  box-shadow: 0 2px 6px rgba(11, 31, 58, 0.05);
 }
-.reason-card h3 { font-size: 20px; margin: 0 0 6px; }
-.reason-card p  { color: var(--color-text-soft); font-size: 15px; }
 
+.reason-card h3 {
+  margin: 0 0 6px;
+  font-size: 20px;
+}
 
-/* ---------- 7. УБИРАЕМ ЛИШНЮЮ "Смотреть overview" ----------
-   Дублирующая ghost-кнопка под главным CTA. Если в будущем будет
-   реальный PDF pitch deck — верните её и поменяйте текст.
------------------------------------------------------------------*/
-.hero__actions .button--ghost { display: none; }
+.reason-card p {
+  color: var(--color-text-soft);
+  font-size: 15px;
+}
 
+.hero__actions .button--ghost {
+  display: none;
+}
 
-/* ---------- 8. SOLUTION VISUAL: плейсхолдер-дрон заменяем фото ----*/
-.solution-visual .drone-stage {
-  background-image: url('./img/hero-drone.jpg');
+/* 4. Media replacements and icons */
+.hero__media-card {
+  min-height: 520px;
+  background-image:
+    linear-gradient(180deg, rgba(11, 31, 58, 0.05) 0%, rgba(11, 31, 58, 0.55) 100%),
+    url("./img/hero-drone.jpg");
   background-size: cover;
   background-position: center;
-  border-radius: 20px;
 }
-.solution-visual .drone-stage > *:not(.drone-stage__cargo) { display: none; }
+
+.hero__media-card .hero__media-backdrop {
+  opacity: 0;
+}
+
+.hero__media-card .hero__media-grid {
+  opacity: 0.18;
+  mix-blend-mode: screen;
+}
+
+.hero__media-overlay {
+  background: linear-gradient(180deg, transparent 40%, rgba(8, 22, 42, 0.85) 100%);
+}
+
+.solution-visual .drone-stage {
+  border-radius: 20px;
+  background-image: url("./img/hero-drone.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.solution-visual .drone-stage > *:not(.drone-stage__cargo) {
+  display: none;
+}
+
 .solution-visual .drone-stage__cargo {
-  position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
-  background: rgba(11,31,58,0.72); color: #fff; padding: 8px 14px;
-  border-radius: 999px; font-size: 12px; letter-spacing: 0.08em;
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(11, 31, 58, 0.72);
+  color: #fff;
+  font-size: 12px;
   font-weight: 800;
+  letter-spacing: 0.08em;
 }
 
-/* ---------- 9. SPEC DRAWING CARD: заменяем SVG-плейсхолдер на чертёж ----*/
 .spec-drawing-card {
-  background: var(--color-navy) url('./img/drone-blueprint.jpg') center/cover no-repeat;
   min-height: 480px;
-  border-radius: 20px;
   position: relative;
+  border-radius: 20px;
+  background: var(--color-navy) url("./img/drone-blueprint.jpg") center / cover no-repeat;
 }
-.spec-drawing-card svg { display: none; }
 
+.spec-drawing-card svg {
+  display: none;
+}
 
-/* ---------- 10. POWERTRAIN CUTAWAY: оставляем схематичный вид,
-   но аккуратнее лейблы + бэкграунд-градиент ----*/
 .powertrain-card .cutaway {
-  background: linear-gradient(135deg, #0b1f3a 0%, #12345f 100%);
-  border-radius: 18px;
   min-height: 320px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #0b1f3a 0%, #12345f 100%);
 }
 
-
-/* ---------- 11. PARACHUTE DEMO → реальное фото ---------- */
 .safety-visual .parachute-demo {
-  background: url('./img/parachute.jpg') center/cover no-repeat;
-  border-radius: 20px;
   min-height: 360px;
+  border-radius: 20px;
+  background: url("./img/parachute.jpg") center / cover no-repeat;
 }
-.safety-visual .parachute-demo > * { display: none; }
 
+.safety-visual .parachute-demo > * {
+  display: none;
+}
 
-/* ---------- 12. TRACTION GRAPHIC: заменяем столбики на логотипы/фото хаба */
 .traction-graphic {
-  background: url('./img/field-demo.jpg') center/cover no-repeat;
   min-height: 320px;
   position: relative;
-  border-radius: 20px;
   overflow: hidden;
+  border-radius: 20px;
+  background: url("./img/field-demo.jpg") center / cover no-repeat;
 }
-.traction-graphic .traction-bars { display: none; }
+
+.traction-graphic .traction-bars {
+  display: none;
+}
+
 .traction-graphic p {
-  position: absolute; left: 20px; right: 20px; bottom: 16px;
-  color: #fff; font-weight: 700; margin: 0;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 16px;
+  margin: 0;
+  color: #fff;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
-
-/* ---------- 13. RESERVE BANNER: реальный hero-кадр дрона ---------- */
 .reserve-banner__drone {
   background-image:
-    linear-gradient(180deg, rgba(11,31,58,0.15) 0%, rgba(11,31,58,0.75) 100%),
-    url('./img/reserve-hero.jpg');
+    linear-gradient(180deg, rgba(11, 31, 58, 0.15) 0%, rgba(11, 31, 58, 0.75) 100%),
+    url("./img/reserve-hero.jpg");
   background-size: cover;
   background-position: center;
 }
 
-
-/* ---------- 14. SEGMENT CARDS: подставляем фото-сегменты ----------
-   Фото — это фон .segment-card__top (верхний блок с названием).
-   Градиент сверху для читаемости текста.
-----------------------------------------------------------------*/
 .segment-card[data-segment] .segment-card__top {
+  min-height: 200px;
+  position: relative;
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
-  position: relative;
-  min-height: 200px;
 }
+
 .segment-card[data-segment] .segment-card__top::before {
   content: "";
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(11,31,58,0.25) 0%, rgba(11,31,58,0.82) 100%);
+  position: absolute;
+  inset: 0;
   z-index: 0;
+  background: linear-gradient(180deg, rgba(11, 31, 58, 0.25) 0%, rgba(11, 31, 58, 0.82) 100%);
 }
-.segment-card[data-segment] .segment-card__top > * { position: relative; z-index: 1; }
 
-.segment-card[data-segment="express"]    .segment-card__top { background-image: url('./img/market-express.jpg'); }
-.segment-card[data-segment="medical"]    .segment-card__top { background-image: url('./img/market-medical.jpg'); }
-.segment-card[data-segment="regional"]   .segment-card__top { background-image: url('./img/market-regional.jpg'); }
-.segment-card[data-segment="inspection"] .segment-card__top { background-image: url('./img/market-inspection.jpg'); }
+.segment-card[data-segment] .segment-card__top > * {
+  position: relative;
+  z-index: 1;
+}
 
+.segment-card[data-segment="express"] .segment-card__top {
+  background-image: url("./img/market-express.jpg");
+}
 
-/* ---------- 15. DEMO PHOTO CARD: реальный field demo ---------- */
+.segment-card[data-segment="medical"] .segment-card__top {
+  background-image: url("./img/market-medical.jpg");
+}
+
+.segment-card[data-segment="regional"] .segment-card__top {
+  background-image: url("./img/market-regional.jpg");
+}
+
+.segment-card[data-segment="inspection"] .segment-card__top {
+  background-image: url("./img/market-inspection.jpg");
+}
+
 .demo-photo-card__visual {
-  background: url('./img/field-demo.jpg') center/cover no-repeat !important;
+  background: url("./img/field-demo.jpg") center / cover no-repeat !important;
 }
 
-
-/* ---------- 16. ИКОНКИ для feature/safety/spec/traction/pillars ---------
-   Заменяем круглый gradient-dot на инлайн-SVG background.
-   Сами SVG-файлы лежат в /assets/icons/.
-----------------------------------------------------------------------*/
 .feature-item__icon,
 .safety-item__icon,
 .spec-item__icon {
@@ -331,35 +362,364 @@ html { scroll-padding-top: calc(var(--header-height) + var(--tab-height) + 12px)
   height: 28px !important;
   margin-top: 0 !important;
   border-radius: 8px;
-  background: rgba(30,138,232,0.08) !important;
+  background: rgba(30, 138, 232, 0.08) !important;
   box-shadow: none !important;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   position: relative;
 }
+
 .feature-item__icon::before,
 .safety-item__icon::before,
 .spec-item__icon::before {
   content: "";
-  position: absolute; inset: 4px;
-  background: url('./icons/check.svg') center/contain no-repeat;
+  position: absolute;
+  inset: 4px;
+  background: url("./icons/check.svg") center / contain no-repeat;
 }
-.safety-item__icon::before { background-image: url('./icons/shield.svg'); }
-.spec-item__icon::before   { background-image: url('./icons/gauge.svg'); }
 
+.safety-item__icon::before {
+  background-image: url("./icons/shield.svg");
+}
 
-/* ---------- 17. ЯЗЫК: лёгкая нормализация "Mixed RU/EN" заголовков ---
-   Чисто визуальный tweak — английские заголовки делаем поменьше,
-   русский остаётся доминантным. (Реальную правку текста см. ниже
-   в content.patch.js)
------------------------------------------------------------------*/
-.section-heading h2:lang(en),
-.section-heading h3:lang(en) { letter-spacing: 0.04em; }
+.spec-item__icon::before {
+  background-image: url("./icons/gauge.svg");
+}
 
+/* 5. Roadmap table */
+.comparison-table thead th:nth-child(2),
+.comparison-table thead th:nth-child(3) {
+  position: relative;
+  padding-top: 36px;
+}
 
-/* ---------- 18. MOBILE CTA BAR: добавить отступ в самом низу страницы,
-   чтобы последний контент не прятался под fixed-полосой ---------------*/
+.comparison-table thead th:nth-child(2)::before,
+.comparison-table thead th:nth-child(3)::before {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.comparison-table thead th:nth-child(2)::before {
+  content: "STEP 1";
+  color: var(--color-muted);
+  background: rgba(11, 31, 58, 0.06);
+}
+
+.comparison-table thead th:nth-child(3)::before {
+  content: "STEP 2 · GOAL";
+  color: #fff;
+  background: var(--color-accent);
+}
+
+html:lang(ru) .comparison-table thead th:nth-child(2)::before {
+  content: "ЭТАП 1";
+}
+
+html:lang(ru) .comparison-table thead th:nth-child(3)::before {
+  content: "ЭТАП 2 · ЦЕЛЬ";
+}
+
+.comparison-table__highlight {
+  background: rgba(30, 138, 232, 0.08) !important;
+}
+
+.comparison-table thead .comparison-table__highlight {
+  color: var(--color-accent) !important;
+  background: rgba(30, 138, 232, 0.12) !important;
+}
+
+/* 6. Responsive layout */
+@media (max-width: 1180px) {
+  .offering-shell {
+    grid-template-columns: minmax(0, 1fr) !important;
+    column-gap: 0 !important;
+  }
+
+  .offering-main > section:not(.hero) {
+    margin-right: 0;
+  }
+
+  .offering-sidebar {
+    display: none !important;
+  }
+
+  .pitch-layout,
+  .solution-layout,
+  .spec-layout,
+  .powertrain-layout,
+  .safety-layout,
+  .traction-layout,
+  .proof-layout {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 900px) {
+  html {
+    scroll-padding-top: calc(var(--header-height) + 12px);
+  }
+
+  .tab-bar {
+    position: static;
+  }
+}
+
 @media (max-width: 640px) {
-  .site-footer { padding-bottom: 96px; }
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .site-header {
+    position: static;
+  }
+
+  .site-header__inner {
+    position: relative;
+    min-height: 68px;
+    gap: 12px;
+    padding-bottom: 46px;
+  }
+
+  .brand {
+    flex: 1 1 auto;
+    max-width: calc(100% - 72px);
+  }
+
+  .brand__mark {
+    flex: 0 0 40px;
+  }
+
+  .brand__text {
+    overflow: hidden;
+  }
+
+  .brand__text strong,
+  .brand__text span {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .brand__text strong {
+    font-size: 13px;
+  }
+
+  .brand__text span {
+    font-size: 11px;
+  }
+
+  .mobile-nav-toggle {
+    order: 2;
+    margin-left: auto;
+    padding: 8px 12px;
+  }
+
+  .header-actions {
+    position: absolute;
+    right: 0;
+    bottom: 8px;
+    order: 3;
+  }
+
+  .site-nav.is-open {
+    order: 4;
+    padding: 8px 0 16px;
+  }
+
+  .offering-shell {
+    padding-top: 18px !important;
+  }
+
+  .offering-main,
+  .hero__top,
+  .hero__copy,
+  .hero__media-card {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .hero__copy h1 {
+    width: 100%;
+    max-width: none;
+    font-size: 34px !important;
+    line-height: 1.12;
+    overflow-wrap: anywhere;
+  }
+
+  .hero__lead {
+    margin: 16px 0 20px;
+    font-size: 15px;
+    overflow-wrap: anywhere;
+  }
+
+  .hero__media-card {
+    min-height: 300px !important;
+    border-radius: 18px;
+  }
+
+  .hero__media-overlay {
+    align-items: flex-end;
+    padding: 18px;
+  }
+
+  .hero__media-overlay h2 {
+    max-width: 13ch;
+    font-size: 26px;
+  }
+
+  .hero__media-overlay p {
+    font-size: 12px;
+  }
+
+  .play-button {
+    width: 52px;
+    height: 52px;
+  }
+
+  .section,
+  .market-banner {
+    padding-top: 48px !important;
+  }
+
+  .section-heading {
+    margin-bottom: 22px;
+  }
+
+  .section-heading h2,
+  .reserve-banner__overlay h2,
+  .market-banner__inner h2 {
+    font-size: 24px !important;
+    line-height: 1.16;
+    letter-spacing: 0.01em;
+    overflow-wrap: anywhere;
+  }
+
+  .section-label {
+    font-size: 11px;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+
+  .hero__pillars,
+  .pitch-panels,
+  .stats-grid,
+  .team-grid,
+  .segment-grid,
+  .phase-grid,
+  .proof-stats,
+  .tab-panel-grid,
+  .faq-grid,
+  .why-us-grid,
+  .chip-grid,
+  .timeline-grid,
+  .expert-grid,
+  .reserve-form {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hero__pillars {
+    display: grid !important;
+    gap: 12px !important;
+    width: 100%;
+  }
+
+  .pillar-card {
+    width: 100% !important;
+    max-width: 100%;
+    flex-basis: auto !important;
+  }
+
+  .pitch-panel,
+  .stat-card,
+  .team-card,
+  .phase-card,
+  .info-card,
+  .faq-card,
+  .feature-item,
+  .safety-item,
+  .traction-item,
+  .spec-item {
+    padding: 16px;
+  }
+
+  .market-banner__inner,
+  .timeline-card,
+  .reserve-form-card {
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .drone-stage,
+  .parachute-demo,
+  .demo-photo-card__visual,
+  .traction-graphic,
+  .powertrain-card .cutaway {
+    min-height: 260px !important;
+    border-radius: 18px;
+  }
+
+  .spec-drawing-card {
+    min-height: 300px !important;
+  }
+
+  .cutaway__label {
+    max-width: calc(100% - 32px);
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .cutaway__label--fuel {
+    left: 16px;
+    top: 16px;
+  }
+
+  .cutaway__label--battery {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .reserve-banner__media {
+    min-height: 380px !important;
+    border-radius: 18px;
+  }
+
+  .reserve-banner__overlay {
+    padding: 20px !important;
+  }
+
+  .legal-block {
+    padding: 16px;
+    font-size: 10px;
+    letter-spacing: 0.03em;
+  }
+
+  .comparison-table {
+    min-width: 620px;
+  }
+
+  .mobile-cta {
+    position: static !important;
+    padding: 12px;
+    background: #fff;
+    border-top: 1px solid rgba(12, 25, 52, 0.08);
+  }
+
+  .mobile-cta .button {
+    min-height: 48px;
+  }
+
+  .site-footer {
+    padding-bottom: 96px;
+  }
 }
