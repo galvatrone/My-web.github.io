@@ -774,6 +774,17 @@ a:focus-visible {
   gap: 24px;
 }
 
+.pitch-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.pitch-heading__button {
+  flex-shrink: 0;
+}
+
 .pitch-panels {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -1573,6 +1584,77 @@ a:focus-visible {
   transform: translateY(0);
 }
 
+.deck-viewer-page {
+  min-height: 100vh;
+  color: #f4fbff;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(127, 212, 255, 0.16), transparent 30%),
+    linear-gradient(135deg, #06111f 0%, #0b1f3a 58%, #07111f 100%);
+}
+
+.deck-viewer {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+}
+
+.deck-viewer__bar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid rgba(127, 212, 255, 0.16);
+  background: rgba(6, 17, 31, 0.88);
+  backdrop-filter: blur(18px);
+}
+
+.deck-viewer__bar-inner {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.deck-viewer__title {
+  min-width: 0;
+}
+
+.deck-viewer__title p,
+.deck-viewer__title h1 {
+  margin: 0;
+}
+
+.deck-viewer__title h1 {
+  font-size: clamp(20px, 3vw, 28px);
+  line-height: 1.1;
+}
+
+.deck-viewer__frame-wrap {
+  padding: 18px;
+  min-height: 0;
+}
+
+.deck-viewer__frame {
+  width: 100%;
+  height: calc(100vh - 112px);
+  min-height: 620px;
+  border: 1px solid rgba(127, 212, 255, 0.18);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+}
+
+.deck-viewer__fallback {
+  margin: 14px 0 0;
+  color: rgba(244, 251, 255, 0.72);
+  font-size: 14px;
+}
+
+.deck-viewer__fallback a {
+  color: var(--color-accent-soft);
+  font-weight: 700;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -1671,6 +1753,11 @@ a:focus-visible {
   .footer-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .pitch-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 640px) {
@@ -1741,6 +1828,24 @@ a:focus-visible {
   .button,
   .button--full {
     width: 100%;
+  }
+
+  .deck-viewer__bar-inner {
+    min-height: 92px;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    padding: 14px 0;
+  }
+
+  .deck-viewer__frame-wrap {
+    padding: 12px;
+  }
+
+  .deck-viewer__frame {
+    height: calc(100vh - 132px);
+    min-height: 520px;
+    border-radius: 12px;
   }
 
   .hero__actions {

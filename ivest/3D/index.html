@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vector — Autonomous Drone Delivery</title>
-<link rel="stylesheet" href="./assets/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vector — Autonomous Drone Delivery</title>
+  <link rel="stylesheet" href="./assets/styles.css">
 </head>
 <body>
 
 <!-- Loading Screen -->
 <div id="loader">
-  <div class="loader-logo">Vector</div>
-  <div class="loader-bar-wrap"><div class="loader-bar" id="loader-bar"></div></div>
-  <div class="loader-pct" id="loader-pct">0%</div>
+  <div class="loader-shell">
+    <div class="loader-kicker">Scene Setup</div>
+    <div class="loader-preview">
+      <span class="loader-preview-line loader-preview-line--left"></span>
+      <span class="loader-preview-line loader-preview-line--right"></span>
+      <div class="loader-preview-frame">
+        <img src="./assets/frames/frame-01.png" alt="" class="loader-preview-image">
+      </div>
+    </div>
+    <div class="loader-logo">Vector Autonomous Systems</div>
+    <div class="loader-copy">Preparing flight scene, camera path and suspended canvas.</div>
+    <div class="loader-bar-wrap"><div class="loader-bar" id="loader-bar"></div></div>
+    <div class="loader-meta">
+      <div class="loader-phase">Deploying hero sequence</div>
+      <div class="loader-pct" id="loader-pct">0%</div>
+    </div>
+  </div>
 </div>
 
 <!-- Custom Cursor -->
@@ -26,11 +40,9 @@
 <div class="hud-label" id="hud-tl">SYS: NOMINAL<br>ALT: AUTO<br>MODE: DELIVERY</div>
 <div class="hud-label" id="hud-tr">VEC-OS v2.6<br>DRONES: ACTIVE<br>NET: ONLINE</div>
 
-<!-- Procedural City Background -->
-<div id="city-bg"></div>
-<div id="city-bg-status">
-  <span id="city-bg-dot"></span>
-  <span id="city-bg-label">Rendering sunny city backdrop...</span>
+<!-- Static Background -->
+<div id="city-bg">
+  <img src="./assets/img/Back.png" alt="" id="city-bg-image">
 </div>
 
 <!-- 3D Canvas -->
@@ -59,44 +71,62 @@
 
 <!-- HERO SECTION -->
 <section class="section" id="hero">
-  <div class="hero-tag">Cyprus · 2026 · Autonomous Logistics</div>
-  <h1 class="hero-title glitch" data-text="Delivery,">
-    Delivery,<br><em>Reinvented.</em>
-  </h1>
-  <p class="hero-sub">
-    Vector deploys VTOL drones that bypass traffic, delivering food, medicine &amp; essentials across Cyprus in under 15 minutes.
-  </p>
-  <div class="hero-actions">
-    <a href="#delivery" class="btn-primary">Explore the Fleet</a>
-    <a href="#invest" class="btn-ghost">Invest</a>
+  <div id="hero-scene-rig" aria-hidden="true">
+    <div id="hero-canvas-rig">
+      <span class="hero-rig-line hero-rig-line--left"></span>
+      <span class="hero-rig-line hero-rig-line--right"></span>
+      <div id="hero-canvas-frame">
+        <div id="hero-canvas-sheet"></div>
+      </div>
+    </div>
+    <div id="hero-text-rig">
+      <span class="hero-rig-line hero-rig-line--center"></span>
+      <div id="hero-lift-copy">
+        <div class="hero-lift-tag">Cyprus · 2026 · Autonomous Logistics</div>
+        <div class="hero-lift-title">Delivery,<br><em>Reinvented.</em></div>
+        <div class="hero-lift-sub">Vector deploys VTOL drones that bypass traffic, delivering food, medicine &amp; essentials across Cyprus in under 15 minutes.</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-layout">
+    <div class="hero-copy">
+      <div class="hero-tag">Cyprus · 2026 · Autonomous Logistics</div>
+      <h1 class="hero-title glitch" data-text="Delivery,">
+        Delivery,<br><em>Reinvented.</em>
+      </h1>
+      <p class="hero-sub">
+        Vector deploys VTOL drones that bypass traffic, delivering food, medicine &amp; essentials across Cyprus in under 15 minutes.
+      </p>
+      <div class="hero-actions">
+        <a href="#delivery" class="btn-primary">Explore the Fleet</a>
+        <a href="#invest" class="btn-ghost">Invest</a>
+      </div>
+    </div>
+    <div class="hero-stats" aria-label="Key metrics">
+      <div class="hero-stat">
+        <div class="stat-num">&lt;15<span class="stat-unit">min</span></div>
+        <div class="stat-label">Average Delivery</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">40</div>
+        <div class="stat-label">VTOL Drones · Phase 1</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">15km</div>
+        <div class="stat-label">Max Radius</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">10kg</div>
+        <div class="stat-label">Payload Capacity</div>
+      </div>
+    </div>
   </div>
   <div class="scroll-hint">Scroll to explore</div>
 </section>
 
-<!-- STATS BAR -->
-<div class="section" id="stats-bar">
-  <div class="stat-item">
-    <div class="stat-num">&lt;15<span class="stat-unit">min</span></div>
-    <div class="stat-label">Average Delivery</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num">40</div>
-    <div class="stat-label">VTOL Drones · Phase 1</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num">15km</div>
-    <div class="stat-label">Max Radius</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num">10kg</div>
-    <div class="stat-label">Payload Capacity</div>
-  </div>
-</div>
-
 <!-- SCROLL STORY -->
 <div id="scroll-story" class="section">
   <div class="sticky-wrapper">
-    <!-- Panel 0: Intro -->
     <div class="story-panel active" id="panel-0">
       <div class="panel-content">
         <div class="panel-tag">01 / Architecture</div>
@@ -109,7 +139,6 @@
         </ul>
       </div>
     </div>
-    <!-- Panel 1: Internals -->
     <div class="story-panel" id="panel-1">
       <div class="panel-content">
         <div class="panel-tag">02 / Powertrain</div>
@@ -122,7 +151,6 @@
         </ul>
       </div>
     </div>
-    <!-- Panel 2: Autonomy -->
     <div class="story-panel" id="panel-2">
       <div class="panel-content">
         <div class="panel-tag">03 / Intelligence</div>
@@ -135,7 +163,6 @@
         </ul>
       </div>
     </div>
-    <!-- Panel 3: Network -->
     <div class="story-panel" id="panel-3">
       <div class="panel-content">
         <div class="panel-tag">04 / Network</div>
@@ -156,7 +183,6 @@
   <div class="delivery-inner">
     <div class="section-tag">Last-Mile Reinvented</div>
     <h2 class="section-title">From Order to<br><em>Arrival</em></h2>
-
     <div class="route-viz">
       <div class="route-point">
         <div class="point-label">Point A</div>
@@ -175,7 +201,6 @@
         <div class="point-sub">Precision landing</div>
       </div>
     </div>
-
     <div class="steps-grid">
       <div class="step-card">
         <div class="step-num">01</div>
@@ -213,38 +238,14 @@
     <div class="tech-grid">
       <div>
         <ul class="specs-table">
-          <li class="spec-row">
-            <span class="spec-key">Payload</span>
-            <span class="spec-val highlight">Up to 10 kg</span>
-          </li>
-          <li class="spec-row">
-            <span class="spec-key">Delivery Radius</span>
-            <span class="spec-val">5 – 15 km</span>
-          </li>
-          <li class="spec-row">
-            <span class="spec-key">Cruise Speed</span>
-            <span class="spec-val">80 – 120 km/h</span>
-          </li>
-          <li class="spec-row">
-            <span class="spec-key">Avg. Delivery Time</span>
-            <span class="spec-val highlight">&lt; 15 min</span>
-          </li>
-          <li class="spec-row">
-            <span class="spec-key">Mission Success</span>
-            <span class="spec-val highlight">95%+</span>
-          </li>
-          <li class="spec-row">
-            <span class="spec-key">Operating Altitude</span>
-            <span class="spec-val">up to 4000 m</span>
-          </li>
-          <li class="spec-row">
-            <span class="spec-key">Weather Rating</span>
-            <span class="spec-val">IP54</span>
-          </li>
-          <li class="spec-row">
-            <span class="spec-key">Fleet Phase 1</span>
-            <span class="spec-val">40 VTOL + 8 Hubs</span>
-          </li>
+          <li class="spec-row"><span class="spec-key">Payload</span><span class="spec-val highlight">Up to 10 kg</span></li>
+          <li class="spec-row"><span class="spec-key">Delivery Radius</span><span class="spec-val">5 – 15 km</span></li>
+          <li class="spec-row"><span class="spec-key">Cruise Speed</span><span class="spec-val">80 – 120 km/h</span></li>
+          <li class="spec-row"><span class="spec-key">Avg. Delivery Time</span><span class="spec-val highlight">&lt; 15 min</span></li>
+          <li class="spec-row"><span class="spec-key">Mission Success</span><span class="spec-val highlight">95%+</span></li>
+          <li class="spec-row"><span class="spec-key">Operating Altitude</span><span class="spec-val">up to 4000 m</span></li>
+          <li class="spec-row"><span class="spec-key">Weather Rating</span><span class="spec-val">IP54</span></li>
+          <li class="spec-row"><span class="spec-key">Fleet Phase 1</span><span class="spec-val">40 VTOL + 8 Hubs</span></li>
         </ul>
       </div>
       <div>
@@ -252,31 +253,19 @@
         <div class="phase-list">
           <div class="phase-item">
             <div class="phase-year">2026</div>
-            <div class="phase-info">
-              <h4>Phase 1 — Nicosia Pilot</h4>
-              <p>40 VTOLs, 8 stations, 175k deliveries/yr. EASA/SORA certification.</p>
-            </div>
+            <div class="phase-info"><h4>Phase 1 — Nicosia Pilot</h4><p>40 VTOLs, 8 stations, 175k deliveries/yr. EASA/SORA certification.</p></div>
           </div>
           <div class="phase-item">
             <div class="phase-year">2027</div>
-            <div class="phase-info">
-              <h4>Phase 2 — Limassol + Larnaca</h4>
-              <p>120 VTOLs, 25 stations, 700k deliveries/yr. Break-even Q4.</p>
-            </div>
+            <div class="phase-info"><h4>Phase 2 — Limassol + Larnaca</h4><p>120 VTOLs, 25 stations, 700k deliveries/yr. Break-even Q4.</p></div>
           </div>
           <div class="phase-item">
             <div class="phase-year">2028</div>
-            <div class="phase-info">
-              <h4>Phase 3 — All Cyprus</h4>
-              <p>160–180 VTOLs, 40+ stations. €4M+ revenue. EBITDA 22–28%.</p>
-            </div>
+            <div class="phase-info"><h4>Phase 3 — All Cyprus</h4><p>160–180 VTOLs, 40+ stations. €4M+ revenue. EBITDA 22–28%.</p></div>
           </div>
           <div class="phase-item">
             <div class="phase-year">2029</div>
-            <div class="phase-info">
-              <h4>Phase 4 — EU Expansion</h4>
-              <p>Greece, Israel, Southern Italy. License / JV / Franchise model.</p>
-            </div>
+            <div class="phase-info"><h4>Phase 4 — EU Expansion</h4><p>Greece, Israel, Southern Italy. License / JV / Franchise model.</p></div>
           </div>
         </div>
       </div>
@@ -294,48 +283,27 @@
         Vector is raising €1.0–1.7M Seed for 15–20% equity. Capital deployed in tranches tied to pilot milestones. Target ROI 4–10× at successful scaling (3–5 years).
       </p>
       <div class="invest-metrics">
-        <div>
-          <div class="metric-value metric-value--accent">4–10×</div>
-          <div class="metric-label">Target ROI</div>
-        </div>
-        <div>
-          <div class="metric-value">Y2</div>
-          <div class="metric-label">Break-even</div>
-        </div>
-        <div>
-          <div class="metric-value">15–20%</div>
-          <div class="metric-label">Equity Offered</div>
-        </div>
+        <div><div class="metric-value metric-value--accent">4–10×</div><div class="metric-label">Target ROI</div></div>
+        <div><div class="metric-value">Y2</div><div class="metric-label">Break-even</div></div>
+        <div><div class="metric-value">15–20%</div><div class="metric-label">Equity Offered</div></div>
       </div>
       <a href="mailto:invest@vector-autonomous.com" class="btn-primary">Reserve Your Spot</a>
     </div>
     <div class="invest-tiers">
       <div class="tier-card">
-        <div>
-          <div class="tier-name">Pre-Seed</div>
-          <div class="tier-amount">€20k – 50k</div>
-        </div>
+        <div><div class="tier-name">Pre-Seed</div><div class="tier-amount">€20k – 50k</div></div>
         <div class="tier-badge">Convertible/SAFE</div>
       </div>
       <div class="tier-card featured">
-        <div>
-          <div class="tier-name">Seed Tranche 1</div>
-          <div class="tier-amount">€250,000</div>
-        </div>
+        <div><div class="tier-name">Seed Tranche 1</div><div class="tier-amount">€250,000</div></div>
         <div class="tier-badge">Prototype Ready</div>
       </div>
       <div class="tier-card">
-        <div>
-          <div class="tier-name">Seed Tranche 2</div>
-          <div class="tier-amount">€450,000</div>
-        </div>
+        <div><div class="tier-name">Seed Tranche 2</div><div class="tier-amount">€450,000</div></div>
         <div class="tier-badge">City Pilot 15–20 VTOL</div>
       </div>
       <div class="tier-card">
-        <div>
-          <div class="tier-name">Seed Tranche 3</div>
-          <div class="tier-amount">€600k – 1M</div>
-        </div>
+        <div><div class="tier-name">Seed Tranche 3</div><div class="tier-amount">€600k – 1M</div></div>
         <div class="tier-badge">Full Pilot 40+ VTOL</div>
       </div>
       <div class="invest-note">
@@ -351,12 +319,12 @@
   <div class="footer-copy">© 2026 Vector Autonomous Systems · Cyprus · All rights reserved</div>
 </footer>
 
-<!-- THREE.JS -->
+<!-- SCRIPTS: строго в этом порядке -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-<!-- Anime.js (для разборки дрона по скроллу) -->
-<script src="https://cdn.jsdelivr.net/npm/animejs@4.0.0/lib/anime.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 
 <script src="./assets/app.js"></script>
+
 </body>
 </html>
