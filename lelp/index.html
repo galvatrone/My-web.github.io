@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="LELP — a reusable electromagnetic logistics platform concept for the Moon.">
+  <title>LELP — Lunar Electromagnetic Logistics Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="site-loader" id="site-loader" role="status" aria-live="polite">
+    <div class="loader-system" aria-hidden="true">
+      <div class="loader-earth">
+        <i></i>
+        <i></i>
+        <i></i>
+        <svg class="loader-earth-map" viewBox="0 0 100 100">
+          <path d="M27 12 17 18 11 29l6 12 9 4-3 12 7 10 2 15 8 9 7-12-5-12 5-11-8-9 7-14-6-13Z"></path>
+          <path d="m51 19 12-9 16 5 12 11-4 12-14 2-7 8 8 8-6 11-6 21-10-12 2-17-9-10 6-11-7-9Z"></path>
+          <path d="m79 70 11 4-1 11-13 3-6-8Z"></path>
+        </svg>
+      </div>
+      <div class="loader-orbit">
+        <div class="loader-moon"><span></span></div>
+      </div>
+    </div>
+    <div class="loader-copy">
+      <span>LELP / SYSTEM INITIALIZATION</span>
+      <small data-i18n="loaderStatus">Establishing lunar link</small>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const loader = document.getElementById("site-loader");
+      let dismissed = false;
+      const dismiss = () => {
+        if (dismissed || !loader) return;
+        dismissed = true;
+        loader.classList.add("is-complete");
+        document.body.classList.remove("is-loading");
+        window.setTimeout(() => {
+          loader.hidden = true;
+        }, 500);
+      };
+      window.addEventListener("load", () => window.setTimeout(dismiss, 900), {
+        once: true,
+      });
+      window.setTimeout(dismiss, 5000);
+    })();
+  </script>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="LELP, на главную">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 3 44 39H4L24 3Zm0 10L13 33h22L24 13Zm0 7 7 13H17l7-13Z"/></svg>
+      <span>LELP</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#mission" data-i18n="navMission">Mission</a><a href="#platform" data-i18n="navPlatform">Platform</a><a href="#launch" data-i18n="navLaunch">Launch</a>
+    </nav>
+    <div class="header-actions">
+      <div class="language-switch" aria-label="Language">
+        <button type="button" data-lang="en" class="active" aria-pressed="true">🇬🇧 EN</button>
+        <button type="button" data-lang="ru" aria-pressed="false">🇷🇺 RU</button>
+      </div>
+      <a class="header-cta" href="#preorder"><span data-i18n="navPreorder">Pre-order</span> <b>↗</b></a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="stars" aria-hidden="true"></div>
+      <div class="moon" id="moon-3d" aria-hidden="true">
+        <div class="moon-loader">LROC / LOADING</div>
+      </div>
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span></span> Lunar logistics infrastructure</p>
+        <h1 data-i18n-html="heroTitle">Space becomes<br><em>deliverable.</em></h1>
+        <p class="hero-lead" data-i18n="heroLead">An autonomous platform on the lunar surface collects samples and sends them with an electromagnetic impulse — without launching a new spacecraft for every delivery.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#preorder"><span data-i18n="heroReserve">Reserve a sample</span> <b>↗</b></a>
+          <a class="text-link" href="#mission"><span data-i18n="heroLearn">See how it works</span> <b>↓</b></a>
+        </div>
+      </div>
+      <div class="hero-status reveal">
+        <span>01 / CONCEPT STAGE</span><span data-i18n="heroSurface">Lunar surface · 00°</span>
+      </div>
+      <div class="scroll-cue"><span></span> SCROLL TO EXPLORE</div>
+    </section>
+
+    <section class="preorder section" id="preorder">
+      <div class="section-label">01 / FIRST PAYLOAD</div>
+      <div class="preorder-grid">
+        <div class="sample-visual reveal">
+          <div class="orbit-ring"></div>
+          <div
+            class="rock-viewer"
+            id="rock-viewer-3d"
+            role="img"
+            aria-label="Interactive 3D model of a lunar sample"
+          >
+            <div class="rock-loader">SAMPLE / LOADING</div>
+            <div class="rock-hint" data-i18n="rockHint">Hold and rotate · 360°</div>
+          </div>
+          <div class="sample-tag">SAMPLE<br><strong>LS–001</strong></div>
+        </div>
+        <div class="preorder-copy reveal">
+          <p class="eyebrow"><span></span> Limited first mission</p>
+          <h2 data-i18n-html="preorderTitle">Your fragment<br>of another world.</h2>
+          <p data-i18n="preorderLead">Apply for a place in the early scientific and collectible lunar sample delivery programme. Final availability depends on mission success, permits and scientific verification.</p>
+          <div class="price-box">
+            <div><span data-i18n="depositLabel">Reservation deposit</span><strong>$100</strong></div>
+            <p data-i18n="depositNote">The remaining balance is requested only after the platform becomes operational and your sample allocation is confirmed.</p>
+          </div>
+          <dl class="sample-specs">
+            <div><dt data-i18n="sampleClass">Class</dt><dd>Nano</dd></div>
+            <div><dt data-i18n="sampleMass">Sample mass</dt><dd>5–20 g</dd></div>
+            <div><dt data-i18n="sampleOrigin">Origin</dt><dd data-i18n="sampleRegolith">Lunar regolith</dd></div>
+          </dl>
+          <button class="button primary open-dialog" type="button"><span data-i18n="requestAccess">Request early access</span> <b>↗</b></button>
+          <small data-i18n="depositLegal">The $100 deposit reserves priority only. It is not a guarantee of delivery and is subject to final programme terms.</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="mission section" id="mission">
+      <div class="section-label">02 / MISSION ARCHITECTURE</div>
+      <div class="section-intro reveal">
+        <p class="eyebrow"><span></span> One platform. Repeated missions.</p>
+        <h2 data-i18n-html="missionTitle">One system.<br><em>Six mission phases.</em></h2>
+        <p class="mission-lead" data-i18n="missionLead">LELP separates permanent lunar infrastructure from the payload that returns. The platform lands once, then repeats the collect–package–launch cycle.</p>
+      </div>
+      <div class="mission-facts reveal">
+        <div><strong>10–25 kg</strong><span data-i18n="missionFactMass">platform mass</span></div>
+        <div><strong>Solar + Li-ion</strong><span data-i18n="missionFactPower">rechargeable power</span></div>
+        <div><strong>5–1200 g</strong><span data-i18n="missionFactPayload">MVP sample range</span></div>
+      </div>
+      <div class="mission-track">
+        <div class="track-line"><i></i></div>
+        <article class="step reveal"><b>01</b><span class="step-icon">◎</span><h3 data-i18n="missionEarth">Earth launch</h3><p data-i18n="missionEarthText">A commercial launcher places the compact transfer vehicle into Earth orbit.</p></article>
+        <article class="step reveal"><b>02</b><span class="step-icon">◫</span><h3 data-i18n="missionLanding">Lunar landing</h3><p data-i18n="missionLandingText">The lander deploys LELP, solar arrays, communications and the sampling system.</p></article>
+        <article class="step reveal"><b>03</b><span class="step-icon">⌁</span><h3 data-i18n="missionSurvey">Survey & collect</h3><p data-i18n="missionSurveyText">Cameras map local terrain while the robotic tool selects rock and regolith.</p></article>
+        <article class="step reveal"><b>04</b><span class="step-icon">⬡</span><h3 data-i18n="missionPackage">Verify & package</h3><p data-i18n="missionPackageText">Material is identified, weighed, sealed in a capsule and logged for traceability.</p></article>
+        <article class="step reveal"><b>05</b><span class="step-icon">↗</span><h3 data-i18n="missionLaunch">Electromagnetic launch</h3><p data-i18n="missionLaunchText">Supercapacitors discharge through the launcher while the platform stays on the Moon.</p></article>
+        <article class="step reveal"><b>06</b><span class="step-icon">◇</span><h3 data-i18n="missionGuidance">Guidance & recovery</h3><p data-i18n="missionGuidanceText">A lightweight stage corrects the trajectory toward orbit or a future return architecture.</p></article>
+      </div>
+    </section>
+
+    <section class="platform section" id="platform">
+      <div class="platform-copy reveal">
+        <div class="section-label">03 / THE PLATFORM</div>
+        <p class="eyebrow"><span></span> Built to stay</p>
+        <h2 data-i18n-html="platformTitle">Engineering<br>for permanent<br><em>presence.</em></h2>
+        <p data-i18n="platformLead">A modular aluminium–titanium structure integrates autonomous navigation, energy storage, payload handling and electromagnetic launch.</p>
+        <div class="metric-row">
+          <div><strong>≤50</strong><span data-i18n-html="metricSize">cm<br>MVP envelope</span></div>
+          <div><strong>10–25</strong><span data-i18n-html="metricMass">kg<br>platform mass</span></div>
+          <div><strong>5–1200</strong><span data-i18n-html="metricSample">g<br>MVP samples</span></div>
+        </div>
+      </div>
+      <div class="platform-visual reveal">
+        <img src="assets/images/lelp-platform.png" alt="Инженерная визуализация платформы LELP" loading="lazy">
+        <button class="hotspot h1" data-label="Solar power" data-label-en="Solar power" data-label-ru="Солнечная энергия" aria-label="Solar power">+</button>
+        <button class="hotspot h2" data-label="Robotic manipulator" data-label-en="Robotic manipulator" data-label-ru="Роботизированный манипулятор" aria-label="Robotic manipulator">+</button>
+        <button class="hotspot h3" data-label="Electromagnetic launcher" data-label-en="Electromagnetic launcher" data-label-ru="Электромагнитный ускоритель" aria-label="Electromagnetic launcher">+</button>
+      </div>
+    </section>
+
+    <section class="blueprint section">
+      <div class="section-label">04 / SYSTEMS</div>
+      <div class="section-intro reveal"><p class="eyebrow"><span></span> Inside LELP</p><h2 data-i18n-html="systemsTitle">A system designed<br><em>to repeat.</em></h2></div>
+      <div class="blueprint-grid">
+        <figure class="drawing reveal"><img src="assets/images/lelp-internal.png" alt="Внутренняя компоновка LELP" loading="lazy"><figcaption>INTERNAL EQUIPMENT / REV A</figcaption></figure>
+        <div class="system-list reveal">
+          <article><b>01</b><div><h3 data-i18n="systemAutonomy">Autonomy</h3><p data-i18n="systemAutonomyText">Flight computer, cameras, IMU and communications for remote operations.</p></div></article>
+          <article><b>02</b><div><h3 data-i18n="systemEnergy">Energy</h3><p data-i18n="systemEnergyText">Solar arrays, Li-ion batteries and pulse-delivery supercapacitors.</p></div></article>
+          <article><b>03</b><div><h3 data-i18n="systemPayload">Payload handling</h3><p data-i18n="systemPayloadText">Manipulator, sampling tool, container and replaceable capsule magazine.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="launch section" id="launch">
+      <div class="launch-sky" aria-hidden="true">
+        <svg class="trajectory" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+          <path d="M 430 720 Q 215 40 0 40"></path>
+          <circle class="trajectory-origin" cx="430" cy="720" r="4"></circle>
+        </svg>
+        <div class="capsule-stream">
+          <span class="capsule">◆</span>
+          <span class="capsule">◆</span>
+          <span class="capsule">◆</span>
+          <span class="capsule">◆</span>
+          <span class="capsule">◆</span>
+          <span class="capsule">◆</span>
+          <span class="capsule">◆</span>
+        </div>
+        <div class="earth launch-moon" id="launch-moon-3d">
+          <div class="moon-loader">LROC / LOADING</div>
+        </div>
+      </div>
+      <div class="launch-copy reveal">
+        <div class="section-label">05 / ELECTROMAGNETIC LAUNCH</div>
+        <p class="eyebrow"><span></span> No combustion at liftoff</p>
+        <h2 data-i18n-html="launchTitle">Impulse.<br>Silence.<br><em>Trajectory.</em></h2>
+        <p data-i18n="launchLead">The linear electromagnetic launcher gives the capsule its initial velocity. A miniature electric propulsion system may correct the course, but is not used for lunar lift-off.</p>
+        <div class="launch-modes">
+          <div><span>DEMO</span><strong>10–100</strong><small data-i18n="modeDemo">m/s · ground validation</small></div>
+          <div><span>HOP</span><strong>300–500</strong><small data-i18n="modeHop">m/s · surface logistics</small></div>
+          <div><span>ORBIT</span><strong>800–1500</strong><small data-i18n="modeOrbit">m/s · with kick stage</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="roadmap section" id="roadmap">
+      <div class="section-label">06 / ROADMAP</div>
+      <div class="section-intro reveal"><p class="eyebrow"><span></span> From proof to infrastructure</p><h2 data-i18n-html="roadmapTitle">The road to the Moon<br><em>starts in the laboratory.</em></h2></div>
+      <div class="roadmap-progress reveal"><i></i><span data-i18n="roadmapProgress">Current programme maturity · Phase 0</span></div>
+      <ol class="roadmap-list">
+        <li class="active reveal"><button type="button"><span>00</span><div><small>NOW</small><h3 data-i18n="road0">Concept & feasibility</h3><p data-i18n="road0Text">Mission architecture, CAD, launcher calculations and business validation.</p><em data-i18n="road0Detail">Deliverables: requirements baseline, mass and power budgets, trajectory model and preliminary risk register.</em></div><b>TRL 2</b></button></li>
+        <li class="reveal"><button type="button"><span>01</span><div><small>NEXT</small><h3 data-i18n="road1">Laboratory prototype</h3><p data-i18n="road1Text">A 50 cm launcher, instrumented capsules and high-speed imaging.</p><em data-i18n="road1Detail">Validation: repeatable acceleration, switching electronics, thermal behaviour and capsule integrity.</em></div><b>TRL 3–4</b></button></li>
+        <li class="reveal"><button type="button"><span>02</span><div><small>ENVIRONMENT</small><h3 data-i18n="road2">Vacuum & regolith testing</h3><p data-i18n="road2Text">Thermal-vacuum operation, lunar simulant and autonomous loading.</p><em data-i18n="road2Detail">Validation: dust tolerance, sample handling, energy storage and remote fault recovery.</em></div><b>TRL 5</b></button></li>
+        <li class="reveal"><button type="button"><span>03</span><div><small>QUALIFY</small><h3 data-i18n="road3">Engineering model</h3><p data-i18n="road3Text">Space-qualified electronics and environmental qualification campaign.</p><em data-i18n="road3Detail">Deliverables: vibration, shock, radiation and reliability evidence for flight integration.</em></div><b>TRL 5–6</b></button></li>
+        <li class="reveal"><button type="button"><span>04</span><div><small>MOON</small><h3 data-i18n="road4">Lunar demonstrator</h3><p data-i18n="road4Text">Integration with a commercial lunar lander and on-site demonstration.</p><em data-i18n="road4Detail">Mission: collect, package, charge and perform the first autonomous electromagnetic lunar launch test.</em></div><b>TRL 6–7</b></button></li>
+        <li class="reveal"><button type="button"><span>05</span><div><small>SCALE</small><h3 data-i18n="road5">Commercial logistics</h3><p data-i18n="road5Text">Recurring payload services between the lunar surface and future orbital infrastructure.</p><em data-i18n="road5Detail">Growth path: scientific samples, cargo classes, licensing and Lunar Logistics as a Service.</em></div><b>TRL 8–9</b></button></li>
+      </ol>
+    </section>
+
+    <section class="final-cta" id="contact">
+      <div class="final-moon" id="final-moon-3d" aria-hidden="true">
+        <div class="moon-loader">LROC / LOADING</div>
+      </div>
+      <div class="reveal"><p class="eyebrow"><span></span> The next logistics network</p><h2 data-i18n-html="finalTitle">The first delivery line<br><em>beyond Earth.</em></h2><p data-i18n="finalLead">Follow LELP development or request participation in the early payload programme.</p><button class="button primary open-dialog" type="button"><span data-i18n="contactProject">Contact the project</span> <b>↗</b></button></div>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="#top"><svg viewBox="0 0 48 48"><path d="M24 3 44 39H4L24 3Zm0 10L13 33h22L24 13Zm0 7 7 13H17l7-13Z"/></svg><span>LELP</span></a><p>SPACEDestiny · Lunar Electromagnetic Logistics Platform<br><small data-i18n="footerLegal">Concept-stage project. Visuals and specifications are subject to change.</small></p><a href="#top" data-i18n="backTop">Back to top ↑</a></footer>
+
+  <dialog id="contact-dialog">
+    <button class="dialog-close" type="button" aria-label="Close">×</button>
+    <div class="dialog-heading">
+      <p class="eyebrow"><span></span> Early access · LELP</p>
+      <h2 data-i18n="formTitle">Request early access</h2>
+      <p data-i18n="formLead">Tell us whether you are interested in a lunar sample, a scientific payload, investment or mission partnership.</p>
+    </div>
+    <form id="early-access-form" action="https://formsubmit.co/michaelok929@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="LELP Website — Early Access Request">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_autoresponse" value="Thank you for contacting the LELP project. Your early access request was received through the official LELP website. We will review it as the programme develops.">
+      <input type="hidden" name="_next" id="form-return-url">
+      <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="source" value="LELP Website">
+      <div class="form-grid">
+        <label><span data-i18n="formName">Full name</span><input name="name" required autocomplete="name" placeholder="Alex Morgan"></label>
+        <label><span>Email</span><input type="email" name="email" required autocomplete="email" placeholder="alex@example.com"></label>
+        <label><span data-i18n="formCompany">Company / organisation</span><input name="organisation" autocomplete="organization" placeholder="Organisation"></label>
+        <label><span data-i18n="formInterest">Area of interest</span><select name="interest" required><option value="" data-i18n="formChoose">Choose one</option><option data-i18n="formSample">Lunar sample reservation</option><option data-i18n="formPayload">Scientific payload</option><option data-i18n="formPartner">Investment / partnership</option><option data-i18n="formMedia">Media / research inquiry</option></select></label>
+      </div>
+      <label><span data-i18n="formMessage">Message</span><textarea name="message" rows="6" required data-i18n-placeholder="formMessagePlaceholder" placeholder="Tell us about your interest in LELP..."></textarea></label>
+      <label class="form-consent"><input type="checkbox" name="consent" value="Yes" required><span data-i18n="formConsent">I agree that my information may be used to respond to this request.</span></label>
+      <div class="form-submit-row">
+        <button class="button primary" type="submit"><span data-i18n="formSubmit">Send request</span> <b>↗</b></button>
+        <p data-i18n="formResponse">The request will be sent securely. An automatic confirmation will arrive by email.</p>
+      </div>
+      <p class="form-status" id="form-status" hidden aria-live="polite"></p>
+    </form>
+  </dialog>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script type="module" src="assets/app.js"></script>
+</body>
+</html>
