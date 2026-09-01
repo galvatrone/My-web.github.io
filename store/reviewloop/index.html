@@ -1,12 +1,248 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ReviewLoop CY | Oneix</title><link rel="stylesheet" href="../assets/styles.css"></head>
-<body><main class="site"><header class="topbar"><a class="brand" href="../"><span class="mark">OX</span> Oneix / ReviewLoop CY</a><nav class="nav"><a href="#product">Product</a><a href="#workflow">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="../">Store</a></nav></header><div class="wrap">
-<section class="hero" id="product"><div><p class="eyebrow">Reputation / customer momentum</p><h1>Turn happy customers into public reviews.</h1><p class="lead">For salons, garages, clinics, cleaners and local service teams.</p><div class="actions"><a class="button" data-app-path="reviewloop" href="../../reviewloop/signup">Start ReviewLoop</a><a class="button secondary" href="#workflow">See how it works</a></div></div><div class="signal" style="--signal:var(--accent)"><div class="signal-head"><span>REVIEWLOOP / SIGNAL</span><span>ONEIX SOFTWARE</span></div><div class="signal-title">Customer → Request → Opened → Feedback → Review</div><div class="signal-line"><i style="--h:38%"></i><i style="--h:61%"></i><i style="--h:48%"></i><i style="--h:84%"></i><i style="--h:68%"></i></div><div class="signal-meta"><span>visible state</span><span>next action</span></div></div></section>
-<section class="section"><div class="detail"><div><p class="eyebrow">The problem</p><h2>Turn happy customers into public reviews.</h2></div><div class="card"><h3>One clear operating loop</h3><p>For salons, garages, clinics, cleaners and local service teams. The product keeps the next step visible so the team can act while the context is still clear.</p></div></div></section>
-<section class="section" id="workflow"><div class="section-head"><div><p class="eyebrow">How it works</p><h2>From signal to next action.</h2></div><p>Start with the moment that matters, keep the status visible, and move the work forward.</p></div><div class="grid steps"><div class="card"><h3>Add a customer</h3><p>Add a customer and capture the moment</p></div><div class="card"><h3>Send a request</h3><p>Send a request by email or QR</p></div><div class="card"><h3>Track the result</h3><p>See opens, clicks and request status</p></div></div></section>
-<section class="section"><div class="section-head"><div><p class="eyebrow">Product signal</p><h2>Designed around reputation / customer momentum.</h2></div><p>Add a customer and capture the moment. Send a request by email or QR. See opens, clicks and request status.</p></div><div class="grid"><div class="card"><h3>Customer</h3><p>Start with a visible state, not a blank spreadsheet.</p></div><div class="card"><h3>Opened</h3><p>Know what needs attention before the next handoff.</p></div><div class="card"><h3>Feedback</h3><p>Finish with an outcome the team can understand.</p></div></div></section>
-<section class="section" id="pricing"><div class="detail"><div><p class="eyebrow">Simple pricing</p><h2>One focused plan to get moving.</h2><p class="lead">No enterprise packaging. Start with the workflow your team needs first.</p></div><div class="card"><h3>Starter</h3><div class="price"><strong>€19</strong><span>/ month</span></div><p>Add a customer and capture the moment, Send a request by email or QR, See opens, clicks and request status.</p><a class="button" data-app-path="reviewloop" href="../../reviewloop/signup">Start now</a></div></div></section>
-<section class="section" id="faq"><div class="section-head"><div><p class="eyebrow">FAQ</p><h2>Useful answers before you start.</h2></div></div><div class="faq"><details open><summary>Who is it for?</summary><p>Small service businesses that want a simple way to ask happy customers for a public review.</p></details><details><summary>Can I start small?</summary><p>Yes. The first useful action is designed to be clear without a long setup process.</p></details></div></section>
-<section class="section"><div class="detail"><div><p class="eyebrow">Ready when you are</p><h2>Turn happy customers into public reviews.</h2></div><div class="actions"><a class="button" data-app-path="reviewloop" href="../../reviewloop/signup">Start ReviewLoop</a><a class="button secondary" href="../">Back to Oneix Store</a></div></div></section>
-<footer class="footer">ReviewLoop CY is a focused Oneix software product. <a href="../">Explore the Store</a>.</footer></div></main><script src="../assets/products.js"></script></body></html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ReviewLoop CY | Oneix</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <main class="site reviewloop-store">
+      <header class="topbar">
+        <a class="brand" href="../"
+          ><span class="mark">OX</span> Oneix / ReviewLoop CY</a
+        >
+        <nav class="nav">
+          <a href="#product">Product</a><a href="#workflow">How it works</a
+          ><a href="#pricing">Pricing</a><a href="#faq">FAQ</a
+          ><a href="../">Store</a>
+        </nav>
+      </header>
+      <div class="wrap">
+        <section
+          class="hero reviewloop-hero"
+          id="product"
+          data-experience="reviewloop"
+        >
+          <div class="hero-copy">
+            <p class="eyebrow">Reputation / customer momentum</p>
+            <h1 data-reveal>Turn happy customers into public reviews.</h1>
+            <p class="lead" data-reveal>
+              For salons, garages, clinics, cleaners and local service teams.
+            </p>
+            <div class="actions" data-reveal>
+              <a
+                class="button"
+                data-app-path="reviewloop"
+                href="../../reviewloop/signup"
+                >Start ReviewLoop</a
+              ><a class="button secondary" href="#workflow">See how it works</a>
+            </div>
+          </div>
+          <div
+            class="journey-field"
+            aria-label="Interactive ReviewLoop review journey"
+          >
+            <canvas class="journey-canvas" data-three="reviewloop"></canvas
+            ><svg
+              class="journey-map"
+              viewBox="0 0 640 460"
+              role="img"
+              aria-label="Customer request opened feedback review public reputation"
+            >
+              <path
+                class="journey-path main"
+                d="M78 230 C172 142 260 140 320 220 S472 316 566 218"
+              />
+              <path
+                class="journey-path branch-a"
+                d="M320 220 C270 292 210 320 142 350"
+              />
+              <path
+                class="journey-path branch-b"
+                d="M320 220 C390 276 468 320 520 356"
+              />
+              <g class="journey-node" transform="translate(78 230)">
+                <circle r="34" />
+                <text>Customer</text>
+              </g>
+              <g class="journey-node" transform="translate(222 156)">
+                <circle r="30" />
+                <text>Request</text>
+              </g>
+              <g class="journey-node" transform="translate(320 220)">
+                <circle r="34" />
+                <text>Opened</text>
+              </g>
+              <g class="journey-node" transform="translate(142 350)">
+                <circle r="30" />
+                <text>Feedback</text>
+              </g>
+              <g class="journey-node" transform="translate(520 356)">
+                <circle r="30" />
+                <text>Review</text>
+              </g>
+              <g class="journey-node reputation" transform="translate(566 218)">
+                <circle r="44" />
+                <text>Public reputation</text>
+              </g>
+              <circle class="journey-pulse" r="8" />
+            </svg>
+            <div class="journey-hud">
+              <span>Live review path</span
+              ><strong data-journey-state>Request signal moving</strong>
+            </div>
+          </div>
+        </section>
+        <section class="section">
+          <div class="detail">
+            <div>
+              <p class="eyebrow">The problem</p>
+              <h2>Turn happy customers into public reviews.</h2>
+            </div>
+            <div class="card">
+              <h3>One clear operating loop</h3>
+              <p>
+                For salons, garages, clinics, cleaners and local service teams.
+                The product keeps the next step visible so the team can act
+                while the context is still clear.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section class="section" id="workflow">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">How it works</p>
+              <h2>From signal to next action.</h2>
+            </div>
+            <p>
+              Start with the moment that matters, keep the status visible, and
+              move the work forward.
+            </p>
+          </div>
+          <div class="grid steps">
+            <div class="card">
+              <h3>Add a customer</h3>
+              <p>Add a customer and capture the moment</p>
+            </div>
+            <div class="card">
+              <h3>Send a request</h3>
+              <p>Send a request by email or QR</p>
+            </div>
+            <div class="card">
+              <h3>Track the result</h3>
+              <p>See opens, clicks and request status</p>
+            </div>
+          </div>
+        </section>
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Product signal</p>
+              <h2>Designed around reputation / customer momentum.</h2>
+            </div>
+            <p>
+              Add a customer and capture the moment. Send a request by email or
+              QR. See opens, clicks and request status.
+            </p>
+          </div>
+          <div class="grid">
+            <div class="card">
+              <h3>Customer</h3>
+              <p>Start with a visible state, not a blank spreadsheet.</p>
+            </div>
+            <div class="card">
+              <h3>Opened</h3>
+              <p>Know what needs attention before the next handoff.</p>
+            </div>
+            <div class="card">
+              <h3>Feedback</h3>
+              <p>Finish with an outcome the team can understand.</p>
+            </div>
+          </div>
+        </section>
+        <section class="section" id="pricing">
+          <div class="detail">
+            <div>
+              <p class="eyebrow">Simple pricing</p>
+              <h2>One focused plan to get moving.</h2>
+              <p class="lead">
+                No enterprise packaging. Start with the workflow your team needs
+                first.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Starter</h3>
+              <div class="price"><strong>€19</strong><span>/ month</span></div>
+              <p>
+                Add a customer and capture the moment, Send a request by email
+                or QR, See opens, clicks and request status.
+              </p>
+              <a
+                class="button"
+                data-app-path="reviewloop"
+                href="../../reviewloop/signup"
+                >Start now</a
+              >
+            </div>
+          </div>
+        </section>
+        <section class="section" id="faq">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">FAQ</p>
+              <h2>Useful answers before you start.</h2>
+            </div>
+          </div>
+          <div class="faq">
+            <details open>
+              <summary>Who is it for?</summary>
+              <p>
+                Small service businesses that want a simple way to ask happy
+                customers for a public review.
+              </p>
+            </details>
+            <details>
+              <summary>Can I start small?</summary>
+              <p>
+                Yes. The first useful action is designed to be clear without a
+                long setup process.
+              </p>
+            </details>
+          </div>
+        </section>
+        <section class="section">
+          <div class="detail">
+            <div>
+              <p class="eyebrow">Ready when you are</p>
+              <h2>Turn happy customers into public reviews.</h2>
+            </div>
+            <div class="actions">
+              <a
+                class="button"
+                data-app-path="reviewloop"
+                href="../../reviewloop/signup"
+                >Start ReviewLoop</a
+              ><a class="button secondary" href="../">Back to Oneix Store</a>
+            </div>
+          </div>
+        </section>
+        <footer class="footer">
+          ReviewLoop CY is a focused Oneix software product.
+          <a href="../">Explore the Store</a>.
+        </footer>
+      </div>
+    </main>
+    <script src="../assets/products.js"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "../assets/vendor/three.module.min.js",
+          "animejs": "../assets/vendor/animejs/index.js"
+        }
+      }
+    </script>
+    <script type="module" src="../assets/experience.js"></script>
+  </body>
+</html>

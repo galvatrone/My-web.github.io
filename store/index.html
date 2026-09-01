@@ -1,20 +1,233 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Oneix Software Store</title><link rel="stylesheet" href="./assets/styles.css"></head>
-<body><main class="site"><header class="topbar"><a class="brand" href="./"><span class="mark">OX</span> Oneix / Software Store</a><nav class="nav"><a href="#products">Products</a><a href="#principles">Why Oneix</a><a href="../README.md">About Oneix</a></nav></header><div class="wrap">
-<section class="hero"><div data-reveal><p class="eyebrow">Focused software for real operations</p><h1>Small tools. Clear signals. Better days.</h1><p class="lead">Oneix builds focused software for the moments that quietly cost teams time: missed follow-ups, silent jobs, overdue invoices, and work waiting for approval.</p><div class="actions"><a class="button" href="#products">Explore the store</a><a class="button secondary" href="#principles">See the approach</a></div></div><div class="signal signal-visual" data-color="#64e3f2" data-reveal><canvas class="signal-canvas" aria-hidden="true"></canvas><div class="signal-head"><span>ONEIX / PRODUCT SYSTEM</span><span>10 PRODUCT LINES</span></div><div class="signal-title">A product for the signal you need to see.</div><div class="signal-line"><i style="--h:42%"></i><i style="--h:78%"></i><i style="--h:54%"></i><i style="--h:92%"></i><i style="--h:66%"></i></div><div class="signal-meta"><span>focused by design</span><span>built for action</span></div></div></section>
-<section class="section" id="products" data-reveal><div class="section-head"><div><p class="eyebrow">The store</p><h2>Ten focused products from Oneix.</h2></div><p>Choose the workflow that needs a clearer next step. Each product has its own language, signal, and operating rhythm.</p></div><div class="product-grid">
-<a class="card product-card" data-reveal href="./reviewloop/" style="--signal:#64e3f2"><span class="glyph">R/</span><span><h3>ReviewLoop CY</h3><p>Turn happy customers into public reviews.</p><small>Reputation / momentum</small></span></a>
-<a class="card product-card" data-reveal href="./leadpocket/" style="--signal:#f2b66d"><span class="glyph">L&gt;</span><span><h3>LeadPocket CY</h3><p>Keep every promising enquiry moving.</p><small>Opportunity / follow-up</small></span></a>
-<a class="card product-card" data-reveal href="./expirydesk/" style="--signal:#f07b6d"><span class="glyph">T-</span><span><h3>ExpiryDesk</h3><p>Know what needs renewing before it becomes a problem.</p><small>Time / deadline</small></span></a>
-<a class="card product-card" data-reveal href="./clientdock/" style="--signal:#b8a7f2"><span class="glyph">C+</span><span><h3>ClientDock Lite</h3><p>Move client work from sent to approved.</p><small>Delivery / approval</small></span></a>
-<a class="card product-card" data-reveal href="./sitepulse/" style="--signal:#82e0b1"><span class="glyph">S~</span><span><h3>SitePulse Care</h3><p>Know when a client website stops responding.</p><small>Health / uptime</small></span></a>
-<a class="card product-card" data-reveal href="./workshoprecall/" style="--signal:#e0a15f"><span class="glyph">W/</span><span><h3>WorkshopRecall</h3><p>Bring workshop customers back when service is due.</p><small>Vehicle / service timeline</small></span></a>
-<a class="card product-card" data-reveal href="./opsqr/" style="--signal:#7db8ff"><span class="glyph">QR</span><span><h3>OpsQR</h3><p>Put the right operational action behind every QR code.</p><small>Asset / mobile action</small></span></a>
-<a class="card product-card" data-reveal href="./invoicenudge/" style="--signal:#8bd6c2"><span class="glyph">£/</span><span><h3>InvoiceNudge</h3><p>Spend less time chasing unpaid invoices.</p><small>Money / payment status</small></span></a>
-<a class="card product-card" data-reveal href="./cronbeacon/" style="--signal:#f28c9d"><span class="glyph">♥</span><span><h3>CronBeacon</h3><p>Know when a scheduled job goes silent.</p><small>Schedule / heartbeat</small></span></a>
-<a class="card product-card" data-reveal href="./logsentry/" style="--signal:#d6e36c"><span class="glyph">!&gt;</span><span><h3>LogSentry Lite</h3><p>Find the important event inside the noise.</p><small>Events / useful signal</small></span></a>
-</div></section>
-<section class="section" id="principles" data-reveal><div class="detail"><div><p class="eyebrow">Oneix / operating principle</p><h2>Clarity is a feature.</h2><p class="lead">Every product starts with one recurring business moment and ends with a clear action. No sprawling suite to configure before the first useful result.</p></div><div class="card"><h3>Built around the next decision</h3><p>See what needs attention, understand why, and act from the same place. The interface stays quiet so the signal stays useful.</p></div></div></section>
-<footer class="footer">Oneix builds focused software products. <a href="../README.md">About the company</a>.</footer></div></main><script type="module" src="./assets/app.js"></script></body></html>
-
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Oneix Software Store</title>
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body>
+    <main class="site">
+      <header class="topbar">
+        <a class="brand" href="./"
+          ><span class="mark">OX</span> Oneix / Software Store</a
+        >
+        <nav class="nav">
+          <a href="#products">Products</a><a href="#principles">Why Oneix</a
+          ><a href="../README.md">About Oneix</a>
+        </nav>
+      </header>
+      <div class="wrap">
+        <section class="hero store-hero" data-experience="store">
+          <div class="hero-copy">
+            <p class="eyebrow">Focused software for real operations</p>
+            <h1 data-reveal>Small tools. Clear signals. Better days.</h1>
+            <p class="lead" data-reveal>
+              Oneix builds focused software for the moments that quietly cost
+              teams time: missed follow-ups, silent jobs, overdue invoices, and
+              work waiting for approval.
+            </p>
+            <div class="actions" data-reveal>
+              <a class="button" href="#products">Explore the store</a
+              ><a class="button secondary" href="#principles"
+                >See the approach</a
+              >
+            </div>
+          </div>
+          <div
+            class="system-field"
+            aria-label="Interactive Oneix product signal field"
+          >
+            <canvas class="system-canvas" data-three="store"></canvas>
+            <div class="system-core" aria-hidden="true">
+              <span>OX</span>
+            </div>
+            <div class="system-nodes" aria-hidden="true">
+              <i style="--x: 50%; --y: 15%; --signal: #64e3f2"></i>
+              <i style="--x: 72%; --y: 22%; --signal: #f2b66d"></i>
+              <i style="--x: 84%; --y: 42%; --signal: #f07b6d"></i>
+              <i style="--x: 76%; --y: 64%; --signal: #b8a7f2"></i>
+              <i style="--x: 58%; --y: 76%; --signal: #82e0b1"></i>
+              <i style="--x: 38%; --y: 76%; --signal: #e0a15f"></i>
+              <i style="--x: 20%; --y: 62%; --signal: #7db8ff"></i>
+              <i style="--x: 15%; --y: 40%; --signal: #8bd6c2"></i>
+              <i style="--x: 28%; --y: 22%; --signal: #f28c9d"></i>
+              <i style="--x: 50%; --y: 52%; --signal: #d6e36c"></i>
+            </div>
+            <div class="system-hud">
+              <div>
+                <span>ONEIX CORE</span
+                ><strong>10 active product signals</strong>
+              </div>
+              <output data-store-focus>System view</output>
+            </div>
+            <div class="system-list" aria-hidden="true">
+              <span>ReviewLoop</span><span>LeadPocket</span
+              ><span>ExpiryDesk</span><span>ClientDock</span
+              ><span>SitePulse</span><span>WorkshopRecall</span
+              ><span>OpsQR</span><span>InvoiceNudge</span><span>CronBeacon</span
+              ><span>LogSentry</span>
+            </div>
+          </div>
+        </section>
+        <section class="section" id="products">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">The store</p>
+              <h2>Ten focused products from Oneix.</h2>
+            </div>
+            <p>
+              Choose the workflow that needs a clearer next step. Each product
+              has its own language, signal, and operating rhythm.
+            </p>
+          </div>
+          <div class="product-grid">
+            <a
+              class="card product-card signature-reviewloop"
+              href="./reviewloop/"
+              style="--signal: #64e3f2"
+              ><span class="glyph">R/</span
+              ><span
+                ><h3>ReviewLoop CY</h3>
+                <p>Turn happy customers into public reviews.</p>
+                <small>Reputation / outward signal</small></span
+              ><i class="signature" aria-hidden="true"></i
+            ></a>
+            <a
+              class="card product-card signature-leadpocket"
+              href="./leadpocket/"
+              style="--signal: #f2b66d"
+              ><span class="glyph">L&gt;</span
+              ><span
+                ><h3>LeadPocket CY</h3>
+                <p>Keep every promising enquiry moving.</p>
+                <small>Opportunity / captured inbound</small></span
+              ><i class="signature" aria-hidden="true"></i
+            ></a>
+            <a
+              class="card product-card signature-expirydesk"
+              href="./expirydesk/"
+              style="--signal: #f07b6d"
+              ><span class="glyph">T-</span
+              ><span
+                ><h3>ExpiryDesk</h3>
+                <p>Know what needs renewing before it becomes a problem.</p>
+                <small>Time / deadline pressure</small></span
+              ><i class="signature" aria-hidden="true"></i
+            ></a>
+            <a
+              class="card product-card signature-clientdock"
+              href="./clientdock/"
+              style="--signal: #b8a7f2"
+              ><span class="glyph">C+</span
+              ><span
+                ><h3>ClientDock Lite</h3>
+                <p>Move client work from sent to approved.</p>
+                <small>Delivery / approval path</small></span
+              ><i class="signature" aria-hidden="true"></i
+            ></a>
+            <a
+              class="card product-card signature-sitepulse"
+              href="./sitepulse/"
+              style="--signal: #82e0b1"
+              ><span class="glyph">S~</span
+              ><span
+                ><h3>SitePulse Care</h3>
+                <p>Know when a client website stops responding.</p>
+                <small>Health / heartbeat</small></span
+              ><i class="signature" aria-hidden="true"></i
+            ></a>
+            <a
+              class="card product-card signature-workshoprecall"
+              href="./workshoprecall/"
+              style="--signal: #e0a15f"
+              ><span class="glyph">W/</span
+              ><span
+                ><h3>WorkshopRecall</h3>
+                <p>Bring workshop customers back when service is due.</p>
+                <small>Vehicle / cyclic timeline</small></span
+              ><i class="signature" aria-hidden="true"></i
+            ></a>
+            <a
+              class="card product-card signature-opsqr"
+              href="./opsqr/"
+              style="--signal: #7db8ff"
+              ><span class="glyph">QR</span
+              ><span
+                ><h3>OpsQR</h3>
+                <p>Put the right operational action behind every QR code.</p>
+                <small>Asset / scan resolve</small></span
+              ><i class="signature" aria-hidden="true"></i
+            ></a>
+            <a
+              class="card product-card signature-invoicenudge"
+              href="./invoicenudge/"
+              style="--signal: #8bd6c2"
+              ><span class="glyph">£/</span
+              ><span
+                ><h3>InvoiceNudge</h3>
+                <p>Spend less time chasing unpaid invoices.</p>
+                <small>Money / aging states</small></span
+              ><i class="signature" aria-hidden="true"></i
+            ></a>
+            <a
+              class="card product-card signature-cronbeacon"
+              href="./cronbeacon/"
+              style="--signal: #f28c9d"
+              ><span class="glyph">HB</span
+              ><span
+                ><h3>CronBeacon</h3>
+                <p>Know when a scheduled job goes silent.</p>
+                <small>Schedule / missing beat</small></span
+              ><i class="signature" aria-hidden="true"></i
+            ></a>
+            <a
+              class="card product-card signature-logsentry"
+              href="./logsentry/"
+              style="--signal: #d6e36c"
+              ><span class="glyph">!&gt;</span
+              ><span
+                ><h3>LogSentry Lite</h3>
+                <p>Find the important event inside the noise.</p>
+                <small>Events / filter signal</small></span
+              ><i class="signature" aria-hidden="true"></i
+            ></a>
+          </div>
+        </section>
+        <section class="section" id="principles">
+          <div class="detail">
+            <div>
+              <p class="eyebrow">Oneix / operating principle</p>
+              <h2>Clarity is a feature.</h2>
+              <p class="lead">
+                Every product starts with one recurring business moment and ends
+                with a clear action. No sprawling suite to configure before the
+                first useful result.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Built around the next decision</h3>
+              <p>
+                See what needs attention, understand why, and act from the same
+                place. The interface stays quiet so the signal stays useful.
+              </p>
+            </div>
+          </div>
+        </section>
+        <footer class="footer">
+          Oneix builds focused software products.
+          <a href="../README.md">About the company</a>.
+        </footer>
+      </div>
+    </main>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "./assets/vendor/three.module.min.js",
+          "animejs": "./assets/vendor/animejs/index.js"
+        }
+      }
+    </script>
+    <script type="module" src="./assets/experience.js"></script>
+  </body>
+</html>
