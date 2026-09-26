@@ -1,233 +1,1786 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Oneix Software Store</title>
-    <link rel="stylesheet" href="./assets/styles.css" />
-  </head>
-  <body>
-    <main class="site">
-      <header class="topbar">
-        <a class="brand" href="./"
-          ><span class="mark">OX</span> Oneix / Software Store</a
-        >
-        <nav class="nav">
-          <a href="#products">Products</a><a href="#principles">Why Oneix</a
-          ><a href="../README.md">About Oneix</a>
-        </nav>
-      </header>
-      <div class="wrap">
-        <section class="hero store-hero" data-experience="store">
-          <div class="hero-copy">
-            <p class="eyebrow">Focused software for real operations</p>
-            <h1 data-reveal>Small tools. Clear signals. Better days.</h1>
-            <p class="lead" data-reveal>
-              Oneix builds focused software for the moments that quietly cost
-              teams time: missed follow-ups, silent jobs, overdue invoices, and
-              work waiting for approval.
-            </p>
-            <div class="actions" data-reveal>
-              <a class="button" href="#products">Explore the store</a
-              ><a class="button secondary" href="#principles"
-                >See the approach</a
-              >
-            </div>
-          </div>
-          <div
-            class="system-field"
-            aria-label="Interactive Oneix product signal field"
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Oneix builds focused software for recurring business problems — leads, reviews, invoices, operations, customers and monitoring."
+  >
+
+  <meta name="theme-color" content="#07090d">
+
+  <title>Oneix Software | Focused software for real business work</title>
+
+  <link rel="stylesheet" href="./assets/styles.css">
+  <link rel="stylesheet" href="./assets/store.css">
+</head>
+
+<body class="oneix-store">
+
+<div class="store-site">
+
+  <!-- ======================================================
+       AMBIENT BACKGROUND
+       ====================================================== -->
+
+  <div class="store-ambient" aria-hidden="true">
+    <div class="ambient-grid"></div>
+    <div class="ambient-glow ambient-glow-a"></div>
+    <div class="ambient-glow ambient-glow-b"></div>
+    <div class="ambient-noise"></div>
+  </div>
+
+
+  <!-- ======================================================
+       NAVIGATION
+       ====================================================== -->
+
+  <header class="store-topbar">
+
+    <a
+      class="store-brand"
+      href="./"
+      aria-label="Oneix Software"
+    >
+      <span class="store-brand-mark">
+        O
+      </span>
+
+      <span class="store-brand-copy">
+        <strong>ONEIX</strong>
+        <small>SOFTWARE</small>
+      </span>
+    </a>
+
+
+    <nav class="store-nav" aria-label="Main navigation">
+
+      <a href="#products">
+        Products
+      </a>
+
+      <a href="#solutions">
+        Solutions
+      </a>
+
+      <a href="#philosophy">
+        Why Oneix
+      </a>
+
+      <a
+        class="store-nav-cta"
+        href="#products"
+      >
+        Explore software
+        <span aria-hidden="true">↘</span>
+      </a>
+
+    </nav>
+
+  </header>
+
+
+  <main>
+
+    <!-- ======================================================
+         HERO
+         ====================================================== -->
+
+    <section class="store-hero">
+
+      <div class="store-hero-copy">
+
+        <div class="store-eyebrow">
+          <span class="store-live-dot"></span>
+          ONEIX SOFTWARE
+        </div>
+
+        <h1>
+          Small software.
+          <span>Clear outcomes.</span>
+        </h1>
+
+        <p class="store-hero-lead">
+          Focused tools for the business work that gets
+          forgotten, delayed or buried inside software
+          that was never built for it.
+        </p>
+
+
+        <div class="store-hero-actions">
+
+          <a
+            class="store-button store-button-primary"
+            href="#products"
           >
-            <canvas class="system-canvas" data-three="store"></canvas>
-            <div class="system-core" aria-hidden="true">
-              <span>OX</span>
-            </div>
-            <div class="system-nodes" aria-hidden="true">
-              <i style="--x: 50%; --y: 15%; --signal: #64e3f2"></i>
-              <i style="--x: 72%; --y: 22%; --signal: #f2b66d"></i>
-              <i style="--x: 84%; --y: 42%; --signal: #f07b6d"></i>
-              <i style="--x: 76%; --y: 64%; --signal: #b8a7f2"></i>
-              <i style="--x: 58%; --y: 76%; --signal: #82e0b1"></i>
-              <i style="--x: 38%; --y: 76%; --signal: #e0a15f"></i>
-              <i style="--x: 20%; --y: 62%; --signal: #7db8ff"></i>
-              <i style="--x: 15%; --y: 40%; --signal: #8bd6c2"></i>
-              <i style="--x: 28%; --y: 22%; --signal: #f28c9d"></i>
-              <i style="--x: 50%; --y: 52%; --signal: #d6e36c"></i>
-            </div>
-            <div class="system-hud">
-              <div>
-                <span>ONEIX CORE</span
-                ><strong>10 active product signals</strong>
-              </div>
-              <output data-store-focus>System view</output>
-            </div>
-            <div class="system-list" aria-hidden="true">
-              <span>ReviewLoop</span><span>LeadPocket</span
-              ><span>ExpiryDesk</span><span>ClientDock</span
-              ><span>SitePulse</span><span>WorkshopRecall</span
-              ><span>OpsQR</span><span>InvoiceNudge</span><span>CronBeacon</span
-              ><span>LogSentry</span>
-            </div>
-          </div>
-        </section>
-        <section class="section" id="products">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">The store</p>
-              <h2>Ten focused products from Oneix.</h2>
-            </div>
-            <p>
-              Choose the workflow that needs a clearer next step. Each product
-              has its own language, signal, and operating rhythm.
-            </p>
-          </div>
-          <div class="product-grid">
-            <a
-              class="card product-card signature-reviewloop"
-              href="./reviewloop/"
-              style="--signal: #64e3f2"
-              ><span class="glyph">R/</span
-              ><span
-                ><h3>ReviewLoop CY</h3>
-                <p>Turn happy customers into public reviews.</p>
-                <small>Reputation / outward signal</small></span
-              ><i class="signature" aria-hidden="true"></i
-            ></a>
-            <a
-              class="card product-card signature-leadpocket"
-              href="./leadpocket/"
-              style="--signal: #f2b66d"
-              ><span class="glyph">L&gt;</span
-              ><span
-                ><h3>LeadPocket CY</h3>
-                <p>Keep every promising enquiry moving.</p>
-                <small>Opportunity / captured inbound</small></span
-              ><i class="signature" aria-hidden="true"></i
-            ></a>
-            <a
-              class="card product-card signature-expirydesk"
-              href="./expirydesk/"
-              style="--signal: #f07b6d"
-              ><span class="glyph">T-</span
-              ><span
-                ><h3>ExpiryDesk</h3>
-                <p>Know what needs renewing before it becomes a problem.</p>
-                <small>Time / deadline pressure</small></span
-              ><i class="signature" aria-hidden="true"></i
-            ></a>
-            <a
-              class="card product-card signature-clientdock"
-              href="./clientdock/"
-              style="--signal: #b8a7f2"
-              ><span class="glyph">C+</span
-              ><span
-                ><h3>ClientDock Lite</h3>
-                <p>Move client work from sent to approved.</p>
-                <small>Delivery / approval path</small></span
-              ><i class="signature" aria-hidden="true"></i
-            ></a>
-            <a
-              class="card product-card signature-sitepulse"
-              href="./sitepulse/"
-              style="--signal: #82e0b1"
-              ><span class="glyph">S~</span
-              ><span
-                ><h3>SitePulse Care</h3>
-                <p>Know when a client website stops responding.</p>
-                <small>Health / heartbeat</small></span
-              ><i class="signature" aria-hidden="true"></i
-            ></a>
-            <a
-              class="card product-card signature-workshoprecall"
-              href="./workshoprecall/"
-              style="--signal: #e0a15f"
-              ><span class="glyph">W/</span
-              ><span
-                ><h3>WorkshopRecall</h3>
-                <p>Bring workshop customers back when service is due.</p>
-                <small>Vehicle / cyclic timeline</small></span
-              ><i class="signature" aria-hidden="true"></i
-            ></a>
-            <a
-              class="card product-card signature-opsqr"
-              href="./opsqr/"
-              style="--signal: #7db8ff"
-              ><span class="glyph">QR</span
-              ><span
-                ><h3>OpsQR</h3>
-                <p>Put the right operational action behind every QR code.</p>
-                <small>Asset / scan resolve</small></span
-              ><i class="signature" aria-hidden="true"></i
-            ></a>
-            <a
-              class="card product-card signature-invoicenudge"
-              href="./invoicenudge/"
-              style="--signal: #8bd6c2"
-              ><span class="glyph">£/</span
-              ><span
-                ><h3>InvoiceNudge</h3>
-                <p>Spend less time chasing unpaid invoices.</p>
-                <small>Money / aging states</small></span
-              ><i class="signature" aria-hidden="true"></i
-            ></a>
-            <a
-              class="card product-card signature-cronbeacon"
-              href="./cronbeacon/"
-              style="--signal: #f28c9d"
-              ><span class="glyph">HB</span
-              ><span
-                ><h3>CronBeacon</h3>
-                <p>Know when a scheduled job goes silent.</p>
-                <small>Schedule / missing beat</small></span
-              ><i class="signature" aria-hidden="true"></i
-            ></a>
-            <a
-              class="card product-card signature-logsentry"
-              href="./logsentry/"
-              style="--signal: #d6e36c"
-              ><span class="glyph">!&gt;</span
-              ><span
-                ><h3>LogSentry Lite</h3>
-                <p>Find the important event inside the noise.</p>
-                <small>Events / filter signal</small></span
-              ><i class="signature" aria-hidden="true"></i
-            ></a>
-          </div>
-        </section>
-        <section class="section" id="principles">
-          <div class="detail">
-            <div>
-              <p class="eyebrow">Oneix / operating principle</p>
-              <h2>Clarity is a feature.</h2>
-              <p class="lead">
-                Every product starts with one recurring business moment and ends
-                with a clear action. No sprawling suite to configure before the
-                first useful result.
-              </p>
-            </div>
-            <div class="card">
-              <h3>Built around the next decision</h3>
-              <p>
-                See what needs attention, understand why, and act from the same
-                place. The interface stays quiet so the signal stays useful.
-              </p>
-            </div>
-          </div>
-        </section>
-        <footer class="footer">
-          Oneix builds focused software products.
-          <a href="../README.md">About the company</a>.
-        </footer>
+            Explore products
+
+            <span aria-hidden="true">
+              ↓
+            </span>
+          </a>
+
+          <a
+            class="store-button store-button-secondary"
+            href="#solutions"
+          >
+            Find what you need
+          </a>
+
+        </div>
+
+
+        <div class="store-hero-meta">
+
+          <span>
+            <strong>10</strong>
+            focused products
+          </span>
+
+          <i></i>
+
+          <span>
+            Built for
+            <strong>real workflows</strong>
+          </span>
+
+          <i></i>
+
+          <span>
+            One problem.
+            <strong>One clear tool.</strong>
+          </span>
+
+        </div>
+
       </div>
-    </main>
-    <script type="importmap">
-      {
-        "imports": {
-          "three": "./assets/vendor/three.module.min.js",
-          "animejs": "./assets/vendor/animejs/index.js"
-        }
-      }
-    </script>
-    <script type="module" src="./assets/experience.js"></script>
-  </body>
+
+
+      <!-- ==================================================
+           HERO 3D PRODUCT UNIVERSE
+           ================================================== -->
+
+      <div
+        class="product-universe"
+        aria-label="Oneix product collection"
+      >
+
+        <div class="universe-orbit orbit-a"></div>
+        <div class="universe-orbit orbit-b"></div>
+        <div class="universe-orbit orbit-c"></div>
+
+
+        <!-- LEADPOCKET -->
+
+        <article
+          class="universe-card universe-card-main"
+          data-product="leadpocket"
+          style="--product-accent:#f2b66d"
+        >
+
+          <span class="universe-number">
+            01
+          </span>
+
+          <div class="universe-card-icon">
+            LP
+          </div>
+
+          <div class="universe-card-copy">
+
+            <small>
+              OPPORTUNITY
+            </small>
+
+            <strong>
+              LeadPocket
+            </strong>
+
+            <span>
+              Keep every promising enquiry moving.
+            </span>
+
+          </div>
+
+
+          <div class="universe-mini-ui">
+
+            <div class="mini-ui-header">
+              <span>Today</span>
+              <strong>4 actions</strong>
+            </div>
+
+            <div class="mini-lead">
+              <i>SG</i>
+
+              <div>
+                <strong>Sarah Georgiou</strong>
+                <span>Call · 14:30</span>
+              </div>
+
+              <em>Today</em>
+            </div>
+
+            <div class="mini-lead mini-lead-danger">
+              <i>AP</i>
+
+              <div>
+                <strong>Andreas Petrou</strong>
+                <span>Follow up · 2h ago</span>
+              </div>
+
+              <em>Overdue</em>
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- REVIEWLOOP -->
+
+        <article
+          class="universe-card universe-card-secondary card-reviewloop"
+          data-product="reviewloop"
+          style="--product-accent:#73e7d1"
+        >
+          <span>02</span>
+
+          <strong>
+            ReviewLoop
+          </strong>
+
+          <small>
+            Reviews
+          </small>
+
+          <div class="floating-rating">
+            ★★★★★
+          </div>
+        </article>
+
+
+        <!-- INVOICENUDGE -->
+
+        <article
+          class="universe-card universe-card-secondary card-invoicenudge"
+          data-product="invoicenudge"
+          style="--product-accent:#77a7ff"
+        >
+          <span>03</span>
+
+          <strong>
+            InvoiceNudge
+          </strong>
+
+          <small>
+            Payments
+          </small>
+
+          <div class="floating-money">
+            €1,240
+          </div>
+        </article>
+
+
+        <!-- SITEPULSE -->
+
+        <article
+          class="universe-card universe-card-secondary card-sitepulse"
+          data-product="sitepulse"
+          style="--product-accent:#8de17f"
+        >
+          <span>04</span>
+
+          <strong>
+            SitePulse
+          </strong>
+
+          <small>
+            Monitoring
+          </small>
+
+          <div class="floating-status">
+            <i></i>
+            Online
+          </div>
+        </article>
+
+
+        <!-- CLIENTDOCK -->
+
+        <article
+          class="universe-card universe-card-secondary card-clientdock"
+          data-product="clientdock"
+          style="--product-accent:#bb8cff"
+        >
+          <span>05</span>
+
+          <strong>
+            ClientDock
+          </strong>
+
+          <small>
+            Clients
+          </small>
+        </article>
+
+
+        <div class="universe-core">
+          <span>ONEIX</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         PRODUCT MARQUEE
+         ====================================================== -->
+
+    <section
+      class="product-marquee"
+      aria-hidden="true"
+    >
+
+      <div class="product-marquee-track">
+
+        <span>LEADPOCKET</span>
+        <i>•</i>
+
+        <span>REVIEWLOOP</span>
+        <i>•</i>
+
+        <span>INVOICENUDGE</span>
+        <i>•</i>
+
+        <span>SITEPULSE</span>
+        <i>•</i>
+
+        <span>CLIENTDOCK</span>
+        <i>•</i>
+
+        <span>CRONBEACON</span>
+        <i>•</i>
+
+        <span>EXPIRYDESK</span>
+        <i>•</i>
+
+        <span>LOGSENTRY</span>
+        <i>•</i>
+
+        <span>OPSQR</span>
+        <i>•</i>
+
+        <span>WORKSHOPRECALL</span>
+        <i>•</i>
+
+
+        <!-- duplicate for seamless animation -->
+
+        <span>LEADPOCKET</span>
+        <i>•</i>
+
+        <span>REVIEWLOOP</span>
+        <i>•</i>
+
+        <span>INVOICENUDGE</span>
+        <i>•</i>
+
+        <span>SITEPULSE</span>
+        <i>•</i>
+
+        <span>CLIENTDOCK</span>
+        <i>•</i>
+
+        <span>CRONBEACON</span>
+        <i>•</i>
+
+        <span>EXPIRYDESK</span>
+        <i>•</i>
+
+        <span>LOGSENTRY</span>
+        <i>•</i>
+
+        <span>OPSQR</span>
+        <i>•</i>
+
+        <span>WORKSHOPRECALL</span>
+        <i>•</i>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         SOLUTION SELECTOR
+         ====================================================== -->
+
+    <section
+      class="store-section solution-selector"
+      id="solutions"
+    >
+
+      <div class="store-wrap">
+
+        <div class="store-section-heading">
+
+          <span class="store-section-number">
+            01 / FIND YOUR TOOL
+          </span>
+
+          <h2>
+            What do you want
+            <span>to fix?</span>
+          </h2>
+
+          <p>
+            Start with the problem, not the software.
+            Oneix products are designed around recurring
+            moments where businesses lose time, money or
+            attention.
+          </p>
+
+        </div>
+
+
+        <div
+          class="solution-tabs"
+          role="tablist"
+          aria-label="Business problems"
+        >
+
+          <button
+            class="solution-tab active"
+            type="button"
+            data-solution="leads"
+          >
+            <span>01</span>
+            Stop losing leads
+          </button>
+
+          <button
+            class="solution-tab"
+            type="button"
+            data-solution="reviews"
+          >
+            <span>02</span>
+            Get more reviews
+          </button>
+
+          <button
+            class="solution-tab"
+            type="button"
+            data-solution="payments"
+          >
+            <span>03</span>
+            Get paid faster
+          </button>
+
+          <button
+            class="solution-tab"
+            type="button"
+            data-solution="operations"
+          >
+            <span>04</span>
+            Monitor operations
+          </button>
+
+          <button
+            class="solution-tab"
+            type="button"
+            data-solution="customers"
+          >
+            <span>05</span>
+            Remember customers
+          </button>
+
+        </div>
+
+
+        <!-- FEATURED SOLUTION -->
+
+        <div
+          class="solution-stage"
+          data-active-product="leadpocket"
+        >
+
+          <div class="solution-stage-copy">
+
+            <span class="solution-category">
+              OPPORTUNITY / FOLLOW-UP
+            </span>
+
+            <h3 data-product-title>
+              LeadPocket
+            </h3>
+
+            <p
+              class="solution-headline"
+              data-product-headline
+            >
+              Never lose a warm lead to a forgotten
+              follow-up.
+            </p>
+
+            <p
+              class="solution-description"
+              data-product-description
+            >
+              Capture incoming opportunities, give each
+              one an owner and keep the next action
+              visible until the opportunity is closed.
+            </p>
+
+
+            <div class="solution-flow">
+
+              <span>
+                Capture
+              </span>
+
+              <i>→</i>
+
+              <span>
+                Own
+              </span>
+
+              <i>→</i>
+
+              <span>
+                Follow up
+              </span>
+
+              <i>→</i>
+
+              <span>
+                Close
+              </span>
+
+            </div>
+
+
+            <a
+              class="store-button store-button-product"
+              href="./leadpocket/"
+              data-product-link
+            >
+              Explore LeadPocket
+
+              <span>↗</span>
+            </a>
+
+          </div>
+
+
+          <!-- VISUAL -->
+
+          <div class="solution-visual">
+
+            <div class="solution-visual-glow"></div>
+
+
+            <div class="solution-window">
+
+              <div class="solution-window-bar">
+
+                <div>
+                  <i></i>
+                  <i></i>
+                  <i></i>
+                </div>
+
+                <span>
+                  LeadPocket
+                </span>
+
+                <small>
+                  ONEIX
+                </small>
+
+              </div>
+
+
+              <div class="solution-dashboard">
+
+                <aside>
+
+                  <strong>LP</strong>
+
+                  <span class="active">
+                    Leads
+                  </span>
+
+                  <span>
+                    Today
+                  </span>
+
+                  <span>
+                    Pipeline
+                  </span>
+
+                </aside>
+
+
+                <div class="solution-dashboard-main">
+
+                  <header>
+
+                    <div>
+                      <small>
+                        SATURDAY
+                      </small>
+
+                      <strong>
+                        Follow-ups
+                      </strong>
+                    </div>
+
+                    <button type="button">
+                      + New lead
+                    </button>
+
+                  </header>
+
+
+                  <div class="solution-stats">
+
+                    <div>
+                      <span>New</span>
+                      <strong>12</strong>
+                    </div>
+
+                    <div>
+                      <span>Active</span>
+                      <strong>18</strong>
+                    </div>
+
+                    <div class="danger">
+                      <span>Overdue</span>
+                      <strong>3</strong>
+                    </div>
+
+                    <div class="success">
+                      <span>Won</span>
+                      <strong>7</strong>
+                    </div>
+
+                  </div>
+
+
+                  <div class="solution-leads">
+
+                    <article>
+
+                      <i>SG</i>
+
+                      <div>
+                        <strong>
+                          Sarah Georgiou
+                        </strong>
+
+                        <span>
+                          Kitchen renovation
+                        </span>
+                      </div>
+
+                      <div>
+                        <small>
+                          NEXT ACTION
+                        </small>
+
+                        <strong>
+                          Call · 14:30
+                        </strong>
+                      </div>
+
+                      <em class="today">
+                        Today
+                      </em>
+
+                    </article>
+
+
+                    <article>
+
+                      <i>AP</i>
+
+                      <div>
+                        <strong>
+                          Andreas Petrou
+                        </strong>
+
+                        <span>
+                          Solar installation
+                        </span>
+                      </div>
+
+                      <div>
+                        <small>
+                          FOLLOW UP
+                        </small>
+
+                        <strong>
+                          2 hours ago
+                        </strong>
+                      </div>
+
+                      <em class="overdue">
+                        Overdue
+                      </em>
+
+                    </article>
+
+
+                    <article>
+
+                      <i>MK</i>
+
+                      <div>
+                        <strong>
+                          Marios Kyriakou
+                        </strong>
+
+                        <span>
+                          Website enquiry
+                        </span>
+                      </div>
+
+                      <div>
+                        <small>
+                          RECEIVED
+                        </small>
+
+                        <strong>
+                          8 min ago
+                        </strong>
+                      </div>
+
+                      <em class="new">
+                        New
+                      </em>
+
+                    </article>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         PRODUCT GALLERY
+         ====================================================== -->
+
+    <section
+      class="store-section product-gallery-section"
+      id="products"
+    >
+
+      <div class="store-wrap">
+
+        <div class="store-section-heading">
+
+          <span class="store-section-number">
+            02 / PRODUCTS
+          </span>
+
+          <h2>
+            Ten products.
+            <span>Ten clear jobs.</span>
+          </h2>
+
+          <p>
+            Each product has its own visual language,
+            signal and rhythm — while remaining part of
+            the same Oneix system.
+          </p>
+
+        </div>
+
+
+        <div class="product-gallery">
+
+
+          <!-- 01 LEADPOCKET -->
+
+          <a
+            class="product-card product-card-large"
+            href="./leadpocket/"
+            style="--accent:#f2b66d"
+            data-product-card
+          >
+
+            <div class="product-card-glow"></div>
+
+            <header>
+              <span>01</span>
+
+              <small>
+                OPPORTUNITY
+              </small>
+            </header>
+
+            <div class="product-card-content">
+
+              <h3>
+                LeadPocket
+              </h3>
+
+              <p>
+                Keep every promising enquiry moving.
+              </p>
+
+            </div>
+
+
+            <div class="product-card-ui leadpocket-card-ui">
+
+              <div class="lp-card-top">
+                <span>Pipeline</span>
+                <strong>24 active</strong>
+              </div>
+
+              <div class="lp-card-columns">
+
+                <div>
+                  <span>NEW</span>
+                  <strong>12</strong>
+                </div>
+
+                <div>
+                  <span>ACTIVE</span>
+                  <strong>18</strong>
+                </div>
+
+                <div class="warning">
+                  <span>OVERDUE</span>
+                  <strong>3</strong>
+                </div>
+
+                <div class="success">
+                  <span>WON</span>
+                  <strong>7</strong>
+                </div>
+
+              </div>
+
+              <div class="lp-card-action">
+                <i>SG</i>
+
+                <span>
+                  Sarah Georgiou
+                </span>
+
+                <strong>
+                  Call 14:30
+                </strong>
+              </div>
+
+            </div>
+
+
+            <footer>
+              <span>
+                Explore product
+              </span>
+
+              <strong>
+                ↗
+              </strong>
+            </footer>
+
+          </a>
+
+
+          <!-- 02 REVIEWLOOP -->
+
+          <a
+            class="product-card"
+            href="./reviewloop/"
+            style="--accent:#73e7d1"
+            data-product-card
+          >
+
+            <div class="product-card-glow"></div>
+
+            <header>
+              <span>02</span>
+              <small>REVIEWS</small>
+            </header>
+
+            <div class="product-card-content">
+
+              <h3>
+                ReviewLoop
+              </h3>
+
+              <p>
+                Turn completed work into public proof.
+              </p>
+
+            </div>
+
+
+            <div class="review-card-ui">
+
+              <div class="review-score">
+                <strong>4.9</strong>
+
+                <span>
+                  ★★★★★
+                </span>
+
+                <small>
+                  48 reviews
+                </small>
+              </div>
+
+              <div class="review-message">
+                <i>✓</i>
+
+                <div>
+                  <strong>
+                    Review request sent
+                  </strong>
+
+                  <span>
+                    Maria · 2 min ago
+                  </span>
+                </div>
+              </div>
+
+            </div>
+
+
+            <footer>
+              <span>Explore product</span>
+              <strong>↗</strong>
+            </footer>
+
+          </a>
+
+
+          <!-- 03 INVOICENUDGE -->
+
+          <a
+            class="product-card"
+            href="./invoicenudge/"
+            style="--accent:#77a7ff"
+            data-product-card
+          >
+
+            <div class="product-card-glow"></div>
+
+            <header>
+              <span>03</span>
+              <small>PAYMENTS</small>
+            </header>
+
+            <div class="product-card-content">
+
+              <h3>
+                InvoiceNudge
+              </h3>
+
+              <p>
+                Keep unpaid invoices from going quiet.
+              </p>
+
+            </div>
+
+
+            <div class="invoice-card-ui">
+
+              <small>
+                OUTSTANDING
+              </small>
+
+              <strong>
+                €4,860
+              </strong>
+
+              <div>
+                <span>
+                  INV-1042
+                </span>
+
+                <span>
+                  €1,240
+                </span>
+
+                <em>
+                  8 days
+                </em>
+              </div>
+
+              <div>
+                <span>
+                  INV-1048
+                </span>
+
+                <span>
+                  €680
+                </span>
+
+                <em>
+                  3 days
+                </em>
+              </div>
+
+            </div>
+
+
+            <footer>
+              <span>Explore product</span>
+              <strong>↗</strong>
+            </footer>
+
+          </a>
+
+
+          <!-- 04 SITEPULSE -->
+
+          <a
+            class="product-card"
+            href="./sitepulse/"
+            style="--accent:#8de17f"
+            data-product-card
+          >
+
+            <div class="product-card-glow"></div>
+
+            <header>
+              <span>04</span>
+              <small>MONITORING</small>
+            </header>
+
+            <div class="product-card-content">
+
+              <h3>
+                SitePulse
+              </h3>
+
+              <p>
+                Know when a website needs attention.
+              </p>
+
+            </div>
+
+
+            <div class="pulse-card-ui">
+
+              <div>
+                <i></i>
+
+                <span>
+                  oneix.ltd
+                </span>
+
+                <strong>
+                  Operational
+                </strong>
+              </div>
+
+              <svg
+                viewBox="0 0 300 70"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M0 52
+                     C30 51 35 50 55 49
+                     C75 48 82 53 105 50
+                     C128 47 132 15 150 45
+                     C168 68 178 47 195 48
+                     C215 49 220 45 240 47
+                     C260 49 270 45 300 44"
+                />
+              </svg>
+
+              <small>
+                99.98% uptime
+              </small>
+
+            </div>
+
+
+            <footer>
+              <span>Explore product</span>
+              <strong>↗</strong>
+            </footer>
+
+          </a>
+
+
+          <!-- 05 CLIENTDOCK -->
+
+          <a
+            class="product-card product-card-wide"
+            href="./clientdock/"
+            style="--accent:#bb8cff"
+            data-product-card
+          >
+
+            <div class="product-card-glow"></div>
+
+            <header>
+              <span>05</span>
+              <small>CLIENTS</small>
+            </header>
+
+            <div class="product-card-content">
+
+              <h3>
+                ClientDock
+              </h3>
+
+              <p>
+                Keep client work, context and next
+                steps together.
+              </p>
+
+            </div>
+
+
+            <div class="client-card-ui">
+
+              <article>
+                <i>AN</i>
+
+                <div>
+                  <strong>
+                    Atlas North
+                  </strong>
+
+                  <span>
+                    Website redesign
+                  </span>
+                </div>
+
+                <em>
+                  Active
+                </em>
+              </article>
+
+              <article>
+                <i>SB</i>
+
+                <div>
+                  <strong>
+                    Studio Bloom
+                  </strong>
+
+                  <span>
+                    Monthly support
+                  </span>
+                </div>
+
+                <em>
+                  Active
+                </em>
+              </article>
+
+            </div>
+
+
+            <footer>
+              <span>Explore product</span>
+              <strong>↗</strong>
+            </footer>
+
+          </a>
+
+
+          <!-- 06 CRONBEACON -->
+
+          <a
+            class="product-card"
+            href="./cronbeacon/"
+            style="--accent:#ff9e7a"
+            data-product-card
+          >
+
+            <div class="product-card-glow"></div>
+
+            <header>
+              <span>06</span>
+              <small>AUTOMATION</small>
+            </header>
+
+            <div class="product-card-content">
+
+              <h3>
+                CronBeacon
+              </h3>
+
+              <p>
+                Know when scheduled work stops running.
+              </p>
+
+            </div>
+
+
+            <div class="cron-card-ui">
+
+              <div>
+                <i></i>
+
+                <span>
+                  nightly-backup
+                </span>
+
+                <strong>
+                  02:00
+                </strong>
+              </div>
+
+              <div>
+                <i></i>
+
+                <span>
+                  invoice-sync
+                </span>
+
+                <strong>
+                  06:30
+                </strong>
+              </div>
+
+              <div class="cron-warning">
+                <i></i>
+
+                <span>
+                  report-worker
+                </span>
+
+                <strong>
+                  Late
+                </strong>
+              </div>
+
+            </div>
+
+
+            <footer>
+              <span>Explore product</span>
+              <strong>↗</strong>
+            </footer>
+
+          </a>
+
+
+          <!-- 07 EXPIRYDESK -->
+
+          <a
+            class="product-card"
+            href="./expirydesk/"
+            style="--accent:#ffcc67"
+            data-product-card
+          >
+
+            <div class="product-card-glow"></div>
+
+            <header>
+              <span>07</span>
+              <small>EXPIRY</small>
+            </header>
+
+            <div class="product-card-content">
+
+              <h3>
+                ExpiryDesk
+              </h3>
+
+              <p>
+                Keep important expirations visible.
+              </p>
+
+            </div>
+
+
+            <div class="expiry-card-ui">
+
+              <strong>
+                14
+              </strong>
+
+              <span>
+                days remaining
+              </span>
+
+              <div class="expiry-progress">
+                <i></i>
+              </div>
+
+              <small>
+                Insurance renewal
+              </small>
+
+            </div>
+
+
+            <footer>
+              <span>Explore product</span>
+              <strong>↗</strong>
+            </footer>
+
+          </a>
+
+
+          <!-- 08 LOGSENTRY -->
+
+          <a
+            class="product-card product-card-wide"
+            href="./logsentry/"
+            style="--accent:#ff6f91"
+            data-product-card
+          >
+
+            <div class="product-card-glow"></div>
+
+            <header>
+              <span>08</span>
+              <small>LOGS</small>
+            </header>
+
+            <div class="product-card-content">
+
+              <h3>
+                LogSentry
+              </h3>
+
+              <p>
+                Surface the log events that actually
+                need attention.
+              </p>
+
+            </div>
+
+
+            <div class="log-card-ui">
+
+              <div>
+                <span>14:32:08</span>
+
+                <strong>
+                  INFO
+                </strong>
+
+                <p>
+                  Worker started successfully
+                </p>
+              </div>
+
+              <div class="log-warning">
+                <span>14:32:16</span>
+
+                <strong>
+                  WARN
+                </strong>
+
+                <p>
+                  Response latency above threshold
+                </p>
+              </div>
+
+              <div class="log-error">
+                <span>14:32:21</span>
+
+                <strong>
+                  ERROR
+                </strong>
+
+                <p>
+                  Payment webhook failed
+                </p>
+              </div>
+
+            </div>
+
+
+            <footer>
+              <span>Explore product</span>
+              <strong>↗</strong>
+            </footer>
+
+          </a>
+
+
+          <!-- 09 OPSQR -->
+
+          <a
+            class="product-card"
+            href="./opsqr/"
+            style="--accent:#56d6ff"
+            data-product-card
+          >
+
+            <div class="product-card-glow"></div>
+
+            <header>
+              <span>09</span>
+              <small>OPERATIONS</small>
+            </header>
+
+            <div class="product-card-content">
+
+              <h3>
+                OpsQR
+              </h3>
+
+              <p>
+                Put repeatable operational actions
+                where work happens.
+              </p>
+
+            </div>
+
+
+            <div class="qr-card-ui">
+
+              <div class="fake-qr">
+                <i></i><i></i><i></i>
+                <i></i><i></i><i></i>
+                <i></i><i></i><i></i>
+              </div>
+
+              <div>
+                <strong>
+                  Scan station
+                </strong>
+
+                <span>
+                  Open procedure
+                </span>
+              </div>
+
+            </div>
+
+
+            <footer>
+              <span>Explore product</span>
+              <strong>↗</strong>
+            </footer>
+
+          </a>
+
+
+          <!-- 10 WORKSHOPRECALL -->
+
+          <a
+            class="product-card"
+            href="./workshoprecall/"
+            style="--accent:#e5a1ff"
+            data-product-card
+          >
+
+            <div class="product-card-glow"></div>
+
+            <header>
+              <span>10</span>
+              <small>RECALL</small>
+            </header>
+
+            <div class="product-card-content">
+
+              <h3>
+                WorkshopRecall
+              </h3>
+
+              <p>
+                Bring past customers back at the
+                right time.
+              </p>
+
+            </div>
+
+
+            <div class="recall-card-ui">
+
+              <small>
+                CUSTOMER DUE
+              </small>
+
+              <strong>
+                Andreas K.
+              </strong>
+
+              <span>
+                Last service · 11 months ago
+              </span>
+
+              <button type="button">
+                Send reminder
+              </button>
+
+            </div>
+
+
+            <footer>
+              <span>Explore product</span>
+              <strong>↗</strong>
+            </footer>
+
+          </a>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         PHILOSOPHY
+         ====================================================== -->
+
+    <section
+      class="store-section store-philosophy"
+      id="philosophy"
+    >
+
+      <div class="store-wrap philosophy-layout">
+
+        <div class="philosophy-title">
+
+          <span class="store-section-number">
+            03 / ONEIX
+          </span>
+
+          <h2>
+            Clarity is
+            <span>a feature.</span>
+          </h2>
+
+        </div>
+
+
+        <div class="philosophy-principles">
+
+          <article>
+
+            <span>
+              01
+            </span>
+
+            <div>
+              <h3>
+                One recurring problem.
+              </h3>
+
+              <p>
+                Each product starts with a specific
+                operational moment — not a list of
+                features looking for a reason to exist.
+              </p>
+            </div>
+
+          </article>
+
+
+          <article>
+
+            <span>
+              02
+            </span>
+
+            <div>
+              <h3>
+                One obvious next action.
+              </h3>
+
+              <p>
+                The interface should make the next useful
+                action clear without requiring a manual,
+                implementation project or CRM consultant.
+              </p>
+            </div>
+
+          </article>
+
+
+          <article>
+
+            <span>
+              03
+            </span>
+
+            <div>
+              <h3>
+                Software that stays focused.
+              </h3>
+
+              <p>
+                Small teams should not need enterprise
+                software to solve small but expensive
+                recurring problems.
+              </p>
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         FINAL CTA
+         ====================================================== -->
+
+    <section class="store-wrap">
+
+      <div class="store-final-cta">
+
+        <div
+          class="store-final-orbit"
+          aria-hidden="true"
+        ></div>
+
+        <div class="store-final-copy">
+
+          <span class="store-eyebrow">
+            ONEIX SOFTWARE
+          </span>
+
+          <h2>
+            Find the small problem
+            <span>costing you every week.</span>
+          </h2>
+
+          <p>
+            There may already be a focused Oneix product
+            built around it.
+          </p>
+
+          <a
+            class="store-button store-button-primary"
+            href="#products"
+          >
+            Explore all products
+
+            <span>
+              ↓
+            </span>
+          </a>
+
+        </div>
+
+
+        <div
+          class="store-final-stack"
+          aria-hidden="true"
+        >
+
+          <div
+            style="--stack-accent:#f2b66d"
+          >
+            LeadPocket
+          </div>
+
+          <div
+            style="--stack-accent:#73e7d1"
+          >
+            ReviewLoop
+          </div>
+
+          <div
+            style="--stack-accent:#77a7ff"
+          >
+            InvoiceNudge
+          </div>
+
+          <div
+            style="--stack-accent:#8de17f"
+          >
+            SitePulse
+          </div>
+
+          <div
+            style="--stack-accent:#bb8cff"
+          >
+            ClientDock
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ======================================================
+       FOOTER
+       ====================================================== -->
+
+  <footer class="store-footer store-wrap">
+
+    <div class="store-footer-brand">
+
+      <strong>
+        ONEIX
+      </strong>
+
+      <span>
+        Focused software for recurring work.
+      </span>
+
+    </div>
+
+
+    <p>
+      © 2026 Oneix Software.
+    </p>
+
+
+    <nav>
+
+      <a href="#products">
+        Products
+      </a>
+
+      <a href="#solutions">
+        Solutions
+      </a>
+
+      <a href="#philosophy">
+        About
+      </a>
+
+    </nav>
+
+  </footer>
+
+</div>
+
+
+<script src="./assets/products.js"></script>
+<script src="./assets/store.js"></script>
+
+</body>
 </html>
