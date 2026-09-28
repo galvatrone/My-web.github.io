@@ -59,7 +59,6 @@
   margin-inline: auto;
 }
 
-
 /* ============================================================
    AMBIENT BACKGROUND
    ============================================================ */
@@ -90,24 +89,12 @@
   opacity: 0.19;
 
   background-image:
-    linear-gradient(
-      rgba(255, 255, 255, 0.022) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.022) 1px,
-      transparent 1px
-    );
+    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
 
   background-size: 75px 75px;
 
-  mask-image:
-    linear-gradient(
-      to bottom,
-      black,
-      transparent 78%
-    );
+  mask-image: linear-gradient(to bottom, black, transparent 78%);
 }
 
 .ambient-glow {
@@ -143,17 +130,15 @@
 
   opacity: 0.025;
 
-  background-image:
-    repeating-radial-gradient(
-      circle at 0 0,
-      transparent 0,
-      rgba(255, 255, 255, 0.8) 1px,
-      transparent 2px
-    );
+  background-image: repeating-radial-gradient(
+    circle at 0 0,
+    transparent 0,
+    rgba(255, 255, 255, 0.8) 1px,
+    transparent 2px
+  );
 
   background-size: 9px 9px;
 }
-
 
 /* ============================================================
    TOPBAR
@@ -182,8 +167,7 @@
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
 
-  box-shadow:
-    0 18px 60px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.2);
 
   transform: translateX(-50%);
 }
@@ -206,20 +190,18 @@
   border: 1px solid rgba(98, 231, 255, 0.23);
   border-radius: 10px;
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(98, 231, 255, 0.13),
-      rgba(98, 231, 255, 0.025)
-    );
+  background: linear-gradient(
+    145deg,
+    rgba(98, 231, 255, 0.13),
+    rgba(98, 231, 255, 0.025)
+  );
 
   color: var(--store-cyan);
 
   font-size: 0.72rem;
   font-weight: 800;
 
-  box-shadow:
-    inset 0 0 20px rgba(98, 231, 255, 0.035);
+  box-shadow: inset 0 0 20px rgba(98, 231, 255, 0.035);
 }
 
 .store-brand-copy {
@@ -281,7 +263,6 @@
   color: var(--store-text) !important;
 }
 
-
 /* ============================================================
    HERO
    ============================================================ */
@@ -304,10 +285,7 @@
 
   margin-inline: auto;
 
-  padding:
-    130px
-    0
-    80px;
+  padding: 130px 0 80px;
 }
 
 .store-hero-copy {
@@ -349,8 +327,7 @@
 
   color: var(--store-text);
 
-  font-size:
-    clamp(4rem, 6.4vw, 7.6rem);
+  font-size: clamp(4rem, 6.4vw, 7.6rem);
 
   line-height: 0.91;
   letter-spacing: -0.075em;
@@ -380,7 +357,6 @@
 
   margin-bottom: 35px;
 }
-
 
 /* ============================================================
    BUTTONS
@@ -418,22 +394,15 @@
 .store-button-primary {
   border-color: rgba(98, 231, 255, 0.34);
 
-  background:
-    linear-gradient(
-      135deg,
-      #a7f4ff,
-      #63e4fb
-    );
+  background: linear-gradient(135deg, #a7f4ff, #63e4fb);
 
   color: #071014 !important;
 
-  box-shadow:
-    0 10px 35px rgba(98, 231, 255, 0.12);
+  box-shadow: 0 10px 35px rgba(98, 231, 255, 0.12);
 }
 
 .store-button-primary:hover {
-  box-shadow:
-    0 14px 42px rgba(98, 231, 255, 0.2);
+  box-shadow: 0 14px 42px rgba(98, 231, 255, 0.2);
 }
 
 .store-button-secondary {
@@ -441,7 +410,6 @@
 
   color: #c5cad1;
 }
-
 
 /* ============================================================
    HERO META
@@ -476,7 +444,6 @@
   background: #353b44;
 }
 
-
 /* ============================================================
    PRODUCT UNIVERSE
    ============================================================ */
@@ -502,12 +469,11 @@
 
   border-radius: 50%;
 
-  background:
-    radial-gradient(
-      circle,
-      rgba(98, 231, 255, 0.045),
-      transparent 67%
-    );
+  background: radial-gradient(
+    circle,
+    rgba(98, 231, 255, 0.045),
+    transparent 67%
+  );
 
   filter: blur(25px);
 
@@ -522,10 +488,7 @@
   border: 1px solid rgba(255, 255, 255, 0.045);
   border-radius: 50%;
 
-  transform:
-    translate(-50%, -50%)
-    rotateX(66deg)
-    rotateZ(-18deg);
+  transform: translate(-50%, -50%) rotateX(66deg) rotateZ(-18deg);
 
   pointer-events: none;
 }
@@ -571,12 +534,10 @@
   font-weight: 700;
   letter-spacing: 0.14em;
 
-  box-shadow:
-    0 0 50px rgba(98, 231, 255, 0.08);
+  box-shadow: 0 0 50px rgba(98, 231, 255, 0.08);
 
   transform: translate(-50%, -50%);
 }
-
 
 /* ============================================================
    UNIVERSE MAIN CARD
@@ -608,27 +569,14 @@
   background:
     radial-gradient(
       circle at 80% 0%,
-      color-mix(
-        in srgb,
-        var(--product-accent) 10%,
-        transparent
-      ),
+      color-mix(in srgb, var(--product-accent) 10%, transparent),
       transparent 38%
     ),
-    linear-gradient(
-      145deg,
-      rgba(19, 23, 30, 0.97),
-      rgba(9, 12, 16, 0.98)
-    );
+    linear-gradient(145deg, rgba(19, 23, 30, 0.97), rgba(9, 12, 16, 0.98));
 
-  box-shadow:
-    0 60px 120px rgba(0, 0, 0, 0.48);
+  box-shadow: 0 60px 120px rgba(0, 0, 0, 0.48);
 
-  transform:
-    translate(-50%, -50%)
-    rotateY(-9deg)
-    rotateX(4deg)
-    translateZ(70px);
+  transform: translate(-50%, -50%) rotateY(-9deg) rotateX(4deg) translateZ(70px);
 }
 
 .universe-card-main::after {
@@ -639,14 +587,13 @@
 
   pointer-events: none;
 
-  background:
-    linear-gradient(
-      120deg,
-      rgba(255, 255, 255, 0.06),
-      transparent 25%,
-      transparent 70%,
-      rgba(255, 255, 255, 0.015)
-    );
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.06),
+    transparent 25%,
+    transparent 70%,
+    rgba(255, 255, 255, 0.015)
+  );
 }
 
 .universe-number {
@@ -668,21 +615,11 @@
 
   margin-bottom: 60px;
 
-  border: 1px solid
-    color-mix(
-      in srgb,
-      var(--product-accent) 32%,
-      transparent
-    );
+  border: 1px solid color-mix(in srgb, var(--product-accent) 32%, transparent);
 
   border-radius: 13px;
 
-  background:
-    color-mix(
-      in srgb,
-      var(--product-accent) 10%,
-      transparent
-    );
+  background: color-mix(in srgb, var(--product-accent) 10%, transparent);
 
   color: var(--product-accent);
 
@@ -724,7 +661,6 @@
   font-size: 0.7rem;
   line-height: 1.5;
 }
-
 
 /* ============================================================
    UNIVERSE MINI UI
@@ -778,12 +714,7 @@
 
   border-radius: 50%;
 
-  background:
-    color-mix(
-      in srgb,
-      var(--product-accent) 11%,
-      #12161c
-    );
+  background: color-mix(in srgb, var(--product-accent) 11%, #12161c);
 
   color: var(--product-accent);
 
@@ -814,12 +745,7 @@
 
   border-radius: 100px;
 
-  background:
-    color-mix(
-      in srgb,
-      var(--product-accent) 10%,
-      transparent
-    );
+  background: color-mix(in srgb, var(--product-accent) 10%, transparent);
 
   color: var(--product-accent);
 
@@ -832,7 +758,6 @@
 
   color: var(--store-danger);
 }
-
 
 /* ============================================================
    FLOATING UNIVERSE CARDS
@@ -854,17 +779,15 @@
   border: 1px solid var(--store-border);
   border-radius: 16px;
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(20, 24, 31, 0.82),
-      rgba(9, 12, 16, 0.9)
-    );
+  background: linear-gradient(
+    145deg,
+    rgba(20, 24, 31, 0.82),
+    rgba(9, 12, 16, 0.9)
+  );
 
   backdrop-filter: blur(16px);
 
-  box-shadow:
-    0 25px 60px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
 
   color: var(--store-text);
 }
@@ -898,40 +821,28 @@
   top: 8%;
   left: 5%;
 
-  transform:
-    rotateY(17deg)
-    rotateZ(-5deg)
-    translateZ(-20px);
+  transform: rotateY(17deg) rotateZ(-5deg) translateZ(-20px);
 }
 
 .card-invoicenudge {
   top: 14%;
   right: -2%;
 
-  transform:
-    rotateY(-18deg)
-    rotateZ(5deg)
-    translateZ(-40px);
+  transform: rotateY(-18deg) rotateZ(5deg) translateZ(-40px);
 }
 
 .card-sitepulse {
   right: 1%;
   bottom: 10%;
 
-  transform:
-    rotateY(-14deg)
-    rotateZ(-4deg)
-    translateZ(-20px);
+  transform: rotateY(-14deg) rotateZ(-4deg) translateZ(-20px);
 }
 
 .card-clientdock {
   bottom: 8%;
   left: 3%;
 
-  transform:
-    rotateY(18deg)
-    rotateZ(4deg)
-    translateZ(-35px);
+  transform: rotateY(18deg) rotateZ(4deg) translateZ(-35px);
 }
 
 .floating-rating,
@@ -941,28 +852,17 @@
 
   padding: 7px 9px;
 
-  border: 1px solid
-    color-mix(
-      in srgb,
-      var(--product-accent) 22%,
-      transparent
-    );
+  border: 1px solid color-mix(in srgb, var(--product-accent) 22%, transparent);
 
   border-radius: 8px;
 
-  background:
-    color-mix(
-      in srgb,
-      var(--product-accent) 7%,
-      #0c1015
-    );
+  background: color-mix(in srgb, var(--product-accent) 7%, #0c1015);
 
   color: var(--product-accent);
 
   font-size: 0.5rem;
 
-  box-shadow:
-    0 12px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
 }
 
 .floating-rating {
@@ -994,10 +894,8 @@
 
   background: var(--product-accent);
 
-  box-shadow:
-    0 0 9px var(--product-accent);
+  box-shadow: 0 0 9px var(--product-accent);
 }
-
 
 /* ============================================================
    MARQUEE
@@ -1020,8 +918,7 @@
 
   width: max-content;
 
-  animation:
-    store-marquee 42s linear infinite;
+  animation: store-marquee 42s linear infinite;
 }
 
 .product-marquee span {
@@ -1045,7 +942,6 @@
     transform: translateX(-50%);
   }
 }
-
 
 /* ============================================================
    SECTIONS
@@ -1086,8 +982,7 @@
 
   color: var(--store-text);
 
-  font-size:
-    clamp(2.8rem, 4.5vw, 5.3rem);
+  font-size: clamp(2.8rem, 4.5vw, 5.3rem);
 
   line-height: 0.98;
   letter-spacing: -0.06em;
@@ -1107,7 +1002,6 @@
   font-size: 0.75rem;
   line-height: 1.7;
 }
-
 
 /* ============================================================
    SOLUTION SELECTOR
@@ -1170,12 +1064,11 @@
 }
 
 .solution-tab.active {
-  background:
-    linear-gradient(
-      145deg,
-      rgba(242, 182, 109, 0.075),
-      rgba(255, 255, 255, 0.012)
-    );
+  background: linear-gradient(
+    145deg,
+    rgba(242, 182, 109, 0.075),
+    rgba(255, 255, 255, 0.012)
+  );
 
   color: var(--store-text);
 }
@@ -1194,11 +1087,8 @@
 
   background: var(--solution-accent, #f2b66d);
 
-  box-shadow:
-    0 0 15px
-    var(--solution-accent, #f2b66d);
+  box-shadow: 0 0 15px var(--solution-accent, #f2b66d);
 }
-
 
 /* ============================================================
    SOLUTION STAGE
@@ -1231,11 +1121,7 @@
       rgba(242, 182, 109, 0.055),
       transparent 30%
     ),
-    linear-gradient(
-      145deg,
-      #0c1016,
-      #080b0f
-    );
+    linear-gradient(145deg, #0c1016, #080b0f);
 }
 
 .solution-stage-copy {
@@ -1260,8 +1146,7 @@
 
   color: var(--store-text);
 
-  font-size:
-    clamp(2.8rem, 4vw, 4.6rem);
+  font-size: clamp(2.8rem, 4vw, 4.6rem);
 
   letter-spacing: -0.06em;
 }
@@ -1326,7 +1211,6 @@
   color: #f2b66d !important;
 }
 
-
 /* ============================================================
    SOLUTION VISUAL
    ============================================================ */
@@ -1358,12 +1242,9 @@
 
   background: #0b0e13;
 
-  box-shadow:
-    0 45px 100px rgba(0, 0, 0, 0.48);
+  box-shadow: 0 45px 100px rgba(0, 0, 0, 0.48);
 
-  transform:
-    rotateY(-4deg)
-    rotateX(2deg);
+  transform: rotateY(-4deg) rotateX(2deg);
 }
 
 .solution-window-bar {
@@ -1648,7 +1529,6 @@
   color: var(--store-cyan);
 }
 
-
 /* ============================================================
    PRODUCT GALLERY
    ============================================================ */
@@ -1677,19 +1557,17 @@
   border: 1px solid var(--store-border);
   border-radius: 19px;
 
-  background:
-    linear-gradient(
-      150deg,
-      rgba(255, 255, 255, 0.023),
-      rgba(255, 255, 255, 0.006)
-    );
+  background: linear-gradient(
+    150deg,
+    rgba(255, 255, 255, 0.023),
+    rgba(255, 255, 255, 0.006)
+  );
 
   color: var(--store-text);
 
   text-decoration: none;
 
-  box-shadow:
-    0 18px 50px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
 
   transform-style: preserve-3d;
 
@@ -1729,15 +1607,9 @@
 }
 
 .product-card:hover {
-  border-color:
-    color-mix(
-      in srgb,
-      var(--accent) 32%,
-      rgba(255, 255, 255, 0.1)
-    );
+  border-color: color-mix(in srgb, var(--accent) 32%, rgba(255, 255, 255, 0.1));
 
-  box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.26);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.26);
 }
 
 .product-card > header {
@@ -1774,8 +1646,7 @@
 
   color: var(--store-text);
 
-  font-size:
-    clamp(1.8rem, 2.4vw, 3rem);
+  font-size: clamp(1.8rem, 2.4vw, 3rem);
 
   letter-spacing: -0.05em;
 }
@@ -1817,7 +1688,6 @@
   font-size: 0.8rem;
 }
 
-
 /* ============================================================
    LEADPOCKET CARD UI
    ============================================================ */
@@ -1836,12 +1706,9 @@
 
   background: #0a0d12;
 
-  box-shadow:
-    0 30px 70px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.3);
 
-  transform:
-    rotate(-2deg)
-    translateZ(20px);
+  transform: rotate(-2deg) translateZ(20px);
 }
 
 .lp-card-top {
@@ -1942,7 +1809,6 @@
   font-size: 0.46rem;
 }
 
-
 /* ============================================================
    REVIEWLOOP UI
    ============================================================ */
@@ -1995,21 +1861,11 @@
 
   padding: 11px;
 
-  border: 1px solid
-    color-mix(
-      in srgb,
-      var(--accent) 18%,
-      transparent
-    );
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
 
   border-radius: 10px;
 
-  background:
-    color-mix(
-      in srgb,
-      var(--accent) 5%,
-      transparent
-    );
+  background: color-mix(in srgb, var(--accent) 5%, transparent);
 }
 
 .review-message i {
@@ -2021,12 +1877,7 @@
 
   border-radius: 50%;
 
-  background:
-    color-mix(
-      in srgb,
-      var(--accent) 12%,
-      transparent
-    );
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
 
   color: var(--accent);
 
@@ -2048,7 +1899,6 @@
 
   font-size: 0.43rem;
 }
-
 
 /* ============================================================
    INVOICE UI
@@ -2117,7 +1967,6 @@
   font-style: normal;
 }
 
-
 /* ============================================================
    SITEPULSE UI
    ============================================================ */
@@ -2152,8 +2001,7 @@
 
   background: var(--accent);
 
-  box-shadow:
-    0 0 10px var(--accent);
+  box-shadow: 0 0 10px var(--accent);
 }
 
 .pulse-card-ui div span {
@@ -2185,15 +2033,9 @@
 
   vector-effect: non-scaling-stroke;
 
-  filter:
-    drop-shadow(
-      0 0 5px
-      color-mix(
-        in srgb,
-        var(--accent) 40%,
-        transparent
-      )
-    );
+  filter: drop-shadow(
+    0 0 5px color-mix(in srgb, var(--accent) 40%, transparent)
+  );
 }
 
 .pulse-card-ui > small {
@@ -2201,7 +2043,6 @@
 
   font-size: 0.44rem;
 }
-
 
 /* ============================================================
    CLIENTDOCK
@@ -2246,12 +2087,7 @@
 
   border-radius: 50%;
 
-  background:
-    color-mix(
-      in srgb,
-      var(--accent) 10%,
-      transparent
-    );
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
 
   color: var(--accent);
 
@@ -2282,7 +2118,6 @@
   font-size: 0.4rem;
   font-style: normal;
 }
-
 
 /* ============================================================
    CRONBEACON
@@ -2346,7 +2181,6 @@
   color: var(--store-danger);
 }
 
-
 /* ============================================================
    EXPIRY
    ============================================================ */
@@ -2403,8 +2237,7 @@
 
   background: var(--accent);
 
-  box-shadow:
-    0 0 12px var(--accent);
+  box-shadow: 0 0 12px var(--accent);
 }
 
 .expiry-card-ui small {
@@ -2412,7 +2245,6 @@
 
   font-size: 0.45rem;
 }
-
 
 /* ============================================================
    LOGSENTRY
@@ -2446,13 +2278,7 @@
 
   border-bottom: 1px solid var(--store-border);
 
-  font-family:
-    ui-monospace,
-    SFMono-Regular,
-    Menlo,
-    Monaco,
-    Consolas,
-    monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   font-size: 0.43rem;
 }
@@ -2484,7 +2310,6 @@
 .log-card-ui .log-error strong {
   color: var(--store-danger);
 }
-
 
 /* ============================================================
    OPSQR
@@ -2549,7 +2374,6 @@
   font-size: 0.43rem;
 }
 
-
 /* ============================================================
    WORKSHOP RECALL
    ============================================================ */
@@ -2597,28 +2421,17 @@
   margin-top: 17px;
   padding: 7px 9px;
 
-  border: 1px solid
-    color-mix(
-      in srgb,
-      var(--accent) 22%,
-      transparent
-    );
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
 
   border-radius: 7px;
 
-  background:
-    color-mix(
-      in srgb,
-      var(--accent) 8%,
-      transparent
-    );
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
 
   color: var(--accent);
 
   font: inherit;
   font-size: 0.43rem;
 }
-
 
 /* ============================================================
    PHILOSOPHY
@@ -2636,8 +2449,7 @@
 
   color: var(--store-text);
 
-  font-size:
-    clamp(3rem, 5vw, 5.5rem);
+  font-size: clamp(3rem, 5vw, 5.5rem);
 
   line-height: 0.96;
   letter-spacing: -0.065em;
@@ -2687,7 +2499,6 @@
   line-height: 1.7;
 }
 
-
 /* ============================================================
    FINAL CTA
    ============================================================ */
@@ -2718,11 +2529,7 @@
       rgba(98, 231, 255, 0.065),
       transparent 30%
     ),
-    linear-gradient(
-      145deg,
-      #0c1015,
-      #080b0f
-    );
+    linear-gradient(145deg, #0c1015, #080b0f);
 }
 
 .store-final-orbit {
@@ -2775,8 +2582,7 @@
 
   color: var(--store-text);
 
-  font-size:
-    clamp(3rem, 5vw, 5.6rem);
+  font-size: clamp(3rem, 5vw, 5.6rem);
 
   line-height: 0.96;
   letter-spacing: -0.065em;
@@ -2822,39 +2628,25 @@
   padding: 0 20px;
 
   border: 1px solid
-    color-mix(
-      in srgb,
-      var(--stack-accent) 25%,
-      var(--store-border)
-    );
+    color-mix(in srgb, var(--stack-accent) 25%, var(--store-border));
 
   border-radius: 13px;
 
-  background:
-    linear-gradient(
-      145deg,
-      color-mix(
-        in srgb,
-        var(--stack-accent) 7%,
-        #11161d
-      ),
-      #0a0d12
-    );
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--stack-accent) 7%, #11161d),
+    #0a0d12
+  );
 
   color: #c8cdd3;
 
   font-size: 0.68rem;
   font-weight: 600;
 
-  box-shadow:
-    0 25px 50px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
 
-  transform:
-    translate(-50%, -50%)
-    translateY(var(--stack-y, 0))
-    translateZ(var(--stack-z, 0))
-    rotateX(58deg)
-    rotateZ(-7deg);
+  transform: translate(-50%, -50%) translateY(var(--stack-y, 0))
+    translateZ(var(--stack-z, 0)) rotateX(58deg) rotateZ(-7deg);
 }
 
 .store-final-stack > div:nth-child(1) {
@@ -2881,7 +2673,6 @@
   --stack-y: 95px;
   --stack-z: 0px;
 }
-
 
 /* ============================================================
    FOOTER
@@ -2941,7 +2732,6 @@
   color: var(--store-text);
 }
 
-
 /* ============================================================
    ACCESSIBILITY
    ============================================================ */
@@ -2959,13 +2749,11 @@
   outline-offset: 3px;
 }
 
-
 /* ============================================================
    RESPONSIVE — LAPTOP
    ============================================================ */
 
 @media (max-width: 1250px) {
-
   .store-hero {
     grid-template-columns: 0.85fr 1.15fr;
 
@@ -2999,16 +2787,13 @@
   .product-card-wide {
     grid-column: span 6;
   }
-
 }
-
 
 /* ============================================================
    RESPONSIVE — TABLET
    ============================================================ */
 
 @media (max-width: 980px) {
-
   .store-wrap {
     width: calc(100% - 34px);
   }
@@ -3091,16 +2876,13 @@
 
     margin-inline: auto;
   }
-
 }
-
 
 /* ============================================================
    RESPONSIVE — MOBILE
    ============================================================ */
 
 @media (max-width: 680px) {
-
   .store-topbar {
     top: 8px;
 
@@ -3130,8 +2912,7 @@
   }
 
   .store-hero h1 {
-    font-size:
-      clamp(3.4rem, 17vw, 5.3rem);
+    font-size: clamp(3.4rem, 17vw, 5.3rem);
   }
 
   .store-hero-actions {
@@ -3163,10 +2944,7 @@
   .universe-card-main {
     width: min(420px, 92%);
 
-    transform:
-      translate(-50%, -50%)
-      rotateY(-3deg)
-      rotateX(2deg);
+    transform: translate(-50%, -50%) rotateY(-3deg) rotateX(2deg);
   }
 
   .card-reviewloop {
@@ -3194,8 +2972,7 @@
   }
 
   .store-section-heading h2 {
-    font-size:
-      clamp(2.7rem, 13vw, 4rem);
+    font-size: clamp(2.7rem, 13vw, 4rem);
   }
 
   .solution-tabs {
@@ -3261,8 +3038,7 @@
   }
 
   .store-final-copy h2 {
-    font-size:
-      clamp(2.8rem, 13vw, 4.4rem);
+    font-size: clamp(2.8rem, 13vw, 4.4rem);
   }
 
   .store-final-stack {
@@ -3274,24 +3050,19 @@
 
     gap: 17px;
   }
-
 }
-
 
 /* ============================================================
    VERY SMALL MOBILE
    ============================================================ */
 
 @media (max-width: 420px) {
-
   .product-universe {
     left: 50%;
 
     width: 115%;
 
-    transform:
-      translateX(-50%)
-      scale(0.78);
+    transform: translateX(-50%) scale(0.78);
 
     transform-origin: center top;
   }
@@ -3309,16 +3080,13 @@
 
     font-size: 0.38rem;
   }
-
 }
-
 
 /* ============================================================
    REDUCED MOTION
    ============================================================ */
 
 @media (prefers-reduced-motion: reduce) {
-
   .oneix-store *,
   .oneix-store *::before,
   .oneix-store *::after {
@@ -3333,7 +3101,6 @@
   .product-marquee-track {
     animation: none;
   }
-
 }
 /* ============================================================
    STORE.JS STATES
@@ -3351,14 +3118,12 @@
 
   background: rgba(7, 9, 13, 0.92);
 
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
 }
 
 .store-nav a.store-nav-active:not(.store-nav-cta) {
   color: var(--store-cyan);
 }
-
 
 /* Reveal */
 
@@ -3368,13 +3133,8 @@
   transform: translateY(30px);
 
   transition:
-    opacity 700ms
-      cubic-bezier(.2, .7, .2, 1)
-      var(--reveal-delay, 0ms),
-
-    transform 700ms
-      cubic-bezier(.2, .7, .2, 1)
-      var(--reveal-delay, 0ms);
+    opacity 700ms cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms),
+    transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms);
 }
 
 .store-reveal.store-visible {
@@ -3382,7 +3142,6 @@
 
   transform: translateY(0);
 }
-
 
 /* Solution change */
 
@@ -3393,39 +3152,31 @@
     transform 170ms ease;
 }
 
-.solution-stage.solution-changing
-.solution-stage-copy {
+.solution-stage.solution-changing .solution-stage-copy {
   opacity: 0;
 
   transform: translateX(-8px);
 }
 
-.solution-stage.solution-changing
-.solution-visual {
+.solution-stage.solution-changing .solution-visual {
   opacity: 0.45;
 
   transform: translateX(8px);
 }
 
-
 /* Hero movement */
 
 .store-hero-copy {
-  transition:
-    transform 400ms
-    cubic-bezier(.2, .7, .2, 1);
+  transition: transform 400ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
-
 
 /* Floating cards */
 
 .universe-card-secondary {
   transition:
-    translate 400ms
-    cubic-bezier(.2, .7, .2, 1),
+    translate 400ms cubic-bezier(0.2, 0.7, 0.2, 1),
     border-color 180ms ease;
 }
-
 
 /* Product cards */
 
@@ -3438,26 +3189,293 @@
   transform-style: preserve-3d;
 }
 
-
 /* Solution tabs use current product accent */
 
 .solution-tab.active::after {
-  background:
-    var(
-      --active-accent,
-      #f2b66d
-    );
+  background: var(--active-accent, #f2b66d);
 }
-
 
 /* Reduced motion */
 
 @media (prefers-reduced-motion: reduce) {
-
   .store-reveal {
     opacity: 1;
 
     transform: none;
   }
+}
+/* Responsive product universe: reduced tablet depth, purpose-built phone UI. */
+.store-site {
+  overflow: clip;
+}
+@media (max-width: 1100px) {
+  .universe-card-main {
+    transform: translate(-50%, -50%) rotateY(-3deg) rotateX(1deg)
+      translateZ(20px);
+  }
+  .universe-card-secondary {
+    backdrop-filter: blur(8px);
+  }
+  .solution-window {
+    transform: none;
+  }
+}
+@media (max-width: 680px) {
+  .oneix-store {
+    overflow-x: clip;
+  }
+  .store-topbar {
+    padding: 8px 9px;
+    backdrop-filter: blur(10px);
+  }
+  .store-brand,
+  .store-nav-cta,
+  .store-button,
+  .solution-tab,
+  .product-card,
+  .store-footer a {
+    min-height: 44px;
+  }
+  .store-hero {
+    gap: 30px;
+    min-height: auto;
+    padding-top: 100px;
+    padding-bottom: 48px;
+  }
+  .store-hero h1 {
+    font-size: clamp(3rem, 14vw, 4.6rem);
+    line-height: 0.95;
+  }
+  .store-hero-lead {
+    font-size: clamp(1rem, 4.5vw, 1.16rem);
+  }
+  .store-hero-meta {
+    display: none;
+  }
+  .product-universe {
+    display: block;
+    width: 100%;
+    min-height: 438px;
+    overflow: hidden;
+    perspective: none;
+    transform: none;
+  }
+  .product-universe::before,
+  .universe-orbit,
+  .universe-core,
+  .universe-card-secondary {
+    display: none;
+  }
+  .universe-card-main {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    min-height: 0;
+    padding: 22px;
+    transform: none;
+  }
+  .universe-card-icon {
+    margin-bottom: 34px;
+  }
+  .universe-card-copy {
+    margin-bottom: 22px;
+  }
+  .universe-card-copy strong {
+    font-size: clamp(1.9rem, 9vw, 2.3rem);
+  }
+  .product-marquee {
+    display: none;
+  }
+  .ambient-glow,
+  .solution-visual-glow,
+  .store-final-orbit {
+    display: none;
+  }
+  .store-section {
+    padding: 64px 0;
+  }
+  .store-section-heading {
+    margin-bottom: 36px;
+  }
+  .store-section-heading h2 {
+    font-size: clamp(2.35rem, 11vw, 3.3rem);
+  }
+  .solution-tabs {
+    grid-template-columns: repeat(5, minmax(150px, 42vw));
+    padding-bottom: 8px;
+    scroll-snap-type: inline proximity;
+    overscroll-behavior-inline: contain;
+  }
+  .solution-tab {
+    scroll-snap-align: start;
+  }
+  .solution-stage {
+    gap: 34px;
+    padding: 22px 16px;
+  }
+  .solution-stage-copy h3 {
+    font-size: clamp(2.2rem, 11vw, 3rem);
+  }
+  .solution-flow {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .solution-window {
+    width: 100%;
+    overflow: hidden;
+    transform: none;
+  }
+  .solution-window-bar,
+  .solution-dashboard {
+    min-width: 0;
+  }
+  .solution-dashboard {
+    display: block;
+    min-height: 390px;
+  }
+  .solution-dashboard aside {
+    display: none;
+  }
+  .solution-dashboard-main {
+    padding: 15px 11px;
+  }
+  .solution-dashboard-main > header {
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .solution-dashboard-main header button {
+    min-height: 38px;
+    flex: 0 0 auto;
+    padding-inline: 9px;
+    font-size: 0.58rem;
+  }
+  .solution-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .solution-stats span {
+    font-size: 0.58rem;
+  }
+  .solution-stats strong {
+    font-size: 1rem;
+  }
+  .solution-leads article {
+    grid-template-columns: 28px minmax(0, 1fr) auto;
+    min-height: 56px;
+    padding: 9px;
+  }
+  .solution-leads article > div:nth-of-type(2) {
+    display: none;
+  }
+  .solution-leads article strong {
+    font-size: 0.62rem;
+  }
+  .solution-leads article span,
+  .solution-leads article small,
+  .solution-leads em {
+    font-size: 0.54rem;
+  }
+  .product-card,
+  .product-card-large,
+  .product-card-wide {
+    min-height: 400px;
+    padding: 22px;
+  }
+  .store-final-cta {
+    margin-top: 62px;
+    padding: 38px 22px;
+  }
+  .store-final-stack {
+    display: none;
+  }
+}
+@media (max-width: 420px) {
+  .store-brand-copy strong {
+    font-size: 0.74rem;
+  }
+  .product-universe {
+    left: auto;
+    width: 100%;
+    min-height: 420px;
+    transform: none;
+  }
+  .mini-lead {
+    grid-template-columns: 27px minmax(0, 1fr) auto;
+  }
+  .solution-stage {
+    padding-inline: 13px;
+  }
+  .product-card,
+  .product-card-large,
+  .product-card-wide {
+    min-height: 370px;
+  }
+}
+@media (pointer: coarse) {
+  .product-universe,
+  .universe-card,
+  .product-card,
+  .solution-window,
+  .store-hero-copy {
+    transform: none !important;
+  }
+  .product-card {
+    will-change: auto;
+  }
+  .product-card::before,
+  .store-card-glow {
+    display: none;
+  }
+  .product-marquee-track {
+    animation: none !important;
+  }
+}
+@media (max-height: 520px) and (orientation: landscape) {
+  .store-hero {
+    padding-top: 92px;
+  }
+  .product-universe {
+    min-height: 410px;
+  }
+}
 
+.store-brand,
+.store-nav a,
+.oneix-store button,
+.store-footer a {
+  min-height: 44px;
+}
+.store-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-width: 44px;
+  justify-content: center;
+}
+
+@media (pointer: coarse) {
+  .store-reveal,
+  .lp-reveal,
+  .rl-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .oneix-store *,
+  .leadpocket-page *,
+  .reviewloop-page * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* Selector-driven preview accent follows the active product. */
+.solution-stage .solution-dashboard aside > strong,
+.solution-stage .solution-dashboard aside > span.active,
+.solution-stage .solution-dashboard-main header button,
+.solution-stage .solution-leads .today {
+  border-color: color-mix(in srgb, var(--active-accent) 32%, transparent);
+  background: color-mix(in srgb, var(--active-accent) 12%, transparent);
+  color: var(--active-accent);
+}
+.solution-stage .solution-dashboard-main header button {
+  background: var(--active-accent);
+  color: #071015;
 }

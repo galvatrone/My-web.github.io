@@ -1,12 +1,452 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>InvoiceNudge | Oneix</title><link rel="stylesheet" href="../assets/styles.css"></head>
-<body><main class="site"><header class="topbar"><a class="brand" href="../"><span class="mark">OX</span> Oneix / InvoiceNudge</a><nav class="nav"><a href="#product">Product</a><a href="#workflow">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="../">Store</a></nav></header><div class="wrap">
-<section class="hero" id="product"><div><p class="eyebrow">Money / payment status</p><h1>Spend less time chasing unpaid invoices.</h1><p class="lead">Keep invoice aging visible and send clear reminders without turning payment follow-up into a confrontation.</p><div class="actions"><a class="button" data-app-path="invoicenudge" href="../../invoicenudge/signup">Start InvoiceNudge</a><a class="button secondary" href="#workflow">See how it works</a></div></div><div class="signal" style="--signal:var(--accent)"><div class="signal-head"><span>INVOICENUDGE / SIGNAL</span><span>ONEIX SOFTWARE</span></div><div class="signal-title">Issued → Due soon → Overdue → Paid</div><div class="signal-line"><i style="--h:38%"></i><i style="--h:61%"></i><i style="--h:48%"></i><i style="--h:84%"></i><i style="--h:68%"></i></div><div class="signal-meta"><span>visible state</span><span>next action</span></div></div></section>
-<section class="section"><div class="detail"><div><p class="eyebrow">The problem</p><h2>Spend less time chasing unpaid invoices.</h2></div><div class="card"><h3>One clear operating loop</h3><p>Keep invoice aging visible and send clear reminders without turning payment follow-up into a confrontation. The product keeps the next step visible so the team can act while the context is still clear.</p></div></div></section>
-<section class="section" id="workflow"><div class="section-head"><div><p class="eyebrow">How it works</p><h2>From signal to next action.</h2></div><p>Start with the moment that matters, keep the status visible, and move the work forward.</p></div><div class="grid steps"><div class="card"><h3>Add the invoice</h3><p>Add invoices and due dates</p></div><div class="card"><h3>Watch the due date</h3><p>See meaningful aging states</p></div><div class="card"><h3>Send the nudge</h3><p>Send a measured reminder</p></div></div></section>
-<section class="section"><div class="section-head"><div><p class="eyebrow">Product signal</p><h2>Designed around money / payment status.</h2></div><p>Add invoices and due dates. See meaningful aging states. Send a measured reminder.</p></div><div class="grid"><div class="card"><h3>Issued</h3><p>Start with a visible state, not a blank spreadsheet.</p></div><div class="card"><h3>Overdue</h3><p>Know what needs attention before the next handoff.</p></div><div class="card"><h3>Paid</h3><p>Finish with an outcome the team can understand.</p></div></div></section>
-<section class="section" id="pricing"><div class="detail"><div><p class="eyebrow">Simple pricing</p><h2>One focused plan to get moving.</h2><p class="lead">No enterprise packaging. Start with the workflow your team needs first.</p></div><div class="card"><h3>Starter</h3><div class="price"><strong>€15</strong><span>/ month</span></div><p>Add invoices and due dates, See meaningful aging states, Send a measured reminder.</p><a class="button" data-app-path="invoicenudge" href="../../invoicenudge/signup">Start now</a></div></div></section>
-<section class="section" id="faq"><div class="section-head"><div><p class="eyebrow">FAQ</p><h2>Useful answers before you start.</h2></div></div><div class="faq"><details open><summary>Is this debt collection software?</summary><p>No. It is a focused reminder and payment-status workspace.</p></details><details><summary>Can I start small?</summary><p>Yes. The first useful action is designed to be clear without a long setup process.</p></details></div></section>
-<section class="section"><div class="detail"><div><p class="eyebrow">Ready when you are</p><h2>Spend less time chasing unpaid invoices.</h2></div><div class="actions"><a class="button" data-app-path="invoicenudge" href="../../invoicenudge/signup">Start InvoiceNudge</a><a class="button secondary" href="../">Back to Oneix Store</a></div></div></section>
-<footer class="footer">InvoiceNudge is a focused Oneix software product. <a href="../">Explore the Store</a>.</footer></div></main><script src="../assets/products.js"></script></body></html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Keep invoice aging, reminders and payment status in one focused workspace. InvoiceNudge by ONEIX."
+    />
+    <meta name="theme-color" content="#080d16" />
+    <title>InvoiceNudge — Keep payment moving | ONEIX</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="../assets/styles.css" />
+    <link rel="stylesheet" href="./invoicenudge.css" />
+    <script defer src="../assets/vendor/motion-12.23.12.js"></script>
+    <script defer src="./invoicenudge.js"></script>
+  </head>
+  <body class="invoicenudge-page">
+    <a class="in-skip" href="#main">Skip to content</a>
+    <header class="topbar in-topbar">
+      <a class="brand" href="../">
+        <span class="mark">OX</span>
+        <span>
+          ONEIX
+          <span class="in-brand-divider">/</span>
+          InvoiceNudge
+        </span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#demo">Try the demo</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="../">Store ↗</a>
+      </nav>
+    </header>
+    <main id="main" class="in-container">
+      <section class="in-hero" aria-labelledby="hero-title">
+        <div class="in-hero-heading">
+          <div>
+            <p class="eyebrow">Invoice follow-up, with a little more clarity</p>
+            <h1 id="hero-title">
+              Work delivered.
+              <br />
+              <span>Payment in view.</span>
+            </h1>
+          </div>
+          <div class="in-hero-copy">
+            <p class="lead">
+              Know what’s due. Send a measured reminder. Keep the next step
+              clear, without losing the customer relationship.
+            </p>
+            <div class="actions">
+              <a
+                class="button"
+                data-start
+                href="https://invoicenudge.oneix.ltd/signup"
+              >
+                Start InvoiceNudge
+                <span aria-hidden="true">↗</span>
+              </a>
+              <a class="in-text-link" href="#demo">Explore the example ↓</a>
+            </div>
+          </div>
+        </div>
+
+        <section
+          class="in-payment-desk"
+          id="demo"
+          aria-labelledby="demo-title"
+          data-state="issued"
+        >
+          <header class="in-desk-head">
+            <div>
+              <span class="in-live-dot" aria-hidden="true"></span>
+              <h2 id="demo-title">One invoice. A clear path forward.</h2>
+            </div>
+            <span class="in-demo-label">Interactive example</span>
+          </header>
+          <div class="in-desk-layout">
+            <div class="in-receipt">
+              <div class="in-receipt-top">
+                <span class="in-mono">INV–1048</span>
+                <span class="in-status" data-status>Issued</span>
+              </div>
+              <p class="in-customer">
+                Atlas Studio
+                <span>Website delivery</span>
+              </p>
+              <div class="in-amount">
+                €1,240
+                <span>EUR · invoice total</span>
+              </div>
+              <div class="in-receipt-foot">
+                <span>
+                  Issued
+                  <strong>02 Jun</strong>
+                </span>
+                <span>
+                  Due date
+                  <strong>16 Jun</strong>
+                </span>
+              </div>
+              <div class="in-paid-stamp" aria-hidden="true" hidden>PAID ✓</div>
+            </div>
+            <div class="in-timeline-panel">
+              <div class="in-timeline-intro">
+                <p class="in-mono">PAYMENT TIMELINE</p>
+                <button class="in-reset" type="button" data-reset>
+                  Reset example ↺
+                </button>
+              </div>
+              <div
+                class="in-stages"
+                role="group"
+                aria-label="Explore invoice stages"
+              >
+                <button type="button" data-stage="issued" aria-pressed="true">
+                  <span class="in-stage-dot">01</span>
+                  <strong>Issued</strong>
+                  <small>02 Jun</small>
+                </button>
+                <button type="button" data-stage="due" aria-pressed="false">
+                  <span class="in-stage-dot">02</span>
+                  <strong>Due soon</strong>
+                  <small>13 Jun</small>
+                </button>
+                <button
+                  type="button"
+                  data-stage="reminder"
+                  aria-pressed="false"
+                >
+                  <span class="in-stage-dot">03</span>
+                  <strong>Reminder</strong>
+                  <small>18 Jun</small>
+                </button>
+                <button type="button" data-stage="paid" aria-pressed="false">
+                  <span class="in-stage-dot">✓</span>
+                  <strong>Paid</strong>
+                  <small>20 Jun</small>
+                </button>
+              </div>
+              <div
+                class="in-state-content"
+                aria-live="polite"
+                aria-atomic="true"
+              >
+                <p class="in-state-kicker" data-kicker>
+                  01 / A clear starting point
+                </p>
+                <h3 data-state-title>The invoice is on the record.</h3>
+                <p data-state-copy>
+                  €1,240, one customer and one due date. Keep the essential
+                  details together from the start.
+                </p>
+                <div class="in-reminder" data-reminder hidden>
+                  <span class="in-mono">REMINDER PREVIEW · NOT SENT</span>
+                  <p>
+                    Hello Atlas Studio, a quick note that invoice INV-1048 for
+                    €1,240 was due on 16 Jun. Please let us know if you need
+                    anything from us. Thank you.
+                  </p>
+                </div>
+              </div>
+              <div class="in-desk-bottom">
+                <p>
+                  <span aria-hidden="true">↳</span>
+                  <span data-event>
+                    02 Jun · Invoice added to the workspace
+                  </span>
+                </p>
+                <button class="in-next" type="button" data-next>
+                  Next: due soon →
+                </button>
+              </div>
+            </div>
+          </div>
+          <p class="in-demo-note">
+            Illustrative data. Explore each stage; no email is sent and no
+            payment is processed.
+          </p>
+        </section>
+        <div class="in-hero-caption">
+          <span>
+            Built around
+            <strong>time + money</strong>
+          </span>
+          <span>Invoice → due date → reminder → paid</span>
+        </div>
+      </section>
+
+      <section
+        class="in-section in-ledger-section"
+        aria-labelledby="ledger-title"
+      >
+        <div class="in-section-heading">
+          <div>
+            <p class="eyebrow">Know where attention belongs</p>
+            <h2 id="ledger-title">
+              Not every open invoice
+              <br />
+              needs the same nudge.
+            </h2>
+          </div>
+          <p>
+            See the amount, the age and the next conversation. Keep payment
+            follow-up grounded in what’s actually due.
+          </p>
+        </div>
+        <div class="in-ledger">
+          <div class="in-ledger-head">
+            <h3>Outstanding, at a glance</h3>
+            <span class="in-demo-label">Sample workspace · 18 Jun</span>
+          </div>
+          <dl class="in-metrics">
+            <div>
+              <dt>Outstanding</dt>
+              <dd>€8,420</dd>
+            </div>
+            <div>
+              <dt>Overdue</dt>
+              <dd class="in-warning">€2,180</dd>
+            </div>
+            <div>
+              <dt>Due this week</dt>
+              <dd>€3,600</dd>
+            </div>
+            <div>
+              <dt>Due later</dt>
+              <dd>€2,640</dd>
+            </div>
+          </dl>
+          <div class="in-invoice-list" aria-label="Example open invoices">
+            <div class="in-list-labels" aria-hidden="true">
+              <span>Customer / invoice</span>
+              <span>Amount</span>
+              <span>Age</span>
+              <span>Next step</span>
+            </div>
+            <article class="in-invoice-row">
+              <div>
+                <h4>Atlas Studio</h4>
+                <span>INV–1048 · due 16 Jun</span>
+              </div>
+              <strong>€1,240</strong>
+              <span class="in-age in-age-late">2 days overdue</span>
+              <p>Send a reminder</p>
+            </article>
+            <article class="in-invoice-row">
+              <div>
+                <h4>Northline Design</h4>
+                <span>INV–1032 · due 04 Jun</span>
+              </div>
+              <strong>€940</strong>
+              <span class="in-age in-age-late">14 days overdue</span>
+              <p>Check promised date</p>
+            </article>
+            <article class="in-invoice-row">
+              <div>
+                <h4>Fieldwork Co.</h4>
+                <span>INV–1051 · due 20 Jun</span>
+              </div>
+              <strong>€3,600</strong>
+              <span class="in-age">Due in 2 days</span>
+              <p>Watch the due date</p>
+            </article>
+            <article class="in-invoice-row">
+              <div>
+                <h4>Common Ground</h4>
+                <span>INV–1055 · due 02 Jul</span>
+              </div>
+              <strong>€2,640</strong>
+              <span class="in-age">Due in 14 days</span>
+              <p>No reminder needed</p>
+            </article>
+          </div>
+          <p class="in-ledger-note">
+            Example customer names and amounts, not customer endorsements.
+          </p>
+        </div>
+      </section>
+
+      <section
+        class="in-section in-workflow"
+        id="workflow"
+        aria-labelledby="workflow-title"
+      >
+        <div class="in-workflow-intro">
+          <p class="eyebrow">A considered follow-up</p>
+          <h2 id="workflow-title">
+            A nudge.
+            <br />
+            Not a confrontation.
+          </h2>
+          <p>
+            Start with the facts. Give the customer context. Keep a record of
+            what happens next.
+          </p>
+          <a class="in-text-link" href="#demo">Walk through an invoice ↑</a>
+        </div>
+        <ol class="in-workflow-steps">
+          <li>
+            <span class="in-step-number">01</span>
+            <div>
+              <h3>Bring the details together.</h3>
+              <p>
+                Add invoices and due dates, or import a CSV. Keep the client and
+                amount connected to the record.
+              </p>
+              <span class="in-feature-tag">Invoices + customer context</span>
+            </div>
+          </li>
+          <li>
+            <span class="in-step-number">02</span>
+            <div>
+              <h3>Choose the right next step.</h3>
+              <p>
+                Send a reminder when it’s needed. Pause or snooze follow-up, and
+                record a promise to pay when there’s a new agreement.
+              </p>
+              <span class="in-feature-tag">Remind · pause · snooze</span>
+            </div>
+          </li>
+          <li>
+            <span class="in-step-number">03</span>
+            <div>
+              <h3>Close the loop.</h3>
+              <p>
+                Mark the invoice paid when payment arrives. Keep payment status
+                up to date instead of chasing a resolved conversation.
+              </p>
+              <span class="in-feature-tag">A clear payment status</span>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section
+        class="in-section in-pricing"
+        id="pricing"
+        aria-labelledby="pricing-title"
+      >
+        <div>
+          <p class="eyebrow">Focused software. Straightforward pricing.</p>
+          <h2 id="pricing-title">
+            Less chasing.
+            <br />
+            More clarity.
+          </h2>
+          <p>
+            For freelancers and small teams that need a dedicated place for
+            invoice follow-up — not another full accounting suite.
+          </p>
+        </div>
+        <div class="in-price-card">
+          <div class="in-plan-line">
+            <h3>Starter</h3>
+            <span class="in-mono">INVOICENUDGE</span>
+          </div>
+          <div class="in-price">
+            <strong>€15</strong>
+            <span>/ month</span>
+          </div>
+          <p>One focused workspace for what’s due and what comes next.</p>
+          <ul>
+            <li>Invoice records and due dates</li>
+            <li>Clear aging and payment status</li>
+            <li>Reminder follow-up</li>
+          </ul>
+          <a
+            class="button"
+            data-start
+            href="https://invoicenudge.oneix.ltd/signup"
+          >
+            Start InvoiceNudge ↗
+          </a>
+        </div>
+      </section>
+
+      <section class="in-section in-faq" id="faq" aria-labelledby="faq-title">
+        <div>
+          <p class="eyebrow">Before the first nudge</p>
+          <h2 id="faq-title">A few useful answers.</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Is this debt collection software?</summary>
+            <p>
+              No. InvoiceNudge is an invoice reminder and payment-status
+              workspace. It does not provide debt collection or guarantee
+              payment.
+            </p>
+          </details>
+          <details>
+            <summary>Does InvoiceNudge process the payment?</summary>
+            <p>
+              This workflow tracks invoice status and follow-up. You mark an
+              invoice paid when payment arrives through your existing payment
+              arrangement.
+            </p>
+          </details>
+          <details>
+            <summary>Can I bring my existing invoices?</summary>
+            <p>
+              You can add invoice records individually or import them from a
+              CSV. Keep the client, amount and due date together.
+            </p>
+          </details>
+          <details>
+            <summary>What if a customer needs more time?</summary>
+            <p>
+              Pause or snooze follow-up and record a promise-to-pay note, so the
+              next action reflects the conversation.
+            </p>
+          </details>
+          <details>
+            <summary>Does this demo send real reminders?</summary>
+            <p>
+              No. This page uses illustrative data only. Sending reminders in
+              the application requires a configured email sender.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <section class="in-closing" aria-labelledby="closing-title">
+        <p class="eyebrow">From open invoice to clear outcome</p>
+        <h2 id="closing-title">
+          Give every invoice
+          <br />
+          a next step.
+        </h2>
+        <a
+          class="button"
+          data-start
+          href="https://invoicenudge.oneix.ltd/signup"
+        >
+          Start InvoiceNudge ↗
+        </a>
+        <a class="in-text-link" href="../">Explore the ONEIX collection</a>
+      </section>
+    </main>
+    <footer class="in-footer in-container">
+      <a class="brand" href="../">
+        <span class="mark">OX</span>
+        ONEIX
+      </a>
+      <p>Small software. Clear outcomes.</p>
+      <span>InvoiceNudge / Payment follow-up</span>
+    </footer>
+  </body>
+</html>

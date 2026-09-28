@@ -1,0 +1,451 @@
+/* 01. Warm workshop identity */
+.workshoprecall-page {
+  --accent: #c4b1ec;
+  --cyan: #c4b1ec;
+  --page-bg: #131016;
+} /* 02. Service-book hero */
+.wr-hero {
+  padding: 65px 0 25px;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 65px;
+  align-items: center;
+}
+.wr-intro h1 {
+  font-size: clamp(40px, 5vw, 69px);
+}
+.wr-intro h1 span {
+  color: var(--accent);
+}
+.wr-service-book {
+  background: #1b1622;
+  border: 1px solid #c4b1ec38;
+  border-radius: 10px;
+  min-width: 0;
+  box-shadow: 10px 10px 0 #c4b1ec05;
+}
+.wr-service-book > header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.wr-customer-avatar {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #c4b1ec20;
+  color: var(--accent);
+  font-size: 12px;
+  flex-shrink: 0;
+}
+.wr-service-book header strong {
+  display: block;
+  font-size: 14px;
+}
+.wr-service-book header div > span {
+  color: var(--muted);
+  font-size: 11px;
+  display: block;
+  margin-top: 3px;
+}
+.wr-book-id {
+  margin-left: auto;
+  font:
+    9px/1.6 ui-monospace,
+    monospace;
+  color: var(--muted);
+  text-align: right;
+}
+.wr-book-body {
+  padding: 24px;
+}
+.wr-vehicle .pf-label {
+  font-size: 9px;
+}
+.wr-vehicle svg {
+  display: block;
+  width: 100%;
+  height: 150px;
+  margin: 10px 0;
+}
+.wr-vehicle-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+}
+.wr-vehicle-meta strong {
+  font-size: 18px;
+  font-weight: 500;
+}
+.wr-vehicle-meta > span {
+  color: var(--muted);
+  font-size: 12px;
+}
+.wr-dates {
+  display: grid;
+  grid-template-columns: 1fr 30px 1fr;
+  align-items: center;
+  gap: 15px;
+  margin: 24px 0;
+  padding: 18px 0;
+  border-block: 1px solid var(--line);
+}
+.wr-dates div > span {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+}
+.wr-dates strong {
+  display: block;
+  font-size: 25px;
+  font-weight: 500;
+  margin-top: 5px;
+}
+.wr-dates > span {
+  color: var(--accent);
+  text-align: center;
+}
+.wr-lifecycle {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.wr-lifecycle button {
+  min-height: 46px;
+  padding: 8px;
+  background: #ffffff03;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  font-size: 12px;
+}
+.wr-lifecycle button > span {
+  font:
+    10px ui-monospace,
+    monospace;
+  margin-right: 5px;
+  color: var(--accent);
+}
+.wr-lifecycle button[aria-pressed="true"] {
+  color: #f1ebf9;
+  border-color: var(--accent);
+  background: #c4b1ec13;
+}
+.wr-state {
+  padding-top: 23px;
+  min-height: 177px;
+}
+.wr-state .pf-label {
+  font-size: 10px;
+  margin-bottom: 10px;
+}
+.wr-state h2 {
+  font-size: 23px;
+  margin: 0 0 12px;
+  letter-spacing: -0.02em;
+}
+.wr-state > p:last-of-type {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0;
+}
+.wr-message {
+  padding: 16px;
+  background: #c4b1ec0a;
+  border-left: 2px solid var(--accent);
+  margin-top: 18px;
+}
+.wr-message p {
+  font-size: 13px;
+  margin: 8px 0 12px;
+}
+.wr-message > span:last-child {
+  color: var(--muted);
+  font-size: 11px;
+}
+.wr-service-book > footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  border-top: 1px solid var(--line);
+  padding: 8px 20px;
+  color: var(--muted);
+  font-size: 11px;
+}
+.wr-replay {
+  background: transparent;
+  color: var(--accent);
+  min-height: 44px;
+  padding: 8px 0;
+  border: 0;
+  font-size: 12px !important;
+} /* 03. Human service-return path */
+.wr-workflow-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 40px;
+  margin-bottom: 32px;
+}
+.wr-workflow-heading h2 {
+  margin: 0;
+}
+.wr-workflow-heading > p {
+  max-width: 370px;
+  color: var(--muted);
+  margin: 0;
+}
+.wr-return-path {
+  display: grid;
+  grid-template-columns: 1fr 30px 1fr 30px 1fr;
+  gap: 20px;
+  padding: 30px 0;
+  border-block: 1px solid var(--line);
+}
+.wr-step {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #c4b1ec45;
+  border-radius: 50%;
+  font:
+    11px ui-monospace,
+    monospace;
+  color: var(--accent);
+}
+.wr-return-path h3 {
+  font-size: 22px;
+  margin: 24px 0 12px;
+}
+.wr-return-path p {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0;
+}
+.wr-path-arrow {
+  align-self: center;
+  color: var(--accent);
+  font-size: 26px;
+} /* 04. Recall queue and consent context */
+.wr-recalls {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  align-items: center;
+  gap: 75px;
+}
+.wr-care-note {
+  font-size: 13px;
+  color: var(--accent);
+  border-left: 2px solid #c4b1ec50;
+  padding-left: 18px;
+  margin-top: 25px;
+}
+.wr-queue {
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #ffffff03;
+}
+.wr-queue > header {
+  padding: 23px;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+}
+.wr-queue h3 {
+  font-size: 18px;
+  margin: 0;
+}
+.wr-queue article {
+  display: grid;
+  grid-template-columns: 34px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 22px;
+  border-bottom: 1px solid var(--line);
+}
+.wr-initials {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #c4b1ec10;
+  color: var(--accent);
+  font-size: 10px;
+}
+.wr-queue strong {
+  font-size: 14px;
+  font-weight: 500;
+}
+.wr-queue article p {
+  font-size: 11px;
+  color: var(--muted);
+  margin: 5px 0 0;
+}
+.wr-due {
+  font-size: 11px;
+  color: var(--accent);
+}
+.wr-optout {
+  font-size: 11px;
+  color: #b1b4bd;
+}
+.wr-queue footer {
+  padding: 16px 22px;
+  font-size: 11px;
+  color: var(--muted);
+} /* 05. Tablet */
+@media (max-width: 1024px) {
+  .wr-hero {
+    gap: 35px;
+    grid-template-columns: 1fr;
+    max-width: 780px;
+    margin: auto;
+    padding-top: 50px;
+  }
+  .wr-intro {
+    max-width: 660px;
+  }
+  .wr-intro h1 br {
+    display: none;
+  }
+  .wr-service-book {
+    box-shadow: none;
+  }
+  .wr-vehicle svg {
+    height: 170px;
+  }
+  .wr-recalls {
+    gap: 35px;
+  }
+  .wr-queue article {
+    grid-template-columns: 32px 1fr;
+  }
+  .wr-due,
+  .wr-optout {
+    grid-column: 2;
+  }
+  .wr-queue > header {
+    flex-wrap: wrap;
+  }
+} /* 06. Phone: compact service history, no miniature desktop UI */
+@media (max-width: 700px) {
+  .wr-hero {
+    padding-top: 40px;
+    gap: 28px;
+  }
+  .wr-intro h1 {
+    font-size: clamp(37px, 9.7vw, 56px);
+  }
+  .wr-service-book > header {
+    padding: 16px;
+    gap: 10px;
+  }
+  .wr-book-id {
+    display: none;
+  }
+  .wr-book-body {
+    padding: 18px;
+  }
+  .wr-vehicle .pf-label {
+    font-size: 8px;
+  }
+  .wr-vehicle svg {
+    height: 115px;
+    margin: 5px 0;
+  }
+  .wr-dates {
+    gap: 8px;
+    grid-template-columns: 1fr 18px 1fr;
+    margin: 18px 0;
+  }
+  .wr-dates strong {
+    font-size: 23px;
+  }
+  .wr-dates div > span {
+    font-size: 10px;
+  }
+  .wr-lifecycle {
+    gap: 6px;
+  }
+  .wr-lifecycle button {
+    font-size: 12px;
+    padding: 8px 4px;
+  }
+  .wr-lifecycle button > span {
+    display: none;
+  }
+  .wr-state {
+    min-height: 0;
+    padding-top: 20px;
+  }
+  .wr-state h2 {
+    font-size: 22px;
+  }
+  .wr-state > p:last-of-type {
+    font-size: 14px;
+  }
+  .wr-service-book > footer {
+    padding: 7px 16px;
+    gap: 8px;
+    font-size: 10px;
+  }
+  .wr-workflow-heading {
+    display: block;
+  }
+  .wr-workflow-heading > p {
+    margin-top: 18px;
+  }
+  .wr-return-path {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding-block: 25px;
+  }
+  .wr-path-arrow {
+    display: none;
+  }
+  .wr-return-path article {
+    padding-left: 52px;
+    position: relative;
+  }
+  .wr-step {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .wr-return-path h3 {
+    margin: 0 0 12px;
+    font-size: 21px;
+  }
+  .wr-recalls {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .wr-queue article {
+    padding: 18px;
+    grid-template-columns: 32px 1fr auto;
+  }
+  .wr-due,
+  .wr-optout {
+    grid-column: auto;
+    font-size: 10px;
+  }
+  .wr-queue article p {
+    font-size: 11px;
+  }
+  .wr-queue > header {
+    padding: 20px;
+  }
+  .wr-queue .pf-label {
+    font-size: 10px;
+  }
+}

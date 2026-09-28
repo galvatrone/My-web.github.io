@@ -33,7 +33,7 @@ body {
     sans-serif;
   line-height: 1.55;
 }
-body::before {
+.product-page::before {
   content: "";
   position: fixed;
   inset: 0;
@@ -43,41 +43,25 @@ body::before {
   opacity: 0.18;
 
   background-image:
-    linear-gradient(
-      rgba(100, 227, 242, 0.035) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(100, 227, 242, 0.035) 1px,
-      transparent 1px
-    );
+    linear-gradient(rgba(100, 227, 242, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100, 227, 242, 0.035) 1px, transparent 1px);
 
   background-size: 48px 48px;
 
-  mask-image:
-    linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.8),
-      transparent 82%
-    );
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent 82%);
 
-  -webkit-mask-image:
-    linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.8),
-      transparent 82%
-    );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.8),
+    transparent 82%
+  );
 
-  transform:
-    perspective(700px)
-    rotateX(62deg)
-    translateY(-19%);
+  transform: perspective(700px) rotateX(62deg) translateY(-19%);
 
   transform-origin: top;
 }
 
-body::after {
+.product-page::after {
   content: "";
   position: fixed;
   inset: 0;
@@ -106,7 +90,7 @@ a {
   overflow: hidden;
 }
 
-.site::before {
+.product-page .site::before {
   content: "";
   position: fixed;
   inset: 0;
@@ -1028,7 +1012,7 @@ h3 {
 }
 
 @media (max-width: 780px) {
-  body::before {
+  .product-page::before {
     transform: none;
     background-size: 36px 36px;
   }
@@ -1114,4 +1098,175 @@ h3 {
   .journey-field::after {
     display: none;
   }
+}
+
+/* Product-scoped identity and responsive composition */
+.product-page {
+  overflow-x: clip;
+}
+.product-page .brand,
+.product-page .nav a,
+.product-page .button,
+.product-page .faq summary {
+  min-height: 44px;
+}
+.product-page .brand,
+.product-page .nav a {
+  display: inline-flex;
+  align-items: center;
+}
+.product-page .card,
+.product-page .signal,
+.product-page .detail > *,
+.product-page .section-head > * {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 1024px) {
+  .product-page .wrap {
+    width: min(100% - 36px, 940px);
+  }
+  .product-page .hero {
+    gap: clamp(24px, 4vw, 48px);
+  }
+  .product-page h1 {
+    font-size: clamp(3rem, 6.8vw, 4.7rem);
+  }
+}
+@media (max-width: 780px) {
+  .product-page .topbar {
+    gap: 6px;
+    padding: 10px 14px 8px;
+    backdrop-filter: blur(10px);
+  }
+  .product-page .brand {
+    max-width: 100%;
+    font-size: 0.88rem;
+    line-height: 1.2;
+  }
+  .product-page .mark {
+    flex: 0 0 34px;
+  }
+  .product-page .nav {
+    width: 100%;
+    flex-wrap: nowrap;
+    gap: 4px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+    scroll-snap-type: inline proximity;
+  }
+  .product-page .nav::-webkit-scrollbar {
+    display: none;
+  }
+  .product-page .nav a {
+    flex: 0 0 auto;
+    min-height: 44px;
+    padding: 0 10px;
+    scroll-snap-align: start;
+    white-space: nowrap;
+  }
+  .product-page .wrap {
+    width: calc(100% - 28px);
+  }
+  .product-page .hero {
+    gap: 32px;
+    padding: 46px 0 52px;
+  }
+  .product-page h1 {
+    margin-bottom: 18px;
+    font-size: clamp(2.45rem, 11.5vw, 4rem);
+    line-height: 1;
+  }
+  .product-page h2 {
+    font-size: clamp(2rem, 9vw, 3rem);
+  }
+  .product-page .lead {
+    font-size: clamp(1rem, 4.5vw, 1.15rem);
+  }
+  .product-page .actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    margin-top: 24px;
+  }
+  .product-page .button {
+    width: 100%;
+    padding: 12px 16px;
+    text-align: center;
+  }
+  .product-page .signal {
+    min-height: 250px;
+    padding: 18px;
+  }
+  .product-page .signal-title {
+    margin: 42px 0 20px;
+    font-size: clamp(1.3rem, 6vw, 1.8rem);
+    line-height: 1.15;
+  }
+  .product-page .signal-line {
+    height: 62px;
+  }
+  .product-page .section {
+    padding: 54px 0;
+  }
+  .product-page .section-head {
+    margin-bottom: 24px;
+  }
+  .product-page .card {
+    min-height: 0;
+    padding: 20px;
+    backdrop-filter: none;
+  }
+  .product-page .faq details {
+    padding: 14px 16px;
+  }
+  .product-page .faq summary {
+    display: flex;
+    align-items: center;
+  }
+}
+@media (max-width: 430px) {
+  .product-page .topbar {
+    padding-inline: 10px;
+  }
+  .product-page .nav a {
+    padding-inline: 9px;
+    font-size: 0.75rem;
+  }
+  .product-page .signal-head,
+  .product-page .signal-meta {
+    font-size: 0.64rem;
+  }
+}
+@media (pointer: coarse) {
+  .product-page .button:hover,
+  .product-page .card:hover {
+    transform: none;
+  }
+  .product-page .card::before,
+  .product-page .signal::after {
+    display: none;
+  }
+}
+@media (max-height: 520px) and (orientation: landscape) {
+  .product-page .hero {
+    min-height: auto;
+    padding-block: 34px;
+  }
+  .product-page .signal {
+    min-height: 220px;
+  }
+}
+
+/* Practical touch targets for compact navigation and footer links. */
+.product-page .nav a {
+  min-width: 44px;
+  justify-content: center;
+}
+.product-page .footer a {
+  display: inline-flex;
+  align-items: center;
+  min-width: 44px;
+  min-height: 44px;
 }

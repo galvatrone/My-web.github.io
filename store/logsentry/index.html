@@ -1,12 +1,366 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>LogSentry Lite | Oneix</title><link rel="stylesheet" href="../assets/styles.css"></head>
-<body><main class="site"><header class="topbar"><a class="brand" href="../"><span class="mark">OX</span> Oneix / LogSentry Lite</a><nav class="nav"><a href="#product">Product</a><a href="#workflow">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="../">Store</a></nav></header><div class="wrap">
-<section class="hero" id="product"><div><p class="eyebrow">Events / useful signal</p><h1>Find the important event inside the noise.</h1><p class="lead">Turn selected application log events into a focused alert workflow for small teams.</p><div class="actions"><a class="button" data-app-path="logsentry" href="../../logsentry/signup">Start LogSentry</a><a class="button secondary" href="#workflow">See how it works</a></div></div><div class="signal" style="--signal:var(--accent)"><div class="signal-head"><span>LOGSENTRY / SIGNAL</span><span>ONEIX SOFTWARE</span></div><div class="signal-title">Event stream → Filter → Signal → Alert</div><div class="signal-line"><i style="--h:38%"></i><i style="--h:61%"></i><i style="--h:48%"></i><i style="--h:84%"></i><i style="--h:68%"></i></div><div class="signal-meta"><span>visible state</span><span>next action</span></div></div></section>
-<section class="section"><div class="detail"><div><p class="eyebrow">The problem</p><h2>Find the important event inside the noise.</h2></div><div class="card"><h3>One clear operating loop</h3><p>Turn selected application log events into a focused alert workflow for small teams. The product keeps the next step visible so the team can act while the context is still clear.</p></div></div></section>
-<section class="section" id="workflow"><div class="section-head"><div><p class="eyebrow">How it works</p><h2>From signal to next action.</h2></div><p>Start with the moment that matters, keep the status visible, and move the work forward.</p></div><div class="grid steps"><div class="card"><h3>Connect a source</h3><p>Connect a source and ingest events</p></div><div class="card"><h3>Find the signal</h3><p>Match important rules</p></div><div class="card"><h3>Take action</h3><p>Review and act on useful alerts</p></div></div></section>
-<section class="section"><div class="section-head"><div><p class="eyebrow">Product signal</p><h2>Designed around events / useful signal.</h2></div><p>Connect a source and ingest events. Match important rules. Review and act on useful alerts.</p></div><div class="grid"><div class="card"><h3>Event stream</h3><p>Start with a visible state, not a blank spreadsheet.</p></div><div class="card"><h3>Signal</h3><p>Know what needs attention before the next handoff.</p></div><div class="card"><h3>Alert</h3><p>Finish with an outcome the team can understand.</p></div></div></section>
-<section class="section" id="pricing"><div class="detail"><div><p class="eyebrow">Simple pricing</p><h2>One focused plan to get moving.</h2><p class="lead">No enterprise packaging. Start with the workflow your team needs first.</p></div><div class="card"><h3>Starter</h3><div class="price"><strong>€19</strong><span>/ month</span></div><p>Connect a source and ingest events, Match important rules, Review and act on useful alerts.</p><a class="button" data-app-path="logsentry" href="../../logsentry/signup">Start now</a></div></div></section>
-<section class="section" id="faq"><div class="section-head"><div><p class="eyebrow">FAQ</p><h2>Useful answers before you start.</h2></div></div><div class="faq"><details open><summary>Does it replace enterprise observability?</summary><p>No. It focuses on useful application events for small teams.</p></details><details><summary>Can I start small?</summary><p>Yes. The first useful action is designed to be clear without a long setup process.</p></details></div></section>
-<section class="section"><div class="detail"><div><p class="eyebrow">Ready when you are</p><h2>Find the important event inside the noise.</h2></div><div class="actions"><a class="button" data-app-path="logsentry" href="../../logsentry/signup">Start LogSentry</a><a class="button secondary" href="../">Back to Oneix Store</a></div></div></section>
-<footer class="footer">LogSentry Lite is a focused Oneix software product. <a href="../">Explore the Store</a>.</footer></div></main><script src="../assets/products.js"></script></body></html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Search recent events, match severity or text, and keep important alerts visible without a wall of noise."
+    />
+    <title>LogSentry | ONEIX</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="../assets/styles.css" />
+    <link rel="stylesheet" href="../assets/page-foundations.css" />
+    <link rel="stylesheet" href="./logsentry.css" />
+    <script defer src="../assets/vendor/motion-12.23.12.js"></script>
+    <script defer src="./logsentry.js"></script>
+  </head>
+  <body class="portfolio-page logsentry-page">
+    <a class="pf-skip" href="#main">Skip to content</a>
+    <header class="topbar">
+      <a class="brand" href="../">
+        <span class="mark">OX</span>
+        <span>ONEIX / LogSentry</span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#demo">Try the demo</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="../">Store ↗</a>
+      </nav>
+    </header>
+    <main id="main" class="pf-wrap">
+      <section class="ls-hero">
+        <div class="ls-heading">
+          <div>
+            <p class="eyebrow">Event monitoring / Attention, not noise</p>
+            <h1>
+              Find the line
+              <br />
+              <span>that matters.</span>
+            </h1>
+          </div>
+          <div>
+            <p class="pf-copy">
+              Most events are routine. A few change the conversation. Bring your
+              sources, event search and alert rules into one focused view.
+            </p>
+            <a
+              class="button"
+              data-start
+              href="https://logsentry.oneix.ltd/signup"
+            >
+              Start LogSentry ↗
+            </a>
+          </div>
+        </div>
+        <section
+          class="ls-terminal"
+          id="demo"
+          aria-label="Interactive log stream example"
+        >
+          <header>
+            <div>
+              <span class="ls-terminal-dots" aria-hidden="true">● ● ●</span>
+              <span class="pf-label">LOGSENTRY / EVENT STREAM</span>
+            </div>
+            <span class="pf-label">SAMPLE DATA · PAUSED</span>
+          </header>
+          <div class="ls-toolbar">
+            <span class="pf-label" data-event-count>6 events / 2 errors</span>
+            <div
+              class="pf-controls"
+              role="group"
+              aria-label="Filter sample events"
+            >
+              <button class="pf-control" data-filter="all" aria-pressed="true">
+                All events
+              </button>
+              <button
+                class="pf-control"
+                data-filter="error"
+                aria-pressed="false"
+              >
+                Errors only
+              </button>
+            </div>
+          </div>
+          <div class="ls-terminal-body">
+            <div class="ls-stream">
+              <button
+                class="ls-log-row"
+                data-log-row
+                data-event="0"
+                data-severity="INFO"
+                aria-pressed="false"
+              >
+                <time>12:41:08</time>
+                <span class="ls-level">INFO</span>
+                <span class="ls-source">web</span>
+                <strong>request completed · 200</strong>
+              </button>
+              <button
+                class="ls-log-row"
+                data-log-row
+                data-event="1"
+                data-severity="INFO"
+                aria-pressed="false"
+              >
+                <time>12:41:09</time>
+                <span class="ls-level">INFO</span>
+                <span class="ls-source">worker</span>
+                <strong>worker started</strong>
+              </button>
+              <button
+                class="ls-log-row"
+                data-log-row
+                data-event="2"
+                data-severity="INFO"
+                aria-pressed="false"
+              >
+                <time>12:41:09</time>
+                <span class="ls-level">INFO</span>
+                <span class="ls-source">queue</span>
+                <strong>batch processed · 24 items</strong>
+              </button>
+              <button
+                class="ls-log-row ls-error"
+                data-log-row
+                data-event="3"
+                data-severity="ERROR"
+                aria-pressed="true"
+              >
+                <time>12:41:10</time>
+                <span class="ls-level">ERROR</span>
+                <span class="ls-source">payments</span>
+                <strong>payment webhook failed</strong>
+              </button>
+              <button
+                class="ls-log-row"
+                data-log-row
+                data-event="4"
+                data-severity="INFO"
+                aria-pressed="false"
+              >
+                <time>12:41:10</time>
+                <span class="ls-level">INFO</span>
+                <span class="ls-source">payments</span>
+                <strong>retry scheduled · attempt 2</strong>
+              </button>
+              <button
+                class="ls-log-row ls-error"
+                data-log-row
+                data-event="5"
+                data-severity="ERROR"
+                aria-pressed="false"
+              >
+                <time>12:41:12</time>
+                <span class="ls-level">ERROR</span>
+                <span class="ls-source">payments</span>
+                <strong>signature validation failed</strong>
+              </button>
+              <p class="ls-stream-end">
+                end of sample · select a line to inspect
+              </p>
+            </div>
+            <aside class="ls-inspector" aria-live="polite">
+              <span class="pf-label">EVENT INSPECTOR</span>
+              <span class="ls-event-severity" data-event-level>ERROR</span>
+              <h2 data-event-title>payment webhook failed</h2>
+              <dl>
+                <div>
+                  <dt>Source</dt>
+                  <dd data-event-source>payments</dd>
+                </div>
+                <div>
+                  <dt>Observed</dt>
+                  <dd data-event-time>12:41:10</dd>
+                </div>
+                <div>
+                  <dt>Example rule</dt>
+                  <dd data-event-rule>Severity is ERROR</dd>
+                </div>
+              </dl>
+              <p data-event-context>
+                A failed payment callback needs a closer look. Inspect the event
+                before deciding what to do next.
+              </p>
+            </aside>
+          </div>
+        </section>
+        <p class="pf-demo-note">
+          Interactive example · Filter the stream and inspect a row. These are
+          illustrative events, not a live production feed.
+        </p>
+      </section>
+      <section class="pf-section ls-rules" id="workflow">
+        <div>
+          <p class="eyebrow">Choose what deserves attention</p>
+          <h2>
+            A useful rule.
+            <br />
+            A clearer signal.
+          </h2>
+          <p class="pf-copy">
+            Match events by severity or text. Test the idea against a small
+            sample before you decide what should become an alert.
+          </p>
+          <ol>
+            <li>Add an event source.</li>
+            <li>Define a severity or text rule.</li>
+            <li>Inspect matches and create a digest.</li>
+          </ol>
+        </div>
+        <div class="ls-rule-editor">
+          <header>
+            <span class="pf-label">RULE WORKBENCH / LOCAL EXAMPLE</span>
+          </header>
+          <label for="ls-rule">Message contains</label>
+          <input
+            id="ls-rule"
+            type="text"
+            value="webhook"
+            maxlength="80"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button class="button" data-test-rule>Test against sample →</button>
+          <div class="ls-rule-result" aria-live="polite">
+            <strong data-match-count>1</strong>
+            <span>matching sample event</span>
+            <p data-rule-result>payment webhook failed</p>
+          </div>
+          <p class="pf-demo-note">
+            This local check does not save a rule or send alerts.
+          </p>
+        </div>
+      </section>
+      <section class="pf-section ls-context">
+        <div class="pf-section-head">
+          <div>
+            <p class="eyebrow">From ingestion to review</p>
+            <h2>Keep the evidence close.</h2>
+          </div>
+          <p>
+            A lightweight route from individual events to a focused review. Not
+            a promise to replace your entire observability stack.
+          </p>
+        </div>
+        <div class="ls-context-grid">
+          <article>
+            <code>01 / sources</code>
+            <h3>A defined place to send events.</h3>
+            <p>
+              Create a source and use its tokenized HTTPS ingestion endpoint.
+              Keep source credentials out of public frontend code.
+            </p>
+          </article>
+          <article>
+            <code>02 / search</code>
+            <h3>A recent event window.</h3>
+            <p>
+              Search the seven-day event window and inspect the severity, source
+              and message around a problem.
+            </p>
+          </article>
+          <article>
+            <code>03 / digest</code>
+            <h3>A deliberate review.</h3>
+            <p>
+              Create a digest and keep alert rules tied to the conditions you
+              care about.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section class="pf-section pf-price-section" id="pricing">
+        <div>
+          <p class="eyebrow">One focused workspace</p>
+          <h2>Less noise. A clearer next investigation.</h2>
+          <p>
+            Search recent events, match severity or text, and keep important
+            alerts visible without a wall of noise.
+          </p>
+        </div>
+        <div class="pf-price-card">
+          <header>
+            <h3>Starter</h3>
+            <span class="pf-label">LogSentry</span>
+          </header>
+          <div class="pf-price">
+            <strong>€19</strong>
+            <span>/ month</span>
+          </div>
+          <ul>
+            <li>Sources and event search</li>
+            <li>Severity and text alert rules</li>
+            <li>Digest creation and retention cleanup</li>
+          </ul>
+          <a
+            class="button"
+            data-start
+            href="https://logsentry.oneix.ltd/signup"
+          >
+            Start LogSentry ↗
+          </a>
+        </div>
+      </section>
+      <section class="pf-section pf-faq" id="faq">
+        <div>
+          <p class="eyebrow">Before you start</p>
+          <h2>A few useful answers.</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Is this a live log stream?</summary>
+            <p>
+              This marketing demo uses a small fixed set of local events. The
+              application accepts events through tokenized HTTPS ingestion
+              endpoints.
+            </p>
+          </details>
+          <details>
+            <summary>
+              Does LogSentry diagnose the root cause automatically?
+            </summary>
+            <p>
+              No. The workflow supports event search and rule-based matching by
+              severity or text. It does not claim automatic root-cause analysis.
+            </p>
+          </details>
+          <details>
+            <summary>How much event history is searchable?</summary>
+            <p>
+              The current application supports a seven-day event search window
+              with retention cleanup.
+            </p>
+          </details>
+          <details>
+            <summary>Does the rule demo send an alert?</summary>
+            <p>
+              No. Testing the rule only matches text against the sample events
+              shown on this page. Production email delivery requires a
+              configured sender.
+            </p>
+          </details>
+        </div>
+      </section>
+      <section class="pf-closing">
+        <p class="eyebrow">LogSentry by ONEIX</p>
+        <h2>Less noise. A clearer next investigation.</h2>
+        <a class="button" data-start href="https://logsentry.oneix.ltd/signup">
+          Start LogSentry ↗
+        </a>
+      </section>
+    </main>
+    <footer class="pf-wrap pf-footer">
+      <a class="brand" href="../">
+        <span class="mark">OX</span>
+        ONEIX
+      </a>
+      <p>Small software. Clear outcomes.</p>
+      <a class="pf-link" href="../">Explore the collection ↗</a>
+    </footer>
+  </body>
+</html>

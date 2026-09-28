@@ -165,6 +165,36 @@
   };
 
 
+
+  const productVisuals = {
+    leadpocket: {
+      short: "LP", nav: ["Leads", "Today", "Pipeline"], eyebrow: "SATURDAY", title: "Follow-ups", action: "+ New lead",
+      stats: [["New", "12", ""], ["Active", "18", ""], ["Overdue", "3", "danger"], ["Won", "7", "success"]],
+      rows: [["SG", "Sarah Georgiou", "Kitchen renovation", "Call · 14:30", "Today", "today"], ["AP", "Andreas Petrou", "Solar installation", "Follow up · 2h", "Overdue", "overdue"], ["MK", "Marios Kyriakou", "Website enquiry", "Received now", "New", "new"]]
+    },
+    reviewloop: {
+      short: "RL", nav: ["Overview", "Requests", "Reviews"], eyebrow: "REPUTATION", title: "Review activity", action: "+ Request",
+      stats: [["Rating", "4.9", "success"], ["Reviews", "48", ""], ["Waiting", "6", "danger"], ["This month", "+12", "success"]],
+      rows: [["MG", "Maria Georgiou", "Left a five-star review", "★★★★★", "New", "new"], ["AP", "Andreas Petrou", "Review request sent", "8 minutes ago", "Sent", "today"], ["EK", "Elena Kyriakou", "Waiting for response", "2 days", "Waiting", "overdue"]]
+    },
+    invoicenudge: {
+      short: "IN", nav: ["Invoices", "Due soon", "Overdue"], eyebrow: "RECEIVABLES", title: "Payment timeline", action: "+ Invoice",
+      stats: [["Outstanding", "€8,420", ""], ["Overdue", "€2,180", "danger"], ["Due this week", "€3,600", ""], ["Paid", "€12.9k", "success"]],
+      rows: [["AT", "Atlas Studio", "INV-1048 · €1,240", "Due in 3 days", "Due", "today"], ["NV", "Nova Works", "INV-1039 · €860", "Nudge sent", "Overdue", "overdue"], ["HM", "Harbor Media", "INV-1042 · €2,100", "Paid today", "Paid", "new"]]
+    },
+    sitepulse: {
+      short: "SP", nav: ["Monitors", "Incidents", "Reports"], eyebrow: "LIVE MONITORING", title: "Endpoint health", action: "+ Monitor",
+      stats: [["Uptime", "99.98%", "success"], ["Median", "126 ms", ""], ["Incidents", "2", "danger"], ["Checks", "18", ""]],
+      rows: [["OX", "oneix.ltd", "200 OK", "126 ms", "Online", "new"], ["API", "api.example.com", "200 OK", "84 ms", "Online", "new"], ["CO", "checkout", "Degraded", "642 ms", "Watch", "overdue"]]
+    },
+    workshoprecall: {
+      short: "WR", nav: ["Customers", "Vehicles", "Reminders"], eyebrow: "SERVICE RECALL", title: "Returns due", action: "+ Customer",
+      stats: [["Due soon", "14", ""], ["Ready", "8", "success"], ["Overdue", "3", "danger"], ["Returned", "11", "success"]],
+      rows: [["MG", "Maria Georgiou", "BMW 320i · last 12 Mar", "Next service 12 Sep", "Ready", "today"], ["AP", "Andreas Petrou", "Ford Focus · last 4 Apr", "Reminder in 2 days", "Soon", "new"], ["EK", "Elena Kyriakou", "Toyota Yaris · last 18 Feb", "Return overdue", "Overdue", "overdue"]]
+    }
+  };
+
+
   /* ============================================================
      TOPBAR
      ============================================================ */
@@ -707,6 +737,40 @@
                 }
               )
               .join("");
+        }
+
+
+
+        /* Product-specific compact interface */
+        const visual = productVisuals[product.id];
+        const visualSidebar = $(".solution-dashboard aside");
+        const visualMain = $(".solution-dashboard-main");
+
+        if (visual && visualSidebar && visualMain) {
+          visualSidebar.innerHTML = `
+            <strong>${visual.short}</strong>
+            ${visual.nav.map((item, index) => `<span class="${index === 0 ? "active" : ""}">${item}</span>`).join("")}
+          `;
+
+          visualMain.innerHTML = `
+            <header>
+              <div><small>${visual.eyebrow}</small><strong>${visual.title}</strong></div>
+              <button type="button">${visual.action}</button>
+            </header>
+            <div class="solution-stats">
+              ${visual.stats.map(([label, value, tone]) => `<div class="${tone}"><span>${label}</span><strong>${value}</strong></div>`).join("")}
+            </div>
+            <div class="solution-leads">
+              ${visual.rows.map(([avatar, name, detail, action, state, tone]) => `
+                <article>
+                  <i>${avatar}</i>
+                  <div><strong>${name}</strong><span>${detail}</span></div>
+                  <div><small>NEXT</small><strong>${action}</strong></div>
+                  <em class="${tone}">${state}</em>
+                </article>
+              `).join("")}
+            </div>
+          `;
         }
 
 

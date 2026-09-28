@@ -1,12 +1,355 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>WorkshopRecall | Oneix</title><link rel="stylesheet" href="../assets/styles.css"></head>
-<body><main class="site"><header class="topbar"><a class="brand" href="../"><span class="mark">OX</span> Oneix / WorkshopRecall</a><nav class="nav"><a href="#product">Product</a><a href="#workflow">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="../">Store</a></nav></header><div class="wrap">
-<section class="hero" id="product"><div><p class="eyebrow">Vehicle / service timeline</p><h1>Bring workshop customers back when service is due.</h1><p class="lead">A practical recall desk for garages and mechanics: customer, vehicle, service history and next return date.</p><div class="actions"><a class="button" data-app-path="workshoprecall" href="../../workshoprecall/signup">Start WorkshopRecall</a><a class="button secondary" href="#workflow">See how it works</a></div></div><div class="signal" style="--signal:var(--accent)"><div class="signal-head"><span>WORKSHOPRECALL / SIGNAL</span><span>ONEIX SOFTWARE</span></div><div class="signal-title">Customer → Vehicle → Service → Next due</div><div class="signal-line"><i style="--h:38%"></i><i style="--h:61%"></i><i style="--h:48%"></i><i style="--h:84%"></i><i style="--h:68%"></i></div><div class="signal-meta"><span>visible state</span><span>next action</span></div></div></section>
-<section class="section"><div class="detail"><div><p class="eyebrow">The problem</p><h2>Bring workshop customers back when service is due.</h2></div><div class="card"><h3>One clear operating loop</h3><p>A practical recall desk for garages and mechanics: customer, vehicle, service history and next return date. The product keeps the next step visible so the team can act while the context is still clear.</p></div></div></section>
-<section class="section" id="workflow"><div class="section-head"><div><p class="eyebrow">How it works</p><h2>From signal to next action.</h2></div><p>Start with the moment that matters, keep the status visible, and move the work forward.</p></div><div class="grid steps"><div class="card"><h3>Add the vehicle</h3><p>Keep customer and vehicle records together</p></div><div class="card"><h3>Record the service</h3><p>Record service history</p></div><div class="card"><h3>Send the next reminder</h3><p>Make next due dates visible</p></div></div></section>
-<section class="section"><div class="section-head"><div><p class="eyebrow">Product signal</p><h2>Designed around vehicle / service timeline.</h2></div><p>Keep customer and vehicle records together. Record service history. Make next due dates visible.</p></div><div class="grid"><div class="card"><h3>Customer</h3><p>Start with a visible state, not a blank spreadsheet.</p></div><div class="card"><h3>Service</h3><p>Know what needs attention before the next handoff.</p></div><div class="card"><h3>Next due</h3><p>Finish with an outcome the team can understand.</p></div></div></section>
-<section class="section" id="pricing"><div class="detail"><div><p class="eyebrow">Simple pricing</p><h2>One focused plan to get moving.</h2><p class="lead">No enterprise packaging. Start with the workflow your team needs first.</p></div><div class="card"><h3>Starter</h3><div class="price"><strong>€29</strong><span>/ month</span></div><p>Keep customer and vehicle records together, Record service history, Make next due dates visible.</p><a class="button" data-app-path="workshoprecall" href="../../workshoprecall/signup">Start now</a></div></div></section>
-<section class="section" id="faq"><div class="section-head"><div><p class="eyebrow">FAQ</p><h2>Useful answers before you start.</h2></div></div><div class="faq"><details open><summary>Is it designed for workshops?</summary><p>Yes. The core relationship is customer, vehicle, service and next service date.</p></details><details><summary>Can I start small?</summary><p>Yes. The first useful action is designed to be clear without a long setup process.</p></details></div></section>
-<section class="section"><div class="detail"><div><p class="eyebrow">Ready when you are</p><h2>Bring workshop customers back when service is due.</h2></div><div class="actions"><a class="button" data-app-path="workshoprecall" href="../../workshoprecall/signup">Start WorkshopRecall</a><a class="button secondary" href="../">Back to Oneix Store</a></div></div></section>
-<footer class="footer">WorkshopRecall is a focused Oneix software product. <a href="../">Explore the Store</a>.</footer></div></main><script src="../assets/products.js"></script></body></html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Keep customers, vehicles and service history connected to a thoughtful reminder at the right time."
+    />
+    <title>WorkshopRecall | ONEIX</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="../assets/styles.css" />
+    <link rel="stylesheet" href="../assets/page-foundations.css" />
+    <link rel="stylesheet" href="./workshoprecall.css" />
+    <script defer src="../assets/vendor/motion-12.23.12.js"></script>
+    <script defer src="./workshoprecall.js"></script>
+  </head>
+  <body class="portfolio-page workshoprecall-page">
+    <a class="pf-skip" href="#main">Skip to content</a>
+    <header class="topbar">
+      <a class="brand" href="../">
+        <span class="mark">OX</span>
+        <span>ONEIX / WorkshopRecall</span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#demo">Try the demo</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="../">Store ↗</a>
+      </nav>
+    </header>
+    <main id="main" class="pf-wrap">
+      <section class="wr-hero">
+        <div class="wr-intro">
+          <p class="eyebrow">Workshop relationships / The next visit</p>
+          <h1>
+            Good service.
+            <br />
+            <span>Worth coming back for.</span>
+          </h1>
+          <p class="pf-copy">
+            The relationship doesn’t end when the keys change hands. Keep
+            service history close, and know who may be due a reminder.
+          </p>
+          <div class="actions">
+            <a
+              class="button"
+              data-start
+              href="https://workshoprecall.oneix.ltd/signup"
+            >
+              Start WorkshopRecall ↗
+            </a>
+          </div>
+        </div>
+        <section
+          class="wr-service-book"
+          id="demo"
+          aria-label="Interactive service return example"
+        >
+          <header>
+            <div class="wr-customer-avatar">AM</div>
+            <div>
+              <strong>Alex Morgan</strong>
+              <span>Example customer / BMW 320i</span>
+            </div>
+            <span class="wr-book-id">
+              SERVICE BOOK
+              <br />
+              № 0042
+            </span>
+          </header>
+          <div class="wr-book-body">
+            <div class="wr-vehicle">
+              <span class="pf-label">A FAMILIAR CAR. A CONTINUING STORY.</span>
+              <svg viewBox="0 0 560 185" aria-hidden="true">
+                <path
+                  d="M42 123L52 98 111 80 163 36H337L393 76 474 90 504 116V146H42Z"
+                  fill="#b7a7d018"
+                  stroke="#b7a7d0"
+                  stroke-width="2"
+                />
+                <path
+                  d="M137 79L175 47H258V80ZM272 47H332L372 80H272Z"
+                  fill="#b7a7d022"
+                  stroke="#b7a7d0"
+                />
+                <path
+                  d="M44 112H81M460 103H494M219 98H240M320 98H341"
+                  stroke="#b7a7d0"
+                  stroke-width="3"
+                />
+                <circle
+                  cx="130"
+                  cy="145"
+                  r="28"
+                  fill="#141119"
+                  stroke="#b7a7d0"
+                  stroke-width="3"
+                />
+                <circle cx="130" cy="145" r="12" fill="#b7a7d03a" />
+                <circle
+                  cx="417"
+                  cy="145"
+                  r="28"
+                  fill="#141119"
+                  stroke="#b7a7d0"
+                  stroke-width="3"
+                />
+                <circle cx="417" cy="145" r="12" fill="#b7a7d03a" />
+                <path d="M22 176H538" stroke="#b7a7d030" />
+              </svg>
+              <div class="wr-vehicle-meta">
+                <strong>BMW 320i</strong>
+                <span>Annual service</span>
+              </div>
+            </div>
+            <div class="wr-dates">
+              <div>
+                <span>Last service</span>
+                <strong>12 Mar</strong>
+              </div>
+              <span aria-hidden="true">→</span>
+              <div>
+                <span>Recommended return</span>
+                <strong>12 Sep</strong>
+              </div>
+            </div>
+            <div
+              class="wr-lifecycle"
+              role="group"
+              aria-label="Explore the service lifecycle"
+            >
+              <button data-stage="service" aria-pressed="true">
+                <span>01</span>
+                Service
+              </button>
+              <button data-stage="reminder" aria-pressed="false">
+                <span>02</span>
+                Reminder
+              </button>
+              <button data-stage="returned" aria-pressed="false">
+                <span>03</span>
+                Return
+              </button>
+            </div>
+            <div class="wr-state" aria-live="polite">
+              <p class="pf-label" data-lifecycle-date>
+                12 MARCH / SERVICE RECORDED
+              </p>
+              <h2 data-lifecycle-title>The work is done. Keep the context.</h2>
+              <p data-lifecycle-copy>
+                A customer, a vehicle and the last service. Set a recommended
+                return date so the next conversation has a starting point.
+              </p>
+              <div class="wr-message" data-message hidden>
+                <span class="pf-label">EXAMPLE REMINDER / NOT SENT</span>
+                <p>
+                  Hello Alex, your BMW 320i may be due for its next service. Get
+                  in touch when you’re ready to discuss a suitable visit.
+                </p>
+                <span>
+                  The customer’s communication preferences still apply.
+                </span>
+              </div>
+            </div>
+          </div>
+          <footer>
+            <span>Interactive example · no email sent</span>
+            <button class="wr-replay" data-reset>Start again ↺</button>
+          </footer>
+        </section>
+      </section>
+      <section class="pf-section wr-workflow" id="workflow">
+        <p class="eyebrow">Remember the relationship, not just the date</p>
+        <div class="wr-workflow-heading">
+          <h2>
+            From one good visit
+            <br />
+            to the next.
+          </h2>
+          <p>
+            A small routine that keeps service context useful long after the
+            customer leaves the workshop.
+          </p>
+        </div>
+        <div class="wr-return-path">
+          <article>
+            <span class="wr-step">01</span>
+            <h3>Record the visit.</h3>
+            <p>
+              Connect the customer, vehicle and work carried out in a service
+              record.
+            </p>
+          </article>
+          <div class="wr-path-arrow" aria-hidden="true">→</div>
+          <article>
+            <span class="wr-step">02</span>
+            <h3>Set the next date.</h3>
+            <p>Keep the recommended return visible in your due recall view.</p>
+          </article>
+          <div class="wr-path-arrow" aria-hidden="true">↗</div>
+          <article>
+            <span class="wr-step">03</span>
+            <h3>Open the conversation.</h3>
+            <p>
+              Send an appropriate reminder and respect the customer’s opt-out
+              preference.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section class="pf-section wr-recalls">
+        <div>
+          <p class="eyebrow">The next conversation</p>
+          <h2>
+            Not every customer
+            <br />
+            needs a message today.
+          </h2>
+          <p class="pf-copy">
+            Review who is due, check the service context and keep communication
+            preferences visible.
+          </p>
+          <p class="wr-care-note">
+            A reminder is an invitation.
+            <br />
+            It is not a booking or a guarantee of return.
+          </p>
+        </div>
+        <div class="wr-queue">
+          <header>
+            <h3>Recall list</h3>
+            <span class="pf-label">EXAMPLE / SEPTEMBER</span>
+          </header>
+          <article>
+            <span class="wr-initials">AM</span>
+            <div>
+              <strong>Alex Morgan</strong>
+              <p>BMW 320i · last service 12 Mar</p>
+            </div>
+            <span class="wr-due">Due 12 Sep</span>
+          </article>
+          <article>
+            <span class="wr-initials">JT</span>
+            <div>
+              <strong>Jordan Taylor</strong>
+              <p>Toyota Yaris · last service 20 Mar</p>
+            </div>
+            <span class="wr-due">Due 20 Sep</span>
+          </article>
+          <article>
+            <span class="wr-initials">SK</span>
+            <div>
+              <strong>Sam Kim</strong>
+              <p>VW Golf · last service 08 Mar</p>
+            </div>
+            <span class="wr-optout">Opted out</span>
+          </article>
+          <footer>
+            Illustrative names and records, not customer testimonials.
+          </footer>
+        </div>
+      </section>
+      <section class="pf-section pf-price-section" id="pricing">
+        <div>
+          <p class="eyebrow">One focused workspace</p>
+          <h2>Keep the next visit in view.</h2>
+          <p>
+            Keep customers, vehicles and service history connected to a
+            thoughtful reminder at the right time.
+          </p>
+        </div>
+        <div class="pf-price-card">
+          <header>
+            <h3>Starter</h3>
+            <span class="pf-label">WorkshopRecall</span>
+          </header>
+          <div class="pf-price">
+            <strong>€29</strong>
+            <span>/ month</span>
+          </div>
+          <ul>
+            <li>Customers, vehicles and service records</li>
+            <li>Due recall visibility and reminders</li>
+            <li>Customer opt-out and CSV export</li>
+          </ul>
+          <a
+            class="button"
+            data-start
+            href="https://workshoprecall.oneix.ltd/signup"
+          >
+            Start WorkshopRecall ↗
+          </a>
+        </div>
+      </section>
+      <section class="pf-section pf-faq" id="faq">
+        <div>
+          <p class="eyebrow">Before you start</p>
+          <h2>A few useful answers.</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Does this send messages from the demo?</summary>
+            <p>
+              No. The page only illustrates the lifecycle of a service record.
+              Production reminder delivery requires a configured email sender in
+              the application.
+            </p>
+          </details>
+          <details>
+            <summary>Is the reminder a confirmed appointment?</summary>
+            <p>
+              No. A reminder starts a conversation about a future visit. It is
+              not a booking or a guarantee that the customer will return.
+            </p>
+          </details>
+          <details>
+            <summary>Can customers opt out?</summary>
+            <p>
+              The application includes customer opt-out controls. Keep
+              communication preferences current before sending a reminder.
+            </p>
+          </details>
+          <details>
+            <summary>Can I export my workshop records?</summary>
+            <p>
+              The application includes CSV export and customer data
+              export/deletion workflows.
+            </p>
+          </details>
+        </div>
+      </section>
+      <section class="pf-closing">
+        <p class="eyebrow">WorkshopRecall by ONEIX</p>
+        <h2>Keep the next visit in view.</h2>
+        <a
+          class="button"
+          data-start
+          href="https://workshoprecall.oneix.ltd/signup"
+        >
+          Start WorkshopRecall ↗
+        </a>
+      </section>
+    </main>
+    <footer class="pf-wrap pf-footer">
+      <a class="brand" href="../">
+        <span class="mark">OX</span>
+        ONEIX
+      </a>
+      <p>Small software. Clear outcomes.</p>
+      <a class="pf-link" href="../">Explore the collection ↗</a>
+    </footer>
+  </body>
+</html>

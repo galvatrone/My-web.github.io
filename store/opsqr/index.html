@@ -1,12 +1,362 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>OpsQR | Oneix</title><link rel="stylesheet" href="../assets/styles.css"></head>
-<body><main class="site"><header class="topbar"><a class="brand" href="../"><span class="mark">OX</span> Oneix / OpsQR</a><nav class="nav"><a href="#product">Product</a><a href="#workflow">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="../">Store</a></nav></header><div class="wrap">
-<section class="hero" id="product"><div><p class="eyebrow">Asset / mobile action</p><h1>Put the right operational action behind every QR code.</h1><p class="lead">Turn a physical asset, room or location into a mobile checklist, report or issue workflow.</p><div class="actions"><a class="button" data-app-path="opsqr" href="../../opsqr/signup">Start OpsQR</a><a class="button secondary" href="#workflow">See how it works</a></div></div><div class="signal" style="--signal:var(--accent)"><div class="signal-head"><span>OPSQR / SIGNAL</span><span>ONEIX SOFTWARE</span></div><div class="signal-title">Asset → Scan → Checklist → Action</div><div class="signal-line"><i style="--h:38%"></i><i style="--h:61%"></i><i style="--h:48%"></i><i style="--h:84%"></i><i style="--h:68%"></i></div><div class="signal-meta"><span>visible state</span><span>next action</span></div></div></section>
-<section class="section"><div class="detail"><div><p class="eyebrow">The problem</p><h2>Put the right operational action behind every QR code.</h2></div><div class="card"><h3>One clear operating loop</h3><p>Turn a physical asset, room or location into a mobile checklist, report or issue workflow. The product keeps the next step visible so the team can act while the context is still clear.</p></div></div></section>
-<section class="section" id="workflow"><div class="section-head"><div><p class="eyebrow">How it works</p><h2>From signal to next action.</h2></div><p>Start with the moment that matters, keep the status visible, and move the work forward.</p></div><div class="grid steps"><div class="card"><h3>Create the asset</h3><p>Create assets and QR report links</p></div><div class="card"><h3>Scan from a phone</h3><p>Let staff scan from a phone</p></div><div class="card"><h3>Complete the action</h3><p>Track checklist and issue status</p></div></div></section>
-<section class="section"><div class="section-head"><div><p class="eyebrow">Product signal</p><h2>Designed around asset / mobile action.</h2></div><p>Create assets and QR report links. Let staff scan from a phone. Track checklist and issue status.</p></div><div class="grid"><div class="card"><h3>Asset</h3><p>Start with a visible state, not a blank spreadsheet.</p></div><div class="card"><h3>Checklist</h3><p>Know what needs attention before the next handoff.</p></div><div class="card"><h3>Action</h3><p>Finish with an outcome the team can understand.</p></div></div></section>
-<section class="section" id="pricing"><div class="detail"><div><p class="eyebrow">Simple pricing</p><h2>One focused plan to get moving.</h2><p class="lead">No enterprise packaging. Start with the workflow your team needs first.</p></div><div class="card"><h3>Starter</h3><div class="price"><strong>€19</strong><span>/ month</span></div><p>Create assets and QR report links, Let staff scan from a phone, Track checklist and issue status.</p><a class="button" data-app-path="opsqr" href="../../opsqr/signup">Start now</a></div></div></section>
-<section class="section" id="faq"><div class="section-head"><div><p class="eyebrow">FAQ</p><h2>Useful answers before you start.</h2></div></div><div class="faq"><details open><summary>Where can OpsQR be used?</summary><p>Facilities, hospitality, maintenance and teams managing physical spaces or equipment.</p></details><details><summary>Can I start small?</summary><p>Yes. The first useful action is designed to be clear without a long setup process.</p></details></div></section>
-<section class="section"><div class="detail"><div><p class="eyebrow">Ready when you are</p><h2>Put the right operational action behind every QR code.</h2></div><div class="actions"><a class="button" data-app-path="opsqr" href="../../opsqr/signup">Start OpsQR</a><a class="button secondary" href="../">Back to Oneix Store</a></div></div></section>
-<footer class="footer">OpsQR is a focused Oneix software product. <a href="../">Explore the Store</a>.</footer></div></main><script src="../assets/products.js"></script></body></html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Connect locations and assets to issue reporting, checklists and a clear operational history."
+    />
+    <title>OpsQR | ONEIX</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="../assets/styles.css" />
+    <link rel="stylesheet" href="../assets/page-foundations.css" />
+    <link rel="stylesheet" href="./opsqr.css" />
+    <script defer src="../assets/vendor/motion-12.23.12.js"></script>
+    <script defer src="./opsqr.js"></script>
+  </head>
+  <body class="portfolio-page opsqr-page">
+    <a class="pf-skip" href="#main">Skip to content</a>
+    <header class="topbar">
+      <a class="brand" href="../">
+        <span class="mark">OX</span>
+        <span>ONEIX / OpsQR</span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#demo">Try the demo</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="../">Store ↗</a>
+      </nav>
+    </header>
+    <main id="main" class="pf-wrap">
+      <section class="oq-hero">
+        <div class="oq-heading">
+          <p class="eyebrow">Physical operations / Digital actions</p>
+          <h1>
+            Right here.
+            <br />
+            <span>Right next step.</span>
+          </h1>
+          <p class="pf-copy">
+            Put an asset’s context where the work happens. A QR link connects
+            the physical thing to its report, checklist and history.
+          </p>
+          <a class="button" data-start href="https://opsqr.oneix.ltd/signup">
+            Start OpsQR ↗
+          </a>
+        </div>
+        <section
+          class="oq-scene"
+          id="demo"
+          aria-label="Interactive asset scan example"
+        >
+          <div class="oq-tag">
+            <div class="oq-tag-hole" aria-hidden="true"></div>
+            <span class="pf-label">ONEIX / OPSQR</span>
+            <svg viewBox="0 0 25 25" aria-hidden="true">
+              <rect width="25" height="25" fill="#e2f6f6" />
+              <g fill="#0b3239">
+                <rect x="12" y="2" width="1" height="1" />
+                <rect x="14" y="2" width="1" height="1" />
+                <rect x="13" y="3" width="1" height="1" />
+                <rect x="14" y="3" width="1" height="1" />
+                <rect x="11" y="5" width="1" height="1" />
+                <rect x="12" y="5" width="1" height="1" />
+                <rect x="11" y="6" width="1" height="1" />
+                <rect x="13" y="6" width="1" height="1" />
+                <rect x="12" y="7" width="1" height="1" />
+                <rect x="14" y="7" width="1" height="1" />
+                <rect x="13" y="8" width="1" height="1" />
+                <rect x="14" y="8" width="1" height="1" />
+                <rect x="2" y="10" width="1" height="1" />
+                <rect x="6" y="10" width="1" height="1" />
+                <rect x="7" y="10" width="1" height="1" />
+                <rect x="11" y="10" width="1" height="1" />
+                <rect x="12" y="10" width="1" height="1" />
+                <rect x="16" y="10" width="1" height="1" />
+                <rect x="17" y="10" width="1" height="1" />
+                <rect x="21" y="10" width="1" height="1" />
+                <rect x="22" y="10" width="1" height="1" />
+                <rect x="3" y="11" width="1" height="1" />
+                <rect x="6" y="11" width="1" height="1" />
+                <rect x="8" y="11" width="1" height="1" />
+                <rect x="11" y="11" width="1" height="1" />
+                <rect x="13" y="11" width="1" height="1" />
+                <rect x="16" y="11" width="1" height="1" />
+                <rect x="18" y="11" width="1" height="1" />
+                <rect x="21" y="11" width="1" height="1" />
+                <rect x="2" y="12" width="1" height="1" />
+                <rect x="4" y="12" width="1" height="1" />
+                <rect x="7" y="12" width="1" height="1" />
+                <rect x="9" y="12" width="1" height="1" />
+                <rect x="12" y="12" width="1" height="1" />
+                <rect x="14" y="12" width="1" height="1" />
+                <rect x="17" y="12" width="1" height="1" />
+                <rect x="19" y="12" width="1" height="1" />
+                <rect x="22" y="12" width="1" height="1" />
+                <rect x="3" y="13" width="1" height="1" />
+                <rect x="4" y="13" width="1" height="1" />
+                <rect x="8" y="13" width="1" height="1" />
+                <rect x="9" y="13" width="1" height="1" />
+                <rect x="13" y="13" width="1" height="1" />
+                <rect x="14" y="13" width="1" height="1" />
+                <rect x="18" y="13" width="1" height="1" />
+                <rect x="19" y="13" width="1" height="1" />
+                <rect x="11" y="15" width="1" height="1" />
+                <rect x="12" y="15" width="1" height="1" />
+                <rect x="16" y="15" width="1" height="1" />
+                <rect x="17" y="15" width="1" height="1" />
+                <rect x="21" y="15" width="1" height="1" />
+                <rect x="22" y="15" width="1" height="1" />
+                <rect x="11" y="16" width="1" height="1" />
+                <rect x="13" y="16" width="1" height="1" />
+                <rect x="16" y="16" width="1" height="1" />
+                <rect x="18" y="16" width="1" height="1" />
+                <rect x="21" y="16" width="1" height="1" />
+                <rect x="12" y="17" width="1" height="1" />
+                <rect x="14" y="17" width="1" height="1" />
+                <rect x="17" y="17" width="1" height="1" />
+                <rect x="19" y="17" width="1" height="1" />
+                <rect x="22" y="17" width="1" height="1" />
+                <rect x="13" y="18" width="1" height="1" />
+                <rect x="14" y="18" width="1" height="1" />
+                <rect x="18" y="18" width="1" height="1" />
+                <rect x="19" y="18" width="1" height="1" />
+                <rect x="11" y="20" width="1" height="1" />
+                <rect x="12" y="20" width="1" height="1" />
+                <rect x="16" y="20" width="1" height="1" />
+                <rect x="17" y="20" width="1" height="1" />
+                <rect x="21" y="20" width="1" height="1" />
+                <rect x="22" y="20" width="1" height="1" />
+                <rect x="11" y="21" width="1" height="1" />
+                <rect x="13" y="21" width="1" height="1" />
+                <rect x="16" y="21" width="1" height="1" />
+                <rect x="18" y="21" width="1" height="1" />
+                <rect x="21" y="21" width="1" height="1" />
+                <rect x="12" y="22" width="1" height="1" />
+                <rect x="14" y="22" width="1" height="1" />
+                <rect x="17" y="22" width="1" height="1" />
+                <rect x="19" y="22" width="1" height="1" />
+                <rect x="22" y="22" width="1" height="1" />
+                <rect x="2" y="2" width="7" height="7" />
+                <rect x="3" y="3" width="5" height="5" fill="#e2f6f6" />
+                <rect x="4" y="4" width="3" height="3" />
+                <rect x="16" y="2" width="7" height="7" />
+                <rect x="17" y="3" width="5" height="5" fill="#e2f6f6" />
+                <rect x="18" y="4" width="3" height="3" />
+                <rect x="2" y="16" width="7" height="7" />
+                <rect x="3" y="17" width="5" height="5" fill="#e2f6f6" />
+                <rect x="4" y="18" width="3" height="3" />
+              </g>
+            </svg>
+            <strong>QR–0241</strong>
+            <span>Building A / Floor 2</span>
+            <small>Illustrated tag · use the demo button</small>
+          </div>
+          <div class="oq-connector" aria-hidden="true">→</div>
+          <div class="oq-phone">
+            <header>
+              <span class="pf-label">OPSQR / FIELD VIEW</span>
+              <span class="oq-camera" aria-hidden="true"></span>
+            </header>
+            <div class="oq-phone-content">
+              <span class="oq-location">BUILDING A · FLOOR 2</span>
+              <h2>Air conditioner</h2>
+              <p class="oq-asset-id">Asset QR–0241</p>
+              <div class="oq-scan-icon" aria-hidden="true"><span>⌗</span></div>
+              <p class="oq-scan-status" data-scan-status aria-live="polite">
+                Ready to identify an asset
+              </p>
+              <div data-checklist hidden>
+                <p class="oq-task-title">Routine visual check</p>
+                <label>
+                  <input type="checkbox" data-check />
+                  Airflow is unobstructed
+                </label>
+                <label>
+                  <input type="checkbox" data-check />
+                  No visible damage
+                </label>
+                <button class="button" data-complete disabled>
+                  Complete example check ✓
+                </button>
+              </div>
+              <button class="button" data-scan>Simulate a scan →</button>
+              <p class="oq-phone-note" data-phone-note>
+                No camera access is needed.
+              </p>
+            </div>
+            <footer>
+              <span>Interactive example</span>
+              <button class="oq-reset" data-reset>Reset ↺</button>
+            </footer>
+          </div>
+        </section>
+      </section>
+      <p class="pf-demo-note">
+        Local demonstration only. The illustrated tag is not a scannable
+        production code, and no real task is changed.
+      </p>
+      <section class="pf-section oq-workflow" id="workflow">
+        <div class="pf-section-head">
+          <div>
+            <p class="eyebrow">From place to action</p>
+            <h2>Context at the point of work.</h2>
+          </div>
+          <p>
+            No need to describe “the unit near the door.” Start with the right
+            asset and its location.
+          </p>
+        </div>
+        <ol>
+          <li>
+            <span>01</span>
+            <h3>Label the asset.</h3>
+            <p>Create the location and asset, then use its QR link.</p>
+          </li>
+          <li>
+            <span>02</span>
+            <h3>Open its context.</h3>
+            <p>The code leads to the public tokenized reporting page.</p>
+          </li>
+          <li>
+            <span>03</span>
+            <h3>Record the action.</h3>
+            <p>Report an issue or complete an asset checklist.</p>
+          </li>
+          <li>
+            <span>04</span>
+            <h3>Keep the history.</h3>
+            <p>Review issues and record their resolution.</p>
+          </li>
+        </ol>
+      </section>
+      <section class="pf-section oq-location-section">
+        <div class="oq-location-map" aria-label="Illustrative asset locations">
+          <header>
+            <span class="pf-label">BUILDING A / EXAMPLE ASSET MAP</span>
+          </header>
+          <div class="oq-rooms">
+            <div>
+              <span>Meeting room</span>
+              <strong>AC–0241</strong>
+              <small>Air conditioner</small>
+              <i aria-hidden="true">●</i>
+            </div>
+            <div>
+              <span>Utility room</span>
+              <strong>PN–0102</strong>
+              <small>Service panel</small>
+            </div>
+            <div>
+              <span>Entrance</span>
+              <strong>DR–0008</strong>
+              <small>Main door</small>
+            </div>
+          </div>
+          <p>Illustrative location grouping, not a live indoor map.</p>
+        </div>
+        <div>
+          <p class="eyebrow">A place for the operational details</p>
+          <h2>
+            Every asset
+            <br />
+            has a story.
+          </h2>
+          <p class="pf-copy">
+            Where it is. What was reported. Which checklist was completed. Bring
+            those details together around the asset itself.
+          </p>
+          <ul class="oq-feature-list">
+            <li>Locations and asset records</li>
+            <li>Issue reporting and resolution</li>
+            <li>Checklist completion</li>
+            <li>CSV asset export</li>
+          </ul>
+        </div>
+      </section>
+      <section class="pf-section pf-price-section" id="pricing">
+        <div>
+          <p class="eyebrow">One focused workspace</p>
+          <h2>Connect the physical thing to the next action.</h2>
+          <p>
+            Connect locations and assets to issue reporting, checklists and a
+            clear operational history.
+          </p>
+        </div>
+        <div class="pf-price-card">
+          <header>
+            <h3>Starter</h3>
+            <span class="pf-label">OpsQR</span>
+          </header>
+          <div class="pf-price">
+            <strong>€19</strong>
+            <span>/ month</span>
+          </div>
+          <ul>
+            <li>Locations, assets and QR links</li>
+            <li>Issue reports and resolution</li>
+            <li>Checklist completion</li>
+          </ul>
+          <a class="button" data-start href="https://opsqr.oneix.ltd/signup">
+            Start OpsQR ↗
+          </a>
+        </div>
+      </section>
+      <section class="pf-section pf-faq" id="faq">
+        <div>
+          <p class="eyebrow">Before you start</p>
+          <h2>A few useful answers.</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Does this page access my camera?</summary>
+            <p>
+              No. The scan button simulates opening an asset. The illustrated
+              tag is decorative; use the button to explore the example.
+            </p>
+          </details>
+          <details>
+            <summary>What does a real QR code open?</summary>
+            <p>
+              OpsQR provides QR links to public tokenized asset reporting pages.
+              Those pages connect a report to the relevant asset.
+            </p>
+          </details>
+          <details>
+            <summary>Is the example a real safety inspection?</summary>
+            <p>
+              No. It demonstrates checklist completion, not inspection guidance
+              or certification. Define appropriate procedures for your actual
+              assets.
+            </p>
+          </details>
+          <details>
+            <summary>Can I attach a photo?</summary>
+            <p>
+              The current application supports a validated photo URL. Native
+              photo-upload storage is not claimed here.
+            </p>
+          </details>
+        </div>
+      </section>
+      <section class="pf-closing">
+        <p class="eyebrow">OpsQR by ONEIX</p>
+        <h2>Connect the physical thing to the next action.</h2>
+        <a class="button" data-start href="https://opsqr.oneix.ltd/signup">
+          Start OpsQR ↗
+        </a>
+      </section>
+    </main>
+    <footer class="pf-wrap pf-footer">
+      <a class="brand" href="../">
+        <span class="mark">OX</span>
+        ONEIX
+      </a>
+      <p>Small software. Clear outcomes.</p>
+      <a class="pf-link" href="../">Explore the collection ↗</a>
+    </footer>
+  </body>
+</html>

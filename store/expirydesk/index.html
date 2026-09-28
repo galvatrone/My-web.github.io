@@ -1,12 +1,315 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ExpiryDesk | Oneix</title><link rel="stylesheet" href="../assets/styles.css"></head>
-<body><main class="site"><header class="topbar"><a class="brand" href="../"><span class="mark">OX</span> Oneix / ExpiryDesk</a><nav class="nav"><a href="#product">Product</a><a href="#workflow">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="../">Store</a></nav></header><div class="wrap">
-<section class="hero" id="product"><div><p class="eyebrow">Time / deadline / renewal</p><h1>Know what needs renewing before it becomes a problem.</h1><p class="lead">Track licences, certificates, contracts, insurance and other dated records with clear urgency states.</p><div class="actions"><a class="button" data-app-path="expirydesk" href="../../expirydesk/signup">Start ExpiryDesk</a><a class="button secondary" href="#workflow">See how it works</a></div></div><div class="signal" style="--signal:var(--accent)"><div class="signal-head"><span>EXPIRYDESK / SIGNAL</span><span>ONEIX SOFTWARE</span></div><div class="signal-title">Safe → Upcoming → Urgent → Expired</div><div class="signal-line"><i style="--h:38%"></i><i style="--h:61%"></i><i style="--h:48%"></i><i style="--h:84%"></i><i style="--h:68%"></i></div><div class="signal-meta"><span>visible state</span><span>next action</span></div></div></section>
-<section class="section"><div class="detail"><div><p class="eyebrow">The problem</p><h2>Know what needs renewing before it becomes a problem.</h2></div><div class="card"><h3>One clear operating loop</h3><p>Track licences, certificates, contracts, insurance and other dated records with clear urgency states. The product keeps the next step visible so the team can act while the context is still clear.</p></div></div></section>
-<section class="section" id="workflow"><div class="section-head"><div><p class="eyebrow">How it works</p><h2>From signal to next action.</h2></div><p>Start with the moment that matters, keep the status visible, and move the work forward.</p></div><div class="grid steps"><div class="card"><h3>Add the record</h3><p>Add records with owners and due dates</p></div><div class="card"><h3>Watch the deadline</h3><p>Work from a clear urgency queue</p></div><div class="card"><h3>Renew in time</h3><p>Renew and keep the history</p></div></div></section>
-<section class="section"><div class="section-head"><div><p class="eyebrow">Product signal</p><h2>Designed around time / deadline / renewal.</h2></div><p>Add records with owners and due dates. Work from a clear urgency queue. Renew and keep the history.</p></div><div class="grid"><div class="card"><h3>Safe</h3><p>Start with a visible state, not a blank spreadsheet.</p></div><div class="card"><h3>Urgent</h3><p>Know what needs attention before the next handoff.</p></div><div class="card"><h3>Expired</h3><p>Finish with an outcome the team can understand.</p></div></div></section>
-<section class="section" id="pricing"><div class="detail"><div><p class="eyebrow">Simple pricing</p><h2>One focused plan to get moving.</h2><p class="lead">No enterprise packaging. Start with the workflow your team needs first.</p></div><div class="card"><h3>Starter</h3><div class="price"><strong>€19</strong><span>/ month</span></div><p>Add records with owners and due dates, Work from a clear urgency queue, Renew and keep the history.</p><a class="button" data-app-path="expirydesk" href="../../expirydesk/signup">Start now</a></div></div></section>
-<section class="section" id="faq"><div class="section-head"><div><p class="eyebrow">FAQ</p><h2>Useful answers before you start.</h2></div></div><div class="faq"><details open><summary>What can I track?</summary><p>Any dated business record that fits a name, date, owner and renewal workflow.</p></details><details><summary>Can I start small?</summary><p>Yes. The first useful action is designed to be clear without a long setup process.</p></details></div></section>
-<section class="section"><div class="detail"><div><p class="eyebrow">Ready when you are</p><h2>Know what needs renewing before it becomes a problem.</h2></div><div class="actions"><a class="button" data-app-path="expirydesk" href="../../expirydesk/signup">Start ExpiryDesk</a><a class="button secondary" href="../">Back to Oneix Store</a></div></div></section>
-<footer class="footer">ExpiryDesk is a focused Oneix software product. <a href="../">Explore the Store</a>.</footer></div></main><script src="../assets/products.js"></script></body></html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Keep dated business records, reminders and renewals visible in one focused workspace."
+    />
+    <title>ExpiryDesk | ONEIX</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="../assets/styles.css" />
+    <link rel="stylesheet" href="../assets/page-foundations.css" />
+    <link rel="stylesheet" href="./expirydesk.css" />
+    <script defer src="../assets/vendor/motion-12.23.12.js"></script>
+    <script defer src="./expirydesk.js"></script>
+  </head>
+  <body class="portfolio-page expirydesk-page">
+    <a class="pf-skip" href="#main">Skip to content</a>
+    <header class="topbar">
+      <a class="brand" href="../">
+        <span class="mark">OX</span>
+        <span>ONEIX / ExpiryDesk</span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#demo">Try the demo</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="../">Store ↗</a>
+      </nav>
+    </header>
+    <main id="main" class="pf-wrap">
+      <section class="ed-hero">
+        <div class="ed-heading">
+          <div>
+            <p class="eyebrow">Renewal tracking / See the horizon</p>
+            <h1>
+              Dates move closer.
+              <br />
+              <span>Stay a step ahead.</span>
+            </h1>
+            <p class="pf-copy">
+              Certificates, contracts, insurance, domains. Keep the dates that
+              matter in sight before “later” becomes “too late”.
+            </p>
+            <div class="actions">
+              <a
+                class="button"
+                data-start
+                href="https://expirydesk.oneix.ltd/signup"
+              >
+                Start ExpiryDesk ↗
+              </a>
+            </div>
+          </div>
+          <div class="ed-next">
+            <span class="pf-label">NEXT IN THIS EXAMPLE</span>
+            <strong data-next-days>08</strong>
+            <span>days until renewal</span>
+            <p>Atlas workspace contract</p>
+          </div>
+        </div>
+        <section
+          class="ed-horizon"
+          id="demo"
+          aria-label="Interactive renewal horizon"
+        >
+          <header>
+            <div>
+              <h2>Your renewal horizon</h2>
+              <span class="pf-label">
+                ILLUSTRATIVE RECORDS / DAYS REMAINING
+              </span>
+            </div>
+            <button class="pf-control" data-reset>Reset dates ↺</button>
+          </header>
+          <div class="ed-records">
+            <article data-record="0">
+              <span class="ed-urgency">Attention</span>
+              <div class="ed-count">
+                <strong data-count>8</strong>
+                <span data-unit>days left</span>
+              </div>
+              <div class="ed-distance"><i></i></div>
+              <h3>Contract</h3>
+              <p>Atlas workspace</p>
+            </article>
+            <article data-record="1">
+              <span class="ed-urgency">Upcoming</span>
+              <div class="ed-count">
+                <strong data-count>18</strong>
+                <span data-unit>days left</span>
+              </div>
+              <div class="ed-distance"><i></i></div>
+              <h3>SSL certificate</h3>
+              <p>Public website</p>
+            </article>
+            <article data-record="2">
+              <span class="ed-urgency">Safe</span>
+              <div class="ed-count">
+                <strong data-count>42</strong>
+                <span data-unit>days left</span>
+              </div>
+              <div class="ed-distance"><i></i></div>
+              <h3>Insurance</h3>
+              <p>Business cover</p>
+            </article>
+            <article data-record="3">
+              <span class="ed-urgency">Safe</span>
+              <div class="ed-count">
+                <strong data-count>71</strong>
+                <span data-unit>days left</span>
+              </div>
+              <div class="ed-distance"><i></i></div>
+              <h3>Domain</h3>
+              <p>Company address</p>
+            </article>
+          </div>
+          <div class="ed-time-control">
+            <label for="ed-days">
+              Move the example forward
+              <output id="ed-days-output" data-days-output>0 days</output>
+            </label>
+            <input
+              id="ed-days"
+              data-days
+              type="range"
+              min="0"
+              max="30"
+              value="0"
+              step="1"
+              aria-describedby="ed-slider-note"
+            />
+            <p id="ed-slider-note">
+              Today
+              <span>+30 days</span>
+            </p>
+          </div>
+          <p class="ed-summary" data-summary aria-live="polite">
+            1 needs attention · 1 upcoming · 2 safe
+          </p>
+        </section>
+        <p class="pf-demo-note">
+          Interactive example · Move time forward to see urgency change. This
+          does not change real expiry dates.
+        </p>
+      </section>
+      <section class="pf-section ed-renewal" id="workflow">
+        <div>
+          <p class="eyebrow">A date is only the beginning</p>
+          <h2>
+            Give the next renewal
+            <br />
+            a clear next action.
+          </h2>
+          <p class="pf-copy">
+            Add the record and expiry date. Review what’s upcoming. When you
+            renew, update the record so your workspace reflects the new
+            deadline.
+          </p>
+        </div>
+        <div class="ed-renew-card">
+          <header>
+            <span class="pf-label">EXAMPLE RECORD / CONTRACT</span>
+            <span class="ed-tag" data-renew-status>Renewal needed</span>
+          </header>
+          <h3>Atlas workspace</h3>
+          <p>Keep the renewal decision with the dated record.</p>
+          <div class="ed-date-change">
+            <div>
+              <span>Current term</span>
+              <strong data-term>8 days left</strong>
+            </div>
+            <span aria-hidden="true">→</span>
+            <div>
+              <span>After example renewal</span>
+              <strong>365 days</strong>
+            </div>
+          </div>
+          <button class="button" data-renew>Record example renewal ✓</button>
+          <p class="ed-renew-event" data-renew-event aria-live="polite">
+            No renewal recorded in this example yet.
+          </p>
+        </div>
+      </section>
+      <section class="pf-section ed-register">
+        <div class="pf-section-head">
+          <div>
+            <p class="eyebrow">One register, different kinds of dates</p>
+            <h2>More than a calendar reminder.</h2>
+          </div>
+          <p>
+            Keep the record, date and reference together so you know what
+            actually needs renewing.
+          </p>
+        </div>
+        <div class="ed-register-grid">
+          <article>
+            <span>01</span>
+            <h3>Know what it is.</h3>
+            <p>
+              A contract, licence, certificate or another dated business record.
+              Keep a useful name and reference with the date.
+            </p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Know when it matters.</h3>
+            <p>
+              Review upcoming and overdue items from the dashboard. Import
+              existing records instead of starting from a blank list.
+            </p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Keep the register current.</h3>
+            <p>
+              Renew, archive and export records as your business changes. A date
+              is useful only when it stays up to date.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section class="pf-section pf-price-section" id="pricing">
+        <div>
+          <p class="eyebrow">One focused workspace</p>
+          <h2>Make the next renewal a planned one.</h2>
+          <p>
+            Keep dated business records, reminders and renewals visible in one
+            focused workspace.
+          </p>
+        </div>
+        <div class="pf-price-card">
+          <header>
+            <h3>Starter</h3>
+            <span class="pf-label">ExpiryDesk</span>
+          </header>
+          <div class="pf-price">
+            <strong>€19</strong>
+            <span>/ month</span>
+          </div>
+          <ul>
+            <li>Dated records and renewal updates</li>
+            <li>Upcoming and overdue visibility</li>
+            <li>Import, export and reminders</li>
+          </ul>
+          <a
+            class="button"
+            data-start
+            href="https://expirydesk.oneix.ltd/signup"
+          >
+            Start ExpiryDesk ↗
+          </a>
+        </div>
+      </section>
+      <section class="pf-section pf-faq" id="faq">
+        <div>
+          <p class="eyebrow">Before you start</p>
+          <h2>A few useful answers.</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>What can I track?</summary>
+            <p>
+              Dated business records such as contracts, licences, insurance or
+              certificates. You supply and maintain the relevant expiry dates.
+            </p>
+          </details>
+          <details>
+            <summary>Does ExpiryDesk renew a contract for me?</summary>
+            <p>
+              No. You complete the renewal outside the tracker, then update the
+              record. The example button only demonstrates a change in the
+              tracked date.
+            </p>
+          </details>
+          <details>
+            <summary>Can I attach a reference document?</summary>
+            <p>
+              The current application supports a validated document URL. It does
+              not claim built-in binary document storage.
+            </p>
+          </details>
+          <details>
+            <summary>Does the time slider affect real records?</summary>
+            <p>
+              No. It is a local demonstration of urgency changes using
+              illustrative data.
+            </p>
+          </details>
+        </div>
+      </section>
+      <section class="pf-closing">
+        <p class="eyebrow">ExpiryDesk by ONEIX</p>
+        <h2>Make the next renewal a planned one.</h2>
+        <a
+          class="button"
+          data-start
+          href="https://expirydesk.oneix.ltd/signup"
+        >
+          Start ExpiryDesk ↗
+        </a>
+      </section>
+    </main>
+    <footer class="pf-wrap pf-footer">
+      <a class="brand" href="../">
+        <span class="mark">OX</span>
+        ONEIX
+      </a>
+      <p>Small software. Clear outcomes.</p>
+      <a class="pf-link" href="../">Explore the collection ↗</a>
+    </footer>
+  </body>
+</html>

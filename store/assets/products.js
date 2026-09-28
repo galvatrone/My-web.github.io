@@ -19,6 +19,6 @@ document.querySelectorAll("[data-app-path]").forEach((link) => {
   ) {
     link.href = `https://${slug}.oneix.ltd/signup`;
   } else {
-    link.href = `https://${slug}.vercel.app/signup`;
+    link.href = `https://${slug}.oneix.ltd/signup`;
   }
 });

@@ -1,12 +1,324 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SitePulse Care | Oneix</title><link rel="stylesheet" href="../assets/styles.css"></head>
-<body><main class="site"><header class="topbar"><a class="brand" href="../"><span class="mark">OX</span> Oneix / SitePulse Care</a><nav class="nav"><a href="#product">Product</a><a href="#workflow">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="../">Store</a></nav></header><div class="wrap">
-<section class="hero" id="product"><div><p class="eyebrow">Health / uptime</p><h1>Know when a client website stops responding.</h1><p class="lead">Simple website health checks for freelancers, agencies and small operators.</p><div class="actions"><a class="button" data-app-path="sitepulse" href="../../sitepulse/signup">Start SitePulse Care</a><a class="button secondary" href="#workflow">See how it works</a></div></div><div class="signal" style="--signal:var(--accent)"><div class="signal-head"><span>SITEPULSE / SIGNAL</span><span>ONEIX SOFTWARE</span></div><div class="signal-title">Online → Check → Latency → Incident</div><div class="signal-line"><i style="--h:38%"></i><i style="--h:61%"></i><i style="--h:48%"></i><i style="--h:84%"></i><i style="--h:68%"></i></div><div class="signal-meta"><span>visible state</span><span>next action</span></div></div></section>
-<section class="section"><div class="detail"><div><p class="eyebrow">The problem</p><h2>Know when a client website stops responding.</h2></div><div class="card"><h3>One clear operating loop</h3><p>Simple website health checks for freelancers, agencies and small operators. The product keeps the next step visible so the team can act while the context is still clear.</p></div></div></section>
-<section class="section" id="workflow"><div class="section-head"><div><p class="eyebrow">How it works</p><h2>From signal to next action.</h2></div><p>Start with the moment that matters, keep the status visible, and move the work forward.</p></div><div class="grid steps"><div class="card"><h3>Add a site</h3><p>Track clients and public websites</p></div><div class="card"><h3>Read the signal</h3><p>See current health and latency</p></div><div class="card"><h3>Act on an incident</h3><p>Review incidents and reports</p></div></div></section>
-<section class="section"><div class="section-head"><div><p class="eyebrow">Product signal</p><h2>Designed around health / uptime.</h2></div><p>Track clients and public websites. See current health and latency. Review incidents and reports.</p></div><div class="grid"><div class="card"><h3>Online</h3><p>Start with a visible state, not a blank spreadsheet.</p></div><div class="card"><h3>Latency</h3><p>Know what needs attention before the next handoff.</p></div><div class="card"><h3>Incident</h3><p>Finish with an outcome the team can understand.</p></div></div></section>
-<section class="section" id="pricing"><div class="detail"><div><p class="eyebrow">Simple pricing</p><h2>One focused plan to get moving.</h2><p class="lead">No enterprise packaging. Start with the workflow your team needs first.</p></div><div class="card"><h3>Starter</h3><div class="price"><strong>€10</strong><span>/ month</span></div><p>Track clients and public websites, See current health and latency, Review incidents and reports.</p><a class="button" data-app-path="sitepulse" href="../../sitepulse/signup">Start now</a></div></div></section>
-<section class="section" id="faq"><div class="section-head"><div><p class="eyebrow">FAQ</p><h2>Useful answers before you start.</h2></div></div><div class="faq"><details open><summary>Does it monitor private networks?</summary><p>No. SitePulse is for publicly reachable website URLs.</p></details><details><summary>Can I start small?</summary><p>Yes. The first useful action is designed to be clear without a long setup process.</p></details></div></section>
-<section class="section"><div class="detail"><div><p class="eyebrow">Ready when you are</p><h2>Know when a client website stops responding.</h2></div><div class="actions"><a class="button" data-app-path="sitepulse" href="../../sitepulse/signup">Start SitePulse Care</a><a class="button secondary" href="../">Back to Oneix Store</a></div></div></section>
-<footer class="footer">SitePulse Care is a focused Oneix software product. <a href="../">Explore the Store</a>.</footer></div></main><script src="../assets/products.js"></script></body></html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Keep website checks, incidents and client context in one focused monitoring workspace."
+    />
+    <title>SitePulse | ONEIX</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="../assets/styles.css" />
+    <link rel="stylesheet" href="../assets/page-foundations.css" />
+    <link rel="stylesheet" href="./sitepulse.css" />
+    <script defer src="../assets/vendor/motion-12.23.12.js"></script>
+    <script defer src="./sitepulse.js"></script>
+  </head>
+  <body class="portfolio-page sitepulse-page">
+    <a class="pf-skip" href="#main">Skip to content</a>
+    <header class="topbar">
+      <a class="brand" href="../">
+        <span class="mark">OX</span>
+        <span>ONEIX / SitePulse</span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#demo">Try the demo</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="../">Store ↗</a>
+      </nav>
+    </header>
+    <main id="main" class="pf-wrap">
+      <section class="sp-hero">
+        <p class="eyebrow">Website monitoring / A clearer signal</p>
+        <h1>
+          Know when the web
+          <br />
+          <span>misses a beat.</span>
+        </h1>
+        <p class="pf-copy">
+          A website can look fine until it isn’t. Keep checks, response times
+          and incidents in view — before the next client conversation.
+        </p>
+        <div class="sp-actions">
+          <a
+            class="button"
+            data-start
+            href="https://sitepulse.oneix.ltd/signup"
+          >
+            Start SitePulse ↗
+          </a>
+          <a class="pf-link" href="#demo">Listen to the signal ↓</a>
+        </div>
+        <section
+          class="sp-monitor"
+          id="demo"
+          aria-label="Interactive website monitoring example"
+        >
+          <div class="sp-monitor-top">
+            <span class="pf-label">SITEPULSE / SAMPLE MONITOR</span>
+            <span class="sp-live" data-health>● Operational</span>
+          </div>
+          <div class="sp-readout" aria-live="polite">
+            <div>
+              <p class="pf-label">SELECTED ENDPOINT</p>
+              <h2 data-domain>oneix.ltd</h2>
+              <span data-code>200 OK</span>
+            </div>
+            <div class="sp-latency">
+              <strong data-latency>126</strong>
+              <span>ms / response</span>
+            </div>
+          </div>
+          <div class="sp-wave">
+            <svg
+              viewBox="0 0 1000 140"
+              role="img"
+              aria-label="Illustrative response pulse"
+            >
+              <defs>
+                <pattern
+                  id="sp-grid"
+                  width="40"
+                  height="28"
+                  patternUnits="userSpaceOnUse"
+                >
+                  <path
+                    d="M40 0H0V28"
+                    fill="none"
+                    stroke="#66d99b"
+                    stroke-opacity=".12"
+                  />
+                </pattern>
+              </defs>
+              <rect width="1000" height="140" fill="url(#sp-grid)" />
+              <path
+                class="sp-trace"
+                d="M0 80H120L140 65 160 80H250L275 80 290 25 312 120 331 65 350 80H500L520 64 540 80H635L665 80 680 25 702 120 721 65 740 80H1000"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+              />
+            </svg>
+            <div class="sp-wave-scale">
+              <span>30 minutes ago</span>
+              <span>Latest sample</span>
+            </div>
+          </div>
+          <div
+            class="sp-endpoints"
+            role="group"
+            aria-label="Select an example endpoint"
+          >
+            <button data-endpoint="0" aria-pressed="true">
+              <span>01 / Website</span>
+              <strong>oneix.ltd</strong>
+              <small>200 OK · 126 ms</small>
+            </button>
+            <button data-endpoint="1" aria-pressed="false">
+              <span>02 / API</span>
+              <strong>api.example.com</strong>
+              <small>200 OK · 84 ms</small>
+            </button>
+            <button data-endpoint="2" aria-pressed="false">
+              <span>03 / Checkout</span>
+              <strong>checkout.example.com</strong>
+              <small>503 · Check failed</small>
+            </button>
+          </div>
+          <div class="sp-monitor-bottom">
+            <p data-check-note>
+              Example check at 12:41. No live request is made.
+            </p>
+            <button class="pf-control" data-check>Run example check ↗</button>
+          </div>
+        </section>
+        <p class="pf-demo-note">
+          Interactive example · Select an endpoint to inspect its signal. All
+          readings are illustrative.
+        </p>
+      </section>
+      <section class="pf-section sp-workflow" id="workflow">
+        <div>
+          <p class="eyebrow">From a check to a conversation</p>
+          <h2>
+            A red light should
+            <br />
+            come with context.
+          </h2>
+          <p class="pf-copy">
+            Connect the website to the client. Inspect what the check returned.
+            Keep an incident record that’s easier to act on.
+          </p>
+        </div>
+        <ol>
+          <li>
+            <span>01</span>
+            <div>
+              <h3>Add the website.</h3>
+              <p>
+                Keep a public HTTP/S address together with the client it belongs
+                to.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>02</span>
+            <div>
+              <h3>Read the response.</h3>
+              <p>
+                Run a check and inspect status and response time in the same
+                workspace.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>03</span>
+            <div>
+              <h3>Keep the incident visible.</h3>
+              <p>
+                Review incidents and summaries instead of rebuilding the story
+                from scattered messages.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </section>
+      <section class="pf-section">
+        <div class="pf-section-head">
+          <div>
+            <p class="eyebrow">The last check, in context</p>
+            <h2>
+              Less guessing.
+              <br />
+              More useful evidence.
+            </h2>
+          </div>
+          <p>
+            A focused view of the sites you look after. These are sample
+            records, not uptime promises.
+          </p>
+        </div>
+        <div class="sp-evidence">
+          <article>
+            <span class="pf-label">CHECK RESULT</span>
+            <strong>HTTP 503</strong>
+            <p>Checkout did not return a successful response.</p>
+            <span class="sp-alert">Needs attention</span>
+          </article>
+          <article>
+            <span class="pf-label">INCIDENT RECORD</span>
+            <h3>Checkout unavailable</h3>
+            <dl>
+              <div>
+                <dt>Website</dt>
+                <dd>checkout.example.com</dd>
+              </div>
+              <div>
+                <dt>First observed</dt>
+                <dd>12:41</dd>
+              </div>
+              <div>
+                <dt>Client</dt>
+                <dd>Example commerce team</dd>
+              </div>
+            </dl>
+          </article>
+          <article>
+            <span class="pf-label">CLIENT CONTEXT</span>
+            <h3>A clearer handoff.</h3>
+            <p>
+              Keep sites, incident history and summaries together. Export a CSV
+              when the information needs to move beyond the workspace.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section class="pf-section pf-price-section" id="pricing">
+        <div>
+          <p class="eyebrow">One focused workspace</p>
+          <h2>Keep a finger on your websites’ pulse.</h2>
+          <p>
+            Keep website checks, incidents and client context in one focused
+            monitoring workspace.
+          </p>
+        </div>
+        <div class="pf-price-card">
+          <header>
+            <h3>Starter</h3>
+            <span class="pf-label">SitePulse</span>
+          </header>
+          <div class="pf-price">
+            <strong>€10</strong>
+            <span>/ month</span>
+          </div>
+          <ul>
+            <li>Website and client records</li>
+            <li>HTTP checks and incident history</li>
+            <li>Summaries and CSV export</li>
+          </ul>
+          <a
+            class="button"
+            data-start
+            href="https://sitepulse.oneix.ltd/signup"
+          >
+            Start SitePulse ↗
+          </a>
+        </div>
+      </section>
+      <section class="pf-section pf-faq" id="faq">
+        <div>
+          <p class="eyebrow">Before you start</p>
+          <h2>A few useful answers.</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Does the example check my website?</summary>
+            <p>
+              No. This page only switches between sample monitoring states. Add
+              a website in the application to run a real check.
+            </p>
+          </details>
+          <details>
+            <summary>Does SitePulse guarantee uptime?</summary>
+            <p>
+              No. SitePulse helps you inspect website checks and incidents; it
+              cannot guarantee that a website stays online.
+            </p>
+          </details>
+          <details>
+            <summary>Can it check private or local addresses?</summary>
+            <p>
+              The monitor accepts public HTTP/S addresses and rejects private or
+              local network targets.
+            </p>
+          </details>
+          <details>
+            <summary>Does it look up domain expiry automatically?</summary>
+            <p>
+              The current workflow supports a manually entered domain expiry
+              date. Automated WHOIS or RDAP lookups are not represented here.
+            </p>
+          </details>
+        </div>
+      </section>
+      <section class="pf-closing">
+        <p class="eyebrow">SitePulse by ONEIX</p>
+        <h2>Keep a finger on your websites’ pulse.</h2>
+        <a class="button" data-start href="https://sitepulse.oneix.ltd/signup">
+          Start SitePulse ↗
+        </a>
+      </section>
+    </main>
+    <footer class="pf-wrap pf-footer">
+      <a class="brand" href="../">
+        <span class="mark">OX</span>
+        ONEIX
+      </a>
+      <p>Small software. Clear outcomes.</p>
+      <a class="pf-link" href="../">Explore the collection ↗</a>
+    </footer>
+  </body>
+</html>
