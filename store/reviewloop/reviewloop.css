@@ -3376,3 +3376,239 @@
   min-width: 44px;
   justify-content: center;
 }
+
+/* ============================================================
+   PRICING MODEL — monthly, annual and first-year launch offer
+   ============================================================ */
+.rl-pricing-copy {
+  max-width: 760px;
+  margin-bottom: 34px;
+}
+
+.rl-pricing-copy h2 {
+  margin: 13px 0 17px;
+  font-size: clamp(2.5rem, 5vw, 5.6rem);
+  line-height: 0.98;
+  letter-spacing: -0.06em;
+}
+
+.rl-pricing-copy p {
+  max-width: 620px;
+  color: var(--rl-muted);
+  line-height: 1.7;
+}
+
+.rl-billing-note {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 18px;
+  padding: 17px 20px;
+  border: 1px solid var(--rl-accent-border);
+  border-radius: 14px;
+  background: var(--rl-accent-soft);
+}
+
+.rl-billing-note > span {
+  color: var(--rl-accent);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.rl-billing-note strong {
+  font-size: 0.78rem;
+}
+
+.rl-billing-note p {
+  margin: 0;
+  color: var(--rl-muted);
+  font-size: 0.64rem;
+}
+
+.rl-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.rl-plan-card {
+  padding: clamp(22px, 3vw, 34px);
+  border: 1px solid var(--rl-border);
+  border-radius: 20px;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.025),
+    rgba(255, 255, 255, 0.008)
+  );
+}
+
+.rl-plan-card-featured {
+  border-color: var(--rl-accent-border);
+  background: linear-gradient(
+    145deg,
+    var(--rl-accent-soft),
+    rgba(255, 255, 255, 0.008)
+  );
+}
+
+.rl-plan-card > header {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 60px;
+}
+
+.rl-plan-card header div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.rl-plan-card header small {
+  color: var(--rl-muted);
+  font-size: 0.5rem;
+  letter-spacing: 0.13em;
+}
+
+.rl-plan-card header strong {
+  font-size: 1.1rem;
+}
+
+.rl-plan-card header > span {
+  align-self: flex-start;
+  padding: 7px 9px;
+  border: 1px solid var(--rl-border);
+  border-radius: 8px;
+  color: var(--rl-accent);
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+}
+
+.rl-plan-prices {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin: 22px 0 9px;
+}
+
+.rl-plan-prices > div {
+  padding: 16px;
+  border: 1px solid var(--rl-border);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.rl-plan-prices small,
+.rl-first-year > span {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--rl-muted);
+  font-size: 0.51rem;
+  letter-spacing: 0.12em;
+}
+
+.rl-plan-prices strong {
+  display: block;
+  font-size: clamp(1.7rem, 3vw, 2.7rem);
+  letter-spacing: -0.06em;
+}
+
+.rl-plan-prices div:last-child strong {
+  color: var(--rl-accent);
+}
+
+.rl-plan-prices div > span {
+  color: var(--rl-muted);
+  font-size: 0.56rem;
+}
+
+.rl-first-year {
+  padding: 17px;
+  border: 1px solid var(--rl-accent-border);
+  border-radius: 12px;
+  background: var(--rl-accent-soft);
+}
+
+.rl-first-year > span {
+  color: var(--rl-accent);
+}
+
+.rl-first-year strong {
+  font-size: 1.45rem;
+}
+
+.rl-first-year small {
+  margin-left: 9px;
+  color: var(--rl-muted);
+}
+
+.rl-plan-card ul {
+  display: grid;
+  gap: 12px;
+  margin: 25px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rl-plan-card li {
+  color: #c4cecb;
+  font-size: 0.72rem;
+}
+
+.rl-plan-card li i {
+  margin-right: 8px;
+  color: var(--rl-accent);
+  font-style: normal;
+}
+
+.rl-plan-card .rl-button {
+  width: 100%;
+  min-height: 48px;
+}
+
+.rl-payment-terms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.rl-payment-terms span {
+  padding: 9px 11px;
+  border: 1px solid var(--rl-border);
+  border-radius: 9px;
+  color: var(--rl-muted);
+  font-size: 0.57rem;
+}
+
+@media (max-width: 760px) {
+  .rl-pricing-grid,
+  .rl-billing-note {
+    grid-template-columns: 1fr;
+  }
+
+  .rl-billing-note {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 430px) {
+  .rl-plan-prices {
+    grid-template-columns: 1fr;
+  }
+
+  .rl-plan-card > header {
+    display: grid;
+  }
+
+  .rl-plan-card header > span {
+    width: max-content;
+  }
+
+  .rl-first-year small {
+    display: block;
+    margin: 6px 0 0;
+  }
+}

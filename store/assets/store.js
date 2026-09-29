@@ -1,1268 +1,453 @@
-/**
- * ============================================================
- * ONEIX SOFTWARE STORE
- * Interactive product showroom
- * ============================================================
- */
-
+/** ONEIX Store — product catalogue, pricing and lightweight UI motion. */
 (() => {
   "use strict";
 
-  const root = document.querySelector(".oneix-store");
-
-  if (!root) return;
-
-  const reduceMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  ).matches;
-
-  const finePointer = window.matchMedia(
-    "(pointer: fine)"
-  ).matches;
-
-  const $ = (selector, context = document) =>
-    context.querySelector(selector);
-
-  const $$ = (selector, context = document) =>
-    [...context.querySelectorAll(selector)];
-
-  const clamp = (value, min, max) =>
-    Math.min(Math.max(value, min), max);
-
-
-  /* ============================================================
-     PRODUCT DATA
-
-     Store presentation data only.
-     App URLs remain separate from the marketing pages.
-     ============================================================ */
-
-  const products = {
-    leads: {
+  const PRODUCTS = [
+    {
       id: "leadpocket",
       name: "LeadPocket",
-      category: "OPPORTUNITY / FOLLOW-UP",
-
-      headline:
-        "Never lose a warm lead to a forgotten follow-up.",
-
-      description:
-        "Capture incoming opportunities, give each one an owner and keep the next action visible until the opportunity is closed.",
-
+      symbol: "LP",
+      category: "revenue",
+      label: "LEADS",
       accent: "#f2b66d",
-
-      href: "./leadpocket/",
-
-      button: "Explore LeadPocket",
-
-      flow: [
-        "Capture",
-        "Own",
-        "Follow up",
-        "Close"
-      ]
+      copy: "Keep every promising enquiry moving.",
+      plans: [
+        { name: "Solo", month: 15, year: 139 },
+        { name: "Team", month: 29, year: 268 },
+      ],
     },
-
-    reviews: {
+    {
       id: "reviewloop",
       name: "ReviewLoop",
-      category: "REVIEWS / REPUTATION",
-
-      headline:
-        "Turn completed work into public proof.",
-
-      description:
-        "Keep review requests visible after the work is finished and make it easier to follow through while the customer experience is still fresh.",
-
+      symbol: "RL",
+      category: "reputation",
+      label: "REVIEWS",
       accent: "#73e7d1",
-
-      href: "./reviewloop/",
-
-      button: "Explore ReviewLoop",
-
-      flow: [
-        "Complete",
-        "Request",
-        "Review",
-        "Build trust"
-      ]
+      copy: "Turn completed work into public proof.",
+      plans: [
+        { name: "Early Adopter", month: 19, year: 176 },
+        { name: "Standard", month: 39, year: 361 },
+      ],
     },
-
-    payments: {
+    {
       id: "invoicenudge",
       name: "InvoiceNudge",
-      category: "INVOICES / FOLLOW-UP",
-
-      headline:
-        "Keep unpaid invoices from going quiet.",
-
-      description:
-        "Keep outstanding invoices visible and make payment follow-up a clear recurring workflow instead of something remembered too late.",
-
+      symbol: "IN",
+      category: "revenue",
+      label: "INVOICES",
       accent: "#77a7ff",
-
-      href: "./invoicenudge/",
-
-      button: "Explore InvoiceNudge",
-
-      flow: [
-        "Invoice",
-        "Track",
-        "Follow up",
-        "Paid"
-      ]
+      copy: "Keep unpaid invoices from going quiet.",
+      plans: [{ name: "Starter", month: 15, year: 139 }],
     },
-
-    operations: {
+    {
       id: "sitepulse",
       name: "SitePulse",
-      category: "MONITORING / OPERATIONS",
-
-      headline:
-        "Know when something needs attention.",
-
-      description:
-        "Keep important operational signals visible so problems are easier to notice before they disappear into dashboards, logs or routine.",
-
+      symbol: "SP",
+      category: "operations",
+      label: "MONITORING",
       accent: "#8de17f",
-
-      href: "./sitepulse/",
-
-      button: "Explore SitePulse",
-
-      flow: [
-        "Monitor",
-        "Detect",
-        "Alert",
-        "Resolve"
-      ]
+      copy: "Know when the web misses a beat.",
+      plans: [{ name: "Starter", month: 10, year: 92 }],
     },
-
-    customers: {
+    {
+      id: "clientdock",
+      name: "ClientDock",
+      symbol: "CD",
+      category: "customers",
+      label: "CLIENTS",
+      accent: "#bb8cff",
+      copy: "Give client work one calm place to land.",
+      plans: [{ name: "Starter", month: 15, year: 139 }],
+    },
+    {
+      id: "cronbeacon",
+      name: "CronBeacon",
+      symbol: "CB",
+      category: "operations",
+      label: "SCHEDULES",
+      accent: "#ff9276",
+      copy: "Treat silence from scheduled jobs as a signal.",
+      plans: [{ name: "Starter", month: 12, year: 111 }],
+    },
+    {
+      id: "expirydesk",
+      name: "ExpiryDesk",
+      symbol: "ED",
+      category: "operations",
+      label: "RENEWALS",
+      accent: "#f2c75c",
+      copy: "See every renewal before it becomes urgent.",
+      plans: [{ name: "Starter", month: 19, year: 176 }],
+    },
+    {
+      id: "logsentry",
+      name: "LogSentry",
+      symbol: "LS",
+      category: "operations",
+      label: "LOGS",
+      accent: "#ff79bd",
+      copy: "Find the event that explains what changed.",
+      plans: [{ name: "Starter", month: 19, year: 176 }],
+    },
+    {
+      id: "opsqr",
+      name: "OpsQR",
+      symbol: "OQ",
+      category: "customers",
+      label: "ASSETS",
+      accent: "#62e7ff",
+      copy: "Put the right checklist on the physical asset.",
+      plans: [{ name: "Starter", month: 19, year: 176 }],
+    },
+    {
       id: "workshoprecall",
       name: "WorkshopRecall",
-      category: "CUSTOMERS / RECALL",
-
-      headline:
-        "Bring past customers back at the right time.",
-
-      description:
-        "Keep previous customers visible and surface the right moment to reconnect instead of relying on memory or scattered customer records.",
-
+      symbol: "WR",
+      category: "revenue",
+      label: "RETENTION",
       accent: "#e5a1ff",
-
-      href: "./workshoprecall/",
-
-      button: "Explore WorkshopRecall",
-
-      flow: [
-        "Remember",
-        "Schedule",
-        "Remind",
-        "Return"
-      ]
-    }
-  };
-
-
-
-  const productVisuals = {
-    leadpocket: {
-      short: "LP", nav: ["Leads", "Today", "Pipeline"], eyebrow: "SATURDAY", title: "Follow-ups", action: "+ New lead",
-      stats: [["New", "12", ""], ["Active", "18", ""], ["Overdue", "3", "danger"], ["Won", "7", "success"]],
-      rows: [["SG", "Sarah Georgiou", "Kitchen renovation", "Call · 14:30", "Today", "today"], ["AP", "Andreas Petrou", "Solar installation", "Follow up · 2h", "Overdue", "overdue"], ["MK", "Marios Kyriakou", "Website enquiry", "Received now", "New", "new"]]
+      copy: "Bring service customers back at the right time.",
+      plans: [{ name: "Starter", month: 29, year: 268 }],
     },
-    reviewloop: {
-      short: "RL", nav: ["Overview", "Requests", "Reviews"], eyebrow: "REPUTATION", title: "Review activity", action: "+ Request",
-      stats: [["Rating", "4.9", "success"], ["Reviews", "48", ""], ["Waiting", "6", "danger"], ["This month", "+12", "success"]],
-      rows: [["MG", "Maria Georgiou", "Left a five-star review", "★★★★★", "New", "new"], ["AP", "Andreas Petrou", "Review request sent", "8 minutes ago", "Sent", "today"], ["EK", "Elena Kyriakou", "Waiting for response", "2 days", "Waiting", "overdue"]]
-    },
-    invoicenudge: {
-      short: "IN", nav: ["Invoices", "Due soon", "Overdue"], eyebrow: "RECEIVABLES", title: "Payment timeline", action: "+ Invoice",
-      stats: [["Outstanding", "€8,420", ""], ["Overdue", "€2,180", "danger"], ["Due this week", "€3,600", ""], ["Paid", "€12.9k", "success"]],
-      rows: [["AT", "Atlas Studio", "INV-1048 · €1,240", "Due in 3 days", "Due", "today"], ["NV", "Nova Works", "INV-1039 · €860", "Nudge sent", "Overdue", "overdue"], ["HM", "Harbor Media", "INV-1042 · €2,100", "Paid today", "Paid", "new"]]
-    },
-    sitepulse: {
-      short: "SP", nav: ["Monitors", "Incidents", "Reports"], eyebrow: "LIVE MONITORING", title: "Endpoint health", action: "+ Monitor",
-      stats: [["Uptime", "99.98%", "success"], ["Median", "126 ms", ""], ["Incidents", "2", "danger"], ["Checks", "18", ""]],
-      rows: [["OX", "oneix.ltd", "200 OK", "126 ms", "Online", "new"], ["API", "api.example.com", "200 OK", "84 ms", "Online", "new"], ["CO", "checkout", "Degraded", "642 ms", "Watch", "overdue"]]
-    },
-    workshoprecall: {
-      short: "WR", nav: ["Customers", "Vehicles", "Reminders"], eyebrow: "SERVICE RECALL", title: "Returns due", action: "+ Customer",
-      stats: [["Due soon", "14", ""], ["Ready", "8", "success"], ["Overdue", "3", "danger"], ["Returned", "11", "success"]],
-      rows: [["MG", "Maria Georgiou", "BMW 320i · last 12 Mar", "Next service 12 Sep", "Ready", "today"], ["AP", "Andreas Petrou", "Ford Focus · last 4 Apr", "Reminder in 2 days", "Soon", "new"], ["EK", "Elena Kyriakou", "Toyota Yaris · last 18 Feb", "Return overdue", "Overdue", "overdue"]]
-    }
-  };
-
-
-  /* ============================================================
-     TOPBAR
-     ============================================================ */
-
-  const topbar = $(".store-topbar");
-
-  const updateTopbar = () => {
-    if (!topbar) return;
-
-    topbar.classList.toggle(
-      "store-topbar-scrolled",
-      window.scrollY > 30
-    );
-  };
-
-  updateTopbar();
-
-  window.addEventListener(
-    "scroll",
-    updateTopbar,
-    {
-      passive: true
-    }
-  );
-
-
-  /* ============================================================
-     SMOOTH SCROLL
-     ============================================================ */
-
-  $$('a[href^="#"]').forEach((link) => {
-    link.addEventListener("click", (event) => {
-      const href = link.getAttribute("href");
-
-      if (!href || href === "#") return;
-
-      const target = document.querySelector(href);
-
-      if (!target) return;
-
-      event.preventDefault();
-
-      target.scrollIntoView({
-        behavior: reduceMotion
-          ? "auto"
-          : "smooth",
-
-        block: "start"
-      });
-    });
-  });
-
-
-  /* ============================================================
-     HERO 3D UNIVERSE
-     ============================================================ */
-
-  const universe = $(".product-universe");
-
-  const mainUniverseCard = $(
-    ".universe-card-main"
-  );
-
-  const floatingCards = $$(
-    ".universe-card-secondary"
-  );
-
-  if (
-    universe &&
-    mainUniverseCard &&
-    finePointer &&
-    !reduceMotion
-  ) {
-    let targetX = 0;
-    let targetY = 0;
-
-    let currentX = 0;
-    let currentY = 0;
-
-    let animationFrame = null;
-
-    const renderUniverse = () => {
-      currentX +=
-        (targetX - currentX) * 0.065;
-
-      currentY +=
-        (targetY - currentY) * 0.065;
-
-
-      /* Main card */
-
-      mainUniverseCard.style.transform = `
-        translate(-50%, -50%)
-        rotateY(${-9 + currentX * 5}deg)
-        rotateX(${4 - currentY * 4}deg)
-        translateZ(70px)
-      `;
-
-
-      /* Orbit movement */
-
-      universe.style.setProperty(
-        "--universe-x",
-        `${currentX}`
-      );
-
-      universe.style.setProperty(
-        "--universe-y",
-        `${currentY}`
-      );
-
-
-      /* Floating cards move at
-         different depth speeds */
-
-      floatingCards.forEach(
-        (card, index) => {
-          const depth =
-            4 + index * 1.7;
-
-          card.style.translate = `
-            ${currentX * depth}px
-            ${currentY * depth}px
-          `;
-        }
-      );
-
-
-      const moving =
-        Math.abs(targetX - currentX) >
-          0.001 ||
-        Math.abs(targetY - currentY) >
-          0.001;
-
-      if (moving) {
-        animationFrame =
-          requestAnimationFrame(
-            renderUniverse
-          );
-      } else {
-        animationFrame = null;
-      }
-    };
-
-
-    const requestRender = () => {
-      if (animationFrame !== null) return;
-
-      animationFrame =
-        requestAnimationFrame(
-          renderUniverse
-        );
-    };
-
-
-    universe.addEventListener(
-      "pointermove",
-      (event) => {
-        const rect =
-          universe.getBoundingClientRect();
-
-        const x =
-          (event.clientX - rect.left) /
-          rect.width;
-
-        const y =
-          (event.clientY - rect.top) /
-          rect.height;
-
-        targetX =
-          clamp(
-            (x - 0.5) * 2,
-            -1,
-            1
-          );
-
-        targetY =
-          clamp(
-            (y - 0.5) * 2,
-            -1,
-            1
-          );
-
-        requestRender();
-      }
-    );
-
-
-    universe.addEventListener(
-      "pointerleave",
-      () => {
-        targetX = 0;
-        targetY = 0;
-
-        requestRender();
-      }
-    );
-  }
-
-
-  /* ============================================================
-     PRODUCT CARD 3D TILT
-     ============================================================ */
-
-  const productCards = $$(
-    "[data-product-card]"
-  );
-
-  if (
-    productCards.length &&
-    finePointer &&
-    !reduceMotion
-  ) {
-    productCards.forEach((card) => {
-      let frame = null;
-
-      let targetRX = 0;
-      let targetRY = 0;
-
-      let currentRX = 0;
-      let currentRY = 0;
-
-
-      const render = () => {
-        currentRX +=
-          (targetRX - currentRX) *
-          0.11;
-
-        currentRY +=
-          (targetRY - currentRY) *
-          0.11;
-
-        card.style.transform = `
-          perspective(1100px)
-          rotateX(${currentRX}deg)
-          rotateY(${currentRY}deg)
-          translateY(-2px)
-        `;
-
-        const moving =
-          Math.abs(
-            targetRX - currentRX
-          ) > 0.01 ||
-          Math.abs(
-            targetRY - currentRY
-          ) > 0.01;
-
-        if (moving) {
-          frame =
-            requestAnimationFrame(
-              render
-            );
-        } else {
-          frame = null;
-        }
-      };
-
-
-      const requestRender = () => {
-        if (frame !== null) return;
-
-        frame =
-          requestAnimationFrame(
-            render
-          );
-      };
-
-
-      card.addEventListener(
-        "pointermove",
-        (event) => {
-          const rect =
-            card.getBoundingClientRect();
-
-          const x =
-            (event.clientX -
-              rect.left) /
-            rect.width;
-
-          const y =
-            (event.clientY -
-              rect.top) /
-            rect.height;
-
-
-          /* Maximum tilt ~4 degrees */
-
-          targetRY =
-            clamp(
-              (x - 0.5) * 8,
-              -4,
-              4
-            );
-
-          targetRX =
-            clamp(
-              (0.5 - y) * 7,
-              -3.5,
-              3.5
-            );
-
-
-          /* Cursor glow */
-
-          card.style.setProperty(
-            "--card-x",
-            `${x * 100}%`
-          );
-
-          card.style.setProperty(
-            "--card-y",
-            `${y * 100}%`
-          );
-
-          requestRender();
-        }
-      );
-
-
-      card.addEventListener(
-        "pointerleave",
-        () => {
-          targetRX = 0;
-          targetRY = 0;
-
-          requestRender();
-        }
-      );
-    });
-  }
-
-
-  /* ============================================================
-     PRODUCT CARD DEPTH
-     ============================================================ */
-
-  if (
-    finePointer &&
-    !reduceMotion
-  ) {
-    productCards.forEach((card) => {
-      const content =
-        $(".product-card-content", card);
-
-      const visual =
-        card.querySelector(
-          [
-            ".leadpocket-card-ui",
-            ".review-card-ui",
-            ".invoice-card-ui",
-            ".pulse-card-ui",
-            ".client-card-ui",
-            ".cron-card-ui",
-            ".expiry-card-ui",
-            ".log-card-ui",
-            ".qr-card-ui",
-            ".recall-card-ui"
-          ].join(",")
-        );
-
-      const footer =
-        $("footer", card);
-
-      if (content) {
-        content.style.transform =
-          "translateZ(18px)";
-      }
-
-      if (visual) {
-        visual.style.transformStyle =
-          "preserve-3d";
-
-        visual.style.translate =
-          "0 0 28px";
-      }
-
-      if (footer) {
-        footer.style.transform =
-          "translateZ(14px)";
-      }
-    });
-  }
-
-
-  /* ============================================================
-     SOLUTION SELECTOR
-     ============================================================ */
-
-  const solutionTabs = $$(
-    ".solution-tab"
-  );
-
-  const solutionStage = $(
-    ".solution-stage"
-  );
-
-  const solutionTitle = $(
-    "[data-product-title]"
-  );
-
-  const solutionHeadline = $(
-    "[data-product-headline]"
-  );
-
-  const solutionDescription = $(
-    "[data-product-description]"
-  );
-
-  const solutionLink = $(
-    "[data-product-link]"
-  );
-
-  const solutionCategory = $(
-    ".solution-category"
-  );
-
-  const solutionFlow = $(
-    ".solution-flow"
-  );
-
-  const solutionVisual = $(
-    ".solution-visual"
-  );
-
-
-  const updateSolution = (
-    solutionKey
-  ) => {
-    const product =
-      products[solutionKey];
-
-    if (!product) return;
-
-
-    /* Tabs */
-
-    solutionTabs.forEach((tab) => {
-      const active =
-        tab.dataset.solution ===
-        solutionKey;
-
-      tab.classList.toggle(
-        "active",
-        active
-      );
-
-      tab.setAttribute(
-        "aria-selected",
-        active ? "true" : "false"
-      );
-    });
-
-
-    if (!solutionStage) return;
-
-
-    /* Transition out */
-
-    solutionStage.classList.add(
-      "solution-changing"
-    );
-
-
-    window.setTimeout(
-      () => {
-
-        solutionStage.dataset.activeProduct =
-          product.id;
-
-        solutionStage.style.setProperty(
-          "--active-accent",
-          product.accent
-        );
-
-
-        if (solutionTitle) {
-          solutionTitle.textContent =
-            product.name;
-        }
-
-
-        if (solutionHeadline) {
-          solutionHeadline.textContent =
-            product.headline;
-        }
-
-
-        if (solutionDescription) {
-          solutionDescription.textContent =
-            product.description;
-        }
-
-
-        if (solutionCategory) {
-          solutionCategory.textContent =
-            product.category;
-
-          solutionCategory.style.color =
-            product.accent;
-        }
-
-
-        if (solutionLink) {
-          solutionLink.href =
-            product.href;
-
-          solutionLink.innerHTML = `
-            ${product.button}
-            <span>↗</span>
-          `;
-
-          solutionLink.style.color =
-            product.accent;
-
-          solutionLink.style.borderColor =
-            `${product.accent}40`;
-
-          solutionLink.style.background =
-            `${product.accent}12`;
-        }
-
-
-        /* Workflow */
-
-        if (solutionFlow) {
-          solutionFlow.innerHTML =
-            product.flow
-              .map(
-                (step, index) => {
-                  const arrow =
-                    index <
-                    product.flow.length - 1
-                      ? "<i>→</i>"
-                      : "";
-
-                  return `
-                    <span>${step}</span>
-                    ${arrow}
-                  `;
-                }
-              )
-              .join("");
-        }
-
-
-
-        /* Product-specific compact interface */
-        const visual = productVisuals[product.id];
-        const visualSidebar = $(".solution-dashboard aside");
-        const visualMain = $(".solution-dashboard-main");
-
-        if (visual && visualSidebar && visualMain) {
-          visualSidebar.innerHTML = `
-            <strong>${visual.short}</strong>
-            ${visual.nav.map((item, index) => `<span class="${index === 0 ? "active" : ""}">${item}</span>`).join("")}
-          `;
-
-          visualMain.innerHTML = `
-            <header>
-              <div><small>${visual.eyebrow}</small><strong>${visual.title}</strong></div>
-              <button type="button">${visual.action}</button>
-            </header>
-            <div class="solution-stats">
-              ${visual.stats.map(([label, value, tone]) => `<div class="${tone}"><span>${label}</span><strong>${value}</strong></div>`).join("")}
-            </div>
-            <div class="solution-leads">
-              ${visual.rows.map(([avatar, name, detail, action, state, tone]) => `
-                <article>
-                  <i>${avatar}</i>
-                  <div><strong>${name}</strong><span>${detail}</span></div>
-                  <div><small>NEXT</small><strong>${action}</strong></div>
-                  <em class="${tone}">${state}</em>
-                </article>
-              `).join("")}
-            </div>
-          `;
-        }
-
-
-        /* Visual accent */
-
-        const glow = $(
-          ".solution-visual-glow"
-        );
-
-        if (glow) {
-          glow.style.background =
-            `${product.accent}18`;
-        }
-
-
-        solutionStage.classList.remove(
-          "solution-changing"
-        );
-
-      },
-      reduceMotion ? 0 : 170
-    );
-  };
-
-
-  solutionTabs.forEach((tab) => {
-    tab.addEventListener(
-      "click",
-      () => {
-        updateSolution(
-          tab.dataset.solution
-        );
-      }
-    );
-  });
-
-
-  /* ============================================================
-     SOLUTION WINDOW TILT
-     ============================================================ */
-
-  const solutionWindow = $(
-    ".solution-window"
-  );
-
-  if (
-    solutionVisual &&
-    solutionWindow &&
-    finePointer &&
-    !reduceMotion
-  ) {
-    let frame = null;
-
-    let targetX = 0;
-    let targetY = 0;
-
-    let currentX = 0;
-    let currentY = 0;
-
-
-    const render = () => {
-      currentX +=
-        (targetX - currentX) *
-        0.08;
-
-      currentY +=
-        (targetY - currentY) *
-        0.08;
-
-
-      solutionWindow.style.transform = `
-        rotateY(${-4 + currentX * 3}deg)
-        rotateX(${2 - currentY * 2}deg)
-        translate3d(
-          ${currentX * 5}px,
-          ${currentY * 4}px,
-          0
-        )
-      `;
-
-
-      const moving =
-        Math.abs(
-          targetX - currentX
-        ) > 0.01 ||
-        Math.abs(
-          targetY - currentY
-        ) > 0.01;
-
-
-      if (moving) {
-        frame =
-          requestAnimationFrame(
-            render
-          );
-      } else {
-        frame = null;
-      }
-    };
-
-
-    const requestRender = () => {
-      if (frame !== null) return;
-
-      frame =
-        requestAnimationFrame(
-          render
-        );
-    };
-
-
-    solutionVisual.addEventListener(
-      "pointermove",
-      (event) => {
-        const rect =
-          solutionVisual.getBoundingClientRect();
-
-        targetX =
-          clamp(
-            (
-              (event.clientX -
-                rect.left) /
-              rect.width -
-              0.5
-            ) * 2,
-            -1,
-            1
-          );
-
-        targetY =
-          clamp(
-            (
-              (event.clientY -
-                rect.top) /
-              rect.height -
-              0.5
-            ) * 2,
-            -1,
-            1
-          );
-
-        requestRender();
-      }
-    );
-
-
-    solutionVisual.addEventListener(
-      "pointerleave",
-      () => {
-        targetX = 0;
-        targetY = 0;
-
-        requestRender();
-      }
-    );
-  }
-
-
-  /* ============================================================
-     SCROLL REVEALS
-     ============================================================ */
-
-  const revealSelectors = [
-    ".store-section-heading",
-    ".solution-tabs",
-    ".solution-stage",
-    ".product-card",
-    ".philosophy-title",
-    ".philosophy-principles article",
-    ".store-final-cta"
   ];
 
-  const revealElements = $$(
-    revealSelectors.join(",")
-  );
+  const DEMOS = {
+    leadpocket: {
+      metrics: [
+        ["Active leads", "18"],
+        ["Due today", "4"],
+        ["Overdue", "3"],
+      ],
+      rows: [
+        ["SG", "Sarah Georgiou", "Kitchen renovation", "Call · 14:30"],
+        ["AP", "Andreas Petrou", "Solar installation", "Overdue"],
+      ],
+    },
+    reviewloop: {
+      metrics: [
+        ["Rating", "4.9"],
+        ["New reviews", "12"],
+        ["Waiting", "6"],
+      ],
+      rows: [
+        ["MG", "Maria Georgiou", "Five-star review", "Published"],
+        ["AP", "Andreas Petrou", "Request sent", "8 min ago"],
+      ],
+    },
+    invoicenudge: {
+      metrics: [
+        ["Outstanding", "€8.4k"],
+        ["Overdue", "€2.1k"],
+        ["Paid", "€12.9k"],
+      ],
+      rows: [
+        ["AT", "Atlas Studio", "INV-1048 · €1,240", "Due in 3d"],
+        ["NV", "Nova Works", "INV-1039 · €860", "Nudge sent"],
+      ],
+    },
+    sitepulse: {
+      metrics: [
+        ["Uptime", "99.98%"],
+        ["Latency", "126ms"],
+        ["Incidents", "2"],
+      ],
+      rows: [
+        ["OX", "oneix.ltd", "200 OK", "Online"],
+        ["CO", "Checkout", "503 response", "Incident"],
+      ],
+    },
+    clientdock: {
+      metrics: [
+        ["Projects", "8"],
+        ["Approvals", "3"],
+        ["Requests", "2"],
+      ],
+      rows: [
+        ["BD", "Brand direction", "Design package", "Approved"],
+        ["PB", "Project brief", "Client document", "Review"],
+      ],
+    },
+    cronbeacon: {
+      metrics: [
+        ["Jobs", "18"],
+        ["Healthy", "17"],
+        ["Missing", "1"],
+      ],
+      rows: [
+        ["DB", "Database backup", "Every day · 02:00", "Healthy"],
+        ["BI", "Billing sync", "Expected · 12:30", "Missing"],
+      ],
+    },
+    expirydesk: {
+      metrics: [
+        ["Renewals", "8"],
+        ["Due soon", "3"],
+        ["Overdue", "1"],
+      ],
+      rows: [
+        ["SS", "SSL certificate", "Due in 8 days", "Priority"],
+        ["CT", "Client contract", "Due in 42 days", "Planned"],
+      ],
+    },
+    logsentry: {
+      metrics: [
+        ["Events", "6"],
+        ["Errors", "2"],
+        ["Rules", "4"],
+      ],
+      rows: [
+        ["500", "Checkout failed", "api.checkout", "Inspect"],
+        ["401", "Token rejected", "auth.session", "Matched"],
+      ],
+    },
+    opsqr: {
+      metrics: [
+        ["Assets", "48"],
+        ["Checks open", "3"],
+        ["Complete", "45"],
+      ],
+      rows: [
+        ["AC", "Unit AC-204", "Filter inspection", "Open"],
+        ["PV", "Pump PV-18", "Safety checklist", "Complete"],
+      ],
+    },
+    workshoprecall: {
+      metrics: [
+        ["Due soon", "14"],
+        ["Ready", "8"],
+        ["Returned", "11"],
+      ],
+      rows: [
+        ["MG", "Maria · BMW 320i", "Next service 12 Sep", "Ready"],
+        ["AP", "Andreas · Ford Focus", "Reminder in 2 days", "Soon"],
+      ],
+    },
+  };
 
+  const $ = (selector, context = document) => context.querySelector(selector);
+  const $$ = (selector, context = document) => [
+    ...context.querySelectorAll(selector),
+  ];
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const coarse = matchMedia("(pointer: coarse)").matches;
+  let billing = "monthly";
+  let filter = "all";
 
-  revealElements.forEach(
-    (element, index) => {
-      element.classList.add(
-        "store-reveal"
-      );
+  const money = (value) =>
+    Number.isInteger(value) ? `€${value}` : `€${value.toFixed(2)}`;
+  const firstYear = (year) => Math.round(year * 20) / 100;
+  const productPage = (id) => `./${id}/`;
+  const signupPage = (id) => `https://${id}.oneix.ltd/signup`;
 
-      element.style.setProperty(
-        "--reveal-delay",
-        `${(index % 4) * 60}ms`
+  function renderConsoleTabs() {
+    const host = $("[data-product-tabs]");
+    if (!host) return;
+    host.innerHTML = PRODUCTS.map(
+      (product, index) => `
+      <button type="button" role="tab" aria-selected="${index === 0}" tabindex="${index === 0 ? "0" : "-1"}" class="${index === 0 ? "active" : ""}" data-console-product="${product.id}" style="--tab-accent:${product.accent}">
+        <span>${String(index + 1).padStart(2, "0")}</span><strong>${product.name}</strong><small>${product.label}</small>
+      </button>`,
+    ).join("");
+  }
+
+  function selectProduct(id) {
+    const product = PRODUCTS.find((entry) => entry.id === id);
+    if (!product) return;
+    $$("[data-console-product]").forEach((button) => {
+      const active = button.dataset.consoleProduct === id;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-selected", String(active));
+      button.tabIndex = active ? 0 : -1;
+    });
+
+    const preview = $("[data-preview]");
+    if (!preview) return;
+    preview.style.setProperty("--active-accent", product.accent);
+    $("[data-preview-index]").textContent = String(
+      PRODUCTS.indexOf(product) + 1,
+    ).padStart(2, "0");
+    $("[data-preview-category]").textContent = product.label;
+    $("[data-preview-symbol]").textContent = product.symbol;
+    $("[data-preview-name]").textContent = product.name;
+    $("[data-preview-copy]").textContent = product.copy;
+
+    const demo = DEMOS[product.id];
+    const demoPanel = $("[data-preview-demo]");
+    if (demo && demoPanel) {
+      demoPanel.setAttribute("aria-label", product.name + " interface example");
+      $("[data-demo-metrics]").innerHTML = demo.metrics
+        .map(
+          ([label, value]) =>
+            "<div><span>" +
+            label +
+            "</span><strong>" +
+            value +
+            "</strong></div>",
+        )
+        .join("");
+      const productIndex = PRODUCTS.indexOf(product) + 1;
+      $("[data-demo-chart]").innerHTML = [42, 66, 51, 78, 63, 88, 74]
+        .map((value, index) => {
+          const height = 34 + ((value + productIndex * index * 7) % 58);
+          return '<i style="--bar:' + height + '%"></i>';
+        })
+        .join("");
+      $("[data-demo-rows]").innerHTML = demo.rows
+        .map(
+          ([avatar, name, detail, status]) =>
+            "<div><i>" +
+            avatar +
+            "</i><span><strong>" +
+            name +
+            "</strong><small>" +
+            detail +
+            "</small></span><em>" +
+            status +
+            "</em></div>",
+        )
+        .join("");
+    }
+
+    $("[data-preview-price]").textContent =
+      `${money(product.plans[0].month)}/mo`;
+    $("[data-preview-promo]").textContent = money(
+      firstYear(product.plans[0].year),
+    );
+    $("[data-preview-page]").href = productPage(product.id);
+    $("[data-preview-signup]").href = signupPage(product.id);
+
+    if (!reduced && window.Motion?.animate) {
+      window.Motion.animate(
+        preview,
+        { opacity: [0.65, 1], transform: ["translateY(5px)", "translateY(0)"] },
+        { duration: 0.24 },
       );
     }
-  );
+  }
 
-
-  if (reduceMotion) {
-    revealElements.forEach(
-      (element) => {
-        element.classList.add(
-          "store-visible"
-        );
-      }
-    );
-  } else {
-    const revealObserver =
-      new IntersectionObserver(
-        (entries, observer) => {
-          entries.forEach(
-            (entry) => {
-              if (
-                !entry.isIntersecting
-              ) {
-                return;
-              }
-
-              entry.target.classList.add(
-                "store-visible"
-              );
-
-              observer.unobserve(
-                entry.target
-              );
-            }
-          );
-        },
-        {
-          threshold: 0.1,
-
-          rootMargin:
-            "0px 0px -60px 0px"
+  function priceMarkup(product) {
+    return product.plans
+      .map((plan) => {
+        if (billing === "monthly") {
+          return `<div class="product-plan"><span>${plan.name}</span><strong>${money(plan.month)}<small>/month</small></strong></div>`;
         }
-      );
-
-
-    revealElements.forEach(
-      (element) => {
-        revealObserver.observe(
-          element
-        );
-      }
-    );
-  }
-
-
-  /* ============================================================
-     HERO PARALLAX
-     ============================================================ */
-
-  const hero = $(".store-hero");
-
-  const heroCopy = $(".store-hero-copy");
-
-  if (
-    hero &&
-    heroCopy &&
-    finePointer &&
-    !reduceMotion
-  ) {
-    hero.addEventListener(
-      "pointermove",
-      (event) => {
-        const rect =
-          hero.getBoundingClientRect();
-
-        const x =
-          (
-            event.clientX -
-            rect.left
-          ) / rect.width;
-
-        const y =
-          (
-            event.clientY -
-            rect.top
-          ) / rect.height;
-
-
-        heroCopy.style.transform = `
-          translate3d(
-            ${(x - 0.5) * -5}px,
-            ${(y - 0.5) * -4}px,
-            0
-          )
-        `;
-      }
-    );
-
-
-    hero.addEventListener(
-      "pointerleave",
-      () => {
-        heroCopy.style.transform =
-          "translate3d(0,0,0)";
-      }
-    );
-  }
-
-
-  /* ============================================================
-     FINAL PRODUCT STACK
-     ============================================================ */
-
-  const finalStack = $(
-    ".store-final-stack"
-  );
-
-  const finalCards = finalStack
-    ? $$(
-        ".store-final-stack > div"
-      )
-    : [];
-
-
-  if (
-    finalStack &&
-    finalCards.length &&
-    finePointer &&
-    !reduceMotion
-  ) {
-    finalStack.addEventListener(
-      "pointermove",
-      (event) => {
-        const rect =
-          finalStack.getBoundingClientRect();
-
-        const x =
-          (
-            event.clientX -
-            rect.left
-          ) / rect.width;
-
-        const y =
-          (
-            event.clientY -
-            rect.top
-          ) / rect.height;
-
-
-        finalCards.forEach(
-          (card, index) => {
-            const strength =
-              3 + index * 1.3;
-
-            card.style.marginLeft =
-              `${
-                (x - 0.5) *
-                strength
-              }px`;
-
-            card.style.marginTop =
-              `${
-                (y - 0.5) *
-                strength
-              }px`;
-          }
-        );
-      }
-    );
-
-
-    finalStack.addEventListener(
-      "pointerleave",
-      () => {
-        finalCards.forEach(
-          (card) => {
-            card.style.marginLeft =
-              "0px";
-
-            card.style.marginTop =
-              "0px";
-          }
-        );
-      }
-    );
-  }
-
-
-  /* ============================================================
-     MARQUEE PAUSE ON HOVER
-     ============================================================ */
-
-  const marquee = $(
-    ".product-marquee"
-  );
-
-  const marqueeTrack = $(
-    ".product-marquee-track"
-  );
-
-  if (
-    marquee &&
-    marqueeTrack &&
-    finePointer
-  ) {
-    marquee.addEventListener(
-      "mouseenter",
-      () => {
-        marqueeTrack.style.animationPlayState =
-          "paused";
-      }
-    );
-
-    marquee.addEventListener(
-      "mouseleave",
-      () => {
-        marqueeTrack.style.animationPlayState =
-          "running";
-      }
-    );
-  }
-
-
-  /* ============================================================
-     NAV ACTIVE SECTION
-     ============================================================ */
-
-  const navLinks = $$(
-    '.store-nav a[href^="#"]'
-  );
-
-  const navSections =
-    navLinks
-      .map((link) => {
-        const id =
-          link.getAttribute("href");
-
-        if (
-          !id ||
-          id === "#"
-        ) {
-          return null;
-        }
-
-        return document.querySelector(
-          id
-        );
+        return `<div class="product-plan annual"><span>${plan.name}</span><strong>${money(firstYear(plan.year))}<small>/first year</small></strong><del>${money(plan.year)}/year after</del></div>`;
       })
-      .filter(Boolean);
-
-
-  if (navSections.length) {
-    const navObserver =
-      new IntersectionObserver(
-        (entries) => {
-          entries.forEach(
-            (entry) => {
-              if (
-                !entry.isIntersecting
-              ) {
-                return;
-              }
-
-              navLinks.forEach(
-                (link) => {
-                  link.classList.toggle(
-                    "store-nav-active",
-
-                    link.getAttribute(
-                      "href"
-                    ) ===
-                      `#${entry.target.id}`
-                  );
-                }
-              );
-            }
-          );
-        },
-        {
-          rootMargin:
-            "-25% 0px -65% 0px",
-
-          threshold: 0
-        }
-      );
-
-
-    navSections.forEach(
-      (section) => {
-        navObserver.observe(
-          section
-        );
-      }
-    );
+      .join("");
   }
 
+  function renderProducts() {
+    const grid = $("[data-product-grid]");
+    if (!grid) return;
+    const visible = PRODUCTS.filter(
+      (product) => filter === "all" || product.category === filter,
+    );
+    grid.innerHTML = visible
+      .map(
+        (product) => `
+      <article class="product-card" style="--product-accent:${product.accent}">
+        <header><span>${String(PRODUCTS.indexOf(product) + 1).padStart(2, "0")} / ${product.label}</span><i>${product.symbol}</i></header>
+        <div class="product-card-copy"><h3>${product.name}</h3><p>${product.copy}</p></div>
+        <div class="product-plans">${priceMarkup(product)}</div>
+        ${billing === "annual" ? '<p class="promo-note"><strong>−80%</strong> launch price shown · renews at regular annual price</p>' : '<p class="promo-note">30 days free · no card required to register</p>'}
+        <footer><a href="${productPage(product.id)}">Product details <span>↗</span></a><a class="card-start" href="${signupPage(product.id)}">Start free <span>→</span></a></footer>
+      </article>`,
+      )
+      .join("");
 
-  /* ============================================================
-     INITIAL STATE
-     ============================================================ */
+    if (!reduced && window.Motion?.animate) {
+      window.Motion.animate(
+        $$(".product-card", grid),
+        { opacity: [0, 1], transform: ["translateY(12px)", "translateY(0)"] },
+        { duration: 0.32, delay: (index) => index * 0.035 },
+      );
+    }
+  }
 
-  updateSolution("leads");
+  renderConsoleTabs();
+  renderProducts();
 
-  requestAnimationFrame(() => {
-    root.classList.add(
-      "store-ready"
+  $$("[data-filter], [data-billing]").forEach((button) => {
+    button.setAttribute(
+      "aria-pressed",
+      String(button.classList.contains("active")),
     );
   });
 
+  $("[data-product-tabs]")?.addEventListener("keydown", (event) => {
+    if (!["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) return;
+    event.preventDefault();
+    const tabs = $$("[data-console-product]");
+    const current = tabs.indexOf(document.activeElement);
+    let next =
+      event.key === "Home"
+        ? 0
+        : event.key === "End"
+          ? tabs.length - 1
+          : current + (event.key === "ArrowRight" ? 1 : -1);
+    next = (next + tabs.length) % tabs.length;
+    tabs[next].focus();
+    selectProduct(tabs[next].dataset.consoleProduct);
+  });
+
+  document.addEventListener("click", (event) => {
+    const consoleButton = event.target.closest("[data-console-product]");
+    if (consoleButton) selectProduct(consoleButton.dataset.consoleProduct);
+
+    const filterButton = event.target.closest("[data-filter]");
+    if (filterButton) {
+      filter = filterButton.dataset.filter;
+      $$("[data-filter]").forEach((button) => {
+        const active = button === filterButton;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+      renderProducts();
+    }
+
+    const billingButton = event.target.closest("[data-billing]");
+    if (billingButton) {
+      billing = billingButton.dataset.billing;
+      $$("[data-billing]").forEach((button) => {
+        const active = button === billingButton;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+      renderProducts();
+    }
+  });
+
+  $$('a[href^="#"]').forEach((link) =>
+    link.addEventListener("click", (event) => {
+      const target = $(link.getAttribute("href"));
+      if (!target) return;
+      event.preventDefault();
+      target.scrollIntoView({
+        behavior: reduced ? "auto" : "smooth",
+        block: "start",
+      });
+    }),
+  );
+
+  const topbar = $(".store-topbar");
+  addEventListener(
+    "scroll",
+    () => topbar?.classList.toggle("scrolled", scrollY > 24),
+    { passive: true },
+  );
+
+  if (!coarse && !reduced) {
+    const productConsole = $("[data-console]");
+    productConsole?.addEventListener("pointermove", (event) => {
+      const rect = productConsole.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      productConsole.style.setProperty("--rx", `${y * -2.5}deg`);
+      productConsole.style.setProperty("--ry", `${x * 3.5}deg`);
+    });
+    productConsole?.addEventListener("pointerleave", () => {
+      productConsole.style.setProperty("--rx", "0deg");
+      productConsole.style.setProperty("--ry", "0deg");
+    });
+  }
 })();
