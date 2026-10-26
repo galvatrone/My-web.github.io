@@ -6,7 +6,7 @@
 
     <!-- Title & description -->
     <title>Mihail Charilaou (Михаил Харилау) — Software, AI &amp; Systems Engineer | Oneix</title>
-    <meta name="description" content="Mihail Charilaou (Михаил Харилау, Mikhail / Michael Charilaou) — software, AI and systems engineering student at the University of Nicosia, Cyprus. Founder of Oneix Ltd: SaaS products, applied AI, robotics and aerospace projects.">
+    <meta name="description" content="Mihail Charilaou (Михаил Харилау, Mikhail / Michael Charilaou) — software, AI and systems engineering student at the University of Nicosia, Cyprus. Software developer at Oneix Ltd: SaaS products, applied AI, robotics and aerospace projects.">
     <meta name="keywords" content="Mihail Charilaou, Mikhail Charilaou, Michael Charilaou, Mihail Charialou, Mikhail Charialou, Michael Charialou, Mihail Harilau, Mikhail Kharilau, Mike Charilaou, Миша Харилау, Михаил Харилау, Михаил Харилаоу, Михаил Харилау Кипр, Миша Харилау, Oneix, Oneix Ltd, oneix.ltd, galvatrone, software engineer, AI engineer, systems engineering, University of Nicosia, UNIC, Cyprus, Nicosia, CSEO, NASA exoplanet AI, robotics, drones, SaaS, LeadPocket, ReviewLoop">
     <meta name="author" content="Mihail Charilaou">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
@@ -17,7 +17,7 @@
     <meta property="og:type" content="profile">
     <meta property="og:site_name" content="Oneix — Mihail Charilaou">
     <meta property="og:title" content="Mihail Charilaou (Михаил Харилау) — Software, AI &amp; Systems Engineer">
-    <meta property="og:description" content="Software, AI and systems engineering student in Cyprus. Founder of Oneix Ltd — SaaS products, applied AI, robotics and aerospace projects.">
+    <meta property="og:description" content="Software, AI and systems engineering student in Cyprus. Software developer at Oneix Ltd: SaaS products, applied AI, robotics and aerospace projects.">
     <meta property="og:image" content="https://www.oneix.ltd/assets/images/mihail_charilaou.jpg">
     <meta property="og:image:width" content="600">
     <meta property="og:image:height" content="600">
@@ -32,7 +32,7 @@
     <!-- Twitter / X Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Mihail Charilaou (Михаил Харилау) — Software, AI &amp; Systems Engineer">
-    <meta name="twitter:description" content="Software, AI and systems engineering student in Cyprus. Founder of Oneix Ltd — SaaS products, applied AI, robotics and aerospace projects.">
+    <meta name="twitter:description" content="Software, AI and systems engineering student in Cyprus. Software developer at Oneix Ltd: SaaS products, applied AI, robotics and aerospace projects.">
     <meta name="twitter:image" content="https://www.oneix.ltd/assets/images/mihail_charilaou.jpg">
     <meta name="twitter:image:alt" content="Mihail Charilaou (Михаил Харилау)">
 
@@ -69,7 +69,7 @@
           "mainEntityOfPage": "https://www.oneix.ltd/",
           "image": "https://www.oneix.ltd/assets/images/mihail_charilaou.jpg",
           "jobTitle": "Software, AI & Systems Engineer",
-          "description": "Software, AI and systems engineering student at the University of Nicosia, Cyprus, and founder of Oneix Ltd. Works on SaaS products, applied AI, embedded systems, robotics and aerospace projects.",
+          "description": "Software, AI and systems engineering student at the University of Nicosia, Cyprus, and software developer at Oneix Ltd. Works on SaaS products, applied AI, embedded systems, robotics and aerospace projects.",
           "homeLocation": {
             "@type": "Place",
             "name": "Nicosia, Cyprus"
@@ -156,6 +156,37 @@
     <link href="assets/css/odometer-theme-default.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="assets/sass/style.css?v=20260224-2" rel="stylesheet">
+    <style>
+        /* What I Build: equal-height cards, links pinned to the bottom */
+        #services .wpo-service-wrap .tab-pane .row { align-items: stretch !important; }
+        #services .wpo-service-wrap .tab-pane .row > [class*="col-"] { display: flex; margin-bottom: 30px; }
+        #services .wpo-service-wrap .wpo-service-item { display: flex; flex-direction: column; width: 100%; margin-bottom: 0; }
+        #services .wpo-service-wrap .wpo-service-item p { flex-grow: 1; }
+        /* Space between Recent Work and the contact banner (the banner overlaps the section above by 280px) */
+        @media (min-width: 992px) { .wpo-project-area.section-padding { padding-bottom: 430px; } }
+
+        /* Hero tech icons on a circle around the photo, equal spacing, soft staggered entrance */
+        .static-hero .static-hero-right { --sz: 110px; }
+        @media (max-width: 991px) { .static-hero .static-hero-right { --sz: 95px; } }
+        @media (max-width: 575px) { .static-hero .static-hero-right { --sz: 70px; } }
+        .static-hero .static-hero-right .icon-1, .static-hero .static-hero-right .icon-2, .static-hero .static-hero-right .icon-3, .static-hero .static-hero-right .icon-4, .static-hero .static-hero-right .icon-5 { position: absolute; width: var(--sz); height: var(--sz); }
+        .static-hero .static-hero-right .icon-4, .static-hero .static-hero-right .icon-5 { padding: calc(var(--sz) * .12); background: #fff; border-radius: 25px; }
+        .static-hero .static-hero-right .icon-4 img, .static-hero .static-hero-right .icon-5 img { width: 100%; height: 100%; border-radius: 0; }
+        .static-hero .static-hero-right .icon-3 { left: 90%; top: auto; bottom: 6%; right: auto; margin: 0 0 0 calc(var(--sz) / -2); --tx: -240px; --ty: -120px; --i: 4; }
+        .static-hero .static-hero-right .icon-1 { left: 0.0%; top: 55.6%; right: auto; bottom: auto; margin: calc(var(--sz) / -2) 0 0 calc(var(--sz) / -2); --tx: 322px; --ty: -34px; --i: 3; }
+        .static-hero .static-hero-right .icon-4 { left: 6.0%; top: 19.0%; right: auto; bottom: auto; margin: calc(var(--sz) / -2) 0 0 calc(var(--sz) / -2); --tx: 264px; --ty: 186px; --i: 0; }
+        .static-hero .static-hero-right .icon-2 { left: 94.0%; top: 19.0%; right: auto; bottom: auto; margin: calc(var(--sz) / -2) 0 0 calc(var(--sz) / -2); --tx: -264px; --ty: 186px; --i: 1; }
+        .static-hero .static-hero-right .icon-5 { left: 100.0%; top: 55.6%; right: auto; bottom: auto; margin: calc(var(--sz) / -2) 0 0 calc(var(--sz) / -2); --tx: -322px; --ty: -34px; --i: 2; }
+        @keyframes heroPop {
+            0%   { opacity: 0; translate: var(--tx) var(--ty); scale: .35; rotate: -18deg; }
+            45%  { opacity: 1; }
+            78%  { translate: calc(var(--tx) * -.035) calc(var(--ty) * -.035); scale: 1.06; rotate: 2deg; }
+            100% { opacity: 1; translate: 0 0; scale: 1; rotate: 0deg; }
+        }
+        .static-hero .hero-pop { opacity: 0; animation: heroPop 1.5s cubic-bezier(.33,.9,.35,1) both; animation-delay: calc(1.2s + var(--i) * .55s); }
+        .static-hero .project.hero-pop { --i: 5; --tx: 160px; --ty: -140px; }
+        @media (prefers-reduced-motion: reduce) { .static-hero .hero-pop { animation: none; opacity: 1; } }
+    </style>
     
 </head>
 
@@ -206,14 +237,14 @@
                                     <a href="#">Home</a>    
                                 </li>
                                 <li>
-                                    <a href="about.html">About</a>
+                                    <a href="#about">About</a>
                                 </li>
                                 <li >
-                                    <a href="#">Service</a>
+                                    <a href="#services">Service</a>
                                    
                                 </li>
                                 <li >
-                                    <a href="portfolio-face-reg.html">Portfolio</a>
+                                    <a href="portfolio-grid.html">Portfolio</a>
                                     
                                 </li>
                                 
@@ -255,12 +286,12 @@
                                         <h5>Engineer • Programmer • AI Researcher</h5>
                                     </div>
                                     <div data-swiper-parallax="400" class="slide-text">
-                                        <p>Engineer, programmer, and AI enthusiast based in Cyprus. Passionate about
-                                            artificial intelligence and robotics. I build offline AI architectures,
-                                            autonomous drones, and face/voice recognition systems.</p>
+                                        <p>Software, AI and systems engineering student at the University of Nicosia, Cyprus,
+                                            and software developer at Oneix Ltd. I build SaaS products, offline AI,
+                                            secure data-transfer systems, and autonomous drone concepts.</p>
                                     </div>
                                     <div class="clearfix"></div>
-                                    <div class="slide-btn"><a class="theme-btn" href="portfolio.html">View Portfolio</a></div>
+                                    <div class="slide-btn"><a class="theme-btn" href="portfolio-grid.html">View Portfolio</a></div>
                                 </div>
                             </div>
                         </div>
@@ -271,15 +302,17 @@
                 <div class="static-hero-img">
                     <div class="static-hero-img-inner">
                         <img src="assets/images/slider/1.jpg" alt="Mihail Charilaou">
-                        <div class="icon-1 floating-item"><img src="assets/images/icon/photoshop.svg" alt=""></div>
-                        <div class="icon-2 floating-item"><img src="assets/images/icon/illustrator.svg" alt=""></div>
-                        <div class="icon-3 floating-item"><img src="assets/images/icon/diamond.svg" alt=""></div>
-                        <div class="project floating-item">
+                        <div class="icon-1 floating-item hero-pop" style="padding:6px"><img src="assets/images/icon/stack-cpp.svg" alt="C++"></div>
+                        <div class="icon-2 floating-item hero-pop" style="padding:6px"><img src="assets/images/icon/stack-rust.svg" alt="Rust"></div>
+                        <div class="icon-3 floating-item hero-pop" style="background:#000;padding:0;overflow:hidden"><img src="assets/images/icon/stack-whitehat.png" alt="White hat" style="width:100%;height:100%;display:block"></div>
+                        <div class="icon-4 floating-item hero-pop" style=""><img src="assets/images/icon/stack-python.svg" alt="Python"></div>
+                        <div class="icon-5 floating-item hero-pop" style=""><img src="assets/images/icon/stack-archlinux.svg" alt="Arch Linux"></div>
+                        <div class="project floating-item hero-pop">
                             <div class="icon">
                                 <i class="fi flaticon-verified"></i>
                             </div>
                             <div class="p-text">
-                                <h3><span class="odometer" data-count="10">00</span>+</h3>
+                                <h3><span class="odometer" data-count="16">00</span>+</h3>
                                 <p>Featured Projects</p>
                             </div>
                         </div>
@@ -341,18 +374,18 @@
         <!-- end of hero slider -->
 
         <!-- start of wpo-about-area -->
-        <div class="wpo-about-area section-padding">
+        <div class="wpo-about-area section-padding" id="about">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-5 col-md-12 col-sm-12">
                         <div class="wpo-about-exprience-wrap">
                             <div class="wpo-about-exprience">
-                                <h2>03</h2>
+                                <h2>04</h2>
                                 <span>Years in Programming</span>
                             </div>
                             <div class="client">
-                                <h3><span class="odometer" data-count="100">00</span>%</h3>
-                                <p>Projects Completed</p>
+                                <h3><span class="odometer" data-count="10">00</span>+</h3>
+                                <p>SaaS Products Built</p>
                             </div>
                         </div>
                     </div>
@@ -360,10 +393,11 @@
                         <div class="wpo-about-content">
                             <div class="wpo-about-title">
                                 <h2>My Advantage</h2>
-                                <p>Engineer, programmer, student at the University of Nicosia, and young developer.
-                                    I am passionate about artificial intelligence, robotics, and innovative technologies.
-                                    My main focus is building offline AI architectures, autonomous drones, and face and
-                                    voice recognition systems.</p>
+                                <p>Software developer at Oneix Ltd and Computer Science student at the University of Nicosia
+                                    (expected 2028). I build SaaS products, applied AI and secure systems in Python, C++,
+                                    Rust and JavaScript, and I am a former Engineering Intern at the Cyprus Space Exploration
+                                    Organisation. My focus is offline AI architectures, cybersecurity, autonomous drones,
+                                    and aerospace concepts. My NASA exoplanet classifier is published on Zenodo.</p>
                             </div>
                             <div class="wpo-about-funfact">
                                 <div class="grid">
@@ -447,34 +481,34 @@
         <!-- end of wpo-about-area -->
 
         <!-- start of wpo-service-area -->
-        <div class="wpo-service-area section-padding">
+        <div class="wpo-service-area section-padding" id="services">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-6 col-12">
                         <div class="wpo-section-title">
-                            <h2>Popular Services</h2>
-                            <p>Must explain to you how all this mistaken idea of denouncing pleasure
-                                born and give you a complete account the system</p>
+                            <h2>What I Build</h2>
+                            <p>Software, applied AI and engineering systems, from SaaS products to secure data
+                                transfer and robotics.</p>
                         </div>
                     </div>
                 </div>
                 <div class="wpo-service-wrap">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="Development-tab" data-bs-toggle="tab" href="#Development" role="tab"
+                            <a class="nav-link active" id="Development-tab" data-bs-toggle="tab" href="#Development" role="tab"
                                 aria-controls="Development" aria-selected="true">Development</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link active" id="Design-tab" data-bs-toggle="tab" href="#Design" role="tab"
-                                aria-controls="Design" aria-selected="false">Design</a>
+                            <a class="nav-link" id="AI-tab" data-bs-toggle="tab" href="#AI" role="tab"
+                                aria-controls="AI" aria-selected="false">AI</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="Marketing-tab" data-bs-toggle="tab" href="#Marketing" role="tab"
-                                aria-controls="Marketing" aria-selected="false">Marketing</a>
+                            <a class="nav-link" id="Systems-tab" data-bs-toggle="tab" href="#Systems" role="tab"
+                                aria-controls="Systems" aria-selected="false">Systems</a>
                         </li>
                     </ul>
                     <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane" id="Development">
+                        <div role="tabpanel" class="tab-pane active" id="Development">
                             <div class="row align-items-center">
                                 <div class="col-lg-4 col-md-6 col-12">
                                     <div class="wpo-service-item">
@@ -482,9 +516,7 @@
                                             <i class="fi flaticon-coding"></i>
                                         </div>
                                         <h2>Web Development</h2>
-                                        <p>Explain to you how all this mistaken idea of denouncing pleasure born and
-                                            give you complete account the system.</p>
-                                        <a href="service-single.html">Learn More</a>
+                                        <p>Responsive websites and product pages, including oneix.ltd and Oneix Store, with hosting and domain setup.</p>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-12">
@@ -492,10 +524,9 @@
                                         <div class="icon">
                                             <i class="fi flaticon-app-development"></i>
                                         </div>
-                                        <h2>App Development</h2>
-                                        <p>Explain to you how all this mistaken idea of denouncing pleasure born and
-                                            give you complete account the system.</p>
-                                        <a href="service-single.html">Learn More</a>
+                                        <h2>SaaS Products</h2>
+                                        <p>A portfolio of 10 SaaS products, including LeadPocket and ReviewLoop, with authentication, dashboards and Stripe subscription flows.</p>
+                                        <a href="store/" target="_blank" rel="noopener">View the store</a>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-12">
@@ -503,25 +534,22 @@
                                         <div class="icon">
                                             <i class="fi flaticon-smartphone"></i>
                                         </div>
-                                        <h2>Softwere Development</h2>
-                                        <p>Explain to you how all this mistaken idea of denouncing pleasure born and
-                                            give you complete account the system.</p>
-                                        <a href="service-single.html">Learn More</a>
+                                        <h2>Software &amp; APIs</h2>
+                                        <p>Python, C++, JavaScript, React and Node.js services, APIs and Linux tooling that automate real workflows.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div role="tabpanel" class="tab-pane active" id="Design">
+                        <div role="tabpanel" class="tab-pane" id="AI">
                             <div class="row align-items-center">
                                 <div class="col-lg-4 col-md-6 col-12">
                                     <div class="wpo-service-item">
                                         <div class="icon">
                                             <i class="fi flaticon-vector"></i>
                                         </div>
-                                        <h2>Graphic Design</h2>
-                                        <p>Explain to you how all this mistaken idea of denouncing pleasure born and
-                                            give you complete account the system.</p>
-                                        <a href="service-single.html">Learn More</a>
+                                        <h2>Neural Networks</h2>
+                                        <p>NASA Exoplanet AI: a C++ network built from scratch to classify Kepler, K2 and TESS objects.</p>
+                                        <a href="https://doi.org/10.5281/zenodo.23675369" target="_blank" rel="noopener">Read the paper</a>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-12">
@@ -529,10 +557,8 @@
                                         <div class="icon">
                                             <i class="fi flaticon-palette"></i>
                                         </div>
-                                        <h2>Brand Identity</h2>
-                                        <p>Explain to you how all this mistaken idea of denouncing pleasure born and
-                                            give you complete account the system.</p>
-                                        <a href="service-single.html">Learn More</a>
+                                        <h2>Offline AI</h2>
+                                        <p>Local assistants with persistent memory and adaptive behaviour that run without cloud services.</p>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-12">
@@ -540,25 +566,21 @@
                                         <div class="icon">
                                             <i class="fi flaticon-add"></i>
                                         </div>
-                                        <h2>UI/UX Design</h2>
-                                        <p>Explain to you how all this mistaken idea of denouncing pleasure born and
-                                            give you complete account the system.</p>
-                                        <a href="service-single.html">Learn More</a>
+                                        <h2>Voice &amp; Face Recognition</h2>
+                                        <p>Python, OpenCV and dlib prototypes, and a local voice-command system with speaker verification.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div role="tabpanel" class="tab-pane" id="Marketing">
+                        <div role="tabpanel" class="tab-pane" id="Systems">
                             <div class="row align-items-center">
                                 <div class="col-lg-4 col-md-6 col-12">
                                     <div class="wpo-service-item">
                                         <div class="icon">
                                             <i class="fi flaticon-social-media"></i>
                                         </div>
-                                        <h2>Social Media Marketing</h2>
-                                        <p>Explain to you how all this mistaken idea of denouncing pleasure born and
-                                            give you complete account the system.</p>
-                                        <a href="service-single.html">Learn More</a>
+                                        <h2>Secure Data Transfer</h2>
+                                        <p>A C++ and Rust relay with authenticated delivery, acknowledgements, offline buffering and duplicate detection.</p>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-12">
@@ -566,10 +588,8 @@
                                         <div class="icon">
                                             <i class="fi flaticon-promotion"></i>
                                         </div>
-                                        <h2>Digital Marketing</h2>
-                                        <p>Explain to you how all this mistaken idea of denouncing pleasure born and
-                                            give you complete account the system.</p>
-                                        <a href="service-single.html">Learn More</a>
+                                        <h2>Embedded &amp; Robotics</h2>
+                                        <p>Arduino and ESP32 systems, sensors, and an autonomous drone-swarm concept.</p>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-12">
@@ -577,10 +597,8 @@
                                         <div class="icon">
                                             <i class="fi flaticon-email-marketing"></i>
                                         </div>
-                                        <h2>Email Marketing</h2>
-                                        <p>Explain to you how all this mistaken idea of denouncing pleasure born and
-                                            give you complete account the system.</p>
-                                        <a href="service-single.html">Learn More</a>
+                                        <h2>Aerospace Concepts</h2>
+                                        <p>A lunar electromagnetic logistics platform concept with feasibility study and requirements.</p>
                                     </div>
                                 </div>
                             </div>
@@ -613,8 +631,8 @@
                     <div class="col-lg-6 col-12">
                         <div class="wpo-section-title">
                             <h2>Education &amp; Focus</h2>
-                            <p>Focused on artificial intelligence, robotics, and autonomous systems with hands-on
-                                personal projects and research-oriented development.</p>
+                            <p>Computer Science studies, product development at Oneix Ltd, and hands-on engineering in AI,
+                                secure systems and robotics.</p>
                         </div>
                     </div>
                 </div>
@@ -623,32 +641,32 @@
                         <ul>
                             <li class="date">2023-2028</li>
                             <li class="logo"><img src="assets/images/work/1.png" alt=""></li>
-                            <li class="position">Computer Science Student <span>University of Nicosia</span></li>
+                            <li class="position">BSc Computer Science <span>University of Nicosia</span></li>
                             <li class="link"><a href="https://www.unic.ac.cy/" target="_blank" rel="noopener">Go to website</a></li>
                         </ul>
                     </div>
                     <div class="wpo-work-item">
                         <ul>
-                            <li class="date">Ongoing</li>
+                            <li class="date">2024-Present</li>
                             <li class="logo"><img src="assets/images/work/2.png" alt=""></li>
-                            <li class="position">AI &amp; Robotics Projects <span>Personal R&amp;D</span></li>
-                            <li class="link"><a href="https://github.com/galvatrone" target="_blank" rel="noopener">Go to website</a></li>
+                            <li class="position">Software Developer <span>Oneix Ltd</span></li>
+                            <li class="link"><a href="https://www.oneix.ltd/store/" target="_blank" rel="noopener">Go to website</a></li>
                         </ul>
                     </div>
                     <div class="wpo-work-item">
                         <ul>
-                            <li class="date">Ongoing</li>
+                            <li class="date">2023-2024</li>
                             <li class="logo"><img src="assets/images/work/3.png" alt=""></li>
-                            <li class="position">Autonomous Drones &amp; Swarm Systems <span>Engineering Experiments</span></li>
-                            <li class="link"><a href="https://github.com/galvatrone" target="_blank" rel="noopener">Go to website</a></li>
+                            <li class="position">President &amp; Lead Engineer <span>Robotics and Innovation Technology Club, UNIC</span></li>
+                            <li class="link"></li>
                         </ul>
                     </div>
                     <div class="wpo-work-item">
                         <ul>
-                            <li class="date">Ongoing</li>
+                            <li class="date">2026</li>
                             <li class="logo"><img src="assets/images/work/4.png" alt=""></li>
-                            <li class="position">Voice &amp; Face Recognition <span>Offline AI Systems</span></li>
-                            <li class="link"><a href="https://github.com/galvatrone" target="_blank" rel="noopener">Go to website</a></li>
+                            <li class="position">Engineering Intern <span>Cyprus Space Exploration Organisation</span></li>
+                            <li class="link"></li>
                         </ul>
                     </div>
                 </div>
@@ -672,14 +690,14 @@
         <!-- end of wpo-work-area -->
 
         <!-- start of wpo-project-area -->
-        <div class="wpo-project-area section-padding">
+        <div class="wpo-project-area section-padding" id="projects">
             <div class="container">
                 <div class="wpo-section-title-s2">
                     <div class="row align-items-center">
                         <div class="col-lg-4 col-12">
                             <div class="title">
                                 <h2>Recent Work.</h2>
-                                <p>Selected projects across AI systems, robotics, autonomous drones, and web.</p>
+                                <p>Selected projects across AI systems, SaaS products, robotics, and aerospace concepts.</p>
                             </div>
                         </div>
                         <div class="col-lg-6 offset-lg-2">
@@ -692,20 +710,65 @@
                 <div class="wpo-project-wrap wpo-project-slide owl-carousel">
                     <div class="wpo-project-item">
                         <div class="wpo-project-img">
-                            <img src="assets/images/sites/full-stack-development-2.jpg" alt="Website Stack">
+                            <img src="assets/images/projects/nasa-exoplanet-ai/card.jpg" alt="NASA Exoplanet AI">
                         </div>
                         <div class="wpo-project-text">
-                            <h2><a href="portfolio-face-reg.html">Website Stack</a></h2>
-                            <span>Portfolio / Startup / Club Sites</span>
+                            <h2><a href="portfolio-nasa-exoplanet-ai.html">NASA Exoplanet AI</a></h2>
+                            <span>Neural Network / Kepler, K2, TESS / C++</span>
                         </div>
                     </div>
                     <div class="wpo-project-item">
                         <div class="wpo-project-img">
-                            <img src="assets/images/project/128610345-be08d18c-a7d9-4e50-b8ee-e9f59581420c.png" alt="ИИ JARVIS">
+                            <img src="assets/images/projects/splitbill/card.jpg" alt="SplitBill">
                         </div>
                         <div class="wpo-project-text">
-                            <h2><a href="portfolio-face-reg.html">AI JARVIS</a></h2>
-                            <span>Offline Assistant / Personalization</span>
+                            <h2><a href="portfolio-splitbill.html">SplitBill</a></h2>
+                            <span>Next.js / TypeScript / Supabase</span>
+                        </div>
+                    </div>
+                    <div class="wpo-project-item">
+                        <div class="wpo-project-img">
+                            <img src="assets/images/sites/full-stack-development-2.jpg" alt="Oneix Store and SaaS sites">
+                        </div>
+                        <div class="wpo-project-text">
+                            <h2><a href="store/">Oneix Store &amp; SaaS</a></h2>
+                            <span>LeadPocket / ReviewLoop / SaaS Landing Pages</span>
+                        </div>
+                    </div>
+                    <div class="wpo-project-item">
+                        <div class="wpo-project-img">
+                            <img src="assets/images/projects/secure-telemetry/card.jpg" alt="Secure Telemetry &amp; Internet Relay">
+                        </div>
+                        <div class="wpo-project-text">
+                            <h2><a href="portfolio-secure-telemetry.html">Secure Telemetry Relay</a></h2>
+                            <span>C++ / Rust / Secure Data Transfer</span>
+                        </div>
+                    </div>
+                    <div class="wpo-project-item">
+                        <div class="wpo-project-img">
+                            <img src="assets/images/projects/sound-to-action/card.jpg" alt="Sound-to-Action Voice Commands">
+                        </div>
+                        <div class="wpo-project-text">
+                            <h2><a href="portfolio-sound-to-action.html">Sound-to-Action</a></h2>
+                            <span>Python / Audio ML / Local</span>
+                        </div>
+                    </div>
+                    <div class="wpo-project-item">
+                        <div class="wpo-project-img">
+                            <img src="assets/images/projects/neuron-offline-ai/card.jpg" alt="Neuron: Offline Cognitive AI">
+                        </div>
+                        <div class="wpo-project-text">
+                            <h2><a href="portfolio-neuron-offline-ai.html">Neuron Offline AI</a></h2>
+                            <span>Offline AI / Memory / Modular Architecture</span>
+                        </div>
+                    </div>
+                    <div class="wpo-project-item">
+                        <div class="wpo-project-img">
+                            <img src="assets/images/projects/zhelezyaka-assistant/card.jpg" alt="Zhelezyaka, an AI JARVIS concept">
+                        </div>
+                        <div class="wpo-project-text">
+                            <h2><a href="portfolio-zhelezyaka.html">Zhelezyaka (JARVIS)</a></h2>
+                            <span>Local AI Assistant / Concept</span>
                         </div>
                     </div>
                     <div class="wpo-project-item">
@@ -719,11 +782,38 @@
                     </div>
                     <div class="wpo-project-item">
                         <div class="wpo-project-img">
-                            <img src="assets/images/project/2b2847842d3b1d3ae9b1d719c2c51a5d.png" alt="Swarm Drones">
+                            <img src="assets/images/projects/drone-swarm-like-bees/card.jpg" alt="Autonomous Drone Swarm “Like Bees”">
                         </div>
                         <div class="wpo-project-text">
-                            <h2><a href="portfolio-face-reg.html">Swarm Drones</a></h2>
-                            <span>Arduino / Swarm Intelligence</span>
+                            <h2><a href="portfolio-drone-swarm.html">Drone Swarm</a></h2>
+                            <span>Arduino / Swarm Intelligence / Vector</span>
+                        </div>
+                    </div>
+                    <div class="wpo-project-item">
+                        <div class="wpo-project-img">
+                            <img src="assets/images/projects/lelp-lunar-platform/card.jpg" alt="LELP: Lunar Electromagnetic Logistics Platform">
+                        </div>
+                        <div class="wpo-project-text">
+                            <h2><a href="portfolio-lelp.html">LELP Lunar Platform</a></h2>
+                            <span>Aerospace Concept / Systems Engineering</span>
+                        </div>
+                    </div>
+                    <div class="wpo-project-item">
+                        <div class="wpo-project-img">
+                            <img src="assets/images/projects/automatic-mafia/card.jpg" alt="Automatic Mafia">
+                        </div>
+                        <div class="wpo-project-text">
+                            <h2><a href="portfolio-automatic-mafia.html">Automatic Mafia</a></h2>
+                            <span>Python / PySide6 / Face Recognition</span>
+                        </div>
+                    </div>
+                    <div class="wpo-project-item">
+                        <div class="wpo-project-img">
+                            <img src="assets/images/projects/voice-generator/card.jpg" alt="Voice Generator Workspace">
+                        </div>
+                        <div class="wpo-project-text">
+                            <h2><a href="portfolio-voice-generator.html">Voice Generator</a></h2>
+                            <span>Python / Text-to-Speech / Voice ML</span>
                         </div>
                     </div>
                 </div>
@@ -913,151 +1003,7 @@
         </!--section>
         <!--End wpo-testimonial-section-->
 
-        <!-- start wpo-pricing-section -->
-        <section class="wpo-pricing-section section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-5">
-                            <div class="wpo-section-title">
-                                <h2>Pricing Plan</h2>
-                                <p>Must explain to you how all this mistaken idea pleasure
-                                    born and give you a complete account.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="wpo-pricing-wrap">
-                    <div class="row">
-                        <div class="col col-lg-4 col-md-6 col-12">
-                            <div class="wpo-pricing-item">
-                                <div class="wpo-pricing-top">
-                                    <div class="pricing-thumb">
-                                        <span>Basic</span>
-                                    </div>
-                                    <div class="wpo-pricing-text">
-                                        <h2>$120<span> / per month</span></h2>
-                                        <p>Determine the Best Pricing Strategy For Your Business.</p>
-                                    </div>
-                                </div>
-                                <div class="wpo-pricing-bottom">
-                                    <div class="wpo-pricing-bottom-text">
-                                        <ul>
-                                            <li>Softwere Development</li>
-                                            <li>Web Development</li>
-                                            <li>Digital Marketing</li>
-                                            <li>Graphic Design</li>
-                                            <li>24/Support</li>
-                                        </ul>
-                                        <a href="pricing.html">CHOOSE PLAN</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col col-lg-4 col-md-6 col-12">
-                            <div class="wpo-pricing-item">
-                                <div class="wpo-pricing-top">
-                                    <div class="pricing-thumb">
-                                        <span>Premium</span>
-                                    </div>
-                                    <div class="wpo-pricing-text">
-                                        <h2>$210<span> / per month</span></h2>
-                                        <p>Determine the Best Pricing Strategy For Your Business.</p>
-                                    </div>
-                                </div>
-                                <div class="wpo-pricing-bottom">
-                                    <div class="wpo-pricing-bottom-text">
-                                        <ul>
-                                            <li>Softwere Development</li>
-                                            <li>Web Development</li>
-                                            <li>Digital Marketing</li>
-                                            <li>Graphic Design</li>
-                                            <li>24/Support</li>
-                                        </ul>
-                                        <a href="pricing.html">CHOOSE PLAN</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col col-lg-4 col-md-6 col-12">
-                            <div class="wpo-pricing-item">
-                                <div class="wpo-pricing-top">
-                                    <div class="pricing-thumb">
-                                        <span>Advanced</span>
-                                    </div>
-                                    <div class="wpo-pricing-text">
-                                        <h2>$373<span> / per month</span></h2>
-                                        <p>Determine the Best Pricing Strategy For Your Business.</p>
-                                    </div>
-                                </div>
-                                <div class="wpo-pricing-bottom">
-                                    <div class="wpo-pricing-bottom-text">
-                                        <ul>
-                                            <li>Softwere Development</li>
-                                            <li>Web Development</li>
-                                            <li>Digital Marketing</li>
-                                            <li>Graphic Design</li>
-                                            <li>24/Support</li>
-                                        </ul>
-                                        <a href="pricing.html">CHOOSE PLAN</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- end container -->
-            <div class="shape-p">
-                <svg width="1500" height="1500" viewBox="0 0 1500 1500" fill="none">
-                    <g opacity="0.45" filter="url(#filter0_f_39_4213)">
-                        <circle cx="750" cy="750" r="200" />
-                    </g>
-                    <defs>
-                        <filter id="filter0_f_39_4213" x="0" y="0" width="1500" height="1500"
-                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                            <feGaussianBlur stdDeviation="275" result="effect1_foregroundBlur_39_4212" />
-                        </filter>
-                    </defs>
-                </svg>
-            </div>
-        </section>
-        <!-- end wpo-pricing-section -->
 
-        <!-- start of wpo-blog-section -->
-        <section class="wpo-blog-section section-padding">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-5">
-                        <div class="wpo-section-title">
-                            <h2>Latest News</h2>
-                            <p>Must explain to you how all this mistaken idea pleasure
-                                born and give you a complete account.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="wpo-blog-wrap wpo-blog-slide owl-carousel">
-                    
-                </div>
-            </div>
-            <div class="shadow-shape">
-                <svg width="1319" height="1567" viewBox="0 0 1319 1567" fill="none">
-                    <g filter="url(#filter0_f_39_3832)">
-                        <circle cx="803" cy="803" r="303" fill="#59C378" fill-opacity="0.5" />
-                    </g>
-                    <defs>
-                        <filter id="filter0_f_39_3832" x="0" y="0" width="1606" height="1606"
-                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                            <feGaussianBlur stdDeviation="250" result="effect1_foregroundBlur_39_3832" />
-                        </filter>
-                    </defs>
-                </svg>
-            </div>
-        </section>
-        <!-- end of wpo-blog-section -->
 
         <!-- start wpo-site-footer -->
         <footer class="wpo-site-footer">
@@ -1087,8 +1033,8 @@
                             <a class="site-logo" href="index.html"><img src="assets/images/logo.png"
                                     alt="">Mihail Charilaou</a>
                         </div>
-                        <p>Engineer, programmer, and AI enthusiast based in Cyprus. Focused on artificial
-                            intelligence, robotics, and autonomous systems.</p>
+                        <p>Software, AI and systems engineer based in Cyprus. Works at Oneix Ltd. Focused on
+                            artificial intelligence, secure systems, and robotics.</p>
                         <div class="social-icons">
                             <ul>
                                 <li><a href="https://www.linkedin.com/in/mihail-charilaou-b39586351" target="_blank" rel="noopener"><i class="ti-linkedin"></i></a></li>
@@ -1106,8 +1052,8 @@
                             <h3>Navigation</h3>
                         </div>
                         <ul>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="portfolio.html">Portfolio</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="portfolio-grid.html">Portfolio</a></li>
                             <li><a href="contact.html">Contact</a></li>
                             <li><a href="https://github.com/galvatrone" target="_blank" rel="noopener">GitHub</a></li>
                         </ul>
@@ -1123,6 +1069,8 @@
                             <li><a href="#">JavaScript</a></li>
                             <li><a href="#">C++</a></li>
                             <li><a href="#">HTML/CSS</a></li>
+                            <li><a href="#">Rust</a></li>
+                            <li><a href="#">React</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1157,7 +1105,7 @@
     <div class="lower-footer">
         <div class="container">
             <div class="row">
-                <p class="copyright">© 2025 Mihail Charilaou — All rights reserved.</p>
+                <p class="copyright">© 2026 Mihail Charilaou — All rights reserved.</p>
             </div>
         </div>
     </div>

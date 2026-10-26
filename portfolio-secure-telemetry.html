@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Mihail Charilaou">
+    <meta name="description" content="A secure data-transfer component built with C++, Rust and Linux: sender, relay, receiver and interface with authenticated delivery, acknowledgements, offline buffering and duplicate detection.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://www.oneix.ltd/portfolio-secure-telemetry.html">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Secure Telemetry &amp; Internet Relay | Mihail Charilaou">
+    <meta property="og:description" content="A secure data-transfer component built with C++, Rust and Linux: sender, relay, receiver and interface with authenticated delivery, acknowledgements, offline buffering and duplicate detection.">
+    <meta property="og:image" content="https://www.oneix.ltd/assets/images/projects/secure-telemetry/main1.jpg">
+    <meta property="og:url" content="https://www.oneix.ltd/portfolio-secure-telemetry.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Secure Telemetry & Internet Relay",
+  "description": "A secure data-transfer component built with C++, Rust and Linux: sender, relay, receiver and interface with authenticated delivery, acknowledgements, offline buffering and duplicate detection.",
+  "url": "https://www.oneix.ltd/portfolio-secure-telemetry.html",
+  "image": "https://www.oneix.ltd/assets/images/projects/secure-telemetry/main1.jpg",
+  "inLanguage": "en",
+  "author": {
+    "@id": "https://www.oneix.ltd/#mihail"
+  }
+}
+    </script>
+    <!-- Page Title -->
+    <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
+    <!-- Icon fonts -->
+    <title>Secure Telemetry &amp; Internet Relay — Mihail Charilaou</title>
+    <link href="assets/css/themify-icons.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/flaticon.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Plugins for this template -->
+    <link href="assets/css/magnific-popup.css" rel="stylesheet">
+    <link href="assets/css/animate.css" rel="stylesheet">
+    <link href="assets/css/owl.carousel.css" rel="stylesheet">
+    <link href="assets/css/owl.theme.css" rel="stylesheet">
+    <link href="assets/css/slick.css" rel="stylesheet">
+    <link href="assets/css/slick-theme.css" rel="stylesheet">
+    <link href="assets/css/swiper.min.css" rel="stylesheet">
+    <link href="assets/css/nice-select.css" rel="stylesheet">
+    <link href="assets/css/owl.transitions.css" rel="stylesheet">
+    <link href="assets/css/jquery.fancybox.css" rel="stylesheet">
+    <link href="assets/css/odometer-theme-default.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="assets/sass/style.css" rel="stylesheet">
+    <style>
+        #header.wpo-header-style-1 .wpo-site-header {
+            position: relative;
+            background: #131313;
+        }
+
+        .wpo-site-footer {
+            margin-top: 240px;
+        }
+
+        .wpo-site-footer .upper-footer {
+            overflow: visible;
+        }
+
+        .wpo-site-footer .upper-footer .shadow-shape {
+            top: -95%;
+        }
+            .wpo-page-title { background: url(assets/images/projects/secure-telemetry/banner.jpg) no-repeat center/cover; }
+    </style>
+    
+</head>
+
+<body>
+
+    <!-- start page-wrapper -->
+    <div class="page-wrapper">
+        <!-- start preloader -->
+        <div class="preloader">
+    <div class="vertical-centered-box">
+        <div class="content">
+            <div class="loader-circle"></div>
+            <div class="loader-line-mask">
+                <div class="loader-line"></div>
+            </div>
+            <img src="assets/images/preloader.png" alt="">
+        </div>
+    </div>
+</div>
+        <!-- end preloader -->
+        <!-- Start header -->
+        <header id="header" class="wpo-header-style-1">
+    <div class="wpo-site-header">
+        <nav class="navigation navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-3 col-md-3 col-3 d-lg-none dl-block">
+                        <div class="mobail-menu">
+                            <button type="button" class="navbar-toggler open-btn">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar first-angle"></span>
+                                <span class="icon-bar middle-angle"></span>
+                                <span class="icon-bar last-angle"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-6">
+                        <div class="navbar-header">
+                            <a class="navbar-brand site-logo" href="index.html"><img
+                                    src="assets/images/logo.png" alt="">Mike</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-1 col-1">
+                        <div id="navbar" class="collapse navbar-collapse navigation-holder">
+                            <button class="menu-close"><i class="ti-close"></i></button>
+                            <ul class="nav navbar-nav mb-2 mb-lg-0">
+                                <li>
+                                    <a href="index.html">Home</a>    
+                                </li>
+                                <li>
+                                    <a href="index.html#about">About</a>
+                                </li>
+                                <li >
+                                    <a href="index.html#services">Service</a>
+                                   
+                                </li>
+                                <li >
+                                    <a href="portfolio-grid.html">Portfolio</a>
+                                    
+                                </li>
+                                
+                               
+                            </ul>
+
+                        </div><!-- end of nav-collapse -->
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-2">
+                        <div class="header-right">
+                            <div class="header-btn">
+                                <a class="theme-btn" download="Mihail Charilaou CV" href="../path/Michail Charilaou.pdf"
+                                    title="Mihail Charilaou CV">
+                                    <img class="hide-img" alt="ImageName" src="assets/images/cv.jpg">
+                                    Resume
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end of container -->
+        </nav>
+    </div>
+</header>
+        <!-- end of header -->
+        <!-- start wpo-page-title -->
+        
+        
+<section class="wpo-page-title">
+    <div class="container">
+        <div class="row">
+            <div class="col col-xs-12">
+                <div class="wpo-breadcumb-wrap">
+                    <h2>Secure Telemetry</h2>
+                    <ol class="wpo-breadcumb-wrap">
+                        <li><a href="index.html"><i class="icon-36"></i> Home</a></li>
+                        <li>Secure Telemetry</li>
+                    </ol>
+                </div>
+            </div>
+        </div> <!-- end row -->
+    </div> <!-- end container -->
+</section>
+
+        <!-- end page-title -->
+        <!-- wpo-project-single-area start -->
+        <div class="wpo-project-single-area section-padding">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-12">
+                        <div class="wpo-project-single-wrap">
+                            <div class="wpo-project-single-item">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-7">
+                                        <div class="wpo-project-single-title">
+                                            <h3>Secure Telemetry &amp; Internet Relay</h3>
+                                        </div>
+                                        <p>The secure data-transfer part of a team telemetry project, designed, developed and tested independently during an engineering internship at the Cyprus Space Exploration Organisation. Other team members handled data collection and its use; this component moves the data safely between computers over the public Internet.</p>
+                                        <p>It consists of a sender, a relay, a receiver and a user interface. Delivery is authenticated and integrity-checked, every message is acknowledged, data waits in an offline queue when the link is down, and duplicates are rejected when it comes back. Everything is written to structured logs.</p>
+                                        
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="wpo-project-single-content-des-right">
+                                            <ul>
+                                                <li>Category :<span>Networking / Secure Systems</span></li>
+                                            <li>Stack :<span>C++, Rust, Linux</span></li>
+                                            <li>Components :<span>Sender, relay, receiver, user interface</span></li>
+                                            <li>Delivery :<span>Authenticated, integrity-verified, acknowledged</span></li>
+                                            <li>Resilience :<span>Offline buffering, duplicate rejection</span></li>
+                                            <li>Validation :<span>Recovery tests across separate systems and networks</span></li>
+                                            <li>Status :<span>Working prototype / source code not published</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="wpo-project-single-main-img owl-carousel mt-2">
+                                    <img src="assets/images/projects/secure-telemetry/main1.jpg" alt="Secure telemetry network with a shield and padlock">
+                                      <img src="assets/images/projects/secure-telemetry/dia_flow.jpg" alt="Secure telemetry data path">
+                                      </div>
+                            </div>
+                            <div class="wpo-project-single-item list-widget">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="wpo-project-single-title">
+                                            <h3>Core Features</h3>
+                                        </div>
+                                        <p>The design goal was a data path that keeps working when the network does not: nothing is lost on a dropped link and nothing is processed twice after it recovers.</p>
+                                        <ul>
+                                            <li>Authenticated delivery between sender, relay and receiver.</li>
+                                            <li>Integrity verification of every message.</li>
+                                            <li>Acknowledgement handling, so the sender knows what arrived.</li>
+                                            <li>Offline queues that hold data while the connection is down.</li>
+                                            <li>Duplicate detection and rejection after retransmission.</li>
+                                            <li>Structured logging for diagnosis.</li>
+                                            </ul>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="wpo-project-single-item-quote">
+                                            <p>&ldquo;A telemetry link is only useful if it survives interruptions without losing or repeating data.&rdquo;</p>
+                                            <span>Design Note - <span>Reliability First</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wpo-project-single-item">
+                                <div class="wpo-project-single-title">
+                                    <h3>Architecture</h3>
+                                </div>
+                                <p>The system is layered: a transport over the public Internet, a delivery protocol that adds authentication, integrity checks and acknowledgements, a queue-and-recovery layer that buffers and de-duplicates, and the user interface on top. The diagrams are conceptual and show the structure described in the project, not the source code, which is not published.</p>
+                            </div>
+                            <div class="wpo-project-single-gallery">
+                                <div class="row mt-4">
+                                    <div class="col-md-6 col-sm-6 col-12">
+                                        <div class="wpo-p-details-img">
+                                            <img src="assets/images/projects/secure-telemetry/gal1.jpg" alt="Layers of the data path">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-12">
+                                        <div class="wpo-p-details-img">
+                                            <img src="assets/images/projects/secure-telemetry/gal2.jpg" alt="What was built and tested">
+                                        </div>
+                                    </div>
+                                    </div>
+                            </div>
+                            <div class="wpo-project-single-item list-widget">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="wpo-project-single-title">
+                                            <h3>Delivery Flow</h3>
+                                        </div>
+                                        <ul>
+                                            <li>The sender prepares an authenticated message.</li>
+                                            <li>The message travels through the relay to the receiver.</li>
+                                            <li>The receiver verifies integrity and sends an acknowledgement.</li>
+                                            <li>If the link is down, the sender keeps the message in the offline queue.</li>
+                                            <li>After recovery the queue is resent and duplicates are rejected.</li>
+                                            <li>Every step is written to the structured log.</li>
+                                            </ul>
+                                    </div>
+                                    <div class="col-lg-6 list-widget-s">
+                                        <div class="wpo-project-single-title">
+                                            <h3>What It Shows</h3>
+                                        </div>
+                                        <ul>
+                                            <li>Network programming in C++ and Rust on Linux.</li>
+                                            <li>Designing for failure: recovery, buffering and de-duplication.</li>
+                                            <li>Testing across separate computers and networks.</li>
+                                            <li>Documenting issues and reporting progress with versioned releases.</li>
+                                            </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wpo-project-single-item">
+                                <div class="wpo-project-single-title">
+                                    <h3>Related Projects</h3>
+                                </div>
+                                <div class="wpo-project-area-s2">
+                                    <div class="wpo-project-wrap">
+                                        <div class="row">
+                                            <div class="col col-lg-4 col-md-6 col-12">
+                                                <div class="wpo-project-item">
+                                                    <div class="wpo-project-img">
+                                                        <img src="assets/images/projects/sound-to-action/card.jpg" alt="Sound-to-Action Voice Commands">
+                                                    </div>
+                                                    <div class="wpo-project-text">
+                                                        <h2><a href="portfolio-sound-to-action.html">Sound-to-Action Voice Commands</a></h2>
+                                                        <span>Python / Audio ML / Local</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col col-lg-4 col-md-6 col-12">
+                                                <div class="wpo-project-item">
+                                                    <div class="wpo-project-img">
+                                                        <img src="assets/images/projects/neuron-offline-ai/card.jpg" alt="Neuron: Offline Cognitive AI">
+                                                    </div>
+                                                    <div class="wpo-project-text">
+                                                        <h2><a href="portfolio-neuron-offline-ai.html">Neuron: Offline Cognitive AI</a></h2>
+                                                        <span>Offline AI / Memory / Modular Architecture</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col col-lg-4 col-md-6 col-12">
+                                                <div class="wpo-project-item">
+                                                    <div class="wpo-project-img">
+                                                        <img src="assets/images/projects/drone-swarm-like-bees/card.jpg" alt="Autonomous Drone Swarm “Like Bees”">
+                                                    </div>
+                                                    <div class="wpo-project-text">
+                                                        <h2><a href="portfolio-drone-swarm.html">Autonomous Drone Swarm &ldquo;Like Bees&rdquo;</a></h2>
+                                                        <span>Arduino / Swarm Intelligence / Vector</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wpo-project-single-item">
+                                <div class="wpo-project-contact-area">
+                                    <div class="wpo-contact-title">
+                                        <h2>Project Summary</h2>
+                                        <p>Send a direct message about this project and it will be delivered to my email.</p>
+                                    </div>
+                                    <div class="wpo-contact-form-area">
+                                        <form method="post" id="project-contact-form" novalidate>
+                                            <div class="row">
+                                                <div class="col col-lg-6 col-md-6 col-12">
+                                                    <input type="text" class="form-control" name="name" id="project-name" placeholder="Your Name*" required>
+                                                </div>
+                                                <div class="col col-lg-6 col-md-6 col-12">
+                                                    <input type="email" class="form-control" name="email" id="project-email" placeholder="Your Email*" required>
+                                                </div>
+                                                <div class="col col-lg-12 col-12">
+                                                    <input type="text" class="form-control" name="subject" id="project-subject" value="Secure Telemetry & Internet Relay Project" readonly>
+                                                </div>
+                                                <div class="fullwidth col col-lg-12 col-12">
+                                                    <textarea class="form-control" name="note" id="project-note" placeholder="Message..." required></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="submit-area">
+                                                <button type="submit" class="theme-btn-s2">Send Project Inquiry</button>
+                                                <div id="project-loader">
+                                                    <i class="ti-reload"></i>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix error-handling-messages">
+                                                <div id="project-success" style="display: none;">Your message has been sent.</div>
+                                                <div id="project-error" style="display: none;">Please fill in a valid name, email, and message before sending.</div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- wpo-service-single-area end -->
+        <!-- wpo-partners-area-start --
+        <section class="partners-section">
+            <h2 class="hidden">partner</h2>
+            <div class="container">
+                <div class="row">
+                    <div class="col col-xs-12">
+                        <div class="partner-grids partners-slider owl-carousel clearfix">
+                            <div class="grid">
+                                <img src="assets/images/partners/1.png" alt="">
+                            </div>
+                            <div class="grid">
+                                <img src="assets/images/partners/2.png" alt="">
+                            </div>
+                            <div class="grid">
+                                <img src="assets/images/partners/3.png" alt="">
+                            </div>
+                            <div class="grid">
+                                <img src="assets/images/partners/4.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- end contianer --
+        </section>
+        <!-- partners-area-end -->
+
+        <!-- start wpo-site-footer -->
+        <footer class="wpo-site-footer">
+    <div class="upper-contact-area">
+        <div class="container">
+            <div class="contact-grids">
+                <div class="row align-items-center">
+                    <div class="col col-lg-6">
+                        <h2>Send me a message and make something together.</h2>
+                    </div>
+                    <div class="col col-lg-6">
+                        <div class="send-message-btn">
+                            <a class="theme-btn" href="contact.html">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="left-shape"></div>
+            </div>
+        </div>
+    </div>
+    <div class="upper-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col col-lg-4 col-md-6 col-12">
+                    <div class="widget about-widget">
+                        <div class="logo widget-title">
+                            <a class="site-logo" href="index.html"><img src="assets/images/logo.png"
+                                    alt="">Mihail Charilaou</a>
+                        </div>
+                        <p>Software, AI and systems engineer based in Cyprus. Works at Oneix Ltd. Focused on
+                            artificial intelligence, secure systems, and robotics.</p>
+                        <div class="social-icons">
+                            <ul>
+                                <li><a href="https://www.linkedin.com/in/mihail-charilaou-b39586351" target="_blank" rel="noopener"><i class="ti-linkedin"></i></a></li>
+                                <li><a href="https://github.com/galvatrone" target="_blank" rel="noopener"><i class="ti-github"></i></a></li>
+                                <li><a href="https://t.me/mne_lenii" target="_blank" rel="noopener"><i class="ti-location-arrow"></i></a></li>
+                                <li><a href="mailto:michaelok929@gmail.com"><i class="ti-email"></i></a></li>
+                                <li><a href="https://www.oneix.ltd" target="_blank" rel="noopener"><i class="ti-world"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-lg-2 col-md-6 col-12">
+                    <div class="widget link-widget">
+                        <div class="widget-title">
+                            <h3>Navigation</h3>
+                        </div>
+                        <ul>
+                            <li><a href="index.html#about">About</a></li>
+                            <li><a href="portfolio-grid.html">Portfolio</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="https://github.com/galvatrone" target="_blank" rel="noopener">GitHub</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col col-lg-3 col-md-6 col-12">
+                    <div class="widget link-widget service-link-widget">
+                        <div class="widget-title">
+                            <h3>Tech Stack</h3>
+                        </div>
+                        <ul>
+                            <li><a href="#">Python</a></li>
+                            <li><a href="#">JavaScript</a></li>
+                            <li><a href="#">C++</a></li>
+                            <li><a href="#">HTML/CSS</a></li>
+                            <li><a href="#">Rust</a></li>
+                            <li><a href="#">React</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col col-lg-3 col-md-6 col-12">
+                    <div class="widget newsletter-widget">
+                        <div class="widget-title">
+                            <h3>Contact</h3>
+                        </div>
+                        <p>Cyprus / Remote (EMEA)</p>
+                        <p><a href="mailto:michaelok929@gmail.com">michaelok929@gmail.com</a></p>
+                        <p><a href="https://t.me/mne_lenii" target="_blank" rel="noopener">@mihail_charilaou</a></p>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end container -->
+        <div class="shadow-shape">
+            <svg width="1319" height="1567" viewBox="0 0 1319 1567" fill="none">
+                <g filter="url(#filter0_f_39_3833)">
+                    <circle cx="803" cy="803" r="303" fill="#59C378" fill-opacity="0.5" />
+                </g>
+                <defs>
+                    <filter id="filter0_f_39_3833" x="0" y="0" width="1606" height="1606"
+                        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                        <feGaussianBlur stdDeviation="250" result="effect1_foregroundBlur_39_3832" />
+                    </filter>
+                </defs>
+            </svg>
+        </div>
+    </div>
+    <div class="lower-footer">
+        <div class="container">
+            <div class="row">
+                <div class="separator"></div>
+                <p class="copyright">© 2026 Mihail Charilaou — All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+        <!-- end wpo-site-footer -->
+
+    </div>
+    <!-- end of page-wrapper -->
+    <!-- All JavaScript files
+    ================================================== -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<!-- Plugins for this template -->
+<script src="assets/js/modernizr.custom.js"></script>
+<script src="assets/js/jquery.dlmenu.js"></script>
+<script src="assets/js/jquery-plugin-collection.js"></script>
+<!-- Moving Animation -->
+<script src="assets/js/moving-animation.js"></script>
+<!-- Custom script for this template -->
+<script src="assets/js/script.js"></script>
+<script>
+    (function () {
+        var form = document.getElementById("project-contact-form");
+        var contactApiUrl = "https://my-web-github-io.onrender.com/api/contact";
+        if (!form) {
+            return;
+        }
+
+        var successBox = document.getElementById("project-success");
+        var errorBox = document.getElementById("project-error");
+        var loader = document.getElementById("project-loader");
+
+        function setMessage(target, text) {
+            if (target) {
+                target.textContent = text;
+                target.style.display = "block";
+            }
+        }
+
+        function hideMessage(target) {
+            if (target) {
+                target.style.display = "none";
+            }
+        }
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            var name = (form.querySelector("#project-name").value || "").trim();
+            var email = (form.querySelector("#project-email").value || "").trim();
+            var subject = (form.querySelector("#project-subject").value || "").trim();
+            var note = (form.querySelector("#project-note").value || "").trim();
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            hideMessage(successBox);
+            hideMessage(errorBox);
+
+            if (!name || !email || !note || !emailPattern.test(email)) {
+                setMessage(errorBox, "Please fill in a valid name, email, and message before sending.");
+                return;
+            }
+
+            if (loader) {
+                loader.style.display = "inline-block";
+            }
+
+            fetch(contactApiUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    address: "Portfolio project page",
+                    service: subject,
+                    message: note
+                })
+            })
+                .then(function (response) {
+                    return response.text().then(function (text) {
+                        var data;
+
+                        try {
+                            data = text ? JSON.parse(text) : {};
+                        } catch (error) {
+                            data = {
+                                ok: false,
+                                message: response.ok ? "Unexpected server response." : "The contact service returned an invalid response."
+                            };
+                        }
+
+                        if (!response.ok && !data.message) {
+                            data.ok = false;
+                            data.message = "Unable to send message right now. Please try again later.";
+                        }
+
+                        return data;
+                    });
+                })
+                .then(function (data) {
+                    if (!data.ok) {
+                        setMessage(errorBox, data.message || "Unable to send message right now. Please try again later.");
+                        return;
+                    }
+
+                    form.reset();
+                    form.querySelector("#project-subject").value = "Secure Telemetry & Internet Relay Project";
+                    setMessage(successBox, data.message || "Your message has been sent.");
+                })
+                .catch(function () {
+                    setMessage(errorBox, "Unable to send message right now. Please try again later.");
+                })
+                .finally(function () {
+                    if (loader) {
+                        loader.style.display = "none";
+                    }
+                });
+        });
+    })();
+</script>
+
+</body>
+
+</html>
