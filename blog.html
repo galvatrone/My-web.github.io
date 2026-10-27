@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Mihail Charilaou">
+    <meta name="description" content="Notes by Mihail Charilaou on neural networks, evaluation, offline AI and system design.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://www.oneix.ltd/blog.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Blog — Mihail Charilaou">
+    <meta property="og:description" content="Notes by Mihail Charilaou on neural networks, evaluation, offline AI and system design.">
+    <meta property="og:image" content="https://www.oneix.ltd/assets/images/projects/nasa-exoplanet-ai/main1.jpg">
+    <meta property="og:url" content="https://www.oneix.ltd/blog.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Mihail Charilaou: notes on AI and systems",
+  "url": "https://www.oneix.ltd/blog.html",
+  "author": {
+    "@id": "https://www.oneix.ltd/#mihail"
+  },
+  "blogPost": [
+    {
+      "@type": "BlogPosting",
+      "headline": "A neural network built from scratch for Kepler, K2 and TESS data",
+      "url": "https://www.oneix.ltd/blog-nasa-exoplanet-ai.html",
+      "datePublished": "2026-10-26"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "What 71% accuracy taught me: limits I found in my own pipeline",
+      "url": "https://www.oneix.ltd/blog-honest-evaluation.html",
+      "datePublished": "2026-10-27"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Zhelezyaka: what a local JARVIS-like assistant needs",
+      "url": "https://www.oneix.ltd/blog-zhelezyaka.html",
+      "datePublished": "2026-10-27"
+    }
+  ]
+}
+    </script>
+    <!-- Page Title -->
+    <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png?v=3">
+    <!-- Icon fonts -->
+    <title>Blog — Mihail Charilaou</title>
+    <link href="assets/css/themify-icons.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/flaticon.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Plugins for this template -->
+    <link href="assets/css/magnific-popup.css" rel="stylesheet">
+    <link href="assets/css/animate.css" rel="stylesheet">
+    <link href="assets/css/owl.carousel.css" rel="stylesheet">
+    <link href="assets/css/owl.theme.css" rel="stylesheet">
+    <link href="assets/css/slick.css" rel="stylesheet">
+    <link href="assets/css/slick-theme.css" rel="stylesheet">
+    <link href="assets/css/swiper.min.css" rel="stylesheet">
+    <link href="assets/css/nice-select.css" rel="stylesheet">
+    <link href="assets/css/owl.transitions.css" rel="stylesheet">
+    <link href="assets/css/jquery.fancybox.css" rel="stylesheet">
+    <link href="assets/css/odometer-theme-default.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="assets/sass/style.css" rel="stylesheet">
+    <style>
+        #header.wpo-header-style-1 .wpo-site-header {
+            position: relative;
+            background: #131313;
+        }
+
+        .wpo-site-footer {
+            margin-top: 240px;
+        }
+
+        .wpo-site-footer .upper-footer {
+            overflow: visible;
+        }
+
+        .wpo-site-footer .upper-footer .shadow-shape {
+            top: -95%;
+        }
+            .wpo-page-title { background: url(assets/images/portfolio/banner_blog.jpg?v=4) no-repeat center/cover; }
+        /* site-polish: footer band as a clean card, footer brand on one line */
+        .wpo-site-footer .upper-contact-area .contact-grids { padding: 56px 64px; border-radius: 22px; overflow: hidden; }
+        .wpo-site-footer .upper-contact-area .contact-grids .left-shape { display: none; }
+        .wpo-site-footer .upper-contact-area .contact-grids h2 { font-size: 38px; line-height: 48px; }
+        .wpo-site-footer .upper-footer .about-widget .site-logo { font-size: 30px; white-space: nowrap; display: inline-flex; align-items: center; }
+        .wpo-site-footer .upper-footer .about-widget .site-logo img { margin-right: 12px; }
+        .wpo-site-footer .social-icons ul li a { font-size: 18px; }
+        /* page-css blog */
+        .wpo-blog-content .entry-details .read-more { display: inline-block; margin-top: 14px; padding: 9px 26px; border-radius: 30px; background: #19c8bc; color: #fff !important; font-size: 14px; font-weight: 600; text-decoration: none; letter-spacing: .04em; transition: background .25s, transform .25s; }
+        .wpo-blog-content .entry-details .read-more:hover { background: #12a99f; transform: translateX(4px); }
+        .wpo-blog-content .entry-details .read-more:after { content: "  →"; }
+        .wpo-blog-content .post { margin-bottom: 70px; }
+        .wpo-blog-content .entry-media img { border-radius: 14px; }
+        .wpo-blog-content .entry-details p { max-width: 860px; }
+        .wpo-blog-single-section .wpo-blog-content { max-width: 880px; margin: 0 auto; }
+        .wpo-blog-single-section .post > p, .wpo-blog-single-section .post > ul, .wpo-blog-single-section .post > h3 { color: #cfd6dc; font-size: 17px; line-height: 1.8; }
+        .wpo-blog-single-section .post > h3 { color: #fff; margin: 34px 0 12px; font-size: 26px; }
+        .wpo-blog-single-section .post a { color: #19c8bc; text-decoration: underline; text-underline-offset: 3px; }
+        .wpo-blog-single-section .post > ul li { margin-bottom: 12px; }
+        .wpo-blog-single-section .more-posts { display: flex; gap: 20px; flex-wrap: wrap; }
+        .wpo-blog-single-section .more-posts .post-control-link { flex: 1 1 320px; float: none; width: auto; margin: 0; padding: 22px 26px; border: 1px solid rgba(255,255,255,.12); border-radius: 14px; transition: border-color .25s, transform .25s; }
+        .wpo-blog-single-section .more-posts .post-control-link:hover { border-color: #19c8bc; transform: translateY(-3px); }
+        .wpo-blog-single-section .more-posts .post-control-link a { display: block; }
+        .wpo-blog-single-section .more-posts .post-control-link a > span:first-child { display: block; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: #19c8bc; margin-bottom: 8px; }
+        .wpo-blog-single-section .more-posts .post-name { display: block; font-size: 18px; line-height: 1.4; color: #fff; }
+        .wpo-blog-single-section .tag-share .tag ul li a { color: #cfd6dc; text-decoration: none; }
+        /* footer-align */
+        .wpo-site-footer { position: relative; }
+        .wpo-site-footer .upper-footer { background: linear-gradient(to bottom, rgba(13,15,18,0) 0, rgba(5,40,40,.0) 0); }
+        .wpo-site-footer .upper-footer:before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 160px; background: linear-gradient(to bottom, #0d0f12 0%, rgba(13,15,18,0) 100%); pointer-events: none; z-index: 0; }
+        .wpo-site-footer .upper-footer .container { position: relative; z-index: 2; }
+        .wpo-site-footer .about-widget:after, .wpo-site-footer-s2 .about-widget:after, .wpo-site-footer .upper-footer .col:first-child:after { display: none !important; }
+        .wpo-site-footer .about-widget { border: 0 !important; }
+        .wpo-site-footer .lower-footer .row .separator { display: none; }
+        .wpo-site-footer .upper-footer .row { align-items: flex-start; }
+        .wpo-site-footer .upper-footer { padding-top: 70px; padding-bottom: 20px; }
+        .wpo-site-footer .upper-footer .widget-title { margin-bottom: 26px; min-height: 52px; display: flex; align-items: center; }
+        .wpo-site-footer .upper-footer .widget-title h3 { margin: 0; font-size: 26px; }
+        .wpo-site-footer .upper-footer .about-widget .widget-title { margin-bottom: 20px; }
+        .wpo-site-footer .upper-footer .widget ul li { margin-bottom: 12px; }
+        .wpo-site-footer .upper-footer .newsletter-widget p { margin-bottom: 12px; }
+        .wpo-site-footer .lower-footer { padding: 18px 0; }
+    </style>
+    
+</head>
+
+<body>
+
+    <!-- start page-wrapper -->
+    <div class="page-wrapper">
+        <!-- start preloader -->
+        <div class="preloader">
+    <div class="vertical-centered-box">
+        <div class="content">
+            <div class="loader-circle"></div>
+            <div class="loader-line-mask">
+                <div class="loader-line"></div>
+            </div>
+            <img src="assets/images/preloader.png" alt="">
+        </div>
+    </div>
+</div>
+        <!-- end preloader -->
+        <!-- Start header -->
+        <header id="header" class="wpo-header-style-1">
+    <div class="wpo-site-header">
+        <nav class="navigation navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-3 col-md-3 col-3 d-lg-none dl-block">
+                        <div class="mobail-menu">
+                            <button type="button" class="navbar-toggler open-btn">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar first-angle"></span>
+                                <span class="icon-bar middle-angle"></span>
+                                <span class="icon-bar last-angle"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-6">
+                        <div class="navbar-header">
+                            <a class="navbar-brand site-logo" href="index.html"><img
+                                    src="assets/images/logo.png" alt="">Mike</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-1 col-1">
+                        <div id="navbar" class="collapse navbar-collapse navigation-holder">
+                            <button class="menu-close"><i class="ti-close"></i></button>
+                            <ul class="nav navbar-nav mb-2 mb-lg-0">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="service.html">Service</a></li>
+                                <li><a href="portfolio-grid.html">Portfolio</a></li>
+                                <li><a href="blog.html">Blog</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+
+                        </div><!-- end of nav-collapse -->
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-2">
+                        <div class="header-right">
+                            <div class="header-btn">
+                                <a class="theme-btn" download="Mihail Charilaou CV" href="../path/Michail Charilaou.pdf"
+                                    title="Mihail Charilaou CV">
+                                    <img class="hide-img" alt="ImageName" src="assets/images/cv.jpg">
+                                    Resume
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end of container -->
+        </nav>
+    </div>
+</header>
+        <!-- end of header -->
+        <!-- start wpo-page-title -->
+<section class="wpo-page-title">
+    <div class="container">
+        <div class="row">
+            <div class="col col-xs-12">
+                <div class="wpo-breadcumb-wrap">
+                    <h2>Blog</h2>
+                    <ol class="wpo-breadcumb-wrap">
+                        <li><a href="index.html"><i class="icon-36"></i> Home</a></li>
+                        <li>Blog</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+        <!-- end page-title -->
+        <!-- start wpo-blog-pg-section -->
+        <section class="wpo-blog-pg-section section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-lg-10 offset-lg-1">
+                        <div class="wpo-blog-content">
+                            <div class="post format-standard-image">
+                                <div class="entry-media">
+                                    <a href="blog-nasa-exoplanet-ai.html"><img src="assets/images/projects/nasa-exoplanet-ai/main1.jpg" alt="A neural network built from scratch for Kepler, K2 and TESS data"></a>
+                                </div>
+                                <div class="entry-meta">
+                                    <ul>
+                                        <li><i class="fi flaticon-user"></i> By <a href="about.html">Mihail Charilaou</a> </li>
+                                        <li><i class="fi flaticon-calendar-1"></i> 26 Oct 2026</li>
+                                        <li><i class="fi flaticon-tag"></i> AI, Astronomy data, C++</li>
+                                    </ul>
+                                </div>
+                                <div class="entry-details">
+                                    <h3><a href="blog-nasa-exoplanet-ai.html">A neural network built from scratch for Kepler, K2 and TESS data</a></h3>
+                                    <p>How a three-class exoplanet classifier was assembled from NASA Exoplanet Archive tables, a C++ network without frameworks, and an evaluation on a held-out split.</p>
+                                    <a href="blog-nasa-exoplanet-ai.html" class="read-more">READ MORE...</a>
+                                </div>
+                            </div>
+                            <div class="post format-standard-image">
+                                <div class="entry-media">
+                                    <a href="blog-honest-evaluation.html"><img src="assets/images/projects/nasa-exoplanet-ai/chart_curve.jpg" alt="What 71% accuracy taught me: limits I found in my own pipeline"></a>
+                                </div>
+                                <div class="entry-meta">
+                                    <ul>
+                                        <li><i class="fi flaticon-user"></i> By <a href="about.html">Mihail Charilaou</a> </li>
+                                        <li><i class="fi flaticon-calendar-1"></i> 27 Oct 2026</li>
+                                        <li><i class="fi flaticon-tag"></i> Machine learning, Evaluation</li>
+                                    </ul>
+                                </div>
+                                <div class="entry-details">
+                                    <h3><a href="blog-honest-evaluation.html">What 71% accuracy taught me: limits I found in my own pipeline</a></h3>
+                                    <p>Writing the limitations of a small classifier down before anyone else finds them: missing values, normalization leakage, position features and missing baselines.</p>
+                                    <a href="blog-honest-evaluation.html" class="read-more">READ MORE...</a>
+                                </div>
+                            </div>
+                            <div class="post format-standard-image">
+                                <div class="entry-media">
+                                    <a href="blog-zhelezyaka.html"><img src="assets/images/projects/zhelezyaka-assistant/main1.jpg" alt="Zhelezyaka: what a local JARVIS-like assistant needs"></a>
+                                </div>
+                                <div class="entry-meta">
+                                    <ul>
+                                        <li><i class="fi flaticon-user"></i> By <a href="about.html">Mihail Charilaou</a> </li>
+                                        <li><i class="fi flaticon-calendar-1"></i> 27 Oct 2026</li>
+                                        <li><i class="fi flaticon-tag"></i> Offline AI, Architecture, Assistant</li>
+                                    </ul>
+                                </div>
+                                <div class="entry-details">
+                                    <h3><a href="blog-zhelezyaka.html">Zhelezyaka: what a local JARVIS-like assistant needs</a></h3>
+                                    <p>Notes on a personal AI assistant that runs mostly on your own computer: memory of decisions, specialized agents, a model router and a permission layer.</p>
+                                    <a href="blog-zhelezyaka.html" class="read-more">READ MORE...</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end wpo-blog-pg-section -->
+        <!-- wpo-partners-area-start --
+        <section class="partners-section">
+            <h2 class="hidden">partner</h2>
+            <div class="container">
+                <div class="row">
+                    <div class="col col-xs-12">
+                        <div class="partner-grids partners-slider owl-carousel clearfix">
+                            <div class="grid">
+                                <img src="assets/images/partners/1.png" alt="">
+                            </div>
+                            <div class="grid">
+                                <img src="assets/images/partners/2.png" alt="">
+                            </div>
+                            <div class="grid">
+                                <img src="assets/images/partners/3.png" alt="">
+                            </div>
+                            <div class="grid">
+                                <img src="assets/images/partners/4.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- end contianer --
+        </section>
+        <!-- partners-area-end -->
+
+        <!-- start wpo-site-footer -->
+        <footer class="wpo-site-footer">
+    <div class="upper-contact-area">
+        <div class="container">
+            <div class="contact-grids">
+                <div class="row align-items-center">
+                    <div class="col col-lg-6">
+                        <h2>Send me a message and make something together.</h2>
+                    </div>
+                    <div class="col col-lg-6">
+                        <div class="send-message-btn">
+                            <a class="theme-btn" href="contact.html">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="left-shape"></div>
+            </div>
+        </div>
+    </div>
+    <div class="upper-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col col-lg-4 col-md-6 col-12">
+                    <div class="widget about-widget">
+                        <div class="logo widget-title">
+                            <a class="site-logo" href="index.html"><img src="assets/images/logo.png"
+                                    alt="">Mihail Charilaou</a>
+                        </div>
+                        <p>Software, AI and systems engineer based in Cyprus. Works at Oneix Ltd. Focused on
+                            artificial intelligence, secure systems, and robotics.</p>
+                        <div class="social-icons">
+                            <ul>
+                                <li><a href="https://www.linkedin.com/in/mihail-charilaou-b39586351" target="_blank" rel="noopener"><i class="ti-linkedin"></i></a></li>
+                                <li><a href="https://github.com/galvatrone" target="_blank" rel="noopener"><i class="ti-github"></i></a></li>
+                                <li><a href="https://t.me/mne_lenii" target="_blank" rel="noopener"><i class="ti-location-arrow"></i></a></li>
+                                <li><a href="mailto:michaelok929@gmail.com"><i class="ti-email"></i></a></li>
+                                <li><a href="https://www.oneix.ltd" target="_blank" rel="noopener"><i class="ti-world"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-lg-2 col-md-6 col-12">
+                    <div class="widget link-widget">
+                        <div class="widget-title">
+                            <h3>Navigation</h3>
+                        </div>
+                        <ul>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="portfolio-grid.html">Portfolio</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="https://github.com/galvatrone" target="_blank" rel="noopener">GitHub</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col col-lg-3 col-md-6 col-12">
+                    <div class="widget link-widget service-link-widget">
+                        <div class="widget-title">
+                            <h3>Tech Stack</h3>
+                        </div>
+                        <ul>
+                            <li><a href="#">Python</a></li>
+                            <li><a href="#">JavaScript</a></li>
+                            <li><a href="#">C++</a></li>
+                            <li><a href="#">HTML/CSS</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col col-lg-3 col-md-6 col-12">
+                    <div class="widget newsletter-widget">
+                        <div class="widget-title">
+                            <h3>Contact</h3>
+                        </div>
+                        <p>Cyprus / Remote (EMEA)</p>
+                        <p><a href="mailto:michaelok929@gmail.com">michaelok929@gmail.com</a></p>
+                        <p><a href="https://t.me/mne_lenii" target="_blank" rel="noopener">@mihail_charilaou</a></p>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end container -->
+        <div class="shadow-shape">
+            <svg width="1319" height="1567" viewBox="0 0 1319 1567" fill="none">
+                <g filter="url(#filter0_f_39_3833)">
+                    <circle cx="803" cy="803" r="303" fill="#59C378" fill-opacity="0.5" />
+                </g>
+                <defs>
+                    <filter id="filter0_f_39_3833" x="0" y="0" width="1606" height="1606"
+                        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                        <feGaussianBlur stdDeviation="250" result="effect1_foregroundBlur_39_3832" />
+                    </filter>
+                </defs>
+            </svg>
+        </div>
+    </div>
+    <div class="lower-footer">
+        <div class="container">
+            <div class="row">
+                <div class="separator"></div>
+                <p class="copyright">© 2026 Mihail Charilaou — All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+        <!-- end wpo-site-footer -->
+
+    </div>
+    <!-- end of page-wrapper -->
+    <!-- All JavaScript files
+    ================================================== -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<!-- Plugins for this template -->
+<script src="assets/js/modernizr.custom.js"></script>
+<script src="assets/js/jquery.dlmenu.js"></script>
+<script src="assets/js/jquery-plugin-collection.js"></script>
+<!-- Moving Animation -->
+<script src="assets/js/moving-animation.js"></script>
+<!-- Custom script for this template -->
+<script src="assets/js/script.js"></script>
+
+
+</body>
+
+</html>
