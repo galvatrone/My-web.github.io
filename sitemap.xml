@@ -14,6 +14,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.oneix.ltd/portfolio-automata.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.oneix.ltd/portfolio-face-reg.html</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
@@ -117,6 +123,12 @@
   </url>
   <url>
     <loc>https://www.oneix.ltd/contact.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.oneix.ltd/blog-lelp.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
