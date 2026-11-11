@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Mihail Charilaou">
-    <meta name="description" content="A neural network built from scratch in C++ that classifies Kepler, K2 and TESS objects as confirmed planets, candidates or false positives. Published as a technical note with a DOI.">
+    <meta name="description" content="A neural network built from scratch in C++ that classifies Kepler, K2 and TESS objects as confirmed planets, candidates or false positives: 74.2% balanced accuracy on held-out stars after a full data-leakage audit.">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="canonical" href="https://www.oneix.ltd/portfolio-nasa-exoplanet-ai.html">
     <meta property="og:type" content="article">
     <meta property="og:title" content="NASA Exoplanet AI | Mihail Charilaou">
-    <meta property="og:description" content="A neural network built from scratch in C++ that classifies Kepler, K2 and TESS objects as confirmed planets, candidates or false positives. Published as a technical note with a DOI.">
+    <meta property="og:description" content="A neural network built from scratch in C++ that classifies Kepler, K2 and TESS objects as confirmed planets, candidates or false positives: 74.2% balanced accuracy on held-out stars after a full data-leakage audit.">
     <meta property="og:image" content="https://www.oneix.ltd/assets/images/projects/nasa-exoplanet-ai/main1.jpg">
     <meta property="og:url" content="https://www.oneix.ltd/portfolio-nasa-exoplanet-ai.html">
     <meta name="twitter:card" content="summary_large_image">
@@ -20,7 +20,7 @@
   "@context": "https://schema.org",
   "@type": "CreativeWork",
   "name": "NASA Exoplanet AI",
-  "description": "A neural network built from scratch in C++ that classifies Kepler, K2 and TESS objects as confirmed planets, candidates or false positives. Published as a technical note with a DOI.",
+  "description": "A neural network built from scratch in C++ that classifies Kepler, K2 and TESS objects as confirmed planets, candidates or false positives: 74.2% balanced accuracy on held-out stars after a full data-leakage audit.",
   "url": "https://www.oneix.ltd/portfolio-nasa-exoplanet-ai.html",
   "image": "https://www.oneix.ltd/assets/images/projects/nasa-exoplanet-ai/main1.jpg",
   "inLanguage": "en",
@@ -200,8 +200,9 @@
                                         <div class="wpo-project-single-title">
                                             <h3>NASA Exoplanet AI</h3>
                                         </div>
-                                        <p>An end-to-end system that classifies objects from the NASA Exoplanet Archive into three classes: <code>CONFIRMED</code>, <code>CANDIDATE</code> and <code>FALSE_POSITIVE</code>. It was developed in response to a 2025 NASA exoplanet challenge. A Python script prepares the archive tables, a fully connected network written in C++ without machine-learning frameworks does the classification, and a local web interface lets a user try it on manual input or a CSV file.</p>
-                                        <p>On a class-balanced set of 4500 objects, evaluated on a held-out 20% split over five runs, the network reaches <strong>71.1% &plusmn; 1.1%</strong> accuracy (chance level 33.3%). The weakest class is <code>CANDIDATE</code>. The full method, results and limitations are published as a technical note on Zenodo.</p>
+                                        <p>An end-to-end system that classifies objects from the NASA Exoplanet Archive into three classes: <code>CONFIRMED</code>, <code>CANDIDATE</code> and <code>FALSE_POSITIVE</code>. It was developed in response to a 2025 NASA exoplanet challenge. Python scripts prepare the archive tables and check the results, a fully connected network written in C++ without machine-learning frameworks does the classification, and a local web interface lets a user try it on manual input or a CSV file.</p>
+                                        <p>On a test set of 2479 objects whose host stars the network never saw, it reaches <strong>74.2% balanced accuracy</strong> (73.9% plain accuracy; chance level 33.3%), against 63.4% for logistic regression on the same features. 88% of the errors involve <code>CANDIDATE</code>, a class that means &ldquo;not checked yet&rdquo; rather than a physical type. On TESS the network drops to 56.9%: catalogue features transfer poorly between surveys.</p>
+                                        <p><strong>Update, 31 Oct 2026.</strong> The first version, described in the <a href="https://doi.org/10.5281/zenodo.23675369" target="_blank" rel="noopener">technical note on Zenodo</a>, reported 71.1% &plusmn; 1.1%. An audit of my own pipeline showed that figure was not reliable: Kepler false-positive flags leaked the answer (99.6% of flagged objects are false positives), zeros were treated as missing, normalization was fitted before the split and K2 planets were duplicated. The dataset was rebuilt from scratch; the numbers on this page are from the corrected version 3.</p>
                                         <div class="mt-4"><a class="theme-btn me-3 mb-2" href="https://doi.org/10.5281/zenodo.23675369" target="_blank" rel="noopener">Read the technical note (Zenodo)</a></div>
                                     </div>
                                     <div class="col-lg-5">
@@ -211,9 +212,9 @@
                                             <li>Stack :<span>C++17, Python, JavaScript</span></li>
                                             <li>Data :<span>NASA Exoplanet Archive: Kepler, K2, TESS</span></li>
                                             <li>Model :<span>14-64-32-16-3 fully connected network</span></li>
-                                            <li>Result :<span>71.1% &plusmn; 1.1% held-out accuracy</span></li>
-                                            <li>Publication :<span><a href="https://doi.org/10.5281/zenodo.23675369" target="_blank" rel="noopener">Technical note on Zenodo (DOI)</a></span></li>
-                                            <li>Status :<span>Published / local web interface</span></li>
+                                            <li>Result :<span>74.2% balanced accuracy on held-out stars (v3)</span></li>
+                                            <li>Publication :<span><a href="https://doi.org/10.5281/zenodo.23675369" target="_blank" rel="noopener">Technical note on Zenodo (DOI, v1)</a></span></li>
+                                            <li>Status :<span>v3 rebuilt and evaluated / local web interface</span></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -235,16 +236,16 @@
                                         </div>
                                         <p>The system keeps the whole path visible: from three differently named archive tables to one feature vector, a network without hidden framework code, and an interface that shows class probabilities.</p>
                                         <ul>
-                                            <li>Three archive tables are mapped to one vector of 14 features: orbital period, transit duration and depth, planet radius, insolation, temperatures, stellar parameters, position, signal-to-noise ratio and false-positive flags.</li>
-                                            <li>A class-balanced sample of 4500 objects (1500 per class) with median filling, log transform and standardization.</li>
-                                            <li>A 14-64-32-16-3 sigmoid network trained with back-propagation and full-batch gradient descent, parallelized with OpenMP.</li>
-                                            <li>A local web interface: manual entry, pasted archive tables, CSV upload and a summary card per object.</li>
-                                            <li>An evaluation protocol with five different splits and initializations.</li>
+                                            <li>Three archive tables (Kepler, K2, TESS) are mapped to 14 features: 7 measured values (period, transit duration and depth, planet radius, stellar temperature, radius and log g) and 7 derived ones (depth and duration SNR, stellar mass and density, a/R&#9733;, insolation, observed-to-expected duration).</li>
+                                            <li>No vetting flags, no catalogue indicator, no survey-only columns, no median filling: only complete rows are used.</li>
+                                            <li>Training data balanced by class and augmented five times with noise inside the published measurement errors.</li>
+                                            <li>A 14-64-32-16-3 sigmoid network in C++ trained with online SGD, with validation checks, best-weight saving and early stopping.</li>
+                                            <li>A local web interface: manual entry, CSV upload and a summary card per object; incomplete rows are reported, not guessed.</li>
                                             </ul>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="wpo-project-single-item-quote">
-                                            <p>&ldquo;The result is reported on a held-out split, over several runs, with the limitations written down.&rdquo;</p>
+                                            <p>&ldquo;A smaller honest number is worth more than a bigger one I cannot defend.&rdquo;</p>
                                             <span>Design Note - <span>Honest Evaluation</span></span>
                                         </div>
                                     </div>
@@ -254,7 +255,7 @@
                                 <div class="wpo-project-single-title">
                                     <h3>Architecture</h3>
                                 </div>
-                                <p>The Python script <code>nasa_exoplanet_pipeline.py</code> reads the archive CSV files, maps their column names to common features, normalizes them and writes a C++-ready training file. The C++ program trains the network and stores the weights in a text file; a separate C++ predictor loads them. A small Python web server calls the predictor and renders the results. The two illustrations below show the data path and the software stack. The learning curve and the confusion matrix in the gallery above come from the real evaluation runs: the curve is averaged over five runs and the matrix is summed over them.</p>
+                                <p>The Python script <code>build_dataset.py</code> reads the archive tables, unifies units, computes the 14 features and writes train, validation and test files. The C++ program trains the network, keeps the weights with the best validation score and stores them in a text file; a separate C++ predictor loads them. <code>features.py</code> applies exactly the same feature code to new objects, and a small Python web server calls the predictor and renders the results. The two illustrations below show the data path and the software stack. The learning curve and the confusion matrix in the gallery above are from the first version (Zenodo note).</p>
                             </div>
                             <div class="wpo-project-single-gallery">
                                 <div class="row mt-4">
@@ -277,11 +278,11 @@
                                             <h3>Evaluation Flow</h3>
                                         </div>
                                         <ul>
-                                            <li>Split 4500 normalized objects into 3600 training and 900 test objects, stratified by class.</li>
-                                            <li>Train for a fixed 15&nbsp;000 epochs on the training part only.</li>
-                                            <li>Evaluate once on the held-out part.</li>
-                                            <li>Repeat with five split seeds and different random initializations.</li>
-                                            <li>Report mean and standard deviation, per-class precision and recall.</li>
+                                            <li>Split by host star, 70 / 15 / 15, inside each catalogue: a star never appears in two parts.</li>
+                                            <li>Fit the log transform and standardization on the training part only.</li>
+                                            <li>Choose weights and stop training on the validation part.</li>
+                                            <li>Open the test part once, after training is finished, on the natural class distribution.</li>
+                                            <li>Report balanced accuracy, per-class recall and precision, per catalogue, next to a logistic-regression baseline.</li>
                                             </ul>
                                     </div>
                                     <div class="col-lg-6 list-widget-s">
@@ -289,11 +290,11 @@
                                             <h3>Known Limitations</h3>
                                         </div>
                                         <ul>
-                                            <li>Zero values are treated as missing and replaced by the median.</li>
-                                            <li>Normalization constants were computed before the split.</li>
-                                            <li>Right ascension and declination are used as inputs.</li>
-                                            <li>Evaluation is on a balanced sample, not the natural class distribution.</li>
-                                            <li>No baseline models were trained yet.</li>
+                                            <li><code>CANDIDATE</code> mixes future planets and future false positives; catalogue numbers alone cannot separate them.</li>
+                                            <li>TESS is much harder (56.9% balanced accuracy): the features do not transfer well between surveys.</li>
+                                            <li>K2 has only 102 test objects, so its figure (62.0%) is not reliable.</li>
+                                            <li>Only catalogue parameters are used; light curves would carry much more information.</li>
+                                            <li>The Zenodo note still describes version 1; an updated version is planned.</li>
                                             </ul>
                                     </div>
                                 </div>
