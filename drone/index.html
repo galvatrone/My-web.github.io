@@ -1,541 +1,428 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="/assets/images/favicon.png?v=3">
-    <link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png?v=3">
-    <link rel="apple-touch-icon" href="/assets/images/favicon.png?v=3">
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Vector — The future of autonomous flight</title>
-<meta name="description" content="Vector — Next-generation drone intelligence. Futuristic drone swarms, precision autonomy and fleet orchestration.">
+<link rel="icon" type="image/png" href="/assets/images/favicon.png?v=3">
+<link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png?v=3">
+<link rel="apple-touch-icon" href="/assets/images/favicon.png?v=3">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vector — drone fleets for delivery, fields and rescue</title>
+<meta name="description" content="Vector builds drone fleets with on-board models, fleet orchestration and real-time mission control for logistics, agriculture and emergency response. Launching in Cyprus.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg-900: #04120a;
-    --bg-800: #062215;
-    --muted: #9bd9b1;
-    --neon: #00ff88;
-    --neon-2: #00d977;
-    --panel: rgba(6,18,12,0.55);
-    --glass: rgba(255,255,255,0.03);
-    --card: rgba(4,20,12,0.6);
-    --accent-shadow: 0 12px 50px rgba(0,255,136,0.06);
-    --radius:14px;
-    font-family: Inter, "Segoe UI", system-ui, -apple-system, Roboto, Arial;
-    color-scheme: dark;
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    margin:0;
-    background: linear-gradient(180deg,var(--bg-900), var(--bg-800));
-    color: #e6fff0;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    overflow-x:hidden;
-    line-height:1.45;
-  }
+:root{
+  --deep:#070b09;
+  --bg:#0a0f0c;
+  --card:#0f1612;
+  --raised:#16201a;
+  --line:rgba(232,239,233,.08);
+  --line-strong:rgba(232,239,233,.14);
+  --text:#e8efe9;
+  --text-2:#a3b0a7;
+  --muted:#7d8a81;
+  --accent:#3ecf8e;
+  --accent-ink:#06180f;
+  --contour:rgba(163,176,167,.16);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:400 15px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.icon{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.wrap{width:100%;max-width:1200px;margin:0 auto;padding:0 32px}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
 
-  .wrap{width:92%;max-width:1200px;margin:0 auto;padding:20px 0}
-  header.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;position:relative;z-index:30}
-  .brand{display:flex;gap:12px;align-items:center}
-  .badge{
-    width:64px;height:64px;border-radius:12px;display:grid;place-items:center;
-    background:linear-gradient(135deg,var(--neon),var(--neon-2));
-    box-shadow:0 10px 40px rgba(0,255,136,0.06), inset 0 -6px 18px rgba(255,255,255,0.04);
-    color:#04210e;font-weight:800;font-size:18px;
-  }
-  .brand h1{margin:0;font-size:18px;letter-spacing:0.6px}
-  .brand p{margin:0;font-size:12px;color:var(--muted)}
-  nav{display:flex;gap:12px;align-items:center}
-  a.navlink{color:var(--muted);text-decoration:none;font-weight:600;font-size:14px;padding:8px 10px;border-radius:10px}
-  a.cta{background:linear-gradient(90deg,var(--neon),var(--neon-2));color:#062215;padding:10px 14px;border-radius:12px;font-weight:800;text-decoration:none;box-shadow:var(--accent-shadow)}
+/* header */
+.top{position:sticky;top:0;z-index:20;background:rgba(10,15,12,.92);border-bottom:1px solid var(--line)}
+.top .wrap{height:64px;display:flex;align-items:center;gap:32px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:17px}
+.brand svg{width:22px;height:22px}
+.brand small{font:400 12px/1 var(--mono);color:var(--muted);margin-left:4px}
+.nav{display:flex;gap:4px;margin-left:auto}
+.nav a{text-decoration:none;color:var(--text-2);font-size:14px;padding:8px 12px;border-radius:8px;transition:color .15s var(--ease),background-color .15s var(--ease)}
+.nav a:hover{color:var(--text);background:var(--raised)}
+.btn{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 20px;border-radius:10px;font:500 15px/1 var(--sans);text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background-color .15s var(--ease),border-color .15s var(--ease),transform .12s var(--ease)}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-primary:hover{background:#56d99d}
+.btn-secondary{background:var(--raised);color:var(--text);border-color:var(--line)}
+.btn-secondary:hover{border-color:var(--line-strong)}
+.btn-sm{height:36px;padding:0 16px;font-size:14px}
+.menu-btn{display:none;margin-left:auto;background:none;border:0;color:var(--text);width:40px;height:40px;border-radius:8px;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
-  .hero{display:grid;grid-template-columns:1fr 520px;gap:28px;align-items:center;padding:40px 0}
-  @media (max-width:980px){ .hero{grid-template-columns:1fr} .hero-right{order:-1} }
+/* hero */
+.hero{min-height:calc(100vh - 64px);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:center;padding:64px 0}
+.hero h1{font-size:56px;line-height:1.04;letter-spacing:-.03em;font-weight:500;margin:0 0 20px}
+.lead{font-size:18px;line-height:1.6;color:var(--text-2);max-width:34rem;margin:0 0 32px}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.figures{display:grid;grid-template-columns:repeat(3,auto);gap:32px;margin-top:48px;padding-top:24px;border-top:1px solid var(--line);justify-content:start}
+.figures b{display:block;font:500 28px/1 var(--mono);font-variant-numeric:tabular-nums;margin-bottom:8px}
+.figures span{font-size:13px;color:var(--muted)}
 
-  .kicker{display:inline-block;background:linear-gradient(90deg, rgba(0,255,136,0.06), rgba(0,217,119,0.04));color:var(--neon);padding:6px 12px;border-radius:999px;font-weight:700;font-size:13px}
-  h2.title{font-size:40px;margin:12px 0 6px;color:var(--neon);line-height:1.02;text-shadow:0 6px 40px rgba(0,255,136,0.04)}
-  p.lead{color:var(--muted);max-width:56ch;font-size:16px;margin:0 0 18px}
+/* mission control window */
+.window{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 24px 48px rgba(0,0,0,.35)}
+.window-bar{height:44px;display:flex;align-items:center;gap:12px;padding:0 16px;border-bottom:1px solid var(--line);font:400 12px/1 var(--mono);color:var(--muted)}
+.window-bar .title{color:var(--text-2)}
+.window-bar .clock{margin-left:auto}
+.live{display:inline-flex;align-items:center;gap:6px;color:var(--text-2)}
+.live i{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.mc{display:grid;grid-template-columns:minmax(0,1fr) 252px}
+.map{position:relative;background:var(--deep);border-right:1px solid var(--line)}
+.map svg{display:block;width:100%;height:auto}
+.fleet{padding:12px}
+.fleet h2{font:400 12px/1 var(--mono);color:var(--muted);margin:4px 4px 12px}
+.unit{padding:12px;border-radius:10px}
+.unit + .unit{margin-top:4px}
+.unit.active{background:var(--raised);box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+.unit-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.callsign{font:500 13px/1 var(--mono)}
+.unit.active .callsign{color:var(--accent)}
+.state{font-size:12px;color:var(--muted)}
+.unit-meta{display:flex;justify-content:space-between;margin-top:8px;font:400 12px/1 var(--mono);color:var(--text-2)}
+.battery{height:2px;background:var(--line-strong);border-radius:2px;margin-top:8px;overflow:hidden}
+.battery i{display:block;height:100%;background:var(--text-2)}
+.unit.active .battery i{background:var(--accent)}
 
-  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+/* sections */
+section.block{padding:96px 0;border-top:1px solid var(--line)}
+.block-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:48px}
+.block-head h2{font-size:32px;line-height:1.15;font-weight:500;letter-spacing:-.02em;margin:0}
+.block-head p{margin:0;color:var(--text-2);max-width:28rem}
+.caps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.cap .icon{color:var(--text-2);margin-bottom:16px}
+.cap h3{font-size:18px;font-weight:500;margin:0 0 8px}
+.cap p{margin:0;color:var(--text-2)}
 
-  .hero-right{height:360px;position:relative;perspective:1200px}
-  .showcase{height:100%;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));border:1px solid rgba(255,255,255,0.02);box-shadow:0 30px 60px rgba(0,8,6,0.6);overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
-  .flow-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
-  .showcase .frame{position:relative;z-index:12;display:grid;place-items:center;padding:12px}
+.products{margin-top:64px;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.product{display:grid;grid-template-columns:88px minmax(0,1fr) auto;align-items:center;gap:16px;padding:20px 24px;background:var(--card)}
+.product + .product{border-top:1px solid var(--line)}
+.product .tag{font:500 13px/1 var(--mono);color:var(--text-2);border:1px solid var(--line-strong);border-radius:6px;padding:6px 8px;justify-self:start}
+.product h3{font-size:16px;font-weight:500;margin:0}
+.product p{margin:0;color:var(--muted);font-size:14px}
 
-  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:28px 0 48px}
-  @media (max-width:980px){ .features{grid-template-columns:1fr} }
-  .feature{background:var(--card);border-radius:12px;padding:18px;border:1px solid rgba(255,255,255,0.02);box-shadow:0 12px 30px rgba(0,6,4,0.6);transition:transform .36s}
-  .feature:hover{transform:translateY(-8px)}
-  .feature h3{margin:6px 0 8px;color:var(--neon)}
-  .feature p{margin:0;color:var(--muted)}
+.plans{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:16px;margin-top:16px}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
+.plan.lead-plan{background:var(--raised)}
+.plan .name{font-size:14px;color:var(--text-2)}
+.plan .price{font:500 24px/1.2 var(--mono);font-variant-numeric:tabular-nums;margin:8px 0 16px}
+.plan .price small{font-size:14px;color:var(--muted);font-weight:400}
+.plan p{margin:0;color:var(--text-2);font-size:14px}
 
-  .products{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:10px}
-  @media (max-width:980px){ .products{grid-template-columns:1fr} }
-  .prod{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02));border-radius:12px;padding:12px;border:1px solid rgba(255,255,255,0.02);box-shadow:0 14px 40px rgba(0,6,4,0.6);display:flex;gap:12px;align-items:center}
-  .prod h4{margin:0;color:var(--neon)}
-  .prod p{margin:4px 0 0;color:var(--muted)}
+.uses{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.use{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;padding:24px 0;border-bottom:1px solid var(--line)}
+.use:nth-child(odd){padding-right:32px}
+.use:nth-child(even){padding-left:32px;border-left:1px solid var(--line)}
+.use .icon{color:var(--muted);margin-top:3px}
+.use h3{font-size:16px;font-weight:500;margin:0 0 4px}
+.use p{margin:0;color:var(--text-2);font-size:14px}
 
-  .metrics{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-  .metric{background:var(--panel);padding:12px;border-radius:10px;min-width:160px;border:1px solid rgba(255,255,255,0.02);box-shadow:0 10px 30px rgba(0,6,4,0.6)}
-  .metric strong{display:block;font-size:20px;color:var(--neon)}
+.contact{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:start}
+.contact-info p{color:var(--text-2);margin:0 0 24px;max-width:26rem}
+.contact-info dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:12px 24px;font-size:14px}
+.contact-info dt{color:var(--muted)}
+.contact-info dd{margin:0}
+form{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:grid;gap:8px}
+.field.full{grid-column:1/-1}
+label{font-size:13px;color:var(--text-2)}
+input,select,textarea{width:100%;height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--line-strong);background:var(--raised);color:var(--text);font:400 15px/1.4 var(--sans);transition:border-color .15s var(--ease)}
+textarea{height:112px;padding:12px;resize:vertical}
+input::placeholder,textarea::placeholder{color:var(--muted)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent)}
+.form-foot{grid-column:1/-1;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.form-foot span{font-size:13px;color:var(--muted)}
+.status{grid-column:1/-1;font-size:14px;color:var(--text-2);min-height:20px;margin:0}
 
-  .pricing{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
-  .plan{flex:1;min-width:220px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);padding:16px;background:linear-gradient(180deg, rgba(255,255,255,0.005), rgba(255,255,255,0.001));box-shadow:0 12px 36px rgba(0,6,4,0.6)}
+footer{border-top:1px solid var(--line);padding:32px 0;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
-  .contact{margin:48px 0;padding:24px;border-radius:12px;background:linear-gradient(180deg, rgba(0,0,0,0.06), rgba(255,255,255,0.01));display:grid;grid-template-columns:1fr 1fr;gap:18px;border:1px solid rgba(255,255,255,0.02)}
-  @media (max-width:980px){ .contact{grid-template-columns:1fr} }
-  label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
-  input,textarea,select{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:var(--neon);font-size:14px;outline:none}
-  textarea{min-height:110px;resize:vertical}
+.enter{animation:enter .5s var(--ease) both}
+.enter:nth-child(2){animation-delay:.06s}
+@keyframes enter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.enter{animation:none}.drone-anim{display:none}}
 
-  footer{padding:28px 0 56px;color:var(--muted);font-size:13px;text-align:center}
-
-  .small{font-size:13px;color:var(--muted)}
-  .btn{padding:10px 14px;border-radius:10px;border:none;cursor:pointer}
-  .btn-ghost{background:transparent;color:var(--neon);border:1px solid rgba(0,255,136,0.06)}
-  .btn-neon{background:linear-gradient(90deg,var(--neon),var(--neon-2));color:#062215;font-weight:800;border-radius:12px;box-shadow:var(--accent-shadow)}
-  .reveal{opacity:0;transform:translateY(10px);transition:all .6s ease-out}
-  .reveal.visible{opacity:1;transform:none}
-  @media (max-width:680px){ .hero-left h2{font-size:28px} .hero-right{height:300px} .swarm-stage{width:320px;height:200px} }
-
-  /* Drone-specific styles */
-  .drone-wrap{width:320px;height:220px;display:grid;place-items:center;position:relative}
-  .drone-card{width:280px;height:180px;border-radius:12px;background:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.12));display:grid;place-items:center;position:relative;box-shadow:0 18px 60px rgba(0,0,0,0.6)}
-  .drone-bob{animation:bob 4s ease-in-out infinite}
-  @keyframes bob{0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
-  .rotor{transform-origin:center center}
-  .rotor-spin{animation:spin 0.9s linear infinite}
-  @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-  .drone-light{filter:blur(6px);opacity:0.9}
-  .drone-glow{mix-blend-mode:screen;opacity:0.9}
-  .drone-shadow{position:absolute;bottom:8px;width:160px;height:24px;border-radius:999px;background:radial-gradient(closest-side, rgba(0,0,0,0.45), rgba(0,0,0,0.02));filter:blur(8px);left:50%;transform:translateX(-50%);z-index:2}
+@media (max-width:1040px){
+  .hero{grid-template-columns:1fr;min-height:0;padding:48px 0 64px}
+  .caps{grid-template-columns:1fr;gap:24px}
+  .plans{grid-template-columns:1fr}
+  .contact{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .wrap{padding:0 16px}
+  .nav,.top .btn{display:none}
+  .menu-btn{display:grid;place-items:center}
+  .top.open .nav{display:flex;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 16px 16px}
+  .top.open .nav a{padding:12px}
+  .hero h1{font-size:40px}
+  .lead{font-size:17px}
+  .figures{grid-template-columns:repeat(3,auto);gap:20px}
+  .figures b{font-size:20px}
+  .window-bar .clock{display:none}
+  .mc{grid-template-columns:1fr}
+  .map{border-right:0;border-bottom:1px solid var(--line)}
+  .unit.extra{display:none}
+  .block-head{flex-direction:column;align-items:start}
+  section.block{padding:64px 0}
+  .product{grid-template-columns:72px minmax(0,1fr);padding:16px}
+  .product p{grid-column:2}
+  .uses{grid-template-columns:1fr}
+  .use:nth-child(n){padding:20px 0;border-left:0}
+  form{grid-template-columns:1fr;padding:16px}
+}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-package" viewBox="0 0 24 24"><path d="M16.5 9.4 7.55 4.24"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7 12 12l8.7-5"/><path d="M12 22V12"/></symbol>
+  <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></symbol>
+  <symbol id="i-flame" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+</svg>
+
+<header class="top" id="top">
   <div class="wrap">
-    <header class="top" role="banner">
-      <div class="brand">
-        <div class="badge" id="brand-badge">V</div>
-        <div>
-          <h1>Vector</h1>
-          <p class="small">The future of autonomous flight.</p>
+    <a class="brand" href="#">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5l8 14 8-14" fill="none" stroke="#3ecf8e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Vector<small>Cyprus · B2B</small>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#products">Products</a>
+      <a href="#usecases">Use cases</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="#contact">Request a pilot</a>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false" id="menuBtn"><svg class="icon"><use href="#i-menu"/></svg></button>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="enter">
+        <h1 id="hero-title">Drone fleets for delivery, fields and rescue</h1>
+        <p class="lead">Vector builds resilient drone fleets with on-board models, fleet orchestration and real-time mission control, for logistics, agriculture and emergency response teams.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#contact">Request a pilot</a>
+          <a class="btn btn-secondary" href="#usecases">See use cases</a>
+        </div>
+        <div class="figures">
+          <div><b>30%</b><span>Agro chemical savings</span></div>
+          <div><b>≤24h</b><span>Pilot response time</span></div>
+          <div><b>On-prem</b><span>or cloud deployment</span></div>
         </div>
       </div>
 
-      <nav aria-label="Main">
-        <a class="navlink" href="#features">Products</a>
-        <a class="navlink" href="#usecases">Use cases</a>
-        <a class="navlink" href="#contact">Contact</a>
-        <a class="cta" href="#contact">Request Pilot</a>
-      </nav>
-    </header>
-
-    <main>
-      <!-- HERO -->
-      <section class="hero" role="region" aria-labelledby="hero-title">
-        <div class="hero-left">
-          <div class="kicker">Next-generation drone intelligence</div>
-          <h2 class="title" id="hero-title">Redefining the swarm.</h2>
-          <p class="lead">Vector engineers intelligent, resilient drone fleets — precise, secure and scalable. Local AI, fleet orchestration, and real-time mission control for logistics, agriculture and emergency response.</p>
-
-          <div class="hero-actions">
-            <a class="cta" href="#contact">Request a Pilot</a>
-            <button class="btn btn-ghost" id="download-logo-btn">Download Logo (SVG)</button>
-            <div style="display:grid;place-items:center;padding-left:8px"><span class="small">Launch: Cyprus • B2B</span></div>
+      <div class="window enter" role="img" aria-label="Mission control preview: a topographic map of the Nicosia sector with three drone routes and the fleet status list">
+        <div class="window-bar">
+          <span class="live"><i></i>Live</span>
+          <span class="title">Mission control · Nicosia sector</span>
+          <span class="clock mono">14:32 UTC+2</span>
+        </div>
+        <div class="mc">
+          <div class="map">
+            <svg viewBox="0 0 560 400" aria-hidden="true">
+              <g fill="none" stroke="var(--contour)" stroke-width="1">
+                <path d="M-10 330 C80 300 140 340 220 318 S360 260 430 282 S540 330 580 300"/>
+                <path d="M-10 290 C70 262 150 300 230 276 S350 214 440 238 S540 288 580 262"/>
+                <path d="M-10 250 C60 226 150 262 236 236 S340 170 446 196 S540 246 580 222"/>
+                <path d="M-10 206 C70 190 140 214 228 192 S330 120 430 150 S540 200 580 178"/>
+                <path d="M-10 160 C60 150 140 168 214 148 S310 80 410 104 S530 150 580 132"/>
+                <path d="M-10 112 C80 104 150 118 210 102 S300 40 390 60 S520 100 580 86"/>
+                <path d="M300 150 C330 128 380 132 392 156 S360 198 326 190 S282 170 300 150Z"/>
+                <path d="M318 156 C334 146 362 148 368 162 S350 182 334 178 S308 166 318 156Z"/>
+              </g>
+              <g fill="none" stroke="rgba(163,176,167,.10)" stroke-width="1">
+                <path d="M0 0h560M0 100h560M0 200h560M0 300h560M140 0v400M280 0v400M420 0v400"/>
+              </g>
+              <!-- agro field -->
+              <path d="M392 262 L492 246 L506 318 L404 334 Z" fill="rgba(163,176,167,.06)" stroke="rgba(163,176,167,.28)" stroke-dasharray="3 4"/>
+              <g stroke="rgba(163,176,167,.18)"><path d="M398 290l100-16M401 312l100-16"/></g>
+              <text x="404" y="352" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="11">Field 7 · 4.2 ha</text>
+              <!-- inactive routes -->
+              <path id="r-agro" d="M96 318 C180 330 300 300 446 290" fill="none" stroke="rgba(163,176,167,.45)" stroke-width="1.5" stroke-dasharray="2 6" stroke-linecap="round"/>
+              <path d="M96 318 C120 250 150 190 176 120" fill="none" stroke="rgba(163,176,167,.30)" stroke-width="1.5" stroke-dasharray="2 6" stroke-linecap="round"/>
+              <!-- active route -->
+              <path id="r-active" d="M96 318 C190 260 250 250 300 200 S420 96 478 78" fill="none" stroke="#3ecf8e" stroke-width="2" stroke-dasharray="6 6" stroke-linecap="round"/>
+              <g fill="#0a0f0c" stroke="#3ecf8e" stroke-width="1.5"><circle cx="300" cy="200" r="4"/><circle cx="398" cy="128" r="4"/></g>
+              <!-- hub -->
+              <g transform="translate(96 318)"><rect x="-9" y="-9" width="18" height="18" rx="4" fill="#16201a" stroke="rgba(232,239,233,.4)"/><path d="M-4 0h8M0 -4v8" stroke="#e8efe9" stroke-width="1.5"/></g>
+              <text x="68" y="350" fill="var(--text-2)" font-family="IBM Plex Mono, monospace" font-size="11">Hub · Strovolos</text>
+              <!-- drop point -->
+              <g transform="translate(478 78)"><circle r="10" fill="none" stroke="rgba(62,207,142,.5)"/><circle r="3.5" fill="#3ecf8e"/></g>
+              <text x="398" y="58" fill="var(--text-2)" font-family="IBM Plex Mono, monospace" font-size="11">Drop · Aglantzia</text>
+              <!-- rescue standby -->
+              <g transform="translate(176 120)"><circle r="4" fill="none" stroke="rgba(232,239,233,.5)" stroke-width="1.5"/></g>
+              <text x="190" y="116" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="11">VR-01 standby</text>
+              <!-- agro unit -->
+              <g transform="translate(446 290)"><path d="M0 -6l6 6-6 6-6-6z" fill="#a3b0a7"/></g>
+              <!-- moving courier -->
+              <g class="drone-anim">
+                <g>
+                  <path d="M0 -7l6 12-6-3-6 3z" fill="#3ecf8e"/>
+                  <animateMotion dur="16s" repeatCount="indefinite" rotate="auto" keyPoints="0.35;1" keyTimes="0;1" calcMode="linear"><mpath href="#r-active"/></animateMotion>
+                </g>
+              </g>
+              <text x="16" y="24" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="11">35.17°N 33.36°E · wind 4 m/s NW</text>
+            </svg>
           </div>
-
-          <div class="metrics reveal" style="margin-top:18px">
-            <div class="metric" style="display:inline-block;margin-right:12px">
-              <strong>30%</strong><span class="small">Agro chemical savings</span>
+          <div class="fleet">
+            <h2>Fleet · 3 of 3 online</h2>
+            <div class="unit active">
+              <div class="unit-head"><span class="callsign">VC-04</span><span class="state">En route</span></div>
+              <div class="unit-meta"><span>Courier 1.8 kg</span><span>ETA 06:40</span></div>
+              <div class="battery"><i style="width:82%"></i></div>
             </div>
-            <div class="metric" style="display:inline-block;margin-right:12px">
-              <strong>≤24h</strong><span class="small">Pilot response time</span>
+            <div class="unit">
+              <div class="unit-head"><span class="callsign">VA-02</span><span class="state">Spraying</span></div>
+              <div class="unit-meta"><span>Agro · Field 7</span><span>64%</span></div>
+              <div class="battery"><i style="width:64%"></i></div>
             </div>
-            <div class="metric" style="display:inline-block">
-              <strong>Enterprise</strong><span class="small">On-prem / Cloud</span>
+            <div class="unit extra">
+              <div class="unit-head"><span class="callsign">VR-01</span><span class="state">Standby</span></div>
+              <div class="unit-meta"><span>Rescue thermal</span><span>100%</span></div>
+              <div class="battery"><i style="width:100%"></i></div>
             </div>
           </div>
         </div>
-
-        <div class="hero-right">
-          <div class="showcase">
-            <canvas class="flow-canvas" id="flowCanvas" aria-hidden="true"></canvas>
-
-            <div class="frame" aria-hidden="false">
-              <div class="drone-wrap">
-                <div class="drone-card drone-bob" id="droneCard" title="Animated Vector drone">
-                  <!-- Drone SVG -->
-                  <svg id="droneSVG" width="220" height="140" viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg" aria-label="Animated drone">
-                    <defs>
-                      <linearGradient id="ng" x1="0" x2="1"><stop offset="0" stop-color="#00ff88"/><stop offset="1" stop-color="#00d977"/></linearGradient>
-                      <filter id="blurGlow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-                    </defs>
-
-                    <!-- shadow under drone (soft) -->
-                    <ellipse cx="110" cy="120" rx="40" ry="8" fill="rgba(0,0,0,0.45)" filter="url(#blurGlow)" opacity="0.35"/>
-
-                    <!-- body -->
-                    <g id="body" transform="translate(0,0)">
-                      <rect x="70" y="48" width="80" height="30" rx="8" fill="#021611" stroke="url(#ng)" stroke-width="1.6" />
-                      <rect x="86" y="56" width="48" height="18" rx="6" fill="url(#ng)" opacity="0.12" />
-                      <!-- cockpit/neon eye -->
-                      <ellipse cx="110" cy="66" rx="12" ry="6" fill="#bfffee" opacity="0.08"/>
-                      <circle cx="110" cy="64" r="3.2" fill="#00ff88" class="drone-glow"/>
-                    </g>
-
-                    <!-- arms -->
-                    <g id="arms" stroke="url(#ng)" stroke-width="3" stroke-linecap="round" opacity="0.95">
-                      <line x1="70" y1="62" x2="26" y2="28" />
-                      <line x1="150" y1="62" x2="194" y2="28" />
-                      <line x1="70" y1="62" x2="26" y2="96" />
-                      <line x1="150" y1="62" x2="194" y2="96" />
-                    </g>
-
-                    <!-- rotors -->
-                    <g id="rotors">
-                      <!-- top-left -->
-                      <g class="rotor rotor-tl" transform="translate(26,28)">
-                        <circle cx="0" cy="0" r="6" fill="rgba(0,0,0,0.35)"/>
-                        <g class="rotor-spin">
-                          <ellipse rx="20" ry="4" fill="rgba(0,255,136,0.08)"/>
-                        </g>
-                      </g>
-                      <!-- top-right -->
-                      <g class="rotor rotor-tr" transform="translate(194,28)">
-                        <circle cx="0" cy="0" r="6" fill="rgba(0,0,0,0.35)"/>
-                        <g class="rotor-spin">
-                          <ellipse rx="20" ry="4" fill="rgba(0,255,136,0.08)"/>
-                        </g>
-                      </g>
-                      <!-- bottom-left -->
-                      <g class="rotor rotor-bl" transform="translate(26,96)">
-                        <circle cx="0" cy="0" r="6" fill="rgba(0,0,0,0.35)"/>
-                        <g class="rotor-spin">
-                          <ellipse rx="20" ry="4" fill="rgba(0,255,136,0.08)"/>
-                        </g>
-                      </g>
-                      <!-- bottom-right -->
-                      <g class="rotor rotor-br" transform="translate(194,96)">
-                        <circle cx="0" cy="0" r="6" fill="rgba(0,0,0,0.35)"/>
-                        <g class="rotor-spin">
-                          <ellipse rx="20" ry="4" fill="rgba(0,255,136,0.08)"/>
-                        </g>
-                      </g>
-                    </g>
-
-                    <!-- lights under body (landing sensors) -->
-                    <g id="lights">
-                      <circle cx="92" cy="88" r="2.6" fill="#00ff88" opacity="0.95"/>
-                      <circle cx="128" cy="88" r="2.6" fill="#00ff88" opacity="0.95"/>
-                      <!-- downward glow -->
-                      <ellipse cx="92" cy="104" rx="12" ry="4" fill="rgba(0,255,136,0.06)" />
-                      <ellipse cx="128" cy="104" rx="12" ry="4" fill="rgba(0,255,136,0.06)" />
-                    </g>
-                  </svg>
-
-                  <div class="drone-shadow" aria-hidden="true"></div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <!-- FEATURES -->
-      <section id="features" class="reveal" aria-labelledby="features-title">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-          <h3 id="features-title">Products & Capabilities</h3>
-          <div class="small">AI • Fleet Orchestration • On-edge models</div>
-        </div>
-
-        <div class="features">
-          <div class="feature">
-            <h3>Delivery & Logistics</h3>
-            <p>Autonomous last-mile and inter-site logistics with SLA monitoring and adaptive routing.</p>
-          </div>
-
-          <div class="feature">
-            <h3>Agriculture</h3>
-            <p>Multispectral scouting, precision spraying and yield optimization with local ML models.</p>
-          </div>
-
-          <div class="feature">
-            <h3>Firefighting & Rescue</h3>
-            <p>Rapid aerial assessment, thermal detection and coordinated suppression support.</p>
-          </div>
-        </div>
-
-        <div class="products" aria-hidden="false" style="margin-top:24px">
-          <div class="prod">
-            <div style="width:56px;height:56px;border-radius:10px;background:linear-gradient(180deg,rgba(0,255,136,0.06),rgba(0,217,119,0.04));display:grid;place-items:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 7a2 2 0 012-2h4l2-3h4l2 3h4a2 2 0 012 2v7a2 2 0 01-2 2h-6v-4h-4v4H4a2 2 0 01-2-2V7z" fill="#00ff88" opacity="0.14"/></svg></div>
-            <div><h4>VectorCourier</h4><p class="small">Lightweight last-mile drones</p></div>
-          </div>
-
-          <div class="prod">
-            <div style="width:56px;height:56px;border-radius:10px;background:linear-gradient(180deg,rgba(0,255,136,0.06),rgba(0,217,119,0.04));display:grid;place-items:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16v10H4z" fill="#00d977" opacity="0.14"/></svg></div>
-            <div><h4>VectorAgro</h4><p class="small">Precision agriculture fleet</p></div>
-          </div>
-
-          <div class="prod">
-            <div style="width:56px;height:56px;border-radius:10px;background:linear-gradient(180deg,rgba(0,255,136,0.06),rgba(0,217,119,0.04));display:grid;place-items:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h18M12 3v18" stroke="#00ff88" stroke-width="2" stroke-linecap="round"/></svg></div>
-            <div><h4>VectorRescue</h4><p class="small">Emergency & firefighting swarm</p></div>
-          </div>
-        </div>
-
-        <div style="display:flex;gap:12px;margin-top:20px;flex-wrap:wrap">
-          <div class="plan">
-            <strong>Pilot</strong><div class="small">€20k–€50k</div>
-            <p class="small">1–3 month integration, 1–3 drones, platform onboarding.</p>
-          </div>
-          <div class="plan">
-            <strong>Lease</strong><div class="small">€600–€3,000 / month</div>
-            <p class="small">Hardware as a service + SLA and field support.</p>
-          </div>
-          <div class="plan">
-            <strong>Enterprise</strong><div class="small">Custom</div>
-            <p class="small">On-prem deployments, ERP/WMS integration, advanced SLAs.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Use cases -->
-      <section id="usecases" class="reveal" style="margin-top:28px">
-        <h3>Use Cases</h3>
-        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px">
-          <div style="background:var(--panel);padding:12px;border-radius:10px"><strong>Agriculture</strong><p class="small">Yield optimisation, disease detection, targeted inputs.</p></div>
-          <div style="background:var(--panel);padding:12px;border-radius:10px"><strong>Fire & Rescue</strong><p class="small">Thermal mapping, suppression assist, search and rescue.</p></div>
-          <div style="background:var(--panel);padding:12px;border-radius:10px"><strong>Logistics</strong><p class="small">Warehouse automation, intra-site transports, rural delivery.</p></div>
-          <div style="background:var(--panel);padding:12px;border-radius:10px"><strong>Inspection</strong><p class="small">Infrastructure inspection with automated reporting.</p></div>
-        </div>
-      </section>
-
-      <!-- CONTACT -->
-      <section id="contact" class="reveal" style="margin-top:28px">
-        <h3>Contact & Pilot Request</h3>
-        <div class="contact" role="form">
-          <div>
-            <h4>Vector — Pilot & Enterprise Sales</h4>
-            <p class="small">Fill the form — our team will reach out within 24h to schedule a pilot.</p>
-            <ul class="small" style="margin-top:12px">
-              <li><strong>Domain:</strong> <span class="small">vector.ai (reserve)</span></li>
-              <li><strong>Location:</strong> Nicosia, Cyprus</li>
-            </ul>
-            <div style="margin-top:12px" class="small">Email: <strong>pilot@vector.ai</strong></div>
-          </div>
-
-          <form id="pilot-form" onsubmit="event.preventDefault(); sendForm();" style="display:grid;gap:10px">
-            <div>
-              <label for="company">Company</label>
-              <input id="company" required placeholder="Your company"/>
-            </div>
-            <div>
-              <label for="contact">Contact name</label>
-              <input id="contact" required placeholder="Full name"/>
-            </div>
-            <div>
-              <label for="email">Email</label>
-              <input id="email" type="email" required placeholder="email@company.com"/>
-            </div>
-            <div>
-              <label for="usecase">Use case</label>
-              <select id="usecase">
-                <option>Delivery</option>
-                <option>Agriculture</option>
-                <option>Firefighting / Rescue</option>
-                <option>Warehouse / Logistics</option>
-              </select>
-            </div>
-            <div>
-              <label for="message">Short description</label>
-              <textarea id="message" placeholder="Region, volumes, timeline"></textarea>
-            </div>
-            <div style="display:flex;gap:12px;align-items:center">
-              <button class="btn-neon" type="submit" id="send-btn">Request Pilot</button>
-              <div class="small">Or email: <strong>pilot@vector.ai</strong></div>
-            </div>
-            <div class="small">Backend endpoint: <span id="api-endpoint" class="small">/api/submit</span></div>
-          </form>
-        </div>
-      </section>
-
-      <footer style="margin-top:28px" class="reveal">
-        <div class="small">© 2025 Vector • The future of autonomous flight.</div>
-      </footer>
-    </main>
+      </div>
+    </section>
   </div>
 
+  <section class="block" id="products" aria-labelledby="products-title">
+    <div class="wrap">
+      <div class="block-head">
+        <h2 id="products-title">Products and capabilities</h2>
+        <p>Fleet orchestration and on-edge models, so drones keep flying their mission when the link drops.</p>
+      </div>
+      <div class="caps">
+        <div class="cap">
+          <svg class="icon"><use href="#i-package"/></svg>
+          <h3>Delivery and logistics</h3>
+          <p>Autonomous last-mile and inter-site logistics with SLA monitoring and adaptive routing.</p>
+        </div>
+        <div class="cap">
+          <svg class="icon"><use href="#i-sprout"/></svg>
+          <h3>Agriculture</h3>
+          <p>Multispectral scouting, precision spraying and yield optimisation with local ML models.</p>
+        </div>
+        <div class="cap">
+          <svg class="icon"><use href="#i-flame"/></svg>
+          <h3>Firefighting and rescue</h3>
+          <p>Rapid aerial assessment, thermal detection and coordinated suppression support.</p>
+        </div>
+      </div>
+
+      <div class="products">
+        <div class="product"><span class="tag">VC</span><h3>VectorCourier</h3><p>Lightweight last-mile drones</p></div>
+        <div class="product"><span class="tag">VA</span><h3>VectorAgro</h3><p>Precision agriculture fleet</p></div>
+        <div class="product"><span class="tag">VR</span><h3>VectorRescue</h3><p>Emergency and firefighting swarm</p></div>
+      </div>
+
+      <div class="plans">
+        <div class="plan lead-plan">
+          <div class="name">Pilot</div>
+          <div class="price">€20k–€50k</div>
+          <p>1–3 month integration, 1–3 drones, platform onboarding.</p>
+        </div>
+        <div class="plan">
+          <div class="name">Lease</div>
+          <div class="price">€600–€3,000 <small>/ month</small></div>
+          <p>Hardware as a service with SLA and field support.</p>
+        </div>
+        <div class="plan">
+          <div class="name">Enterprise</div>
+          <div class="price">Custom</div>
+          <p>On-prem deployments, ERP and WMS integration, advanced SLAs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="usecases" aria-labelledby="uses-title">
+    <div class="wrap">
+      <div class="block-head"><h2 id="uses-title">Use cases</h2></div>
+      <div class="uses">
+        <div class="use"><svg class="icon"><use href="#i-sprout"/></svg><div><h3>Agriculture</h3><p>Yield optimisation, disease detection, targeted inputs.</p></div></div>
+        <div class="use"><svg class="icon"><use href="#i-flame"/></svg><div><h3>Fire and rescue</h3><p>Thermal mapping, suppression assist, search and rescue.</p></div></div>
+        <div class="use"><svg class="icon"><use href="#i-package"/></svg><div><h3>Logistics</h3><p>Warehouse automation, intra-site transport, rural delivery.</p></div></div>
+        <div class="use"><svg class="icon"><use href="#i-search"/></svg><div><h3>Inspection</h3><p>Infrastructure inspection with automated reporting.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="contact" aria-labelledby="contact-title">
+    <div class="wrap contact">
+      <div class="contact-info">
+        <div class="block-head" style="margin-bottom:24px"><h2 id="contact-title">Request a pilot</h2></div>
+        <p>Tell us about your region and volumes. The pilot and enterprise team replies within 24 hours to schedule a first mission.</p>
+        <dl>
+          <dt>Location</dt><dd>Nicosia, Cyprus</dd>
+          <dt>Email</dt><dd><a href="mailto:pilot@vector.ai">pilot@vector.ai</a></dd>
+        </dl>
+      </div>
+      <form id="pilot-form">
+        <div class="field"><label for="company">Company</label><input id="company" required autocomplete="organization"></div>
+        <div class="field"><label for="contact-name">Contact name</label><input id="contact-name" required autocomplete="name"></div>
+        <div class="field"><label for="email">Email</label><input id="email" type="email" required autocomplete="email"></div>
+        <div class="field"><label for="usecase">Use case</label>
+          <select id="usecase"><option>Delivery</option><option>Agriculture</option><option>Firefighting / rescue</option><option>Warehouse / logistics</option></select>
+        </div>
+        <div class="field full"><label for="message">Short description</label><textarea id="message" placeholder="Region, volumes, timeline"></textarea></div>
+        <div class="form-foot"><button class="btn btn-primary" type="submit" id="send-btn">Request a pilot</button><span>Reply within 24h</span></div>
+        <p class="status" id="status" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span>© 2025 Vector · Nicosia, Cyprus</span><span class="mono">Prototype site</span></div>
+</footer>
+
 <script>
-/* Reveal on scroll */
-(function(){
-  const reveals = document.querySelectorAll('.reveal');
-  function onScroll(){
-    const h = window.innerHeight;
-    reveals.forEach(el=>{
-      const r = el.getBoundingClientRect();
-      if(r.top < h - 60) el.classList.add('visible');
-    });
-  }
-  window.addEventListener('scroll', onScroll, {passive:true});
-  window.addEventListener('resize', onScroll);
-  onScroll();
-})();
+const ENDPOINT = '/api/submit';
 
-/* Neon flow canvas background */
-(function(){
-  const canvas = document.getElementById('flowCanvas');
-  const ctx = canvas.getContext('2d');
-  function setup(){
-    canvas.width = canvas.clientWidth;
-    canvas.height = canvas.clientHeight;
-  }
-  setup();
-  window.addEventListener('resize', setup);
-
-  const particles = [];
-  const COUNT = 60;
-  for(let i=0;i<COUNT;i++){
-    particles.push({
-      x: Math.random()*canvas.width,
-      y: Math.random()*canvas.height,
-      vx: (Math.random()-0.3)*0.4,
-      vy: (Math.random()-0.5)*0.2,
-      size: Math.random()*2.2 + 0.5,
-      alpha: Math.random()*0.2 + 0.05,
-      life: Math.random()*200 + 60
-    });
-  }
-
-  function field(x,y,t){
-    const nx = x / canvas.width, ny = y / canvas.height;
-    const angle = Math.sin(nx*3 + t*0.0006)*Math.PI*0.5 + Math.cos(ny*4 - t*0.0004)*Math.PI*0.25;
-    return {ax: Math.cos(angle)*0.06, ay: Math.sin(angle)*0.06};
-  }
-
-  function draw(t){
-    if(!ctx) return;
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.globalCompositeOperation = 'lighter';
-    for(let p of particles){
-      const f = field(p.x,p.y,t);
-      p.vx += f.ax * (0.4 + Math.sin(t*0.0005)*0.1);
-      p.vy += f.ay * (0.4 + Math.cos(t*0.0004)*0.1);
-      p.x += p.vx; p.y += p.vy;
-      p.life -= 0.3;
-      if(p.x < -20 || p.x > canvas.width+20 || p.y < -20 || p.y > canvas.height+20 || p.life < 0){
-        p.x = Math.random()*canvas.width;
-        p.y = canvas.height + Math.random()*40;
-        p.vx = (Math.random()-0.5)*0.6;
-        p.vy = -Math.random()*0.6;
-        p.life = Math.random()*200 + 60;
-      }
-      const grad = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,Math.max(6,p.size*6));
-      grad.addColorStop(0, `rgba(0,255,136,${p.alpha})`);
-      grad.addColorStop(0.6, `rgba(0,217,119,${p.alpha*0.6})`);
-      grad.addColorStop(1, `rgba(0,217,119,0)`);
-      ctx.fillStyle = grad;
-      ctx.beginPath();
-      ctx.arc(p.x,p.y,p.size*6,0,Math.PI*2);
-      ctx.fill();
-    }
-    ctx.globalCompositeOperation = 'source-over';
-    requestAnimationFrame(draw);
-  }
-  requestAnimationFrame(draw);
-})();
-
-/* Drone rotor subtle control (speed variation) */
-(function(){
-  const rotors = document.querySelectorAll('.rotor-spin');
-  // slight random speed variance per rotor
-  rotors.forEach((r,i)=>{
-    const base = 0.9 + Math.random()*0.6;
-    r.style.animationDuration = `${base}s`;
-  });
-
-  // on hover, speed up rotors and lift drone a bit
-  const droneCard = document.getElementById('droneCard');
-  droneCard.addEventListener('mouseenter', ()=>{
-    rotors.forEach(r=> r.style.animationDuration = '0.45s');
-    droneCard.style.transform = 'translateY(-18px)';
-    droneCard.style.boxShadow = '0 30px 80px rgba(0,255,136,0.12)';
-  });
-  droneCard.addEventListener('mouseleave', ()=>{
-    rotors.forEach((r,i)=> r.style.animationDuration = `${0.9 + Math.random()*0.6}s`);
-    droneCard.style.transform = '';
-    droneCard.style.boxShadow = '';
-  });
-})();
-
-/* Download logo (simple generated SVG) */
-document.getElementById('download-logo-btn').addEventListener('click', ()=>{
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 600 600">
-    <defs>
-      <linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#00ff88"/><stop offset="1" stop-color="#00d977"/></linearGradient>
-      <filter id="fg"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-    </defs>
-    <rect width="100%" height="100%" fill="transparent"/>
-    <g transform="translate(60,60)">
-      <path d="M60 420 C160 120 360 120 460 420" fill="none" stroke="url(#g)" stroke-width="12" stroke-linecap="round" filter="url(#fg)"/>
-      <g fill="url(#g)" opacity="0.95">
-        <circle cx="84" cy="390" r="8"/><circle cx="140" cy="300" r="6"/><circle cx="200" cy="240" r="6"/><circle cx="270" cy="220" r="8"/><circle cx="340" cy="246" r="6"/><circle cx="400" cy="310" r="7"/><circle cx="440" cy="386" r="6"/>
-      </g>
-    </g>
-  </svg>`;
-  const blob = new Blob([svg], {type:'image/svg+xml'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a'); a.href = url; a.download = 'vector_logo.svg'; document.body.appendChild(a); a.click();
-  setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); }, 800);
+const headerEl = document.getElementById('top');
+const menuBtn = document.getElementById('menuBtn');
+menuBtn.addEventListener('click', () => {
+  const open = headerEl.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded', open);
 });
+document.querySelectorAll('.nav a').forEach(a => a.addEventListener('click', () => headerEl.classList.remove('open')));
 
-/* Form send (keeps same behavior) */
-async function sendForm(){
+document.getElementById('pilot-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
   const btn = document.getElementById('send-btn');
-  if(!btn) return;
-  btn.disabled = true; btn.textContent = 'Sending...';
+  const status = document.getElementById('status');
+  btn.disabled = true; btn.textContent = 'Sending';
   const payload = {
     company: document.getElementById('company').value.trim(),
-    name: document.getElementById('contact').value.trim(),
+    name: document.getElementById('contact-name').value.trim(),
     email: document.getElementById('email').value.trim(),
     usecase: document.getElementById('usecase').value,
     message: document.getElementById('message').value.trim(),
     sentAt: new Date().toISOString()
   };
   try {
-    const endpoint = document.getElementById('api-endpoint').textContent || '/api/submit';
-    const res = await fetch(endpoint, {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify(payload)
-    });
-    if(res.ok){
-      alert('Thanks — request received. We will contact you within 24h.');
-      document.getElementById('pilot-form').reset();
-    } else {
-      const text = await res.text();
-      alert('Error: ' + text);
-    }
-  } catch(e){
-    console.error(e);
-    alert('Network error. If hosting on GitHub Pages, deploy backend and update endpoint.');
+    const res = await fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+    if (!res.ok) throw new Error(res.status);
+    status.textContent = 'Request received. We will contact you within 24 hours.';
+    e.target.reset();
+  } catch (err) {
+    status.textContent = 'Could not send right now. Email pilot@vector.ai instead.';
   } finally {
-    btn.disabled = false; btn.textContent = 'Request Pilot';
+    btn.disabled = false; btn.textContent = 'Request a pilot';
   }
-}
-
-/* Smooth anchors & reveal trigger */
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',(e)=>{
-    const h = a.getAttribute('href');
-    if(h.length>1){ e.preventDefault(); document.querySelector(h).scrollIntoView({behavior:'smooth',block:'start'}); }
-  });
 });
-document.addEventListener('DOMContentLoaded', ()=> { setTimeout(()=> document.querySelectorAll('.reveal').forEach(el=> el.classList.add('visible')), 250); });
-
-/* endpoint display default */
-document.getElementById('api-endpoint').textContent = '/api/submit';
 </script>
 </body>
 </html>
