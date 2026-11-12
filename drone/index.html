@@ -35,7 +35,7 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--text);font:400 15px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
 a{color:inherit}
 .icon{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
-.wrap{width:100%;max-width:1200px;margin:0 auto;padding:0 32px}
+.wrap{width:100%;max-width:1360px;margin:0 auto;padding:0 48px}
 .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
 
 /* header */
@@ -57,23 +57,31 @@ a{color:inherit}
 .menu-btn{display:none;margin-left:auto;background:none;border:0;color:var(--text);width:40px;height:40px;border-radius:8px;cursor:pointer}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
-/* hero */
-.hero{min-height:calc(100vh - 64px);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:center;padding:64px 0}
-.hero h1{font-size:56px;line-height:1.04;letter-spacing:-.03em;font-weight:500;margin:0 0 20px}
+/* hero scene */
+.scene{position:relative;overflow:hidden;background:var(--bg)}
+.scene-img{position:absolute;inset:0 0 auto 0;height:820px;background:url(img/hero.webp) 70% 40%/cover no-repeat}
+.scene-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 0%,rgba(10,15,12,.88) 30%,rgba(10,15,12,.35) 62%,rgba(10,15,12,.1) 100%),linear-gradient(0deg,var(--bg) 0%,rgba(10,15,12,0) 45%)}
+.scene-inner{position:relative;padding:128px 48px 64px}
+.scene-inner>div{max-width:640px}
+.eyebrow{font:500 13px/1 var(--mono);color:var(--accent);margin:0 0 20px}
+.scene h1{font-size:68px;line-height:1.02;letter-spacing:-.03em;font-weight:500;margin:0 0 24px;max-width:13ch}
 .lead{font-size:18px;line-height:1.6;color:var(--text-2);max-width:34rem;margin:0 0 32px}
 .actions{display:flex;gap:12px;flex-wrap:wrap}
-.figures{display:grid;grid-template-columns:repeat(3,auto);gap:32px;margin-top:48px;padding-top:24px;border-top:1px solid var(--line);justify-content:start}
+.figures{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;padding:20px 24px;border:1px solid var(--line);border-radius:16px;background:rgba(15,22,18,.72)}
+.figures div:first-child b{color:var(--accent)}
 .figures b{display:block;font:500 28px/1 var(--mono);font-variant-numeric:tabular-nums;margin-bottom:8px}
 .figures span{font-size:13px;color:var(--muted)}
 
 /* mission control window */
-.window{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 24px 48px rgba(0,0,0,.35)}
+.window-wrap{position:relative;padding-bottom:96px}
+.window{background:var(--card);border:1px solid var(--line-strong);border-radius:20px;overflow:hidden;box-shadow:0 32px 64px rgba(0,0,0,.45)}
 .window-bar{height:44px;display:flex;align-items:center;gap:12px;padding:0 16px;border-bottom:1px solid var(--line);font:400 12px/1 var(--mono);color:var(--muted)}
 .window-bar .title{color:var(--text-2)}
 .window-bar .clock{margin-left:auto}
 .live{display:inline-flex;align-items:center;gap:6px;color:var(--text-2)}
 .live i{width:6px;height:6px;border-radius:50%;background:var(--accent)}
-.mc{display:grid;grid-template-columns:minmax(0,1fr) 252px}
+.mc{display:grid;grid-template-columns:minmax(0,1fr) 300px}
+.map svg{max-height:440px;width:100%}
 .map{position:relative;background:var(--deep);border-right:1px solid var(--line)}
 .map svg{display:block;width:100%;height:auto}
 .fleet{padding:12px}
@@ -93,42 +101,54 @@ a{color:inherit}
 /* sections */
 section.block{padding:96px 0;border-top:1px solid var(--line)}
 .block-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:48px}
-.block-head h2{font-size:32px;line-height:1.15;font-weight:500;letter-spacing:-.02em;margin:0}
+.block-head h2{font-size:40px;line-height:1.1;font-weight:500;letter-spacing:-.02em;margin:0}
+.index{display:block;font:500 13px/1 var(--mono);color:var(--accent);margin-bottom:16px}
+section.band{background:var(--deep)}
 .block-head p{margin:0;color:var(--text-2);max-width:28rem}
 .caps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
 .cap .icon{color:var(--text-2);margin-bottom:16px}
 .cap h3{font-size:18px;font-weight:500;margin:0 0 8px}
 .cap p{margin:0;color:var(--text-2)}
 
-.products{margin-top:64px;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.prod-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:24px;margin-top:64px;align-items:stretch}
+.blueprint{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#0b1a12;min-height:320px}
+.blueprint img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.15) brightness(1.05);mix-blend-mode:screen;opacity:.9}
+.blueprint::after{content:"";position:absolute;inset:0;background:#3ecf8e;mix-blend-mode:multiply}
+.blueprint figcaption{position:absolute;left:16px;bottom:16px;z-index:1;font:400 12px/1 var(--mono);color:var(--text-2);background:rgba(7,11,9,.8);padding:8px 10px;border-radius:6px}
+.products{border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.products .product{flex:1}
 .product{display:grid;grid-template-columns:88px minmax(0,1fr) auto;align-items:center;gap:16px;padding:20px 24px;background:var(--card)}
 .product + .product{border-top:1px solid var(--line)}
-.product .tag{font:500 13px/1 var(--mono);color:var(--text-2);border:1px solid var(--line-strong);border-radius:6px;padding:6px 8px;justify-self:start}
+.product .tag{font:500 13px/1 var(--mono);color:var(--accent);border:1px solid rgba(62,207,142,.35);border-radius:6px;padding:6px 8px;justify-self:start}
 .product h3{font-size:16px;font-weight:500;margin:0}
 .product p{margin:0;color:var(--muted);font-size:14px}
 
 .plans{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:16px;margin-top:16px}
 .plan{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
-.plan.lead-plan{background:var(--raised)}
+.plan.lead-plan{background:var(--raised);border-color:rgba(62,207,142,.35)}
+.plan.lead-plan .name{color:var(--accent)}
 .plan .name{font-size:14px;color:var(--text-2)}
 .plan .price{font:500 24px/1.2 var(--mono);font-variant-numeric:tabular-nums;margin:8px 0 16px}
 .plan .price small{font-size:14px;color:var(--muted);font-weight:400}
 .plan p{margin:0;color:var(--text-2);font-size:14px}
 
-.uses{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
-.use{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;padding:24px 0;border-bottom:1px solid var(--line)}
-.use:nth-child(odd){padding-right:32px}
-.use:nth-child(even){padding-left:32px;border-left:1px solid var(--line)}
-.use .icon{color:var(--muted);margin-top:3px}
-.use h3{font-size:16px;font-weight:500;margin:0 0 4px}
-.use p{margin:0;color:var(--text-2);font-size:14px}
-
+.uses{display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:280px 280px;gap:16px}
+.use{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--card);display:flex;align-items:flex-end}
+.use img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s var(--ease)}
+.use:hover img{transform:scale(1.02)}
+.use::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,11,9,.92) 0%,rgba(7,11,9,.55) 40%,rgba(7,11,9,0) 70%)}
+.use .txt{position:relative;z-index:1;padding:24px;display:grid;grid-template-columns:20px minmax(0,1fr);gap:12px}
+.use .icon{color:var(--accent);margin-top:3px}
+.use h3{font-size:18px;font-weight:500;margin:0 0 4px}
+.use p{margin:0;color:var(--text-2);font-size:14px;max-width:30ch}
+.use.big{grid-row:span 2}
+.use.wide{grid-column:span 2}
 .contact{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:start}
 .contact-info p{color:var(--text-2);margin:0 0 24px;max-width:26rem}
 .contact-info dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:12px 24px;font-size:14px}
 .contact-info dt{color:var(--muted)}
 .contact-info dd{margin:0}
-form{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+form{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .field{display:grid;gap:8px}
 .field.full{grid-column:1/-1}
 label{font-size:13px;color:var(--text-2)}
@@ -149,18 +169,28 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 @media (prefers-reduced-motion:reduce){.enter{animation:none}.drone-anim{display:none}}
 
 @media (max-width:1040px){
-  .hero{grid-template-columns:1fr;min-height:0;padding:48px 0 64px}
+  .scene-inner{padding:96px 48px 48px}
+  .scene h1{font-size:52px}
+  .prod-grid{grid-template-columns:1fr}
+  .uses{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .use{min-height:260px}
+  .use.big{grid-row:auto;grid-column:span 2}
+  .use.wide{grid-column:span 2}
   .caps{grid-template-columns:1fr;gap:24px}
   .plans{grid-template-columns:1fr}
   .contact{grid-template-columns:1fr}
 }
 @media (max-width:760px){
   .wrap{padding:0 16px}
+  .scene-inner{padding:64px 16px 32px}
+  .scene-img{height:640px;background-position:72% 40%}
+  .scene-img::after{background:linear-gradient(0deg,var(--bg) 0%,rgba(10,15,12,.82) 40%,rgba(10,15,12,.72) 100%)}
+  .window-wrap{padding-bottom:64px}
   .nav,.top .btn{display:none}
   .menu-btn{display:grid;place-items:center}
   .top.open .nav{display:flex;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 16px 16px}
   .top.open .nav a{padding:12px}
-  .hero h1{font-size:40px}
+  .scene h1{font-size:40px}
   .lead{font-size:17px}
   .figures{grid-template-columns:repeat(3,auto);gap:20px}
   .figures b{font-size:20px}
@@ -173,7 +203,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .product{grid-template-columns:72px minmax(0,1fr);padding:16px}
   .product p{grid-column:2}
   .uses{grid-template-columns:1fr}
-  .use:nth-child(n){padding:20px 0;border-left:0}
+  .use.big,.use.wide{grid-column:auto}
+  .figures{padding:16px}
   form{grid-template-columns:1fr;padding:16px}
 }
 </style>
@@ -205,9 +236,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </header>
 
 <main>
-  <div class="wrap">
-    <section class="hero" aria-labelledby="hero-title">
+  <section class="scene" aria-labelledby="hero-title">
+    <div class="scene-img" role="img" aria-label="A Vector cargo drone flying over a valley at sunset"></div>
+    <div class="wrap scene-inner">
       <div class="enter">
+        <p class="eyebrow">Launch: Cyprus · B2B</p>
         <h1 id="hero-title">Drone fleets for delivery, fields and rescue</h1>
         <p class="lead">Vector builds resilient drone fleets with on-board models, fleet orchestration and real-time mission control, for logistics, agriculture and emergency response teams.</p>
         <div class="actions">
@@ -220,7 +253,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           <div><b>On-prem</b><span>or cloud deployment</span></div>
         </div>
       </div>
-
+    </div>
+    <div class="wrap window-wrap">
       <div class="window enter" role="img" aria-label="Mission control preview: a topographic map of the Nicosia sector with three drone routes and the fleet status list">
         <div class="window-bar">
           <span class="live"><i></i>Live</span>
@@ -294,13 +328,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           </div>
         </div>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 
-  <section class="block" id="products" aria-labelledby="products-title">
+<section class="block" id="products" aria-labelledby="products-title">
     <div class="wrap">
       <div class="block-head">
-        <h2 id="products-title">Products and capabilities</h2>
+        <h2 id="products-title"><span class="index">01</span>Products and capabilities</h2>
         <p>Fleet orchestration and on-edge models, so drones keep flying their mission when the link drops.</p>
       </div>
       <div class="caps">
@@ -321,10 +355,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         </div>
       </div>
 
+      <div class="prod-grid">
+      <figure class="blueprint" style="margin:0"><img src="img/blueprint.webp" alt="VectorCourier blueprint, top and side view" loading="lazy" width="1200" height="895"><figcaption>VectorCourier · top and side view</figcaption></figure>
       <div class="products">
         <div class="product"><span class="tag">VC</span><h3>VectorCourier</h3><p>Lightweight last-mile drones</p></div>
         <div class="product"><span class="tag">VA</span><h3>VectorAgro</h3><p>Precision agriculture fleet</p></div>
         <div class="product"><span class="tag">VR</span><h3>VectorRescue</h3><p>Emergency and firefighting swarm</p></div>
+      </div>
       </div>
 
       <div class="plans">
@@ -347,22 +384,22 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     </div>
   </section>
 
-  <section class="block" id="usecases" aria-labelledby="uses-title">
+  <section class="block band" id="usecases" aria-labelledby="uses-title">
     <div class="wrap">
-      <div class="block-head"><h2 id="uses-title">Use cases</h2></div>
+      <div class="block-head"><h2 id="uses-title"><span class="index">02</span>Use cases</h2><p>One platform, four kinds of mission. Each fleet flies with the same mission control.</p></div>
       <div class="uses">
-        <div class="use"><svg class="icon"><use href="#i-sprout"/></svg><div><h3>Agriculture</h3><p>Yield optimisation, disease detection, targeted inputs.</p></div></div>
-        <div class="use"><svg class="icon"><use href="#i-flame"/></svg><div><h3>Fire and rescue</h3><p>Thermal mapping, suppression assist, search and rescue.</p></div></div>
-        <div class="use"><svg class="icon"><use href="#i-package"/></svg><div><h3>Logistics</h3><p>Warehouse automation, intra-site transport, rural delivery.</p></div></div>
-        <div class="use"><svg class="icon"><use href="#i-search"/></svg><div><h3>Inspection</h3><p>Infrastructure inspection with automated reporting.</p></div></div>
+        <div class="use big"><img src="img/agriculture.webp" alt="Drone over farmland and a highway" loading="lazy"><div class="txt"><svg class="icon"><use href="#i-sprout"/></svg><div><h3>Agriculture</h3><p>Yield optimisation, disease detection, targeted inputs.</p></div></div></div>
+        <div class="use"><img src="img/rescue.webp" alt="Medical drone landing at a mountain clinic" loading="lazy"><div class="txt"><svg class="icon"><use href="#i-flame"/></svg><div><h3>Fire and rescue</h3><p>Thermal mapping, suppression assist, search and rescue.</p></div></div></div>
+        <div class="use"><img src="img/inspection.webp" alt="Drone inspecting a power line pylon at sunset" loading="lazy"><div class="txt"><svg class="icon"><use href="#i-search"/></svg><div><h3>Inspection</h3><p>Infrastructure inspection with automated reporting.</p></div></div></div>
+        <div class="use wide"><img src="img/logistics.webp" alt="Logistics hub with a drone landing pad" loading="lazy"><div class="txt"><svg class="icon"><use href="#i-package"/></svg><div><h3>Logistics</h3><p>Warehouse automation, intra-site transport, rural delivery.</p></div></div></div>
       </div>
     </div>
   </section>
 
-  <section class="block" id="contact" aria-labelledby="contact-title">
+  <section class="block band" id="contact" aria-labelledby="contact-title">
     <div class="wrap contact">
       <div class="contact-info">
-        <div class="block-head" style="margin-bottom:24px"><h2 id="contact-title">Request a pilot</h2></div>
+        <div class="block-head" style="margin-bottom:24px"><h2 id="contact-title"><span class="index">03</span>Request a pilot</h2></div>
         <p>Tell us about your region and volumes. The pilot and enterprise team replies within 24 hours to schedule a first mission.</p>
         <dl>
           <dt>Location</dt><dd>Nicosia, Cyprus</dd>
