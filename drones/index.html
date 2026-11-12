@@ -102,7 +102,8 @@ html.dark .theme-btn .moon{display:none}html.dark .theme-btn .sun{display:block}
 .actions{display:flex;gap:12px;flex-wrap:wrap}
 
 /* hero photo moment */
-.scene{position:relative;padding:0 0 32px 32px}
+.scene{position:relative;padding:0 0 56px 32px}
+.map{border-radius:28px}
 .photo{position:relative;aspect-ratio:4/5;border-radius:32px;overflow:hidden;box-shadow:var(--shadow);background:var(--sea)}
 .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .photo svg{position:absolute;inset:0;width:100%;height:100%}
@@ -144,15 +145,16 @@ section.green form{background:var(--card);color:var(--text);border:0;border-radi
 .why h3{font-size:18px;font-weight:500;margin:0 0 8px}
 .why p{margin:0;color:var(--text-2)}
 
-.how{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:center}
+.how{display:block}
 .specrow{display:grid;grid-template-columns:repeat(5,1fr);margin-top:48px;border:1px solid var(--line);border-radius:16px;background:var(--card);overflow:hidden}
 .specrow div{padding:20px 24px;border-left:1px solid var(--line)}
 .specrow div:first-child{border-left:0}
 .specrow span{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
 .specrow b{font-weight:500}
-.steps{list-style:none;margin:0;padding:0;position:relative}
-.steps::before{content:"";position:absolute;left:19px;top:20px;bottom:20px;border-left:1.5px dashed var(--line-strong)}
-.steps li{position:relative;display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;padding:8px 0 24px}
+.steps{list-style:none;margin:0;padding:0;position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.steps::before{content:"";position:absolute;left:20px;right:0;top:20px;border-top:1.5px dashed var(--line-strong)}
+.steps li{position:relative;display:grid;gap:16px;align-content:start}
+.steps p{font-size:17px}
 .steps .n{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--card);border:1px solid var(--line-strong);font:500 15px/1 var(--sans);color:var(--text-2);position:relative}
 .steps li:last-child .n{border-color:var(--accent);color:var(--accent)}
 .steps p{margin:8px 0 0}
@@ -217,6 +219,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 @media (max-width:1040px){
   .hero{grid-template-columns:1fr;min-height:0;padding:48px 0 64px}
   .scene{padding:0 0 32px 0;max-width:560px}
+  .steps{grid-template-columns:1fr 1fr;row-gap:32px}
+  .steps::before{display:none}
   .specrow{grid-template-columns:repeat(3,1fr)}
   .specrow div:nth-child(4){border-left:0}
   .specrow div:nth-child(n+4){border-top:1px solid var(--line)}
@@ -292,55 +296,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       </div>
 
       <div class="scene enter">
-        <div class="photo">
-          <img src="img/limassol.webp" alt="Набережная Лимассола с высоты: пальмы, променад и море" width="1000" height="1500" fetchpriority="high">
-          <svg viewBox="0 0 400 500" preserveAspectRatio="none" aria-hidden="true">
-            <path id="proute" d="M70 250 C120 300 150 330 190 360 S240 410 262 440" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".55"/>
-            <path d="M70 250 C120 300 150 330 190 360 S240 410 262 440" fill="none" stroke="#0b7a55" stroke-width="2.5" stroke-dasharray="7 7" stroke-linecap="round"/>
-            <g transform="translate(70 250)"><circle r="9" fill="#fdfbf7" stroke="#0b7a55" stroke-width="2"/></g>
-            <g transform="translate(262 440)"><circle r="12" fill="none" stroke="#fdfbf7" stroke-width="2"/><circle r="5" fill="#0b7a55" stroke="#fdfbf7" stroke-width="2"/></g>
-            <g class="drone-anim"><g>
-              <circle r="11" fill="#fdfbf7"/><g stroke="#1f1b16" stroke-width="1.4" stroke-linecap="round"><path d="M-5 -5l10 10M5 -5l-10 10"/></g>
-              <g fill="none" stroke="#5e554a" stroke-width="1"><circle cx="-5" cy="-5" r="3"/><circle cx="5" cy="-5" r="3"/><circle cx="-5" cy="5" r="3"/><circle cx="5" cy="5" r="3"/></g>
-              <animateMotion dur="18s" repeatCount="indefinite" keyPoints="0.1;0.95" keyTimes="0;1" calcMode="linear"><mpath href="#proute"/></animateMotion>
-            </g></g>
-          </svg>
-          <span class="chip">Лимассол · 45 м · 3 м/с</span>
-        </div>
-        <div class="ticket">
-          <div class="ticket-head"><span>Заказ</span><b>№ 2417</b></div>
-          <div class="ticket-route">Таверна «Агора»<span>→ ул. Макариоса, 48</span></div>
-          <div class="ticket-foot">
-            <div><small>В пути</small><span class="timer" id="timer">03:12</span></div>
-            <div class="right">1,4 кг<br>VTOL-07</div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <section class="block band" id="benefits" aria-labelledby="why-title">
-    <div class="wrap">
-      <h2 id="why-title">Почему Vector</h2>
-      <div class="why">
-        <div><b>2×</b><h3>Быстрее курьера</h3><p>Средняя доставка 4–6 минут при стабильной скорости и прямых маршрутах.</p></div>
-        <div class="key"><b>&lt;€1</b><h3>Себестоимость заказа</h3><p>Электричество, предиктивное обслуживание и локальный ИИ — без топлива и курьеров.</p></div>
-        <div><b>24/7</b><h3>Экологично</h3><p>Нулевые выхлопы, низкий шум, ночной режим и полёты круглые сутки.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" id="how" aria-labelledby="how-title">
-    <div class="wrap">
-      <h2 id="how-title">Как это работает</h2>
-      <div class="how">
-        <ol class="steps">
-          <li><span class="n">1</span><p>Заказ поступает в Vector API — интеграция с Foody или другим партнёром.</p></li>
-          <li><span class="n">2</span><p>Роутер назначает ближайший VTOL-дрон и строит безопасный маршрут.</p></li>
-          <li><span class="n">3</span><p>Взлёт, полёт и посадка. Клиент подтверждает получение QR-кодом.</p></li>
-          <li><span class="n">4</span><p>Дрон возвращается на базу или берёт следующий заказ.</p></li>
-        </ol>
-        <div class="mapcard">
         <div class="map" role="img" aria-label="Карта: маршрут дрона от ресторана к клиенту над городом у моря">
           <svg viewBox="0 0 600 440" aria-hidden="true">
             <!-- sea -->
@@ -385,7 +340,39 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
             <text x="576" y="420" text-anchor="end" fill="var(--muted)" font-family="IBM Plex Mono, monospace" font-size="12">Лимасол · высота 45 м · ветер 3 м/с</text>
           </svg>
         </div>
+        <div class="ticket">
+          <div class="ticket-head"><span>Заказ</span><b>№ 2417</b></div>
+          <div class="ticket-route">Таверна «Агора»<span>→ ул. Макариоса, 48</span></div>
+          <div class="ticket-foot">
+            <div><small>В пути</small><span class="timer" id="timer">03:12</span></div>
+            <div class="right">1,4 кг<br>VTOL-07</div>
+          </div>
         </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="block band" id="benefits" aria-labelledby="why-title">
+    <div class="wrap">
+      <h2 id="why-title">Почему Vector</h2>
+      <div class="why">
+        <div><b>2×</b><h3>Быстрее курьера</h3><p>Средняя доставка 4–6 минут при стабильной скорости и прямых маршрутах.</p></div>
+        <div class="key"><b>&lt;€1</b><h3>Себестоимость заказа</h3><p>Электричество, предиктивное обслуживание и локальный ИИ — без топлива и курьеров.</p></div>
+        <div><b>24/7</b><h3>Экологично</h3><p>Нулевые выхлопы, низкий шум, ночной режим и полёты круглые сутки.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="how" aria-labelledby="how-title">
+    <div class="wrap">
+      <h2 id="how-title">Как это работает</h2>
+      <div class="how">
+        <ol class="steps">
+          <li><span class="n">1</span><p>Заказ поступает в Vector API — интеграция с Foody или другим партнёром.</p></li>
+          <li><span class="n">2</span><p>Роутер назначает ближайший VTOL-дрон и строит безопасный маршрут.</p></li>
+          <li><span class="n">3</span><p>Взлёт, полёт и посадка. Клиент подтверждает получение QR-кодом.</p></li>
+          <li><span class="n">4</span><p>Дрон возвращается на базу или берёт следующий заказ.</p></li>
+        </ol>
       </div>
       <div class="specrow">
         <div><span>Платформа</span><b>Pixhawk + ArduPilot</b></div>
